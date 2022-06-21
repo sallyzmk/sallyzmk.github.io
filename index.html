@@ -201,6 +201,181 @@
 
 
   
+    <article id="post-R_3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/20/R_3/" class="article-date">
+  <time class="dt-published" datetime="2022-06-20T00:00:00.000Z" itemprop="datePublished">2022-06-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/20/R_3/">R을 이용한 공공데이터 분석_제3장</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="06-21-오전강의"><a href="#06-21-오전강의" class="headerlink" title="06.21 오전강의"></a>06.21 오전강의</h2><h1 id="제3장-데이터의-구조"><a href="#제3장-데이터의-구조" class="headerlink" title="제3장 데이터의 구조"></a>제3장 데이터의 구조</h1><ol>
+<li>용어의 이해 (36p~42p)</li>
+<li>데이터 구조 (42p~56p)</li>
+</ol>
+<h3 id="벡터의-종류-42p-47p"><a href="#벡터의-종류-42p-47p" class="headerlink" title="벡터의 종류 (42p~47p)"></a>벡터의 종류 (42p~47p)</h3><ul>
+<li>벡터 (vector): 1차원의 집합이며, 같은 속성으로만 묶인다<ol>
+<li>숫자형 벡터: 실수로(소수점, 정수 무리수 등 모든 수) 4칙연산 가능, 연속형 데이터</li>
+<li>정수형 벡터: 숫자형 벡터 中 정수(-1,0,1)로만 구성, 이산형 데이터</li>
+<li>문자형 벡터: 연산 불가</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;Hi&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Hello&quot;</span><span class="punctuation">)</span></span><br><span class="line">char_vector<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span> <span class="comment"># 숫자 1,2 인덱스</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;Hello&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class() 타입을 물어보는 함수</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>char_vector<span class="punctuation">)</span> <span class="comment"># 벡터의 유형을 알 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#character=char=문자</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>범주형 벡터: 데이터가 일정 범위나 기준에 따라 유형(성별, 연령대)으로 분류되는 벡터, 이 때 유형을 레벨(level)이라고 한다</li>
+</ol>
+<ul>
+<li>4.1. 명목형 자료형 벡터 : 데이터 값 비교 불가</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">locaiton_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;서울&quot;</span><span class="punctuation">,</span> <span class="string">&quot;인천&quot;</span><span class="punctuation">,</span> <span class="string">&quot;부산&quot;</span><span class="punctuation">)</span></span><br><span class="line">factor_location_vector <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>locaiton_vector<span class="punctuation">)</span></span><br><span class="line">factor_location_vector</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## [1] 서울 인천 부산</span><br><span class="line">## Levels: 부산 서울 인천</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_location_vector<span class="punctuation">)</span> <span class="comment"># 비서열</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;factor&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help<span class="punctuation">(</span>factor<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## httpd 도움말 서버를 시작합니다 ... 완료</span><br></pre></td></tr></table></figure>
+<ul>
+<li>4.2. 순서형 자료형 벡터 : 데이터 값 순서 지정</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">temperature_factor <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온낮음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">temperature_factor</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;기온높음&quot; &quot;기온보통&quot; &quot;기온낮음&quot; &quot;기온높음&quot; &quot;기온보통&quot; &quot;기온보통&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">factor_temperature_factor <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>temperature_factor<span class="punctuation">,</span> </span><br><span class="line">                                    ordered <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> </span><br><span class="line">                                    levels  <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                                                <span class="string">&quot;기온낮음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                                                <span class="string">&quot;기온높음&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">factor_temperature_factor</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## [1] 기온높음 기온보통 기온낮음 기온높음 기온보통 기온보통</span><br><span class="line">## Levels: 기온보통 &lt; 기온낮음 &lt; 기온높음</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_temperature_factor<span class="punctuation">)</span> <span class="comment"># 서열</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;ordered&quot; &quot;factor&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_location_vector<span class="punctuation">)</span> <span class="comment"># 비서열</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;factor&quot;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>논리형 벡터: 참(TRUE),거짓(FALSE) 논리값으로 구성된 베이터. 논리값은 따옴표 없이 대문자로 쓴다</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logical_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">logical_vector</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1]  TRUE FALSE</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>logical_vector<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;logical&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>벡터는 함상 범주가 같아야한다.</li>
+<li>만약 속성이 서로 다르다면 상위 속성으로 강제변환 되며 이를 Coercion이라 부름. (논리형 ☞ 숫자형 ☞ 문자형)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span> <span class="comment">#a의 유형은 숫자</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="string">&quot;hello&quot;</span><span class="punctuation">,</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="string">&quot;TRUE&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>b<span class="punctuation">)</span> <span class="comment">#b의 유형은 문자</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;1&quot;     &quot;2&quot;     &quot;hello&quot; &quot;TRUE&quot;  &quot;TRUE&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">)</span> <span class="comment">#c의 유형은 숫자</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span> <span class="comment">#문자가 아니기 때문에 &quot;&quot;표시가 없음</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1 2 1 0</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="행렬-47p"><a href="#행렬-47p" class="headerlink" title="행렬 (47p)"></a>행렬 (47p)</h3><ul>
+<li>행렬 (Matrix): 행과 열을 갖는 2차원의 구조로, 같은 속성으로만 묶인다</li>
+<li>행은 가로 데이터, 열은 세로 데이터</li>
+<li>행은 데이터프레임에 들어있는 개별 데이터. R에서는 행을 관측치(observation 약칭 obs.)라고 표현한다.</li>
+<li>열은 벡터들로 구성&gt;데이터의 속성을 의미 </li>
+<li>데이터 분석은 기본적으로 열을 구성하는 변수들의 특성이나 변수 간 관계 등을 알아보는 것.</li>
+</ul>
+<h3 id="데이터프레임-47p-54p"><a href="#데이터프레임-47p-54p" class="headerlink" title="데이터프레임 (47p~54p)"></a>데이터프레임 (47p~54p)</h3><ul>
+<li>데이터프레임 (data.frame): 행과 열을 갖는 2차원의 구조로, 다른 속성도 묶인다</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - 엑셀 데이터</span></span><br><span class="line">no <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">,</span> <span class="number">4</span><span class="punctuation">,</span> <span class="number">5</span><span class="punctuation">)</span></span><br><span class="line">sex <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">)</span></span><br><span class="line">korean <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">87</span><span class="punctuation">,</span> <span class="number">92</span><span class="punctuation">,</span> <span class="number">95</span><span class="punctuation">,</span> <span class="number">81</span><span class="punctuation">,</span> <span class="number">87</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">exam <span class="operator">=</span> data.frame<span class="punctuation">(</span>no<span class="punctuation">,</span> sex<span class="punctuation">,</span> korean<span class="punctuation">)</span></span><br><span class="line">exam</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##   no    sex korean</span><br><span class="line">## 1  1   male     87</span><br><span class="line">## 2  2 female     92</span><br><span class="line">## 3  3   male     95</span><br><span class="line">## 4  4   male     81</span><br><span class="line">## 5  5 female     87</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>sex<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;male&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 타입</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>sex<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>no<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>korean<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>exam<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	5 obs. of  3 variables:</span><br><span class="line">##  $ no    : num  1 2 3 4 5</span><br><span class="line">##  $ sex   : chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;male&quot; ...</span><br><span class="line">##  $ korean: num  87 92 95 81 87</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="리스트-55p-56p"><a href="#리스트-55p-56p" class="headerlink" title="리스트 (55p~56p)"></a>리스트 (55p~56p)</h3><ul>
+<li>리스트(list): 가장 광범위한 객체로써, 벡터, 행렬, 데이터프레임, 리스트도 묶는다</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sallyzmk.github.io/2022/06/20/R_3/" data-id="cl4no3qhy0000rsvmdtgh3g3x" data-title="R을 이용한 공공데이터 분석_제3장" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-R_4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/06/20/R_4/" class="article-date">
@@ -378,181 +553,6 @@
 
 
   
-    <article id="post-R_3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/17/R_3/" class="article-date">
-  <time class="dt-published" datetime="2022-06-17T00:00:00.000Z" itemprop="datePublished">2022-06-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/17/R_3/">R을 이용한 공공데이터 분석_제3장</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="06-21-오전강의"><a href="#06-21-오전강의" class="headerlink" title="06.21 오전강의"></a>06.21 오전강의</h2><h1 id="제3장-데이터의-구조"><a href="#제3장-데이터의-구조" class="headerlink" title="제3장 데이터의 구조"></a>제3장 데이터의 구조</h1><ol>
-<li>용어의 이해 (36p~42p)</li>
-<li>데이터 구조 (42p~56p)</li>
-</ol>
-<h3 id="벡터의-종류-42p-47p"><a href="#벡터의-종류-42p-47p" class="headerlink" title="벡터의 종류 (42p~47p)"></a>벡터의 종류 (42p~47p)</h3><ul>
-<li>벡터 (vector): 1차원의 집합이며, 같은 속성으로만 묶인다<ol>
-<li>숫자형 벡터: 실수로(소수점, 정수 무리수 등 모든 수) 4칙연산 가능, 연속형 데이터</li>
-<li>정수형 벡터: 숫자형 벡터 中 정수(-1,0,1)로만 구성, 이산형 데이터</li>
-<li>문자형 벡터: 연산 불가</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;Hi&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Hello&quot;</span><span class="punctuation">)</span></span><br><span class="line">char_vector<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span> <span class="comment"># 숫자 1,2 인덱스</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;Hello&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class() 타입을 물어보는 함수</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>char_vector<span class="punctuation">)</span> <span class="comment"># 벡터의 유형을 알 수 있다.</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#character=char=문자</span></span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>범주형 벡터: 데이터가 일정 범위나 기준에 따라 유형(성별, 연령대)으로 분류되는 벡터, 이 때 유형을 레벨(level)이라고 한다</li>
-</ol>
-<ul>
-<li>4.1. 명목형 자료형 벡터 : 데이터 값 비교 불가</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">locaiton_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;서울&quot;</span><span class="punctuation">,</span> <span class="string">&quot;인천&quot;</span><span class="punctuation">,</span> <span class="string">&quot;부산&quot;</span><span class="punctuation">)</span></span><br><span class="line">factor_location_vector <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>locaiton_vector<span class="punctuation">)</span></span><br><span class="line">factor_location_vector</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## [1] 서울 인천 부산</span><br><span class="line">## Levels: 부산 서울 인천</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_location_vector<span class="punctuation">)</span> <span class="comment"># 비서열</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;factor&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help<span class="punctuation">(</span>factor<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## httpd 도움말 서버를 시작합니다 ... 완료</span><br></pre></td></tr></table></figure>
-<ul>
-<li>4.2. 순서형 자료형 벡터 : 데이터 값 순서 지정</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">temperature_factor <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온낮음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">temperature_factor</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;기온높음&quot; &quot;기온보통&quot; &quot;기온낮음&quot; &quot;기온높음&quot; &quot;기온보통&quot; &quot;기온보통&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">factor_temperature_factor <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>temperature_factor<span class="punctuation">,</span> </span><br><span class="line">                                    ordered <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> </span><br><span class="line">                                    levels  <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                                                <span class="string">&quot;기온낮음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                                                <span class="string">&quot;기온높음&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">factor_temperature_factor</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## [1] 기온높음 기온보통 기온낮음 기온높음 기온보통 기온보통</span><br><span class="line">## Levels: 기온보통 &lt; 기온낮음 &lt; 기온높음</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_temperature_factor<span class="punctuation">)</span> <span class="comment"># 서열</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;ordered&quot; &quot;factor&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_location_vector<span class="punctuation">)</span> <span class="comment"># 비서열</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;factor&quot;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>논리형 벡터: 참(TRUE),거짓(FALSE) 논리값으로 구성된 베이터. 논리값은 따옴표 없이 대문자로 쓴다</li>
-</ol>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logical_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">logical_vector</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1]  TRUE FALSE</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>logical_vector<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;logical&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>벡터는 함상 범주가 같아야한다.</li>
-<li>만약 속성이 서로 다르다면 상위 속성으로 강제변환 되며 이를 Coercion이라 부름. (논리형 ☞ 숫자형 ☞ 문자형)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span> <span class="comment">#a의 유형은 숫자</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="string">&quot;hello&quot;</span><span class="punctuation">,</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="string">&quot;TRUE&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>b<span class="punctuation">)</span> <span class="comment">#b의 유형은 문자</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;1&quot;     &quot;2&quot;     &quot;hello&quot; &quot;TRUE&quot;  &quot;TRUE&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">)</span> <span class="comment">#c의 유형은 숫자</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span> <span class="comment">#문자가 아니기 때문에 &quot;&quot;표시가 없음</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1 2 1 0</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="행렬-47p"><a href="#행렬-47p" class="headerlink" title="행렬 (47p)"></a>행렬 (47p)</h3><ul>
-<li>행렬 (Matrix): 행과 열을 갖는 2차원의 구조로, 같은 속성으로만 묶인다</li>
-<li>행은 가로 데이터, 열은 세로 데이터</li>
-<li>행은 데이터프레임에 들어있는 개별 데이터. R에서는 행을 관측치(observation 약칭 obs.)라고 표현한다.</li>
-<li>열은 벡터들로 구성&gt;데이터의 속성을 의미 </li>
-<li>데이터 분석은 기본적으로 열을 구성하는 변수들의 특성이나 변수 간 관계 등을 알아보는 것.</li>
-</ul>
-<h3 id="데이터프레임-47p-54p"><a href="#데이터프레임-47p-54p" class="headerlink" title="데이터프레임 (47p~54p)"></a>데이터프레임 (47p~54p)</h3><ul>
-<li>데이터프레임 (data.frame): 행과 열을 갖는 2차원의 구조로, 다른 속성도 묶인다</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - 엑셀 데이터</span></span><br><span class="line">no <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">,</span> <span class="number">4</span><span class="punctuation">,</span> <span class="number">5</span><span class="punctuation">)</span></span><br><span class="line">sex <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">)</span></span><br><span class="line">korean <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">87</span><span class="punctuation">,</span> <span class="number">92</span><span class="punctuation">,</span> <span class="number">95</span><span class="punctuation">,</span> <span class="number">81</span><span class="punctuation">,</span> <span class="number">87</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">exam <span class="operator">=</span> data.frame<span class="punctuation">(</span>no<span class="punctuation">,</span> sex<span class="punctuation">,</span> korean<span class="punctuation">)</span></span><br><span class="line">exam</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##   no    sex korean</span><br><span class="line">## 1  1   male     87</span><br><span class="line">## 2  2 female     92</span><br><span class="line">## 3  3   male     95</span><br><span class="line">## 4  4   male     81</span><br><span class="line">## 5  5 female     87</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>sex<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;male&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 타입</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>sex<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1 2 3 4 5</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>no<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>korean<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>exam<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	5 obs. of  3 variables:</span><br><span class="line">##  $ no    : num  1 2 3 4 5</span><br><span class="line">##  $ sex   : chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;male&quot; ...</span><br><span class="line">##  $ korean: num  87 92 95 81 87</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="리스트-55p-56p"><a href="#리스트-55p-56p" class="headerlink" title="리스트 (55p~56p)"></a>리스트 (55p~56p)</h3><ul>
-<li>리스트(list): 가장 광범위한 객체로써, 벡터, 행렬, 데이터프레임, 리스트도 묶는다</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sallyzmk.github.io/2022/06/17/R_3/" data-id="cl4no3qhy0000rsvmdtgh3g3x" data-title="R을 이용한 공공데이터 분석_제3장" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
@@ -588,15 +588,15 @@
           </li>
         
           <li>
+            <a href="/2022/06/20/R_3/">R을 이용한 공공데이터 분석_제3장</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/20/R_4/">R을 이용한 공공데이터 분석_제4장</a>
           </li>
         
           <li>
             <a href="/2022/06/17/hello-world/">AI 데이터 플랫폼을 활용한 빅데이터 분석 전문가 과정</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/17/R_3/">R을 이용한 공공데이터 분석_제3장</a>
           </li>
         
       </ul>
