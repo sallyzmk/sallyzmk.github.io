@@ -75,6 +75,207 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-R_7" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/22/R_7/" class="article-date">
+  <time class="dt-published" datetime="2022-06-22T00:00:00.000Z" itemprop="datePublished">2022-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/22/R_7/">R을 이용한 공공데이터 분석_제7장</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="06-22-오전강의"><a href="#06-22-오전강의" class="headerlink" title="06.22 오전강의"></a>06.22 오전강의</h2><h2 id="제7장-결측치-이상치-처리"><a href="#제7장-결측치-이상치-처리" class="headerlink" title="제7장 결측치, 이상치 처리"></a>제7장 결측치, 이상치 처리</h2><h3 id="결측치-158p"><a href="#결측치-158p" class="headerlink" title="결측치 (158p)"></a>결측치 (158p)</h3><ul>
+<li>결측치(결측값)이란? 데이터가 비어 있는 경우, 빈칸으로 둔다. 이를 결측치(결측값)이라고 한다. </li>
+<li>데이터 분석을 할 때는 반드시 분석 전에 결측치를 처리해야 한다.</li>
+<li>전체 데이터에 있는 결측치 비율이 높으면 결과가 외곡 될 수 있기에 그 데이터를 분석해서는 안된다.</li>
+<li>결측치를 채우는 코드는 구글링하면 나온다. </li>
+<li>다만 어떤 방법(평균값 적용&#x2F;결측치 제외&#x2F;평균값을 낼 수 없는 경우-패턴, 방정식, 빈도…)을 사용할지 논리를 갖고 판단을 내려야 한다.</li>
+<li>해당 도메인(의료,무역,회계…)을 잘 알아야 결측치를 채우는 옳은 방법을 판단할 수 있다.</li>
+<li>통계는 실험이다!! 분석가는 설득을 해야한다. </li>
+<li>여러 분석 방법을 실험해 보고 가장 정확도가 높은 분석 방법을 사용하여 최종결정자를 설득 해야 한다.</li>
+</ul>
+<ol start="0">
+<li>라이브러리 불러오기</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 다음의 패키지를 부착합니다: &#x27;dplyr&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:stats&#x27;:</span><br><span class="line">## </span><br><span class="line">##     filter, lag</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:base&#x27;:</span><br><span class="line">## </span><br><span class="line">##     intersect, setdiff, setequal, union</span><br></pre></td></tr></table></figure>
+
+
+<ol>
+<li>결측치를 확인하고 빈도구하기</li>
+</ol>
+<ul>
+<li>R에서는 결측치를 NA로 표시한다.</li>
+</ul>
+<p>1.1. is.na(): 결측치 확인</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exam_na <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/exam_na.csv&quot;</span><span class="punctuation">)</span> <span class="comment"># 하위 경로 적어주기</span></span><br><span class="line"><span class="built_in">is.na</span><span class="punctuation">(</span><span class="string">&quot;exam_na.csv&quot;</span><span class="punctuation">)</span> <span class="comment"># Is this yours? 결측치가 있니? 없니?</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] FALSE</span><br></pre></td></tr></table></figure>
+<p>1.2. table(is.na()) : 결측치 빈도구하기</p>
+<ul>
+<li>table() : 빈도 구하기</li>
+<li>table(is.na(데이터세트)) : 데이터세트의 결측치 ‘전체 빈도’ 구하기</li>
+<li>table(is.na(데이터세트$변수)) : 데이터세트의 ‘특정 변수’에 있는 결측치 빈도 구하기</li>
+<li>summary(is.na(데이터세트)) : 데이터세트의 ‘모든 변수별로’ 결측치 빈도 구하기</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span><span class="built_in">is.na</span><span class="punctuation">(</span>exam_na<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## FALSE  TRUE </span><br><span class="line">##    22     3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span><span class="built_in">is.na</span><span class="punctuation">(</span>exam_na<span class="operator">$</span>korean<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## FALSE  TRUE </span><br><span class="line">##     4     1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">summary<span class="punctuation">(</span><span class="built_in">is.na</span><span class="punctuation">(</span>exam_na<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##      id             sex            korean         english       </span><br><span class="line">##  Mode :logical   Mode :logical   Mode :logical   Mode :logical  </span><br><span class="line">##  FALSE:5         FALSE:5         FALSE:4         FALSE:3        </span><br><span class="line">##                                  TRUE :1         TRUE :2        </span><br><span class="line">##     math        </span><br><span class="line">##  Mode :logical  </span><br><span class="line">##  FALSE:5        </span><br><span class="line">## </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">summary<span class="punctuation">(</span>exam_na<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##        id        sex                korean         english           math     </span><br><span class="line">##  Min.   :1   Length:5           Min.   :87.00   Min.   :84.00   Min.   :80.0  </span><br><span class="line">##  1st Qu.:2   Class :character   1st Qu.:87.00   1st Qu.:88.00   1st Qu.:82.0  </span><br><span class="line">##  Median :3   Mode  :character   Median :89.50   Median :92.00   Median :88.0  </span><br><span class="line">##  Mean   :3                      Mean   :90.25   Mean   :90.33   Mean   :86.6  </span><br><span class="line">##  3rd Qu.:4                      3rd Qu.:92.75   3rd Qu.:93.50   3rd Qu.:90.0  </span><br><span class="line">##  Max.   :5                      Max.   :95.00   Max.   :95.00   Max.   :93.0  </span><br><span class="line">##                                 NA&#x27;s   :1       NA&#x27;s   :2</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>결측치 처리방법</li>
+</ol>
+<ul>
+<li>결측치는 ‘제거하고 처리’하기보다 &gt; ‘다른 값으로 대체’하는게 더 중요하다.</li>
+</ul>
+<p>2.1. 결측치를 제외하고 분석하기</p>
+<ul>
+<li>1 na.rm &#x3D; T (T-제거X. F-제거O) : 연산함수에서 결측치를 제외하는 명령</li>
+<li>2 na.omit() : 결측치가 있는 행을 모두 제외하기 *가급적 사용하지 말기</li>
+<li>3 filter(!is.na()) : filter() 함수로 결측치가 없는 행만 추출하기</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1</span></span><br><span class="line">mean<span class="punctuation">(</span>exam_na<span class="operator">$</span>korean<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] NA</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mean<span class="punctuation">(</span>exam_na<span class="operator">$</span>korean<span class="punctuation">,</span>na.rm <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span> <span class="comment"># 결측치를 제외하고 평균 구하기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 90.25</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mean<span class="punctuation">(</span>exam_na<span class="operator">$</span>korean<span class="punctuation">,</span>na.rm <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 90.25</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3</span></span><br><span class="line">exam_na <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span><span class="built_in">is.na</span><span class="punctuation">(</span>korean<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##   id sex korean english math</span><br><span class="line">## 1  4   M     NA      84   80</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter(is.na()) : 결측치가 있는 행만 추츨해라.</span></span><br><span class="line"><span class="comment"># exam_na의 korean 변수에서 결측치가 있는 행만 추출</span></span><br><span class="line"></span><br><span class="line">exam_na <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span><span class="operator">!</span><span class="built_in">is.na</span><span class="punctuation">(</span>korean<span class="punctuation">)</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##   id sex korean english math</span><br><span class="line">## 1  1   M     87      NA   82</span><br><span class="line">## 2  2   F     92      95   93</span><br><span class="line">## 3  3   F     95      92   90</span><br><span class="line">## 4  5   F     87      NA   88</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter(!is.na()) : 결측치가 아닌 행만 추츨해라.</span></span><br><span class="line"><span class="comment"># exam_na의 korean 변수에서 결측치가 아닌 행만 추출</span></span><br></pre></td></tr></table></figure>
+<p>2.2. 결측치를 다른 값으로 대체하기</p>
+<ul>
+<li><p>결측치 대체법(imputation)</p>
+</li>
+<li><p>대체값으로 평균값이 많이 쓰이지만 특정 값의 빈도가 매우 많을 때는 최빈값으로 대체한다. table() 함수 활용. 결측치를 대체할 때는 ifelse()함수 사용.</p>
+</li>
+<li><p>참고자료 <a target="_blank" rel="noopener" href="https://www.kdnuggets.com/2017/09/missing-data-imputation-using-r.html">A Solution to Missing Data: Imputation Using R</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://velog.io/@lifeisbeautiful/R-%EA%B2%B0%EC%B8%A1%EA%B0%92NA-%EC%A0%9C%EA%B1%B0-%EB%8C%80%EC%B2%B4-%EB%B0%A9%EB%B2%95">R 결측값(NA) 제거, 대체 방법</a></p>
+</li>
+</ul>
+<h3 id="이상치-163p"><a href="#이상치-163p" class="headerlink" title="이상치 (163p)"></a>이상치 (163p)</h3><ol>
+<li>이상치의 개념</li>
+</ol>
+<ul>
+<li>데이터의 특정 값이 뭔가 ‘이상’이 있다. (ex.오타)</li>
+<li>Case 1 : 정해진 범주에서 벗어난 데이터 (ex.2000.04.30&#x2F;2000.40.30 -&gt;9999로 대체)</li>
+<li>Case 2 : 숫자, 아웃라이어(Outlier), 극단값 (ex.평균: 평균임금 320만원&#x2F;손흥민 몇십억원, 평균의 함정)</li>
+</ul>
+<ol start="2">
+<li>이상치 처리</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1_out <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1_out.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line">glimpse<span class="punctuation">(</span>mpg1_out<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Rows: 234</span><br><span class="line">## Columns: 3</span><br><span class="line">## $ trans &lt;int&gt; 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 3, 1, 1…</span><br><span class="line">## $ drv   &lt;chr&gt; &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;5&quot;,…</span><br><span class="line">## $ cty   &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 15, 15, …</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># trans의 갯수를 구하자</span></span><br><span class="line">table<span class="punctuation">(</span>mpg1_out<span class="operator">$</span>trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   1   2   3 </span><br><span class="line">## 154  76   4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ifelse</span></span><br><span class="line"><span class="comment"># 만약 ~라면, 내가 무엇을 할 것이다. (가정법)</span></span><br><span class="line"><span class="comment"># if trans의 값이 3이라면, 결측치로 바꿔주세요. 나머지는 그대로 유지하세요.</span></span><br><span class="line"><span class="comment"># ifelse(is.na(변수),대체값,변수)</span></span><br><span class="line">mpg1_out<span class="operator">$</span>trans<span class="operator">&lt;-</span>ifelse<span class="punctuation">(</span>mpg1_out<span class="operator">$</span>trans<span class="operator">==</span><span class="number">3</span><span class="punctuation">,</span><span class="literal">NA</span><span class="punctuation">,</span> mpg1_out<span class="operator">$</span>trans<span class="punctuation">)</span> <span class="comment">#3을 결측치 처리</span></span><br><span class="line">table<span class="punctuation">(</span><span class="built_in">is.na</span><span class="punctuation">(</span>mpg1_out<span class="operator">$</span>trans<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## FALSE  TRUE </span><br><span class="line">##   230     4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결측치 제거</span></span><br><span class="line">mpg1_out <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span><span class="operator">!</span><span class="built_in">is.na</span><span class="punctuation">(</span>trans<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br></pre></td><td class="code"><pre><span class="line">##     trans drv cty</span><br><span class="line">## 1       1   f  18</span><br><span class="line">## 2       2   f  21</span><br><span class="line">## 3       2   f  20</span><br><span class="line">## 4       1   f  21</span><br><span class="line">## 5       1   f  16</span><br><span class="line">## 6       2   f  18</span><br><span class="line">## 7       1   f  18</span><br><span class="line">## 8       2   4  18</span><br><span class="line">## 9       1   4  16</span><br><span class="line">## 10      2   4  20</span><br><span class="line">## 11      1   4  19</span><br><span class="line">## 12      1   4  15</span><br><span class="line">## 13      2   5  17</span><br><span class="line">## 14      1   4  17</span><br><span class="line">## 15      2   4  15</span><br><span class="line">## 16      1   4  15</span><br><span class="line">## 17      1   4  17</span><br><span class="line">## 18      1   4  16</span><br><span class="line">## 19      1   r  14</span><br><span class="line">## 20      1   r  14</span><br><span class="line">## 21      1   r  13</span><br><span class="line">## 22      1   r  12</span><br><span class="line">## 23      2   r  16</span><br><span class="line">## 24      1   r  15</span><br><span class="line">## 25      2   r  16</span><br><span class="line">## 26      1   r  15</span><br><span class="line">## 27      1   4  14</span><br><span class="line">## 28      1   4  11</span><br><span class="line">## 29      1   4  11</span><br><span class="line">## 30      1   4  14</span><br><span class="line">## 31      1   f  19</span><br><span class="line">## 32      1   f  22</span><br><span class="line">## 33      1   f  18</span><br><span class="line">## 34      1   f  18</span><br><span class="line">## 35      1   f  17</span><br><span class="line">## 36      1   f  18</span><br><span class="line">## 37      1   f  17</span><br><span class="line">## 38      1   f  16</span><br><span class="line">## 39      1   f  16</span><br><span class="line">## 40      1   f  17</span><br><span class="line">## 41      1   f  17</span><br><span class="line">## 42      1   f  11</span><br><span class="line">## 43      1   f  15</span><br><span class="line">## 44      1   f  16</span><br><span class="line">## 45      1   f  16</span><br><span class="line">## 46      2   4  15</span><br><span class="line">## 47      1   4  14</span><br><span class="line">## 48      1   4  13</span><br><span class="line">## 49      2   4  14</span><br><span class="line">## 50      1   4  14</span><br><span class="line">## 51      1   4  14</span><br><span class="line">## 52      1   5   9</span><br><span class="line">## 53      2   4  11</span><br><span class="line">## 54      1   4  11</span><br><span class="line">## 55      1   4  13</span><br><span class="line">## 56      1   4  13</span><br><span class="line">## 57      1   4   9</span><br><span class="line">## 58      1   4  11</span><br><span class="line">## 59      1   4  13</span><br><span class="line">## 60      1   4  11</span><br><span class="line">## 61      2   4  12</span><br><span class="line">## 62      1   4   9</span><br><span class="line">## 63      1   4  13</span><br><span class="line">## 64      1   4  13</span><br><span class="line">## 65      2   4  12</span><br><span class="line">## 66      2   4   9</span><br><span class="line">## 67      1   4  11</span><br><span class="line">## 68      2   4  11</span><br><span class="line">## 69      1   4  13</span><br><span class="line">## 70      1   4  11</span><br><span class="line">## 71      1   r  11</span><br><span class="line">## 72      1   r  11</span><br><span class="line">## 73      1   r  12</span><br><span class="line">## 74      1   4  14</span><br><span class="line">## 75      2   4  15</span><br><span class="line">## 76      1   4  14</span><br><span class="line">## 77      1   4  13</span><br><span class="line">## 78      1   4  13</span><br><span class="line">## 79      1   5  13</span><br><span class="line">## 80      1   4  14</span><br><span class="line">## 81      2   4  14</span><br><span class="line">## 82      2   4  13</span><br><span class="line">## 83      1   4  13</span><br><span class="line">## 84      1   4  13</span><br><span class="line">## 85      1   4  11</span><br><span class="line">## 86      1   4  13</span><br><span class="line">## 87      2   r  18</span><br><span class="line">## 88      1   r  18</span><br><span class="line">## 89      2   r  17</span><br><span class="line">## 90      1   r  16</span><br><span class="line">## 91      1   r  15</span><br><span class="line">## 92      2   r  15</span><br><span class="line">## 93      2   r  15</span><br><span class="line">## 94      1   r  15</span><br><span class="line">## 95      2   r  14</span><br><span class="line">## 96      2   f  28</span><br><span class="line">## 97      1   f  24</span><br><span class="line">## 98      2   f  25</span><br><span class="line">## 99      2   f  23</span><br><span class="line">## 100     1   f  24</span><br><span class="line">## 101     2   f  26</span><br><span class="line">## 102     1   f  25</span><br><span class="line">## 103     1   f  24</span><br><span class="line">## 104     2   f  21</span><br><span class="line">## 105     1   f  18</span><br><span class="line">## 106     2   f  18</span><br><span class="line">## 107     1   f  21</span><br><span class="line">## 108     2   f  21</span><br><span class="line">## 109     1   f  18</span><br><span class="line">## 110     2   f  18</span><br><span class="line">## 111     1   f  19</span><br><span class="line">## 112     1   f  19</span><br><span class="line">## 113     2   f  19</span><br><span class="line">## 114     2   f  20</span><br><span class="line">## 115     1   f  20</span><br><span class="line">## 116     1   f  17</span><br><span class="line">## 117     2   f  16</span><br><span class="line">## 118     2   f  17</span><br><span class="line">## 119     1   4  17</span><br><span class="line">## 120     1   4  15</span><br><span class="line">## 121     1   4  15</span><br><span class="line">## 122     1   4  14</span><br><span class="line">## 123     1   4   9</span><br><span class="line">## 124     1   4  14</span><br><span class="line">## 125     1   4  13</span><br><span class="line">## 126     1   4  11</span><br><span class="line">## 127     1   4  11</span><br><span class="line">## 128     1   4  12</span><br><span class="line">## 129     1   4  12</span><br><span class="line">## 130     1   4  11</span><br><span class="line">## 131     1   r  11</span><br><span class="line">## 132     1   r  11</span><br><span class="line">## 133     1   r  12</span><br><span class="line">## 134     1   4  14</span><br><span class="line">## 135     1   4  13</span><br><span class="line">## 136     1   4  13</span><br><span class="line">## 137     1   4  13</span><br><span class="line">## 138     2   f  21</span><br><span class="line">## 139     1   f  19</span><br><span class="line">## 140     1   f  23</span><br><span class="line">## 141     2   f  23</span><br><span class="line">## 142     2   f  19</span><br><span class="line">## 143     1   f  19</span><br><span class="line">## 144     1   f  18</span><br><span class="line">## 145     2   f  19</span><br><span class="line">## 146     1   f  19</span><br><span class="line">## 147     1   4  14</span><br><span class="line">## 148     2   4  15</span><br><span class="line">## 149     1   4  14</span><br><span class="line">## 150     1   4  12</span><br><span class="line">## 151     1   f  18</span><br><span class="line">## 152     1   f  16</span><br><span class="line">## 153     1   f  17</span><br><span class="line">## 154     1   f  18</span><br><span class="line">## 155     1   f  16</span><br><span class="line">## 156     2   4  18</span><br><span class="line">## 157     1   4  18</span><br><span class="line">## 158     2   4  20</span><br><span class="line">## 159     2   4  19</span><br><span class="line">## 160     1   4  20</span><br><span class="line">## 161     1   4  18</span><br><span class="line">## 162     1   4  21</span><br><span class="line">## 163     2   4  19</span><br><span class="line">## 164     2   4  19</span><br><span class="line">## 165     1   4  19</span><br><span class="line">## 166     1   4  20</span><br><span class="line">## 167     1   4  20</span><br><span class="line">## 168     2   4  19</span><br><span class="line">## 169     2   4  20</span><br><span class="line">## 170     2   4  15</span><br><span class="line">## 171     1   4  16</span><br><span class="line">## 172     1   4  15</span><br><span class="line">## 173     2   4  15</span><br><span class="line">## 174     1   4  16</span><br><span class="line">## 175     1   4  14</span><br><span class="line">## 176     2   f  21</span><br><span class="line">## 177     1   f  21</span><br><span class="line">## 178     2   f  21</span><br><span class="line">## 179     1   f  21</span><br><span class="line">## 180     1   f  18</span><br><span class="line">## 181     2   f  18</span><br><span class="line">## 182     1   f  19</span><br><span class="line">## 183     1   f  21</span><br><span class="line">## 184     2   f  21</span><br><span class="line">## 185     2   f  21</span><br><span class="line">## 186     1   f  22</span><br><span class="line">## 187     1   f  18</span><br><span class="line">## 188     2   f  18</span><br><span class="line">## 189     1   f  18</span><br><span class="line">## 190     1   f  24</span><br><span class="line">## 191     1   f  24</span><br><span class="line">## 192     2   f  26</span><br><span class="line">## 193     2   f  28</span><br><span class="line">## 194     1   f  26</span><br><span class="line">## 195     1   4  11</span><br><span class="line">## 196     1   4  13</span><br><span class="line">## 197     2   4  15</span><br><span class="line">## 198     1   4  16</span><br><span class="line">## 199     2   4  17</span><br><span class="line">## 200     2   4  15</span><br><span class="line">## 201     1   4  15</span><br><span class="line">## 202     2   4  15</span><br><span class="line">## 203     1   4  16</span><br><span class="line">## 204     2   f  21</span><br><span class="line">## 205     1   f  19</span><br><span class="line">## 206     2   f  21</span><br><span class="line">## 207     1   f  22</span><br><span class="line">## 208     2   f  17</span><br><span class="line">## 209     2   f  33</span><br><span class="line">## 210     2   f  21</span><br><span class="line">## 211     1   f  19</span><br><span class="line">## 212     1   f  22</span><br><span class="line">## 213     2   f  21</span><br><span class="line">## 214     1   f  21</span><br><span class="line">## 215     2   f  21</span><br><span class="line">## 216     1   f  16</span><br><span class="line">## 217     2   f  17</span><br><span class="line">## 218     2   f  35</span><br><span class="line">## 219     1   f  29</span><br><span class="line">## 220     2   f  21</span><br><span class="line">## 221     1   f  19</span><br><span class="line">## 222     2   f  20</span><br><span class="line">## 223     1   f  20</span><br><span class="line">## 224     2   f  21</span><br><span class="line">## 225     1   f  18</span><br><span class="line">## 226     1   f  19</span><br><span class="line">## 227     2   f  21</span><br><span class="line">## 228     1   f  16</span><br><span class="line">## 229     2   f  18</span><br><span class="line">## 230     1   f  17</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 과정 정리 : 데이터 불러오기&gt;변수 trans의 종류가 각각 몇개씩 있는지 확인&gt;3이 너무 적어서 제거하고자 함&gt;3을 결측치로 변환해서&gt;결측치를 제거</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># mpg1_out %&gt;% filter(trans==3)</span></span><br><span class="line"><span class="comment"># 굳이 3을 결측치로 전환하지 않고 filter() 함수를 바로 사용하는 방법도 있다.</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>극단치 처리</li>
+</ol>
+<ul>
+<li><p>숫자 데이터 boxplot()</p>
+</li>
+<li><p>boxplot() 함수를 통해서 극단치가 있는지 없는지 확인 가능</p>
+</li>
+<li><p>IQR : 3사분위 - 1사분위</p>
+</li>
+<li><p>경계값 : IQR +IQR * 1.5 상한 &#x2F; IQR -IQR * 1.5</p>
+</li>
+<li><p>그러나 실무에서는 산업 별로 극단치를 처리하는 각각의 기준이 있다!!</p>
+</li>
+<li><p>때문에 실무에서 통계적으로 접근하여 극단치를 마음대로 제거하면 큰일 난다!! 상사한테 물어보기!</p>
+</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line">boxplot<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1개의 변수 통계값 : boxplot(데이터세트$변수)$stats</span></span><br><span class="line"><span class="comment"># 복수 변수의 통계값 : boxplot(데이터세트$변수1,데이터세트$변수2,...)$stats</span></span><br><span class="line"><span class="comment"># 변수의 범주별 통계값 : boxplot(데이터세트$종속변수~데이터세트$범주변수)$stats</span></span><br><span class="line">boxplot<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span><span class="operator">$</span>stats</span><br></pre></td></tr></table></figure>
+
+<p><img src="/R_7_files/figure-html/unnamed-chunk-6-1.png"><!-- --></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##      [,1]</span><br><span class="line">## [1,]    9</span><br><span class="line">## [2,]   14</span><br><span class="line">## [3,]   17</span><br><span class="line">## [4,]   19</span><br><span class="line">## [5,]   26</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boxplot<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="operator">~</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="operator">$</span>stats</span><br></pre></td></tr></table></figure>
+
+<p><img src="/R_7_files/figure-html/unnamed-chunk-6-2.png"><!-- --></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##      [,1] [,2] [,3]</span><br><span class="line">## [1,]    9   15   11</span><br><span class="line">## [2,]   13   18   12</span><br><span class="line">## [3,]   14   19   15</span><br><span class="line">## [4,]   16   21   15</span><br><span class="line">## [5,]   20   25   18</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rmd 파일 knit 결과 view panel에 미리 보여주는 코드</span></span><br><span class="line"><span class="comment"># 패키지 설치</span></span><br><span class="line"><span class="comment"># install.packages(&quot;remotes&quot;)</span></span><br><span class="line"><span class="comment"># remotes::install_github(&#x27;yihui/xaringan&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 실행 </span></span><br><span class="line"><span class="comment"># knit 누를 때는 #처리해줘야 진행됨됨</span></span><br><span class="line"><span class="comment"># xaringan::inf_mr()</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sallyzmk.github.io/2022/06/22/R_7/" data-id="cl4p420350000t0vmg8di33ud" data-title="R을 이용한 공공데이터 분석_제7장" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-R_6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/06/21/R_6/" class="article-date">
@@ -97,17 +298,10 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="06-21-오후강의"><a href="#06-21-오후강의" class="headerlink" title="06.21 오후강의"></a>06.21 오후강의</h2><h1 id="제6장-데이터-가공-분석-프로세스"><a href="#제6장-데이터-가공-분석-프로세스" class="headerlink" title="제6장 데이터 가공 (분석 프로세스)"></a>제6장 데이터 가공 (분석 프로세스)</h1><ol>
-<li>데이터 전처리 (98p)</li>
-<li>변수이름 바꾸기: rename() (99p)</li>
-<li>빈도분석: count() (100p)</li>
-<li>데이터세트에서 일부 열을 추출하기: select() (101p)</li>
-<li>데이터세트에서 행 추출하기: slice(),filter() (105p)</li>
-<li>파생변수 만들기: mutate() (119p)</li>
-<li>집단별 통계량 구하기: group_by(),summarise(),n() (121p)</li>
-<li>연속 데이터로 범주변수 만들기: mutate() + ifelse() (130p)</li>
-<li>데이터 정렬하기: arrange() (135p)<br>  10.데이터 결합하기 (138p)<br>  11.알아두면 유용한 함수 (145p)</li>
-</ol>
+        <h2 id="06-21-오후강의"><a href="#06-21-오후강의" class="headerlink" title="06.21 오후강의"></a>06.21 오후강의</h2><h2 id="제6장-데이터-가공-분석-프로세스"><a href="#제6장-데이터-가공-분석-프로세스" class="headerlink" title="제6장 데이터 가공 (분석 프로세스)"></a>제6장 데이터 가공 (분석 프로세스)</h2><h3 id="자율학습"><a href="#자율학습" class="headerlink" title="자율학습"></a>자율학습</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://r4ds.had.co.nz/transform.html">5장 데이터 변환</a></li>
+<li>코드 위주로 다 쳐보기<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 설치해야되는 패키지들</span><br><span class="line"># install.packages(&quot;nycflights13&quot;)</span><br><span class="line"># install.packages(&quot;tidyverse&quot;)</span><br><span class="line"># library(nycflights13)</span><br><span class="line"># library(tidyverse)</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h3 id="1-데이터-전처리-98p"><a href="#1-데이터-전처리-98p" class="headerlink" title="1. 데이터 전처리 (98p)"></a>1. 데이터 전처리 (98p)</h3><ul>
 <li>데이터 전처리를 위한 도구(패키지) 2가지 차이</li>
 <li>dplyr : 10GB 이내, 매우 쉬움</li>
@@ -558,11 +752,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="06-20-오전강의"><a href="#06-20-오전강의" class="headerlink" title="06.20 오전강의"></a>06.20 오전강의</h2><h1 id="제3장-데이터의-구조"><a href="#제3장-데이터의-구조" class="headerlink" title="제3장 데이터의 구조"></a>제3장 데이터의 구조</h1><ol>
-<li>용어의 이해 (36p~42p)</li>
-<li>데이터 구조 (42p~56p)</li>
-</ol>
-<h3 id="벡터의-종류-42p-47p"><a href="#벡터의-종류-42p-47p" class="headerlink" title="벡터의 종류 (42p~47p)"></a>벡터의 종류 (42p~47p)</h3><ul>
+        <h2 id="06-20-오전강의"><a href="#06-20-오전강의" class="headerlink" title="06.20 오전강의"></a>06.20 오전강의</h2><h2 id="제3장-데이터의-구조"><a href="#제3장-데이터의-구조" class="headerlink" title="제3장 데이터의 구조"></a>제3장 데이터의 구조</h2><h3 id="벡터의-종류-42p-47p"><a href="#벡터의-종류-42p-47p" class="headerlink" title="벡터의 종류 (42p~47p)"></a>벡터의 종류 (42p~47p)</h3><ul>
 <li>벡터 (vector): 1차원의 집합이며, 같은 속성으로만 묶인다<ol>
 <li>숫자형 벡터: 실수로(소수점, 정수 무리수 등 모든 수) 4칙연산 가능, 연속형 데이터</li>
 <li>정수형 벡터: 숫자형 벡터 中 정수(-1,0,1)로만 구성, 이산형 데이터</li>
@@ -916,6 +1106,10 @@
       <ul>
         
           <li>
+            <a href="/2022/06/22/R_7/">R을 이용한 공공데이터 분석_제7장</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/21/R_6/">R을 이용한 공공데이터 분석_제6장</a>
           </li>
         
@@ -929,10 +1123,6 @@
         
           <li>
             <a href="/2022/06/20/R_4/">R을 이용한 공공데이터 분석_제4장</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/17/hello-world/">AI 데이터 플랫폼을 활용한 빅데이터 분석 전문가 과정</a>
           </li>
         
       </ul>
