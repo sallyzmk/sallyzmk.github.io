@@ -6,20 +6,20 @@
   
   <title>R을 이용한 공공데이터 분석_제7장 | 나의 첫번째 블로그</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="06.22 오전강의제7장 결측치, 이상치 처리결측치 (158p) 결측치(결측값)이란? 데이터가 비어 있는 경우, 빈칸으로 둔다. 이를 결측치(결측값)이라고 한다.  데이터 분석을 할 때는 반드시 분석 전에 결측치를 처리해야 한다. 전체 데이터에 있는 결측치 비율이 높으면 결과가 외곡 될 수 있기에 그 데이터를 분석해서는 안된다. 결측치를 채우는 코드는 구글">
+  <meta name="description" content="제7장 결측치, 이상치 처리1단원 결측치 (158p) 결측치(결측값)이란? 데이터가 비어 있는 경우, 빈칸으로 둔다. 이를 결측치(결측값)이라고 한다.  데이터 분석을 할 때는 반드시 분석 전에 결측치를 처리해야 한다. 전체 데이터에 있는 결측치 비율이 높으면 결과가 외곡 될 수 있기에 그 데이터를 분석해서는 안된다. 결측치를 채우는 코드는 구글링하면 나온">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R을 이용한 공공데이터 분석_제7장">
 <meta property="og:url" content="https://sallyzmk.github.io/2022/06/22/R_7/index.html">
 <meta property="og:site_name" content="나의 첫번째 블로그">
-<meta property="og:description" content="06.22 오전강의제7장 결측치, 이상치 처리결측치 (158p) 결측치(결측값)이란? 데이터가 비어 있는 경우, 빈칸으로 둔다. 이를 결측치(결측값)이라고 한다.  데이터 분석을 할 때는 반드시 분석 전에 결측치를 처리해야 한다. 전체 데이터에 있는 결측치 비율이 높으면 결과가 외곡 될 수 있기에 그 데이터를 분석해서는 안된다. 결측치를 채우는 코드는 구글">
+<meta property="og:description" content="제7장 결측치, 이상치 처리1단원 결측치 (158p) 결측치(결측값)이란? 데이터가 비어 있는 경우, 빈칸으로 둔다. 이를 결측치(결측값)이라고 한다.  데이터 분석을 할 때는 반드시 분석 전에 결측치를 처리해야 한다. 전체 데이터에 있는 결측치 비율이 높으면 결과가 외곡 될 수 있기에 그 데이터를 분석해서는 안된다. 결측치를 채우는 코드는 구글링하면 나온">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://sallyzmk.github.io/R_7_files/figure-html/unnamed-chunk-6-1.png">
-<meta property="og:image" content="https://sallyzmk.github.io/R_7_files/figure-html/unnamed-chunk-6-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_7_files/figure-html/unnamed-chunk-6-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_7_files/figure-html/unnamed-chunk-6-2.png">
 <meta property="article:published_time" content="2022-06-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-22T04:42:53.260Z">
+<meta property="article:modified_time" content="2022-06-23T03:42:19.145Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sallyzmk.github.io/R_7_files/figure-html/unnamed-chunk-6-1.png">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/R_7_files/figure-html/unnamed-chunk-6-1.png">
   
     <link rel="alternate" href="/atom.xml" title="나의 첫번째 블로그" type="application/atom+xml">
   
@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
   
-<meta name="generator" content="Hexo 6.2.0"></head>
+</head>
 
 <body>
   <div id="container">
@@ -102,7 +102,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="06-22-오전강의"><a href="#06-22-오전강의" class="headerlink" title="06.22 오전강의"></a>06.22 오전강의</h2><h2 id="제7장-결측치-이상치-처리"><a href="#제7장-결측치-이상치-처리" class="headerlink" title="제7장 결측치, 이상치 처리"></a>제7장 결측치, 이상치 처리</h2><h3 id="결측치-158p"><a href="#결측치-158p" class="headerlink" title="결측치 (158p)"></a>결측치 (158p)</h3><ul>
+        <h2 id="제7장-결측치-이상치-처리"><a href="#제7장-결측치-이상치-처리" class="headerlink" title="제7장 결측치, 이상치 처리"></a>제7장 결측치, 이상치 처리</h2><h1 id="1단원-결측치-158p"><a href="#1단원-결측치-158p" class="headerlink" title="1단원 결측치 (158p)"></a>1단원 결측치 (158p)</h1><ul>
 <li>결측치(결측값)이란? 데이터가 비어 있는 경우, 빈칸으로 둔다. 이를 결측치(결측값)이라고 한다. </li>
 <li>데이터 분석을 할 때는 반드시 분석 전에 결측치를 처리해야 한다.</li>
 <li>전체 데이터에 있는 결측치 비율이 높으면 결과가 외곡 될 수 있기에 그 데이터를 분석해서는 안된다.</li>
@@ -112,10 +112,7 @@
 <li>통계는 실험이다!! 분석가는 설득을 해야한다. </li>
 <li>여러 분석 방법을 실험해 보고 가장 정확도가 높은 분석 방법을 사용하여 최종결정자를 설득 해야 한다.</li>
 </ul>
-<ol start="0">
-<li>라이브러리 불러오기</li>
-</ol>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="0-라이브러리-불러오기"><a href="#0-라이브러리-불러오기" class="headerlink" title="0. 라이브러리 불러오기"></a>0. 라이브러리 불러오기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 다음의 패키지를 부착합니다: &#x27;dplyr&#x27;</span><br></pre></td></tr></table></figure>
 
@@ -124,18 +121,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:base&#x27;:</span><br><span class="line">## </span><br><span class="line">##     intersect, setdiff, setequal, union</span><br></pre></td></tr></table></figure>
 
 
-<ol>
-<li>결측치를 확인하고 빈도구하기</li>
-</ol>
-<ul>
+<h2 id="1-결측치를-확인하고-빈도구하기"><a href="#1-결측치를-확인하고-빈도구하기" class="headerlink" title="1. 결측치를 확인하고 빈도구하기"></a>1. 결측치를 확인하고 빈도구하기</h2><ul>
 <li>R에서는 결측치를 NA로 표시한다.</li>
 </ul>
-<p>1.1. is.na(): 결측치 확인</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exam_na <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/exam_na.csv&quot;</span><span class="punctuation">)</span> <span class="comment"># 하위 경로 적어주기</span></span><br><span class="line"><span class="built_in">is.na</span><span class="punctuation">(</span><span class="string">&quot;exam_na.csv&quot;</span><span class="punctuation">)</span> <span class="comment"># Is this yours? 결측치가 있니? 없니?</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-1-is-na-결측치-확인"><a href="#1-1-is-na-결측치-확인" class="headerlink" title="1.1. is.na(): 결측치 확인"></a>1.1. is.na(): 결측치 확인</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exam_na <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/exam_na.csv&quot;</span><span class="punctuation">)</span> <span class="comment"># 하위 경로 적어주기</span></span><br><span class="line"><span class="built_in">is.na</span><span class="punctuation">(</span><span class="string">&quot;exam_na.csv&quot;</span><span class="punctuation">)</span> <span class="comment"># Is this yours? 결측치가 있니? 없니?</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] FALSE</span><br></pre></td></tr></table></figure>
-<p>1.2. table(is.na()) : 결측치 빈도구하기</p>
-<ul>
+
+<h3 id="1-2-table-is-na-결측치-빈도구하기"><a href="#1-2-table-is-na-결측치-빈도구하기" class="headerlink" title="1.2. table(is.na()) : 결측치 빈도구하기"></a>1.2. table(is.na()) : 결측치 빈도구하기</h3><ul>
 <li>table() : 빈도 구하기</li>
 <li>table(is.na(데이터세트)) : 데이터세트의 결측치 ‘전체 빈도’ 구하기</li>
 <li>table(is.na(데이터세트$변수)) : 데이터세트의 ‘특정 변수’에 있는 결측치 빈도 구하기</li>
@@ -156,14 +149,11 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">summary<span class="punctuation">(</span>exam_na<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##        id        sex                korean         english           math     </span><br><span class="line">##  Min.   :1   Length:5           Min.   :87.00   Min.   :84.00   Min.   :80.0  </span><br><span class="line">##  1st Qu.:2   Class :character   1st Qu.:87.00   1st Qu.:88.00   1st Qu.:82.0  </span><br><span class="line">##  Median :3   Mode  :character   Median :89.50   Median :92.00   Median :88.0  </span><br><span class="line">##  Mean   :3                      Mean   :90.25   Mean   :90.33   Mean   :86.6  </span><br><span class="line">##  3rd Qu.:4                      3rd Qu.:92.75   3rd Qu.:93.50   3rd Qu.:90.0  </span><br><span class="line">##  Max.   :5                      Max.   :95.00   Max.   :95.00   Max.   :93.0  </span><br><span class="line">##                                 NA&#x27;s   :1       NA&#x27;s   :2</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>결측치 처리방법</li>
-</ol>
-<ul>
+
+<h2 id="2-결측치-처리방법"><a href="#2-결측치-처리방법" class="headerlink" title="2. 결측치 처리방법"></a>2. 결측치 처리방법</h2><ul>
 <li>결측치는 ‘제거하고 처리’하기보다 &gt; ‘다른 값으로 대체’하는게 더 중요하다.</li>
 </ul>
-<p>2.1. 결측치를 제외하고 분석하기</p>
-<ul>
+<h3 id="2-1-결측치를-제외하고-분석하기"><a href="#2-1-결측치를-제외하고-분석하기" class="headerlink" title="2.1. 결측치를 제외하고 분석하기"></a>2.1. 결측치를 제외하고 분석하기</h3><ul>
 <li>1 na.rm &#x3D; T (T-제거X. F-제거O) : 연산함수에서 결측치를 제외하는 명령</li>
 <li>2 na.omit() : 결측치가 있는 행을 모두 제외하기 *가급적 사용하지 말기</li>
 <li>3 filter(!is.na()) : filter() 함수로 결측치가 없는 행만 추출하기</li>
@@ -189,29 +179,19 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##   id sex korean english math</span><br><span class="line">## 1  1   M     87      NA   82</span><br><span class="line">## 2  2   F     92      95   93</span><br><span class="line">## 3  3   F     95      92   90</span><br><span class="line">## 4  5   F     87      NA   88</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter(!is.na()) : 결측치가 아닌 행만 추츨해라.</span></span><br><span class="line"><span class="comment"># exam_na의 korean 변수에서 결측치가 아닌 행만 추출</span></span><br></pre></td></tr></table></figure>
-<p>2.2. 결측치를 다른 값으로 대체하기</p>
-<ul>
-<li><p>결측치 대체법(imputation)</p>
-</li>
-<li><p>대체값으로 평균값이 많이 쓰이지만 특정 값의 빈도가 매우 많을 때는 최빈값으로 대체한다. table() 함수 활용. 결측치를 대체할 때는 ifelse()함수 사용.</p>
-</li>
-<li><p>참고자료 <a target="_blank" rel="noopener" href="https://www.kdnuggets.com/2017/09/missing-data-imputation-using-r.html">A Solution to Missing Data: Imputation Using R</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://velog.io/@lifeisbeautiful/R-%EA%B2%B0%EC%B8%A1%EA%B0%92NA-%EC%A0%9C%EA%B1%B0-%EB%8C%80%EC%B2%B4-%EB%B0%A9%EB%B2%95">R 결측값(NA) 제거, 대체 방법</a></p>
-</li>
+
+<h3 id="2-2-결측치를-다른-값으로-대체하기"><a href="#2-2-결측치를-다른-값으로-대체하기" class="headerlink" title="2.2. 결측치를 다른 값으로 대체하기"></a>2.2. 결측치를 다른 값으로 대체하기</h3><ul>
+<li>결측치 대체법(imputation)</li>
+<li>대체값으로 평균값이 많이 쓰이지만 특정 값의 빈도가 매우 많을 때는 최빈값으로 대체한다. table() 함수 활용. 결측치를 대체할 때는 ifelse()함수 사용.</li>
+<li>참고자료 <a target="_blank" rel="noopener" href="https://www.kdnuggets.com/2017/09/missing-data-imputation-using-r.html">A Solution to Missing Data: Imputation Using R</a></li>
+<li><a target="_blank" rel="noopener" href="https://velog.io/@lifeisbeautiful/R-%EA%B2%B0%EC%B8%A1%EA%B0%92NA-%EC%A0%9C%EA%B1%B0-%EB%8C%80%EC%B2%B4-%EB%B0%A9%EB%B2%95">R 결측값(NA) 제거, 대체 방법</a></li>
 </ul>
-<h3 id="이상치-163p"><a href="#이상치-163p" class="headerlink" title="이상치 (163p)"></a>이상치 (163p)</h3><ol>
-<li>이상치의 개념</li>
-</ol>
-<ul>
+<h1 id="2단원-이상치-163p"><a href="#2단원-이상치-163p" class="headerlink" title="2단원 이상치 (163p)"></a>2단원 이상치 (163p)</h1><h2 id="1-이상치의-개념"><a href="#1-이상치의-개념" class="headerlink" title="1. 이상치의 개념"></a>1. 이상치의 개념</h2><ul>
 <li>데이터의 특정 값이 뭔가 ‘이상’이 있다. (ex.오타)</li>
 <li>Case 1 : 정해진 범주에서 벗어난 데이터 (ex.2000.04.30&#x2F;2000.40.30 -&gt;9999로 대체)</li>
 <li>Case 2 : 숫자, 아웃라이어(Outlier), 극단값 (ex.평균: 평균임금 320만원&#x2F;손흥민 몇십억원, 평균의 함정)</li>
 </ul>
-<ol start="2">
-<li>이상치 처리</li>
-</ol>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1_out <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1_out.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line">glimpse<span class="punctuation">(</span>mpg1_out<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-이상치-처리"><a href="#2-이상치-처리" class="headerlink" title="2. 이상치 처리"></a>2. 이상치 처리</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1_out <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1_out.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line">glimpse<span class="punctuation">(</span>mpg1_out<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Rows: 234</span><br><span class="line">## Columns: 3</span><br><span class="line">## $ trans &lt;int&gt; 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 3, 1, 1…</span><br><span class="line">## $ drv   &lt;chr&gt; &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;5&quot;,…</span><br><span class="line">## $ cty   &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 15, 15, …</span><br></pre></td></tr></table></figure>
 
@@ -229,10 +209,7 @@
 
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 과정 정리 : 데이터 불러오기&gt;변수 trans의 종류가 각각 몇개씩 있는지 확인&gt;3이 너무 적어서 제거하고자 함&gt;3을 결측치로 변환해서&gt;결측치를 제거</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># mpg1_out %&gt;% filter(trans==3)</span></span><br><span class="line"><span class="comment"># 굳이 3을 결측치로 전환하지 않고 filter() 함수를 바로 사용하는 방법도 있다.</span></span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>극단치 처리</li>
-</ol>
-<ul>
+<h2 id="3-극단치-처리"><a href="#3-극단치-처리" class="headerlink" title="3. 극단치 처리"></a>3. 극단치 처리</h2><ul>
 <li><p>숫자 데이터 boxplot()</p>
 </li>
 <li><p>boxplot() 함수를 통해서 극단치가 있는지 없는지 확인 가능</p>
@@ -248,23 +225,13 @@
 </ul>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line">boxplot<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1개의 변수 통계값 : boxplot(데이터세트$변수)$stats</span></span><br><span class="line"><span class="comment"># 복수 변수의 통계값 : boxplot(데이터세트$변수1,데이터세트$변수2,...)$stats</span></span><br><span class="line"><span class="comment"># 변수의 범주별 통계값 : boxplot(데이터세트$종속변수~데이터세트$범주변수)$stats</span></span><br><span class="line">boxplot<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span><span class="operator">$</span>stats</span><br></pre></td></tr></table></figure>
 
-<p><img src="/R_7_files/figure-html/unnamed-chunk-6-1.png"><!-- --></p>
+<p><img src="/images/R_7_files/figure-html/unnamed-chunk-6-1.png"><!-- --></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##      [,1]</span><br><span class="line">## [1,]    9</span><br><span class="line">## [2,]   14</span><br><span class="line">## [3,]   17</span><br><span class="line">## [4,]   19</span><br><span class="line">## [5,]   26</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boxplot<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="operator">~</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="operator">$</span>stats</span><br></pre></td></tr></table></figure>
 
-<p><img src="/R_7_files/figure-html/unnamed-chunk-6-2.png"><!-- --></p>
+<p><img src="/images/R_7_files/figure-html/unnamed-chunk-6-2.png"><!-- --></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##      [,1] [,2] [,3]</span><br><span class="line">## [1,]    9   15   11</span><br><span class="line">## [2,]   13   18   12</span><br><span class="line">## [3,]   14   19   15</span><br><span class="line">## [4,]   16   21   15</span><br><span class="line">## [5,]   20   25   18</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Rmd 파일 knit 결과 view panel에 미리 보여주는 코드</span></span><br><span class="line"><span class="comment"># 패키지 설치</span></span><br><span class="line"><span class="comment"># install.packages(&quot;remotes&quot;)</span></span><br><span class="line"><span class="comment"># remotes::install_github(&#x27;yihui/xaringan&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 실행 </span></span><br><span class="line"><span class="comment"># knit 누를 때는 #처리해줘야 진행됨됨</span></span><br><span class="line"><span class="comment"># xaringan::inf_mr()</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
