@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  
   <title>R을 이용한 공공데이터 분석_제6장 | 나의 첫번째 블로그</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
   <meta name="description" content="제6장 데이터 가공 (분석 프로세스)0단원 자율학습 5장 데이터 변환 코드 위주로 다 쳐보기  12345# 설치해야되는 패키지들# install.packages(&quot;nycflights13&quot;)# install.packages(&quot;tidyverse&quot;)# library(nycflights13)# library(tidyverse)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R을 이용한 공공데이터 분석_제6장">
@@ -20,84 +23,117 @@
   
     <link rel="alternate" href="/atom.xml" title="나의 첫번째 블로그" type="application/atom+xml">
   
+  <link rel="icon" href="/css/images/favicon.ico">
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-  
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
   
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">나의 첫번째 블로그</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">내로운 길도 화이팅</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sallyzmk.github.io"></form>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="about"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
       </div>
-    </div>
   </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-R_6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/21/R_6/" class="article-date">
-  <time class="dt-published" datetime="2022-06-20T17:00:00.000Z" itemprop="datePublished">2022-06-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-R_6" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
         
   
-    <h1 class="p-name article-title" itemprop="headline name">
+    <h1 class="thumb" class="article-title" itemprop="name">
       R을 이용한 공공데이터 분석_제6장
     </h1>
   
 
       </header>
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    <div class="article-meta">
+      
+	<a href="/2022/06/21/R_6/" class="article-date">
+	  <time datetime="2022-06-20T17:00:00.000Z" itemprop="datePublished">June 21, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
       
         <h2 id="제6장-데이터-가공-분석-프로세스"><a href="#제6장-데이터-가공-분석-프로세스" class="headerlink" title="제6장 데이터 가공 (분석 프로세스)"></a>제6장 데이터 가공 (분석 프로세스)</h2><h1 id="0단원-자율학습"><a href="#0단원-자율학습" class="headerlink" title="0단원 자율학습"></a>0단원 자율학습</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://r4ds.had.co.nz/transform.html">5장 데이터 변환</a></li>
@@ -336,12 +372,37 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://sallyzmk.github.io/2022/06/21/R_6/" data-id="cl4rzz8od0003ywvmg2iqc34d" data-title="R을 이용한 공공데이터 분석_제6장" class="article-share-link">Share</a>
+    <footer class="entry-meta entry-footer">
       
       
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
     
@@ -367,91 +428,110 @@
   
 </article>
 
+<!-- Table of Contents -->
 
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%9C6%EC%9E%A5-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EA%B3%B5-%EB%B6%84%EC%84%9D-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4"><span class="nav-number">1.</span> <span class="nav-text">제6장 데이터 가공 (분석 프로세스)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0%EB%8B%A8%EC%9B%90-%EC%9E%90%EC%9C%A8%ED%95%99%EC%8A%B5"><span class="nav-number"></span> <span class="nav-text">0단원 자율학습</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1%EB%8B%A8%EC%9B%90-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%B2%98%EB%A6%AC-98p"><span class="nav-number"></span> <span class="nav-text">1단원 데이터 전처리 (98p)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%A4%91%EC%9A%94%EB%8F%84-%EB%86%92%EC%9D%80-%ED%95%A8%EC%88%98%EB%93%A4"><span class="nav-number"></span> <span class="nav-text">중요도 높은 함수들</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%EB%8B%A8%EC%9B%90-rename"><span class="nav-number"></span> <span class="nav-text">2단원 rename()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%EB%8B%A8%EC%9B%90-count"><span class="nav-number"></span> <span class="nav-text">3단원 count()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%EB%8B%A8%EC%9B%90-select"><span class="nav-number"></span> <span class="nav-text">4단원 select()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%ED%95%84%EC%9A%94%ED%95%9C-%EC%97%B4%EC%9D%84-%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">1. 필요한 열을 추출하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EC%97%B4-%EC%82%AD%EC%A0%9C-%ED%9B%84-%ED%95%84%EC%9A%94%ED%95%9C-%EC%97%B4%EB%A7%8C-%EB%82%A8%EA%B8%B0%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">2. 불필요한 열 삭제 후 필요한 열만 남기기</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%EB%8B%A8%EC%9B%90-slice-filter"><span class="nav-number"></span> <span class="nav-text">5단원 slice(),filter()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-slice-%ED%96%89%EC%9D%98-%EC%9D%BC%EB%B6%80%EB%A5%BC-%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">1. slice(): 행의 일부를 추출하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-filter-%EC%A1%B0%EA%B1%B4%EC%97%90-%EB%A7%9E%EB%8A%94-%ED%96%89%EC%9D%84-%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">2. filter(): 조건에 맞는 행을 추출하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%EB%B9%84%EA%B5%90%EA%B0%92%EC%9D%B4-%EA%B0%99%EC%9D%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 비교값이 같은 데이터 추출</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%EB%B9%84%EA%B5%90%EA%B0%92%EC%9D%B4-%EB%8B%A4%EB%A5%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 비교값이 다른 데이터 추출</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%EB%B9%84%EA%B5%90%EA%B0%92%EC%9D%B4-%ED%81%AC%EA%B1%B0%EB%82%98-%EC%9E%91%EC%9D%80-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 비교값이 크거나 작은 데이터 추출</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%EB%B9%84%EA%B5%90%EA%B0%92%EC%9D%B4-%EC%9E%91%EC%9D%80-lt-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1. 비교값이 작은(&lt;) 데이터 추출</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%EB%B9%84%EA%B5%90%EA%B0%92%EC%9D%B4-%EC%9E%91%EA%B1%B0%EB%82%98-%EA%B0%99%EC%9D%80-lt-x3D-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2. 비교값이 작거나 같은(&lt;&#x3D;) 데이터 추출</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%EB%B9%84%EA%B5%90%EA%B0%92%EC%9D%B4-%ED%81%B0-gt-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3. 비교값이 큰(&gt;) 데이터 추출</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-4-%EB%B9%84%EA%B5%90%EA%B0%92%EC%9D%B4-%ED%81%AC%EA%B1%B0%EB%82%98-%EA%B0%99%EC%9D%80-gt-x3D-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4. 비교값이 크거나 같은(&gt;&#x3D;) 데이터 추출</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%EB%B3%B5%EC%88%98%EC%9D%98-%EC%A1%B0%EA%B1%B4%EC%9D%84-%EC%B6%A9%EC%A1%B1%ED%95%98%EB%8A%94-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. 복수의 조건을 충족하는 데이터 추출</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-%EC%A1%B0%EA%B1%B4%EC%9D%B4-2%EA%B0%9C%EC%9D%BC-%EB%95%8C"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1. 조건이 2개일 때</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-%EC%A1%B0%EA%B1%B4%EC%9D%B4-3%EA%B0%9C%EC%9D%BC-%EB%95%8C"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2. 조건이 3개일 때</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%EB%B3%B5%EC%88%98-%EC%A1%B0%EA%B1%B4-%EC%A4%91-%ED%95%98%EB%82%98%EB%9D%BC%EB%8F%84-%EC%B6%A9%EC%A1%B1%ED%95%98%EB%8A%94-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%B6%9C"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. 복수 조건 중 하나라도 충족하는 데이터 추출</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%EC%97%B4%EC%9D%84-%EC%B6%94%EC%B6%9C%ED%95%9C-%ED%9B%84%EC%97%90-%EC%A1%B0%EA%B1%B4%EC%97%90-%EB%A7%9E%EB%8A%94%ED%96%89%EC%9D%84-%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0"><span class="nav-number">2.6.</span> <span class="nav-text">2.6. 열을 추출한 후에 조건에 맞는행을 추출하기</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%EB%8B%A8%EC%9B%90-mutate"><span class="nav-number"></span> <span class="nav-text">6단원 mutate()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%83%9D%EB%B3%80%EC%88%98-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">1. 1개의 파생변수 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%EB%B3%B5%EC%88%98%EC%9D%98-%ED%8C%8C%EC%83%9D%EB%B3%80%EC%88%98-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">2. 복수의 파생변수 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%EA%B0%95%EC%9D%98-%EB%82%B4%EC%9A%A9"><span class="nav-number">3.</span> <span class="nav-text">3. 강의 내용</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%EB%8B%A8%EC%9B%90-group-by-summarise-n"><span class="nav-number"></span> <span class="nav-text">7단원 group_by(),summarise(),n()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%EC%A7%91%EB%8B%A8-%EB%B6%84%EB%A5%98-group-by"><span class="nav-number">1.</span> <span class="nav-text">1. 집단 분류 group_by()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%EC%A7%91%EB%8B%A8%EC%9D%98-%ED%86%B5%EA%B3%84-%EA%B5%AC%ED%95%98%EA%B8%B0-summarise"><span class="nav-number">2.</span> <span class="nav-text">2. 집단의 통계 구하기 summarise()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%EC%A7%91%EB%8B%A8%EC%9C%BC%EB%A1%9C-%EB%B6%84%EB%A5%98%ED%95%B4%EC%84%9C-%EC%A7%91%EB%8B%A8%EB%B3%84-%ED%86%B5%EA%B3%84-%EA%B5%AC%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text">3. 집단으로 분류해서 집단별 통계 구하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1%EA%B0%9C-%EB%B3%80%EC%88%98%EB%A5%BC-%EC%A7%91%EB%8B%A8-%EB%B6%84%EB%A5%98%ED%95%B4%EC%84%9C-%ED%86%B5%EA%B3%84-%EA%B5%AC%ED%95%98%EA%B8%B0-group-by-%EB%B3%80%EC%88%98-summarise"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. 1개 변수를 집단 분류해서 통계 구하기: group_by(변수)+summarise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%EB%B3%B5%EC%88%98-%EB%B3%80%EC%88%98%EB%A5%BC-%EC%A7%91%EB%8B%A8-%EB%B6%84%EB%A5%98%ED%95%B4%EC%84%9C-%ED%86%B5%EA%B3%84-%EA%B5%AC%ED%95%98%EA%B8%B0-group-by-%EB%B3%80%EC%88%981-%EB%B3%80%EC%88%982-%E2%80%A6-summarise"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. 복수 변수를 집단 분류해서 통계 구하기: group_by(변수1,변수2,…)+summarise</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%EC%A7%91%EB%8B%A8%EB%B3%84-%EB%B9%88%EB%8F%84%EC%99%80-%EB%B9%84%EC%9C%A8-%EA%B5%AC%ED%95%98%EA%B8%B0"><span class="nav-number">4.</span> <span class="nav-text">4. 집단별 빈도와 비율 구하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%EB%B6%84%EB%A5%98-%EC%A7%91%EB%8B%A8%EB%B3%84-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B9%88%EB%8F%84-%EA%B5%AC%ED%95%98%EA%B8%B0-group-by-%EB%B3%80%EC%88%98-summarise-n-%ED%95%A8%EC%88%98"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 분류 집단별 데이터 빈도 구하기:group_by(변수)+summarise(n()함수)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%EB%B6%84%EB%A5%98%ED%95%9C-%EC%A7%91%EB%8B%A8%EB%B3%84-%EB%B9%88%EB%8F%84%EC%99%80-%EB%B9%84%EC%9C%A8-%EA%B5%AC%ED%95%98%EA%B8%B0-group-by-summarise-n-mutate-%EC%9D%98-%EC%A1%B0%ED%95%A9"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 분류한 집단별 빈도와 비율 구하기:group_by()+summarise(n()) + mutate()의 조합</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%EA%B0%95%EC%9D%98-%EB%82%B4%EC%9A%A9"><span class="nav-number">5.</span> <span class="nav-text">5. 강의 내용</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-11%EB%8B%A8%EC%9B%90%EC%9D%80-%EC%9D%BD%EA%B3%A0-%EB%84%98%EC%96%B4%EA%B0%80%EA%B8%B0"><span class="nav-number"></span> <span class="nav-text">8~11단원은 읽고 넘어가기</span></a>
+    
+    </div>
+  </aside>
 </section>
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/06/23/R_9/">R을 이용한 공공데이터 분석_제9장</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/22/R_8/">R을 이용한 공공데이터 분석_제8장</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/22/R_7/">R을 이용한 공공데이터 분석_제7장</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/21/R_6/">R을 이용한 공공데이터 분석_제6장</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/20/R_4/">R을 이용한 공공데이터 분석_제4장</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
 
     </div>
-    <nav id="mobile-nav">
+    <!-- <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-</nav>
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
     
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
 
+<!-- mathjax config similar to math.stackexchange -->
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
@@ -459,9 +539,35 @@
 <script src="/js/script.js"></script>
 
 
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
 
 
 
   </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
