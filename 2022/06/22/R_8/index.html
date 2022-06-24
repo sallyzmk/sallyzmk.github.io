@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>R을 이용한 공공데이터 분석_제8장 | 나의 첫번째 블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="제8장 통계분석0단원 자율학습 ~~분석을 사용하야된다! -&gt; 선행연구를 찾아보기, 해당 분석 방법의 가설 설정 예시를 확인하기 크롤리의 통계학 강의(The R Book 축약본) The R Book) 강의 추천데이터사이언스를 위한 통계학입문Ⅰ  1단원 분석 방법 (172p)1. 기술 통계 기술통계 : 평균, 최솟갑스 최댓값, 중간값 일반인들은 이정도만">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R을 이용한 공공데이터 분석_제8장">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/06/22/R_8/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="제8장 통계분석0단원 자율학습 ~~분석을 사용하야된다! -&gt; 선행연구를 찾아보기, 해당 분석 방법의 가설 설정 예시를 확인하기 크롤리의 통계학 강의(The R Book 축약본) The R Book) 강의 추천데이터사이언스를 위한 통계학입문Ⅰ  1단원 분석 방법 (172p)1. 기술 통계 기술통계 : 평균, 최솟갑스 최댓값, 중간값 일반인들은 이정도만">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_8_files/figure-html/unnamed-chunk-1-1.png">
+<meta property="article:published_time" content="2022-06-21T17:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-24T03:20:31.868Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/R_8_files/figure-html/unnamed-chunk-1-1.png">
+    
+
+    
+        <link rel="alternate" href="/" title="나의 첫번째 블로그" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-R_8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        R을 이용한 공공데이터 분석_제8장
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/06/22/R_8/" class="article-date">
+       <time datetime="2022-06-21T17:00:00.000Z" itemprop="datePublished">2022-06-22</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/06/22/R_8/" class="article-date">
+     <time datetime="2022-06-24T03:20:31.868Z" itemprop="dateModified">2022-06-24</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="제8장-통계분석"><a href="#제8장-통계분석" class="headerlink" title="제8장 통계분석"></a>제8장 통계분석</h2><h1 id="0단원-자율학습"><a href="#0단원-자율학습" class="headerlink" title="0단원 자율학습"></a>0단원 자율학습</h1><ul>
+<li>~~분석을 사용하야된다! -&gt; 선행연구를 찾아보기, 해당 분석 방법의 가설 설정 예시를 확인하기</li>
+<li><a target="_blank" rel="noopener" href="http://www.yes24.com/Product/Goods/32991798">크롤리의 통계학 강의(The R Book 축약본)</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.yes24.com/Product/Goods/12458880">The R Book)</a></li>
+<li>강의 추천<a target="_blank" rel="noopener" href="https://pabi.smartlearn.io/#courses">데이터사이언스를 위한 통계학입문Ⅰ</a></li>
+</ul>
+<h1 id="1단원-분석-방법-172p"><a href="#1단원-분석-방법-172p" class="headerlink" title="1단원 분석 방법 (172p)"></a>1단원 분석 방법 (172p)</h1><h2 id="1-기술-통계"><a href="#1-기술-통계" class="headerlink" title="1. 기술 통계"></a>1. 기술 통계</h2><ul>
+<li>기술통계 : 평균, 최솟갑스 최댓값, 중간값</li>
+<li>일반인들은 이정도만 알아도 업무가능.</li>
+</ul>
+<h2 id="2-추론-통계"><a href="#2-추론-통계" class="headerlink" title="2. 추론 통계"></a>2. 추론 통계</h2><ul>
+<li>변수 간의 관계를 파악 &#x2F; 새로운 사실을 발견(&#x3D;추정)</li>
+</ul>
+<h3 id="2-1-평균-차이-검정-핵심"><a href="#2-1-평균-차이-검정-핵심" class="headerlink" title="2.1. 평균 차이 검정  [핵심]"></a>2.1. 평균 차이 검정  [핵심]</h3><ul>
+<li>&#x3D;평균분석, 숫자</li>
+<li>가설 검정 : 평균의 차이를 검정</li>
+<li>ex. 남자의 평균 키와 여자의 평균 키는 차이가 있을 것이다.(핵심키워드: 평균, 그룹_남&#x2F;녀, 차이)</li>
+</ul>
+<h3 id="2-2-교차분석"><a href="#2-2-교차분석" class="headerlink" title="2.2. 교차분석"></a>2.2. 교차분석</h3><ul>
+<li>&#x3D;빈도분석, 문자열</li>
+<li>가설검정 : 각 범주별 빈도를 활용해서 관계성을 검정</li>
+<li>ex. 작은 아파트에서의 대형 티비 구매율과 큰 평수 아파트의 대형 티비 구매율 비교</li>
+</ul>
+<h3 id="2-3-상관관계분석"><a href="#2-3-상관관계분석" class="headerlink" title="2.3. 상관관계분석"></a>2.3. 상관관계분석</h3><ul>
+<li>수치 데이터, </li>
+<li>그래프가 1로 수렴 : 양의 상관관계(우상향 그래프)</li>
+<li>그래프가 -1로 수렴 : 음의 상관관계(우하향 그래프프)</li>
+<li>그래프가 0으로 수렴 : 두 수치 데이터 간에 상관관계가 없음(그래프가 엉망이면)</li>
+<li>두 변수간의 상관관계가 있느냐 없느냐?</li>
+<li>ex. 기온에 따라 아이스 아메리카노 판매량을 비교</li>
+</ul>
+<h3 id="2-4-회귀분석-핵심"><a href="#2-4-회귀분석-핵심" class="headerlink" title="2.4. 회귀분석  [핵심]"></a>2.4. 회귀분석  [핵심]</h3><ul>
+<li>회귀 분석: 독립변수와 종속변수 간의 인과관계를 분석하는 통계적 방법</li>
+<li>단순회귀분석: 독립변수가 1석, 다중회귀본석: 독립변수가 2개</li>
+<li>단순회귀분석: y(종속변수) &#x3D; a(기울기)x+b(상수항)</li>
+<li>가설검정 x값이 y값에 영향을 주느냐?</li>
+<li>ex. 기온(독립변수)이 판매량(종속변수)에 [긍정적인&#x2F;부정적인인]영향을 주고 있을 것이다.</li>
+</ul>
+<h1 id="2단원-통계-검정-176p"><a href="#2단원-통계-검정-176p" class="headerlink" title="2단원 통계 검정 (176p)"></a>2단원 통계 검정 (176p)</h1><h2 id="1-가설-hypothesis"><a href="#1-가설-hypothesis" class="headerlink" title="1. 가설 (hypothesis)"></a>1. 가설 (hypothesis)</h2><ul>
+<li>귀무가설: 두 집단의 평균 차이가 없다.</li>
+<li>대립가설: 두 집단의 평균 차이가 있다. (평소 우리가 궁금해 하는 분야)</li>
+</ul>
+<h2 id="2-유의수준-反오차범위"><a href="#2-유의수준-反오차범위" class="headerlink" title="2. 유의수준(反오차범위)"></a>2. 유의수준(反오차범위)</h2><ul>
+<li>유의수준_p-value(p값): 귀무설(평균 차이 X)이 맞는데도 대립가설(평균 차이 O)을 채택할 확률</li>
+<li>예외가 있을 수는 있으나, 이를 인정해주되(허용할 수 있는 예외 범위) 일반화할 수는 없다.</li>
+<li>가설 검정에서 인정하는 유의 수준 [5%, 1%, 0.1%, 10%]</li>
+<li>유의수준의 범위가 넓으면 연구 결과를 얻기 쉽지만 정확성이 떨어짐.</li>
+<li>유의수준의 범위가 좁으면 연구 결과를 얻기 어렵만 정확성이 높아짐.</li>
+</ul>
+<h2 id="2-2-오차범위"><a href="#2-2-오차범위" class="headerlink" title="2.(2) 오차범위"></a>2.(2) 오차범위</h2><ul>
+<li>오차범위&#x3D;신뢰수준(confidence level)</li>
+<li>오차범위 내에 있다 -&gt; 이 설문을 다음에 또 해보면 결과가 다르게 나올 수 있다. 아직까지 차이가 크지 않다.</li>
+<li>오차범위 밖에 있다 -&gt; 이 설문을 다음에 또 해보면 결과가 똑같게 나온다. 최종결과 굳어짐.</li>
+</ul>
+<h2 id="3-척도-SKIP"><a href="#3-척도-SKIP" class="headerlink" title="3. 척도  [SKIP]"></a>3. 척도  [SKIP]</h2><ul>
+<li>척도: 측정도구, 수치로 표시됨.</li>
+<li>명목척도: 대상의 특성이나 범주 구분, 산술연산 X     ex.성별, 결혼유무, 종교, 인종</li>
+<li>서열척도: 대상의 등급순위,           산술연산 X     ex.계급, 사회계층, 자격등급</li>
+<li>등간척도: 대상을 일정 간격으로 구분, 덧셈과 뺄젬 O  ex.온도, 학력, 시험점수</li>
+<li>비율척도: 대상을 비율로 구분,         4칙연산 O     ex.연령, 무게</li>
+</ul>
+<h1 id="3단원-통계-분석-사례-178p"><a href="#3단원-통계-분석-사례-178p" class="headerlink" title="3단원 통계 분석 사례 (178p)"></a>3단원 통계 분석 사례 (178p)</h1><ul>
+<li>[통계 검정 사전 준비]</li>
+<li>분석을 위한 데이터가 적절한지 검정</li>
+<li>등분산 검정, 정규성 검정(수치 데이터가 정규 분포를 이루는가)</li>
+<li>귀무가설, 대립가설을 적절하게 설정 </li>
+<li><pre><code>+ex. 서울이 부산보다 잘 살것이다-&gt;가설이 아님
+</code></pre>
+</li>
+<li><pre><code>+ex. 서울의 평균 임금과 부산의 평균 임금이 차이가 있을 것이다.
+</code></pre>
+</li>
+<li><pre><code>+선행연구(논문)을 찾아 양식을 응용하기
+</code></pre>
+</li>
+<li></li>
+<li>[통계검정 종류]</li>
+<li>평균 차이 검점: (두 그룹 간의) 수치 데이터 + 범주 데이터</li>
+<li><pre><code>+중급이상_ 세 그룹 이상 평균 차이 검정
+</code></pre>
+</li>
+<li>비율 차이 검정(교차분석): 범주 데이터</li>
+<li>상관관계: 수치 데이터</li>
+<li>회귀: </li>
+<li></li>
+<li>[테스트]</li>
+<li>t.test, chisq.test, cor.test</li>
+<li>p.value</li>
+<li><pre><code>+p.value &gt; 0.05 -&gt; 귀무가설 지지
+</code></pre>
+</li>
+<li><pre><code>+p.value &lt; 0.05 -&gt; 대립가설 지지
+</code></pre>
+</li>
+</ul>
+<h2 id="1-두-집단의-평균-차이-검정"><a href="#1-두-집단의-평균-차이-검정" class="headerlink" title="1. 두 집단의 평균 차이 검정"></a>1. 두 집단의 평균 차이 검정</h2><ul>
+<li>t.test 어떻게 데이터를 입력하는지 확인</li>
+<li>결과가 나오면 p-value 확인, 유의수준 0.05이상-&gt;귀무가설, 유의수준 0.05이하-&gt;대립가설</li>
+<li></li>
+<li>t.test(data&#x3D;데이터세트,종속변수_반응변수_y(비교값)~독립변수_설명변수_x(비교대상))</li>
+<li>t.test(데이터세트$종속변수(비교값)~데이터세트$독립변수(비교대상))</li>
+<li></li>
+<li>등분산 검정: 두 그룹의 평균 차이 검정이전에 사전 필수 검증이 필요하다. 데이터 양이 비슷한가. 조건이 비슷한가. ex.10건 vs 100건 비교할 수 없음.</li>
+<li>두 그룹간의 분산이 비슷하면 –&gt; t.test(모수검정)</li>
+<li>두 구룹간의 분산이 다르면 –&gt; 비모수 검정</li>
+<li>귀무가설: 두 그룹간의 분산이 비슷하다.</li>
+<li>대립가설: 두 그룹간의 분산이 다르다.</li>
+<li>등분산 검정에서는 귀무가설을 지지해야 t.test를 사용할 수 있다.</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">,</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시각화</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">ggplot<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>trans<span class="punctuation">,</span>y<span class="operator">=</span>cty<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_boxplot<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/R_8_files/figure-html/unnamed-chunk-1-1.png"><!-- --></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 평균값이 크게 차이나는지 확인하기 애매하다</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 때문에 t.test 통계검정을 한다.</span></span><br><span class="line"><span class="comment"># 귀무가설 : auto와 manual의 cty 평균은 차이가 없다.</span></span><br><span class="line"><span class="comment"># 대립가설 : auto와 manual의 cty 평균은 차이가 있다.</span></span><br><span class="line">t.test<span class="punctuation">(</span>data <span class="operator">=</span> mpg1<span class="punctuation">,</span>cty <span class="operator">~</span> trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Welch Two Sample t-test</span><br><span class="line">## </span><br><span class="line">## data:  cty by trans</span><br><span class="line">## t = -4.5375, df = 132.32, p-value = 1.263e-05</span><br><span class="line">## alternative hypothesis: true difference in means between group auto and group manual is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  -3.887311 -1.527033</span><br><span class="line">## sample estimates:</span><br><span class="line">##   mean in group auto mean in group manual </span><br><span class="line">##             15.96815             18.67532</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">                  <span class="comment"># 종속변수 ~ 독립변수</span></span><br><span class="line">                  <span class="comment"># 반응변수 ~ 설명변수</span></span><br><span class="line">                  <span class="comment"># y          x</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 등분산 검정, 귀무가설이어야 t.test를 사용할 수 있다. p-value 0.05 이상여야함.</span></span><br><span class="line">var.test<span class="punctuation">(</span>data <span class="operator">=</span> mpg1<span class="punctuation">,</span> cty<span class="operator">~</span>trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	F test to compare two variances</span><br><span class="line">## </span><br><span class="line">## data:  cty by trans</span><br><span class="line">## F = 0.73539, num df = 156, denom df = 76, p-value = 0.1101</span><br><span class="line">## alternative hypothesis: true ratio of variances is not equal to 1</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  0.4912917 1.0719468</span><br><span class="line">## sample estimates:</span><br><span class="line">## ratio of variances </span><br><span class="line">##          0.7353887</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시각화 방법 1</span></span><br><span class="line">ggplot<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> cty<span class="punctuation">,</span> fill <span class="operator">=</span> trans<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_histogram<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/R_8_files/figure-html/unnamed-chunk-1-2.png"><!-- --></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시각화 방법 2</span></span><br><span class="line">ggplot<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> cty<span class="punctuation">,</span> fill <span class="operator">=</span> trans<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_density<span class="punctuation">(</span>alpha <span class="operator">=</span> <span class="number">0.1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/R_8_files/figure-html/unnamed-chunk-1-3.png"><!-- --></p>
+<h2 id="2-교차분석"><a href="#2-교차분석" class="headerlink" title="2. 교차분석"></a>2. 교차분석</h2><ul>
+<li>chisq.test() 함수 활용</li>
+<li>교차분석: 범주형 변수들이 관계가 있다는 것을 입증.</li>
+<li>평균의 차이가 아니라 ‘비율에 차이’가 있는지를 검정합니다.</li>
+<li>교차분석 검정은 R의 chisq.test() 함수로 진행</li>
+<li>귀무가설 : trans에 따라 drv(4,f,r)의 (비율)차이가 없다.</li>
+<li>대립가설 : trans에 따라 drv의 차이가 있다.</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 빈도표</span></span><br><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span> <span class="comment"># 교차분석</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##           4  f  r</span><br><span class="line">##   auto   75 65 17</span><br><span class="line">##   manual 28 41  8</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 비율</span></span><br><span class="line">prop.table<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##                  4         f         r</span><br><span class="line">##   auto   0.4777070 0.4140127 0.1082803</span><br><span class="line">##   manual 0.3636364 0.5324675 0.1038961</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결과- auto 4륜 구동(4)인 47.8%, manual 전륜구동(f) 53.2%가 가장 많음</span></span><br><span class="line"><span class="comment"># 가정- 실제로 통계적으로 봤을 때, 차이가 있는지 검정</span></span><br><span class="line"><span class="comment"># 귀무가설 : trans에 따라 drv(4,f,r)의 (비율)차이가 없다.</span></span><br><span class="line"><span class="comment"># 대립가설 : trans에 따라 drv의 차이가 있다. </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법 1</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s Chi-squared test</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$trans and mpg1$drv</span><br><span class="line">## X-squared = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법 2</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s Chi-squared test</span><br><span class="line">## </span><br><span class="line">## data:  table(mpg1$trans, mpg1$drv)</span><br><span class="line">## X-squared = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법 3</span></span><br><span class="line">summary<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Number of cases in table: 234 </span><br><span class="line">## Number of factors: 2 </span><br><span class="line">## Test for independence of all factors:</span><br><span class="line">## 	Chisq = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># p-value를 확인하고 귀무/대립가설인지 확인</span></span><br><span class="line"><span class="comment"># 결과- trans에 따라 drv(4,f,r)의 (비율)차이가 없다.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-상관관계분석"><a href="#3-상관관계분석" class="headerlink" title="3. 상관관계분석"></a>3. 상관관계분석</h2><ul>
+<li>cor.test() 함수 활용</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">cor.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">,</span>mpg1<span class="operator">$</span>hwy<span class="punctuation">)</span>  <span class="comment"># 상관관계 분석</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s product-moment correlation</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$cty and mpg1$hwy</span><br><span class="line">## t = 49.585, df = 232, p-value &lt; 2.2e-16</span><br><span class="line">## alternative hypothesis: true correlation is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  0.9433129 0.9657663</span><br><span class="line">## sample estimates:</span><br><span class="line">##       cor </span><br><span class="line">## 0.9559159</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결과 - p-value 가 2.2/10의16승 보다 작다. -&gt; 0.05보다 작음 -&gt; 대립가설 채택, </span></span><br><span class="line"><span class="comment"># sample estimates: 0.9559159 상관관계가 1에 가까움 -&gt; 상관관계가 높다</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-회귀분석"><a href="#4-회귀분석" class="headerlink" title="4. 회귀분석)"></a>4. 회귀분석)</h2><ul>
+<li>회귀: (기초통계에서) 어떤 특정한 결과에 ‘영향’을 주는 주 요인이 무엇이냐? 이를 찾는 것이 회귀.</li>
+<li><pre><code>+ex. 매출에 영향을 주는 주 요인을 찾기 -날씨, 유명인 홍보, 음식 맛이 변함...
+</code></pre>
+</li>
+<li></li>
+<li>[귀무가설 &amp; 대립가설 존재]</li>
+<li>귀무가설 : x(독립변수)가  y(종속변수)에 영향을 주지 않는다.</li>
+<li>대립가설 : x(독립변수)가  y(종속변수)에 영향을 준다.</li>
+<li>lm() 함수 사용: lm(종속변수~독립변수, data)</li>
+<li></li>
+<li>회귀의 중요성 </li>
+<li>[회귀 분석 종류] (확장성이 높음)</li>
+<li>1세대 회귀 방법론 : 다항회귀분석, 다중회귀분석, 포아송회귀분석, etc</li>
+<li>2세대 회귀 방법론 : 구조방정식</li>
+<li></li>
+<li>[머신러닝, 인공지능] (예측기능을 제공)</li>
+<li>y &#x3D; ax + b</li>
+</ul>
+<h3 id="4-1-단순회귀분석"><a href="#4-1-단순회귀분석" class="headerlink" title="4.1. 단순회귀분석"></a>4.1. 단순회귀분석</h3><ul>
+<li>단순회귀분석: 독립변수가 1개, 종속변수가 1개일 때 분석하는 방식. 또한 회귀분석의 변수는 독립변수와 종속변수 모두 등간척도 또는 비율척도이어야 한다.</li>
+<li>lm(data&#x3D;데이터세트,종속변수~독립변수)</li>
+<li>lm(종속변수~독립변수,)</li>
+<li>lm(데이터세트$종속변수~데이터세트$독립변수)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">&lt;-</span> lm<span class="punctuation">(</span>data <span class="operator">=</span> mtcars<span class="punctuation">,</span>mpg<span class="operator">~</span>disp<span class="punctuation">)</span> <span class="comment"># 회귀분석 결과를 RA에 넣기</span></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span> <span class="comment"># 상세한 분석 결과 출력력</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##     Min      1Q  Median      3Q     Max </span><br><span class="line">## -4.8922 -2.2022 -0.9631  1.6272  7.2305 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.041215   0.004712  -8.747 9.38e-10 ***</span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 3.251 on 30 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709 </span><br><span class="line">## F-statistic: 76.51 on 1 and 30 DF,  p-value: 9.38e-10</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [결과 확인]</span></span><br><span class="line"><span class="comment"># 1. 우선 전체 식에 대한 p-value 확인</span></span><br><span class="line"><span class="comment"># p-value가 0.05 이상= 귀무가설이라면</span></span><br><span class="line"><span class="comment"># →데이터 처리 (쓸데없는 데이터 처리/데이터수집)</span></span><br><span class="line"><span class="comment"># →회귀는 영향을 주는 요인을 찾는 것이기 때문</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 개별 요인의 Pr(&gt;|t|)(=p-value) 확인</span></span><br><span class="line"><span class="comment"># p-value가 0.05 이상= 귀무가설이라면</span></span><br><span class="line"><span class="comment"># →해당 요인을 한.개.씩 제거하고 다시 lm() 함수 돌리기 </span></span><br><span class="line"><span class="comment"># (한꺼번에 여러 요인을 지우면 안된다.)</span></span><br><span class="line"><span class="comment"># →1번부터 반복</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. ANOVA (분산분석)</span></span><br><span class="line"><span class="comment"># 1,2번 모두 p-value &lt; 0.05 (대립가설)이 되는 y 식을 찾으면 서로 같은 식인지 비교확인해야함.</span></span><br><span class="line"><span class="comment"># 식1 : y = disp + var1 + var2 + var3</span></span><br><span class="line"><span class="comment"># 식2 : y = disp + var1 + var2</span></span><br><span class="line"><span class="comment"># 때문에 요인을 적당히 사전에 차출해야한다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 컬럼 갯수가 100개 -&gt; 변수를 선택해야함</span></span><br><span class="line"><span class="comment"># [변수 선택법]</span></span><br><span class="line"><span class="comment"># 전진선택법, 후진소거법, 단계적선택법</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. R-squared</span></span><br><span class="line"><span class="comment"># R-squared (결정계수) = 설명력 = 0 ~ 1</span></span><br><span class="line"><span class="comment"># 1로 수렴할 수록 설명력이 좋다.</span></span><br><span class="line"><span class="comment"># R-squared는 결정계수, Adjusted R-squared는 수정된 결정계수</span></span><br><span class="line"><span class="comment"># 두 수치 모두 1에 가까울 수록 회귀계수의 설명력이 높음</span></span><br><span class="line"><span class="comment"># 결정계수는 독립변수가 많아질 수 록 증가하는 특징이 있음.(다중회귀분석 해당당)</span></span><br><span class="line"><span class="comment"># Multiple R-squared:  0.7183 -&gt; 70% 원인 이를 100으로 채우기 위해 요인을 찾아서 1에 가깝게 만들도록 한다.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-다중회귀분석"><a href="#4-2-다중회귀분석" class="headerlink" title="4.2. 다중회귀분석"></a>4.2. 다중회귀분석</h3><ul>
+<li>다중회귀분석: 종속변수에 영향을 주는 독립변수가 복수일 때 분석하는 방식.</li>
+<li>여러 독립변수들은 서로 영향을 주면서 종속변수에 영향을 주기 때문에 한 독립변수가 종속변수에 미치는 영향력은 단순회귀분석을 했을 때와 다중회귀분석을 했을 때에 달라집니다.</li>
+<li>lm(data&#x3D;데이터세트,종속변수~독립변수1+독립변수2+…)</li>
+<li>lm(종속변수~독립변수1+독립변수2+…,)</li>
+<li>lm(데이터세트$종속변수~데이터세트$독립변수1+독립변수2+…)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm<span class="punctuation">(</span>data<span class="operator">=</span>mtcars<span class="punctuation">,</span>mpg<span class="operator">~</span>disp<span class="operator">+</span>hp<span class="operator">+</span>wt<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">## (Intercept)         disp           hp           wt  </span><br><span class="line">##   37.105505    -0.000937    -0.031157    -3.800891</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">&lt;-</span>lm<span class="punctuation">(</span>data<span class="operator">=</span>mtcars<span class="punctuation">,</span>mpg<span class="operator">~</span>disp<span class="operator">+</span>hp<span class="operator">+</span>wt<span class="punctuation">)</span> <span class="comment"># 회귀분석 결과를 RA에 넣기</span></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##    Min     1Q Median     3Q    Max </span><br><span class="line">## -3.891 -1.640 -0.172  1.061  5.861 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 37.105505   2.110815  17.579  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.000937   0.010350  -0.091  0.92851    </span><br><span class="line">## hp          -0.031157   0.011436  -2.724  0.01097 *  </span><br><span class="line">## wt          -3.800891   1.066191  -3.565  0.00133 ** </span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 2.639 on 28 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.8268,	Adjusted R-squared:  0.8083 </span><br><span class="line">## F-statistic: 44.57 on 3 and 28 DF,  p-value: 8.65e-11</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [결과]</span></span><br><span class="line"><span class="comment"># 1. p-value: 8.65e-11 -&gt; 0.01보다 작음 -&gt; 회귀모형 적합</span></span><br><span class="line"><span class="comment"># 2. 개별 요인의 Pr(&gt;|t|)(=p-value) 확인</span></span><br><span class="line"><span class="comment"># 3. Adjusted R-squared:  0.8083 -&gt; 결정계수ㅏ 0.0로 놏아져서 회귀모델의 설명력이 높아짐. </span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://sallyzmk.github.io/2022/06/22/R_8/" data-id="cl4rvyqv10000j8vm5mqgbucw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "R을 이용한 공공데이터 분석_제8장",
+        "image": "https://sallyzmk.github.io/images/R_8_files/figure-html/unnamed-chunk-1-1.png",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2022-06-22",
+        "dateCreated": "2022-06-22",
+        "dateModified": "2022-06-24",
+        "url": "https://sallyzmk.github.io/2022/06/22/R_8/",
+        "description": "제8장 통계분석0단원 자율학습
+~~분석을 사용하야된다! -&gt; 선행연구를 찾아보기, 해당 분석 방법의 가설 설정 예시를 확인하기
+크롤리의 통계학 강의(The R Book 축약본)
+The R Book)
+강의 추천데이터사이언스를 위한 통계학입문Ⅰ
+
+1단원 분석 방법 (172p)1. 기술 통계
+기술통계 : 평균, 최솟갑스 최댓값, 중간값
+일반인들은 이정도만 ",
+        "wordCount": 2739
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2022/06/23/R_9/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            R을 이용한 공공데이터 분석_제9장
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2022/06/22/R_7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">R을 이용한 공공데이터 분석_제7장</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/23/R_9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_9_files/figure-html/unnamed-chunk-3-1.png)" alt="R을 이용한 공공데이터 분석_제9장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/23/R_9/" class="title">R을 이용한 공공데이터 분석_제9장</a></p>
+                            <p class="item-date"><time datetime="2022-06-23T00:00:00.000Z" itemprop="datePublished">2022-06-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/22/R_8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_8_files/figure-html/unnamed-chunk-1-1.png)" alt="R을 이용한 공공데이터 분석_제8장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/22/R_8/" class="title">R을 이용한 공공데이터 분석_제8장</a></p>
+                            <p class="item-date"><time datetime="2022-06-21T17:00:00.000Z" itemprop="datePublished">2022-06-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/22/R_7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_7_files/figure-html/unnamed-chunk-6-1.png)" alt="R을 이용한 공공데이터 분석_제7장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/22/R_7/" class="title">R을 이용한 공공데이터 분석_제7장</a></p>
+                            <p class="item-date"><time datetime="2022-06-21T16:00:00.000Z" itemprop="datePublished">2022-06-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/21/R_6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/21/R_6/" class="title">R을 이용한 공공데이터 분석_제6장</a></p>
+                            <p class="item-date"><time datetime="2022-06-20T17:00:00.000Z" itemprop="datePublished">2022-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/20/R_4/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/20/R_4/" class="title">R을 이용한 공공데이터 분석_제4장</a></p>
+                            <p class="item-date"><time datetime="2022-06-19T17:00:00.000Z" itemprop="datePublished">2022-06-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">8</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://sallyzmk.github.io/2022/06/22/R_8/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
