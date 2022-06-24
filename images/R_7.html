@@ -1,124 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<html>
+<head>
+    <meta charset="utf-8" />
 
-    <meta name="author" content="John Doe">
-
-
-    <meta name="subtitle" content="내로운 길도 화이팅">
-
-
-
-
-
-
-<title>나의 첫번째 블로그</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
-</style>
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
     
 
-
-
-
-    <!-- scripts list from _config.yml -->
     
-    <script src="/js/frame.js"></script>
+    <title>나의 첫번째 블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="description" content="R을 이용한 공공데이터 분석_제7장  &#x2F;&#x2F; Pandoc 2.9 adds attributes on both header and div. We remove the former (to &#x2F;&#x2F; be compatible with the behavior of Pandoc &lt; 2.8). document.addEventListener(&#39;DOMCon">
+<meta property="og:type" content="website">
+<meta property="og:title" content="나의 첫번째 블로그">
+<meta property="og:url" content="https://sallyzmk.github.io/images/R_7.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="R을 이용한 공공데이터 분석_제7장  &#x2F;&#x2F; Pandoc 2.9 adds attributes on both header and div. We remove the former (to &#x2F;&#x2F; be compatible with the behavior of Pandoc &lt; 2.8). document.addEventListener(&#39;DOMCon">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="article:published_time" content="2022-06-23T03:40:06.449Z">
+<meta property="article:modified_time" content="2022-06-23T03:35:22.009Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/png;base64,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">
+    
+
+    
+        <link rel="alternate" href="/" title="나의 첫번째 블로그" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
     
 
 
+</head>
 
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
 
-
-
-
-
-
-
-  </head>
-  <body>
-    <div class="mask-border">
-    </div>
-
-    <div class="wrapper">
-
-      <div class="header">
-  <div class="flex-container">
-    <div class="header-inner">
-      <div class="site-brand-container">
-        <a href="/">
-          
-            Frame.
-          
-        </a>
-      </div>
-      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
-        Menu
-      </div>
-      <nav class="site-nav">
-        <ul class="menu-list">
-          
-            
-              <li class="menu-item">
-                <a href="/">Home</a>
-              </li> 
-                   
-          
-            
-              <li class="menu-item">
-                <a href="/archives/">Archive</a>
-              </li> 
-                   
-          
-            
-              <li class="menu-item">
-                <a href="/categories/gallery/">Gallery</a>
-              </li> 
-                   
-          
-        </ul>
-      </nav>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main">
-        <div class="flex-container">
-          <article id="post">
-
-  
-    <div class="post-head">
-    <div class="post-info">
-        <div class="post-title">
-            
-            
-                *Untitled
-            
-            
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
     </div>
-    <div class="h-line-primary"></div>
 </div>
-    <div class="post-content">
-    <!DOCTYPE html>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    나의 첫번째 블로그
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <!DOCTYPE html>
 
 <html>
 
@@ -2161,29 +2209,438 @@ $(document).ready(function ()  {
 </body>
 </html>
 
-</div> 
+        </div>
+        <footer class="article-footer">
+            
 
+
+
+    <a data-url="https://sallyzmk.github.io/images/R_7.html" data-id="cl4qhardu0000acvmb4ge002a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
-    window.onload = detectors();
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
 </script>
-  
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        
+        "image": "https://sallyzmk.github.iodata:image/png;base64,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",
+        
+        
+        "datePublished": "2022-06-23",
+        "dateCreated": "2022-06-23",
+        "dateModified": "2022-06-23",
+        "url": "https://sallyzmk.github.io/images/R_7.html",
+        "description": "
+
+
+
+
+
+
+
+
+
+
+
+
+
+R을 이용한 공공데이터 분석_제7장
+
+// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc  :first-child");
+  var i, h, a;
+  for (i ",
+        "wordCount": 19552
+    }
+</script>
+
 </article>
-        </div>
-      </div>
-      
-      <div class="footer">
-    <div class="flex-container">
-        <div class="footer-text">
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
             
-            
-            
-                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
                 
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/23/R_9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_9_files/figure-html/unnamed-chunk-3-1.png)" alt="R을 이용한 공공데이터 분석_제9장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/23/R_9/" class="title">R을 이용한 공공데이터 분석_제9장</a></p>
+                            <p class="item-date"><time datetime="2022-06-23T00:00:00.000Z" itemprop="datePublished">2022-06-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/22/R_7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_7_files/figure-html/unnamed-chunk-6-1.png)" alt="R을 이용한 공공데이터 분석_제7장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/22/R_7/" class="title">R을 이용한 공공데이터 분석_제7장</a></p>
+                            <p class="item-date"><time datetime="2022-06-21T16:00:00.000Z" itemprop="datePublished">2022-06-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/21/R_6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/21/R_6/" class="title">R을 이용한 공공데이터 분석_제6장</a></p>
+                            <p class="item-date"><time datetime="2022-06-20T17:00:00.000Z" itemprop="datePublished">2022-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/20/R_4/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/20/R_4/" class="title">R을 이용한 공공데이터 분석_제4장</a></p>
+                            <p class="item-date"><time datetime="2022-06-19T17:00:00.000Z" itemprop="datePublished">2022-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/20/R_3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/6_20_class_note(R)/Untitled%206.png)" alt="R을 이용한 공공데이터 분석_제3장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/20/R_3/" class="title">R을 이용한 공공데이터 분석_제3장</a></p>
+                            <p class="item-date"><time datetime="2022-06-19T16:00:00.000Z" itemprop="datePublished">2022-06-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
     </div>
-</div>
 
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">7</span></li></ul>
+        </div>
     </div>
 
-  </body>
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://sallyzmk.github.io/images/R_7.html';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
 </html>
