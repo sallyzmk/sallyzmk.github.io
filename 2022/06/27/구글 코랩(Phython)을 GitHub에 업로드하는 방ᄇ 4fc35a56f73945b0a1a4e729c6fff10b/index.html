@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="구글 코랩(Phython)을 GitHub에 업로드하는 방법[GitHub Repository 초기 설정] 우선  Github에 가서 새 repository를 만든다.   ’Add a README file’ 체크  ’Add .gitignore &gt; .gitignore template:Python’ 으로 변경      파일 용량이 너무 크면 GitHub에 안">
+<meta property="og:type" content="article">
+<meta property="og:title" content="나의 첫번째 블로그">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="구글 코랩(Phython)을 GitHub에 업로드하는 방법[GitHub Repository 초기 설정] 우선  Github에 가서 새 repository를 만든다.   ’Add a README file’ 체크  ’Add .gitignore &gt; .gitignore template:Python’ 으로 변경      파일 용량이 너무 크면 GitHub에 안">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%201.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%202.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%203.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%204.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%205.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%206.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%207.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%208.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%209.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2010.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2011.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2012.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2013.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2014.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2015.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2016.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled%2017.png">
+<meta property="article:published_time" content="2022-06-27T03:49:48.143Z">
+<meta property="article:modified_time" content="2022-06-27T04:32:28.629Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/google_colab_github_commit/Untitled.png">
+  
+    <link rel="alternate" href="/atom.xml" title="나의 첫번째 블로그" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="about"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-구글 코랩(Phython)을 GitHub에 업로드하는 방ᄇ 4fc35a56f73945b0a1a4e729c6fff10b" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/" class="article-date">
+	  <time datetime="2022-06-27T03:49:48.143Z" itemprop="datePublished">June 27, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="구글-코랩-Phython-을-GitHub에-업로드하는-방법"><a href="#구글-코랩-Phython-을-GitHub에-업로드하는-방법" class="headerlink" title="구글 코랩(Phython)을 GitHub에 업로드하는 방법"></a>구글 코랩(Phython)을 GitHub에 업로드하는 방법</h1><h3 id="GitHub-Repository-초기-설정"><a href="#GitHub-Repository-초기-설정" class="headerlink" title="[GitHub Repository 초기 설정]"></a>[GitHub Repository 초기 설정]</h3><ol>
+<li>우선  Github에 가서 새 repository를 만든다.</li>
+</ol>
+<ul>
+<li><p>’Add a README file’ 체크</p>
+<ul>
+<li>’Add .gitignore &gt; .gitignore template:<strong>Python’</strong> 으로 변경</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled.png" alt="Untitled"></p>
+<ol>
+<li>파일 용량이 너무 크면 GitHub에 안 올라간다. 그래서 미리 data 파일 안에 있는 내용은 안 올라가게 설정해둘 수 있다.<ul>
+<li>.gitignore 파일을 열어 아래 코드를 적는다.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># data</span><br><span class="line">data/파일명.csv # 특정 파일만 업로드 X</span><br><span class="line">data # data 파일 내에 있는 전체 파일 업로드 X</span><br></pre></td></tr></table></figure>
+<ul>
+<li>터미널에서 git add, commit, push를 할 때 gitignore 부터 git add . 해줘야 반영이 된다.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .gitignore</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<ul>
+<li>초기 설정 때 한 번만 git add .gitignore해주고 이후로는 이전처럼 커밋(업로드)하면 된다.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m “update”</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%201.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%202.png" alt="Untitled"></p>
+<ol>
+<li>이제 Python을 사용해 보자. 파이썬을 실행할 수 있는 도구는 다양하다. 그 중에서 <strong>구글 코랩</strong>으로 파이썬을 사용했을 시에 GitHub에 저장하는 방법을 알아보자.</li>
+</ol>
+<h3 id="구글-코랩-기본설정"><a href="#구글-코랩-기본설정" class="headerlink" title="[구글 코랩 기본설정]"></a>[구글 코랩 기본설정]</h3><ul>
+<li><p>우선 구글 코랩에서 인공지능과 관련하여 파이썬을 실행 할 때는 </p>
+<p>시작과 동시에 구글코랩 GPU로 바꿔줘야한다!! 중요!!</p>
+</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%203.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>귀여운 것 설정 (소소한 행복이다)</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%205.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>코드 창 왼쪽에 코드 행 번호 표시하는 설정</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%207.png" alt="Untitled"></p>
+<h3 id="구글-코랩을-GitHub에-커밋하는-방법-1"><a href="#구글-코랩을-GitHub에-커밋하는-방법-1" class="headerlink" title="[구글 코랩을 GitHub에 커밋하는 방법 1]"></a>[구글 코랩을 GitHub에 커밋하는 방법 1]</h3><ul>
+<li>MD 파일로 전환 및 다운로드하여 각각 blog, python_lectures에 커밋하는 방법.</li>
+</ul>
+<ol>
+<li>구글 코랩에서 ‘다운로드 &gt; .ipynb 다운로드’를 한다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%208.png" alt="Untitled"></p>
+<ol>
+<li>구글 코랩에서 다운로드 받은 파일을 python_lectures로  복붙한다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%209.png" alt="Untitled"></p>
+<ol>
+<li>아나콘다 네비게이터 &gt; 관리자 권한으로 실행한다.</li>
+<li>아나콘대 네비게이터에서 Jupyter lab&#x2F; Jupyter notebook 을 실행하여 해당 파일을 찾아간다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%2010.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%2011.png" alt="Untitled"></p>
+<ol>
+<li>markdown로 바꿔준다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%2012.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%2013.png" alt="Untitled"></p>
+<ol>
+<li><p>MD 파일로 저장</p>
+<ul>
+<li>Jupyter lab은 save and~ markdown으로 저장</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%2014.png" alt="Untitled"></p>
+<ul>
+<li>Jupyter note은 download as &gt; markdown으로 저장</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%2015.png" alt="Untitled"></p>
+<ol>
+<li>저장된 MD 파일을 각각 blog, python_lectures &gt; source파일에 복붙해서 커밋한다.</li>
+</ol>
+<h3 id="구글-코랩을-GitHub에-커밋하는-방법-2-복잡-비추"><a href="#구글-코랩을-GitHub에-커밋하는-방법-2-복잡-비추" class="headerlink" title="[구글 코랩을 GitHub에 커밋하는 방법 2] 복잡, 비추"></a>[구글 코랩을 GitHub에 커밋하는 방법 2] 복잡, 비추</h3><ul>
+<li><p>GitHub에 바로 저장하는 방법.</p>
+</li>
+<li><p>경로 지정 잘 하기, 블로그에 올릴 거라면 다운로드가 편하다.</p>
+</li>
+<li><p><em>주의</em> 나중에 로컬에서 깃허브로 업로드 할 때 git pull 먼저 해야 git push가 실행된다.</p>
+</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%2016.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%2017.png" alt="Untitled"></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/06/23/R_9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">R을 이용한 공공데이터 분석_제9장</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B5%AC%EA%B8%80-%EC%BD%94%EB%9E%A9-Phython-%EC%9D%84-GitHub%EC%97%90-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="nav-number">1.</span> <span class="nav-text">구글 코랩(Phython)을 GitHub에 업로드하는 방법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-Repository-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95"><span class="nav-number">1.0.1.</span> <span class="nav-text">[GitHub Repository 초기 설정]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B5%AC%EA%B8%80-%EC%BD%94%EB%9E%A9-%EA%B8%B0%EB%B3%B8%EC%84%A4%EC%A0%95"><span class="nav-number">1.0.2.</span> <span class="nav-text">[구글 코랩 기본설정]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B5%AC%EA%B8%80-%EC%BD%94%EB%9E%A9%EC%9D%84-GitHub%EC%97%90-%EC%BB%A4%EB%B0%8B%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-1"><span class="nav-number">1.0.3.</span> <span class="nav-text">[구글 코랩을 GitHub에 커밋하는 방법 1]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B5%AC%EA%B8%80-%EC%BD%94%EB%9E%A9%EC%9D%84-GitHub%EC%97%90-%EC%BB%A4%EB%B0%8B%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-2-%EB%B3%B5%EC%9E%A1-%EB%B9%84%EC%B6%94"><span class="nav-number">1.0.4.</span> <span class="nav-text">[구글 코랩을 GitHub에 커밋하는 방법 2] 복잡, 비추</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
