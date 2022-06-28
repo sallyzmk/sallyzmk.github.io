@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>R을 이용한 공공데이터 분석_제3장 | 나의 첫번째 블로그</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  
-  <meta name="description" content="제3장 데이터의 구조1단원 용어의 이해1. 변수 변수: ‘변하는 수’, ‘자료들을 넣어두는 창고’  2. 함수 함수: 데이터를 입력하면 정해진 공식에 따라 특정 과정을 수행하는 기능  3. 패키지 패키지: 여러 함수가 들어있는 포장상자. 함수를 사용하기 위해 패키지를 다운, 실행시켜야함. install.packages() library()  2단원 데이터">
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>R을 이용한 공공데이터 분석_제3장 | 나의 첫번째 블로그</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="제3장 데이터의 구조1단원 용어의 이해1. 변수 변수: ‘변하는 수’, ‘자료들을 넣어두는 창고’  2. 함수 함수: 데이터를 입력하면 정해진 공식에 따라 특정 과정을 수행하는 기능  3. 패키지 패키지: 여러 함수가 들어있는 포장상자. 함수를 사용하기 위해 패키지를 다운, 실행시켜야함. install.packages() library()  2단원 데이터">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R을 이용한 공공데이터 분석_제3장">
 <meta property="og:url" content="https://sallyzmk.github.io/2022/06/20/R_3/index.html">
@@ -22,122 +25,187 @@
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://sallyzmk.github.io/images/6_20_class_note(R)/Untitled%206.png">
-  
-    <link rel="alternate" href="/atom.xml" title="나의 첫번째 블로그" type="application/atom+xml">
-  
-  <link rel="icon" href="/css/images/favicon.ico">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-  
+    
+        <link rel="alternate" href="/" title="나의 첫번째 블로그" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
 <link rel="stylesheet" href="/css/style.css">
 
 
-  
-<script src="/js/jquery-3.1.1.min.js"></script>
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/fashion.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
 
 </head>
 
-
-
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
-
-
-  
-
-
-<header id="allheader" class="site-header" role="banner" 
-   >
-  <div class="clearfix container">
-      <div class="site-branding">
-
-          <h1 class="site-title">
-            
-              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
-            
-          </h1>
-          
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-
-            <div class="clearfix sf-menu">
-              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="about"> <a class="" href="/about">About</a> </li>
-                    
-              </ul>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-          </nav>
-
-      </div>
-  </div>
+        </div>
+    </div>
 </header>
 
-
-  <div id="container">
-    <div id="wrap">
-            
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="post-R_3" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" class="article-title" itemprop="name">
-      R을 이용한 공공데이터 분석_제3장
+    uncategorized
     </h1>
-  
+</div>
 
-      </header>
+                        <div class="main-body-content">
+                            <article id="post-R_3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
     
-    <div class="article-meta">
-      
-	<a href="/2022/06/20/R_3/" class="article-date">
-	  <time datetime="2022-06-19T16:00:00.000Z" itemprop="datePublished">June 20, 2022</time>
-	</a>
+        <h1 class="article-title" itemprop="name">
+        R을 이용한 공공데이터 분석_제3장
+        </h1>
+    
 
-       
-      
-	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/06/20/R_3/" class="article-date">
+       <time datetime="2022-06-19T16:00:00.000Z" itemprop="datePublished">2022-06-20</time>
+    </a>
+  </div>
 
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="제3장-데이터의-구조"><a href="#제3장-데이터의-구조" class="headerlink" title="제3장 데이터의 구조"></a>제3장 데이터의 구조</h2><h1 id="1단원-용어의-이해"><a href="#1단원-용어의-이해" class="headerlink" title="1단원 용어의 이해"></a>1단원 용어의 이해</h1><h2 id="1-변수"><a href="#1-변수" class="headerlink" title="1. 변수"></a>1. 변수</h2><ul>
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/06/20/R_3/" class="article-date">
+     <time datetime="2022-06-23T08:52:10.880Z" itemprop="dateModified">2022-06-23</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="제3장-데이터의-구조"><a href="#제3장-데이터의-구조" class="headerlink" title="제3장 데이터의 구조"></a>제3장 데이터의 구조</h2><h1 id="1단원-용어의-이해"><a href="#1단원-용어의-이해" class="headerlink" title="1단원 용어의 이해"></a>1단원 용어의 이해</h1><h2 id="1-변수"><a href="#1-변수" class="headerlink" title="1. 변수"></a>1. 변수</h2><ul>
 <li>변수: ‘변하는 수’, ‘자료들을 넣어두는 창고’</li>
 </ul>
 <h2 id="2-함수"><a href="#2-함수" class="headerlink" title="2. 함수"></a>2. 함수</h2><ul>
@@ -274,204 +342,454 @@
 <li>리스트(list): 가장 광범위한 객체로써, 벡터, 행렬, 데이터프레임, 리스트도 묶는다</li>
 </ul>
 
-      
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://sallyzmk.github.io/2022/06/20/R_3/" data-id="cl4rzz8oa0001ywvmez8r7bu7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-        
-	<div id="comment">
-		<!-- 来必力City版安装代码 -->
-		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
-		<script type="text/javascript">
-		   (function(d, s) {
-		       var j, e = d.getElementsByTagName(s)[0];
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "R을 이용한 공공데이터 분석_제3장",
+        "image": "https://sallyzmk.github.io/images/6_20_class_note(R)/Untitled%206.png",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2022-06-20",
+        "dateCreated": "2022-06-20",
+        "dateModified": "2022-06-23",
+        "url": "https://sallyzmk.github.io/2022/06/20/R_3/",
+        "description": "제3장 데이터의 구조1단원 용어의 이해1. 변수
+변수: ‘변하는 수’, ‘자료들을 넣어두는 창고’
 
-		       if (typeof LivereTower === 'function') { return; }
+2. 함수
+함수: 데이터를 입력하면 정해진 공식에 따라 특정 과정을 수행하는 기능
 
-		       j = d.createElement(s);
-		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-		       j.async = true;
+3. 패키지
+패키지: 여러 함수가 들어있는 포장상자.
+함수를 사용하기 위해 패키지를 다운, 실행시켜야함.
+install.packages()
+library()
 
-		       e.parentNode.insertBefore(j, e);
-		   })(document, 'script');
-		</script>
-		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-		</div>
-		<!-- City版安装代码已完成 -->
-	</div>
+2단원 데이터 ",
+        "wordCount": 1494
+    }
+</script>
 
-
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/06/20/R_4/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          R을 이용한 공공데이터 분석_제4장
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/06/20/6_20_class_note(R)/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">노션 6.20 강의(R)</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
-<!-- Table of Contents -->
-
-  <aside id="sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
+    <section id="comments">
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%9C3%EC%9E%A5-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98-%EA%B5%AC%EC%A1%B0"><span class="nav-number">1.</span> <span class="nav-text">제3장 데이터의 구조</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1%EB%8B%A8%EC%9B%90-%EC%9A%A9%EC%96%B4%EC%9D%98-%EC%9D%B4%ED%95%B4"><span class="nav-number"></span> <span class="nav-text">1단원 용어의 이해</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%EB%B3%80%EC%88%98"><span class="nav-number">1.</span> <span class="nav-text">1. 변수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%ED%95%A8%EC%88%98"><span class="nav-number">2.</span> <span class="nav-text">2. 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%ED%8C%A8%ED%82%A4%EC%A7%80"><span class="nav-number">3.</span> <span class="nav-text">3. 패키지</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%EB%8B%A8%EC%9B%90-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B5%AC%EC%A1%B0-42p"><span class="nav-number"></span> <span class="nav-text">2단원 데이터 구조 (42p)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%EB%B2%A1%ED%84%B0"><span class="nav-number">1.</span> <span class="nav-text">1. 벡터</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%EC%88%AB%EC%9E%90%ED%98%95-%EB%B2%A1%ED%84%B0-%EC%8B%A4%EC%88%98%EB%A1%9C-%EC%86%8C%EC%88%98%EC%A0%90-%EC%A0%95%EC%88%98-%EB%AC%B4%EB%A6%AC%EC%88%98-%EB%93%B1-%EB%AA%A8%EB%93%A0-%EC%88%98-4%EC%B9%99%EC%97%B0%EC%82%B0-%EA%B0%80%EB%8A%A5-%EC%97%B0%EC%86%8D%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 숫자형 벡터: 실수로(소수점, 정수 무리수 등 모든 수) 4칙연산 가능, 연속형 데이터</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%EC%A0%95%EC%88%98%ED%98%95-%EB%B2%A1%ED%84%B0-%EC%88%AB%EC%9E%90%ED%98%95-%EB%B2%A1%ED%84%B0-%E4%B8%AD-%EC%A0%95%EC%88%98-1-0-1-%EB%A1%9C%EB%A7%8C-%EA%B5%AC%EC%84%B1-%EC%9D%B4%EC%82%B0%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 정수형 벡터: 숫자형 벡터 中 정수(-1,0,1)로만 구성, 이산형 데이터</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%EB%AC%B8%EC%9E%90%ED%98%95-%EB%B2%A1%ED%84%B0-%EC%97%B0%EC%82%B0-%EB%B6%88%EA%B0%80"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. 문자형 벡터: 연산 불가</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%B2%A1%ED%84%B0"><span class="nav-number">1.4.</span> <span class="nav-text">1.4. 범주형 벡터</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-1-%EB%AA%85%EB%AA%A9%ED%98%95-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B2%A1%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%92-%EB%B9%84%EA%B5%90-%EB%B6%88%EA%B0%80-%EC%B1%85X"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1. 명목형 자료형 벡터 : 데이터 값 비교 불가  (책X)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-%EC%88%9C%EC%84%9C%ED%98%95-%EC%9E%90%EB%A3%8C%ED%98%95-%EB%B2%A1%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%92-%EC%88%9C%EC%84%9C-%EC%A7%80%EC%A0%95-%EC%B1%85X"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2. 순서형 자료형 벡터 : 데이터 값 순서 지정  (책X)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%EB%85%BC%EB%A6%AC%ED%98%95-%EB%B2%A1%ED%84%B0-%EC%B0%B8-TRUE-%EA%B1%B0%EC%A7%93-FALSE-%EB%85%BC%EB%A6%AC%EA%B0%92%EC%9C%BC%EB%A1%9C-%EA%B5%AC%EC%84%B1%EB%90%9C-%EB%B2%A0%EC%9D%B4%ED%84%B0-%EB%85%BC%EB%A6%AC%EA%B0%92%EC%9D%80-%EB%94%B0%EC%98%B4%ED%91%9C-%EC%97%86%EC%9D%B4-%EB%8C%80%EB%AC%B8%EC%9E%90%EB%A1%9C-%EC%93%B4%EB%8B%A4"><span class="nav-number">1.5.</span> <span class="nav-text">1.5. 논리형 벡터: 참(TRUE),거짓(FALSE) 논리값으로 구성된 베이터. 논리값은 따옴표 없이 대문자로 쓴다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%EB%B2%A1%ED%84%B0-%EC%82%AC%EC%9A%A9-%EC%A3%BC%EC%9D%98-%EC%82%AC%ED%95%AD"><span class="nav-number">1.6.</span> <span class="nav-text">1.6. 벡터 사용 주의 사항</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%ED%96%89%EB%A0%AC"><span class="nav-number">2.</span> <span class="nav-text">2. 행렬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84"><span class="nav-number">3.</span> <span class="nav-text">3. 데이터프레임</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%EB%A6%AC%EC%8A%A4%ED%8A%B8"><span class="nav-number">4.</span> <span class="nav-text">4. 리스트</span></a></li></ol>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
     
-    </div>
-  </aside>
-</section>
-        
-      </div>
+    </section>
 
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
-    <footer id="footer" class="site-footer">
-  
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
         
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
-      </div>
-  </div>
+<nav id="article-nav">
+    
+        <a href="/2022/06/20/R_4/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            R을 이용한 공공데이터 분석_제4장
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2022/06/20/6_20_class_note(R)/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">노션 6.20 강의(R)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/google_colab_github_commit/Untitled.png)" alt="구글 코랩(Phython)을 GitHub에 업로드하는 방법" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/" class="title">구글 코랩(Phython)을 GitHub에 업로드하는 방법</a></p>
+                            <p class="item-date"><time datetime="2022-06-26T16:00:00.000Z" itemprop="datePublished">2022-06-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/23/R_9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_9_files/figure-html/unnamed-chunk-3-1.png)" alt="R을 이용한 공공데이터 분석_제9장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/23/R_9/" class="title">R을 이용한 공공데이터 분석_제9장</a></p>
+                            <p class="item-date"><time datetime="2022-06-23T00:00:00.000Z" itemprop="datePublished">2022-06-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/22/R_8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_8_files/figure-html/unnamed-chunk-1-1.png)" alt="R을 이용한 공공데이터 분석_제8장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/22/R_8/" class="title">R을 이용한 공공데이터 분석_제8장</a></p>
+                            <p class="item-date"><time datetime="2022-06-21T17:00:00.000Z" itemprop="datePublished">2022-06-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/22/R_7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/R_7_files/figure-html/unnamed-chunk-6-1.png)" alt="R을 이용한 공공데이터 분석_제7장" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/22/R_7/" class="title">R을 이용한 공공데이터 분석_제7장</a></p>
+                            <p class="item-date"><time datetime="2022-06-21T16:00:00.000Z" itemprop="datePublished">2022-06-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/21/R_6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2022/06/21/R_6/" class="title">R을 이용한 공공데이터 분석_제6장</a></p>
+                            <p class="item-date"><time datetime="2022-06-20T17:00:00.000Z" itemprop="datePublished">2022-06-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
 </footer>
 
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-
-
-    <!-- headerblur min height -->
+    </div>
     
     
-</script>
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
     
-<div style="display: none;">
-  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-</div>
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+    
+    var disqus_url = 'https://sallyzmk.github.io/2022/06/20/R_3/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
 
 
 
 
-<script src="/js/script.js"></script>
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
-<script src="/js/bootstrap.js"></script>
 
+<!-- Custom Scripts -->
 
 <script src="/js/main.js"></script>
 
 
-
-
-
-
-
-
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
