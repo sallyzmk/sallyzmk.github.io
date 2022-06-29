@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-
-    
-
-    
-    <title>R을 이용한 공공데이터 분석_제9장 | 나의 첫번째 블로그</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="keywords" content="" />
-    
-    <meta name="description" content="제9장 그래프 그리기0단원 자율학습 3장데이터 시각화 ggplot2 자체 사이트  1단원 기본 지식 (192p)  [SKIP] 그래프를 그리는 목적 2가지:  1분석하는 데이터의 특징을 탐색적으로 알아보기 위해 간략하게 그리는 경우 2 데이터 분석 결과를 보고서에 싣기 위해서 정교한 그래프를 그리는 경우.  2단원 R 제공 그래프 함수 : plot(), b">
+  <meta charset="utf-8">
+  
+  <title>R을 이용한 공공데이터 분석_제9장 | 나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="제9장 그래프 그리기0단원 자율학습 3장데이터 시각화 ggplot2 자체 사이트  1단원 기본 지식 (192p)  [SKIP] 그래프를 그리는 목적 2가지:  1분석하는 데이터의 특징을 탐색적으로 알아보기 위해 간략하게 그리는 경우 2 데이터 분석 결과를 보고서에 싣기 위해서 정교한 그래프를 그리는 경우.  2단원 R 제공 그래프 함수 : plot(), b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R을 이용한 공공데이터 분석_제9장">
 <meta property="og:url" content="https://sallyzmk.github.io/2022/06/23/R_9/index.html">
@@ -20,200 +17,184 @@
 <meta property="og:description" content="제9장 그래프 그리기0단원 자율학습 3장데이터 시각화 ggplot2 자체 사이트  1단원 기본 지식 (192p)  [SKIP] 그래프를 그리는 목적 2가지:  1분석하는 데이터의 특징을 탐색적으로 알아보기 위해 간략하게 그리는 경우 2 데이터 분석 결과를 보고서에 싣기 위해서 정교한 그래프를 그리는 경우.  2단원 R 제공 그래프 함수 : plot(), b">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-3-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-3-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-4-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-4-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-5-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-5-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-5-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-9-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-9-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-10-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-10-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-12-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-12-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-12-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-13-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-14-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-14-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-15-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-15-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-15-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-15-4.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-17-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-17-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-18-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-18-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-18-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-18-4.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-19-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-19-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-19-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-20-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-20-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-20-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-20-4.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-21-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-21-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-22-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-22-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-23-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-23-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-24-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-4.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-5.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-6.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-7.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-8.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-25-9.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-26-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-27-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-27-2.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-27-3.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-27-4.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-28-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-29-1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-30-1.png">
 <meta property="article:published_time" content="2022-06-23T00:00:00.000Z">
 <meta property="article:modified_time" content="2022-06-23T09:00:42.149Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-3-1.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-    
-
-    
-
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-
-    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
 <link rel="stylesheet" href="/css/style.css">
 
 
-    
-<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-
-    
-    
-    
-    
-
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
 
-<body>
-    <div id="wrap">
-        <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div class="container-inner">
-                <div id="header-title">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
-                </div>
-                <div id="header-inner" class="nav-container">
-                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
-                    <div class="nav-container-inner">
-                        <ul id="main-nav">
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Home</a>
-                                </li>
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="https://sallyzmk.github.io/2022/06/28/R_home/">index.r</a>
-                                </li>
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/python/index.html">index.python</a>
-                                </li>
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/notion/index.html">index.notion</a>
-                                </li>
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="https://sallyzmk.github.io/2022/06/17/hello-world/">index.else</a>
-                                </li>
-                            
-                        </ul>
-                        <nav id="sub-nav">
-                            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-</div>
-                        </nav>
-                    </div>
-                </div>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/28/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/28/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/python/index.html"> <a class="" href="/python/index.html">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/notion/index.html"> <a class="" href="/notion/index.html">notion</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/17/hello-world/"> <a class="" href="https://sallyzmk.github.io/2022/06/17/hello-world/">else</a> </li>
+                    
+              </ul>
             </div>
-        </div>
-    </div>
+          </nav>
+
+      </div>
+  </div>
 </header>
 
-        <div class="container">
-            <div class="main-body container-inner">
-                <div class="main-body-inner">
-                    <section id="main">
-                        <div class="main-body-header">
-    <h1 class="header">
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-R_9" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-    uncategorized
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      R을 이용한 공공데이터 분석_제9장
     </h1>
-</div>
+  
 
-                        <div class="main-body-content">
-                            <article id="post-R_9" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
+      </header>
     
-        <h1 class="article-title" itemprop="name">
-        R을 이용한 공공데이터 분석_제9장
-        </h1>
-    
+    <div class="article-meta">
+      
+	<a href="/2022/06/23/R_9/" class="article-date">
+	  <time datetime="2022-06-23T00:00:00.000Z" itemprop="datePublished">June 23, 2022</time>
+	</a>
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2022/06/23/R_9/" class="article-date">
-       <time datetime="2022-06-23T00:00:00.000Z" itemprop="datePublished">2022-06-23</time>
-    </a>
-  </div>
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
 
-
-<div class="article-date">
-  <i class="fa fa-calendar-plus-o"></i>
-  <a href="/2022/06/23/R_9/" class="article-date">
-     <time datetime="2022-06-23T09:00:42.149Z" itemprop="dateModified">2022-06-23</time>
-  </a>
-</div>
-
-
-                
-
-                
-                
-
-                
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-
-            
-
-            
-
-            <h2 id="제9장-그래프-그리기"><a href="#제9장-그래프-그리기" class="headerlink" title="제9장 그래프 그리기"></a>제9장 그래프 그리기</h2><h1 id="0단원-자율학습"><a href="#0단원-자율학습" class="headerlink" title="0단원 자율학습"></a>0단원 자율학습</h1><ul>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="제9장-그래프-그리기"><a href="#제9장-그래프-그리기" class="headerlink" title="제9장 그래프 그리기"></a>제9장 그래프 그리기</h2><h1 id="0단원-자율학습"><a href="#0단원-자율학습" class="headerlink" title="0단원 자율학습"></a>0단원 자율학습</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://r4ds.had.co.nz/data-visualisation.html">3장데이터 시각화</a></li>
 <li><a target="_blank" rel="noopener" href="https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html">ggplot2 자체 사이트</a></li>
 </ul>
@@ -536,407 +517,206 @@
 
 <p><img src="/images/R_9_files/figure-html/unnamed-chunk-30-1.png"><!-- --></p>
 
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="https://sallyzmk.github.io/2022/06/23/R_9/" data-id="cl4rzz8om0006ywvm5f160gc9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+      
     </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "John Doe"
-        },
-        "headline": "R을 이용한 공공데이터 분석_제9장",
-        "image": "https://sallyzmk.github.io/images/R_9_files/figure-html/unnamed-chunk-3-1.png",
-        "keywords": "",
-        "genre": "",
-        "datePublished": "2022-06-23",
-        "dateCreated": "2022-06-23",
-        "dateModified": "2022-06-23",
-        "url": "https://sallyzmk.github.io/2022/06/23/R_9/",
-        "description": "제9장 그래프 그리기0단원 자율학습
-3장데이터 시각화
-ggplot2 자체 사이트
-
-1단원 기본 지식 (192p)  [SKIP]
-그래프를 그리는 목적 2가지: 
-1분석하는 데이터의 특징을 탐색적으로 알아보기 위해 간략하게 그리는 경우
-2 데이터 분석 결과를 보고서에 싣기 위해서 정교한 그래프를 그리는 경우.
-
-2단원 R 제공 그래프 함수 : plot(), b",
-        "wordCount": 4424
-    }
-</script>
-
-</article>
-
-    <section id="comments">
-    
+    <footer class="entry-meta entry-footer">
+      
+      
+      
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
 
 
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
     
-    </section>
-
-
-
-                        </div>
-                    </section>
-                    <aside id="sidebar">
-    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-    <div class="sidebar-top">
-        <p>follow:</p>
-        <ul class="social-links">
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/sallyzmk" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-        </ul>
-    </div>
-    
-        
 <nav id="article-nav">
-    
-        <a href="/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
+  
+    <a href="/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-            구글 코랩(Phython)을 GitHub에 업로드하는 방법
+          구글 코랩(Phython)을 GitHub에 업로드하는 방법
         
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+      </div>
     </a>
-    
-    
-        <a href="/2022/06/22/R_8/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">R을 이용한 공공데이터 분석_제8장</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
+  
+  
+    <a href="/2022/06/22/R_8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">R을 이용한 공공데이터 분석_제8장</div>
+    </a>
+  
 </nav>
 
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
-    <div class="widgets-container">
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%9C9%EC%9E%A5-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">제9장 그래프 그리기</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0%EB%8B%A8%EC%9B%90-%EC%9E%90%EC%9C%A8%ED%95%99%EC%8A%B5"><span class="nav-number"></span> <span class="nav-text">0단원 자율학습</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1%EB%8B%A8%EC%9B%90-%EA%B8%B0%EB%B3%B8-%EC%A7%80%EC%8B%9D-192p-SKIP"><span class="nav-number"></span> <span class="nav-text">1단원 기본 지식 (192p)  [SKIP]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%EB%8B%A8%EC%9B%90-R-%EC%A0%9C%EA%B3%B5-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%95%A8%EC%88%98-plot-barplot-hist-boxplot-193p-SKIP"><span class="nav-number"></span> <span class="nav-text">2단원 R 제공 그래프 함수 : plot(), barplot(), hist(), boxplot() (193p)  [SKIP]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">0. 라이브러리 불러오기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-plot-%ED%95%A8%EC%88%98"><span class="nav-number">2.</span> <span class="nav-text">1. plot() 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-barplot-%ED%95%A8%EC%88%98"><span class="nav-number">3.</span> <span class="nav-text">2. barplot() 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-hist-%ED%95%A8%EC%88%98"><span class="nav-number">4.</span> <span class="nav-text">3. hist() 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-boxplot-%ED%95%A8%EC%88%98"><span class="nav-number">5.</span> <span class="nav-text">4. boxplot() 함수</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%EB%8B%A8%EC%9B%90-ggplot-%EA%B7%B8%EB%9E%98%ED%94%84-201p-%EC%97%AC%EA%B8%B0%EB%B6%80%ED%84%B0"><span class="nav-number"></span> <span class="nav-text">3단원 ggplot 그래프 (201p) 여기부터!!!</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90"><span class="nav-number">1.</span> <span class="nav-text">1. 기본개념</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">2. 그래프 그리기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-geom-point-%EC%82%B0%EC%A0%90%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. geom_point : 산점도 그리기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 막대그래프 그리기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-geom-histogram-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EB%8F%84%EC%88%98%EB%B6%84%ED%8F%AC%ED%91%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. geom_histogram() : 히스토그램(도수분포표) 그리기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-geom-density-%EC%BB%A4%EB%84%90-%EB%B0%80%EB%8F%84-%EA%B3%A1%EC%84%A0"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. geom_density() : 커널 밀도 곡선</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-geom-boxplot-%EC%83%81%EC%9E%90%EA%B7%B8%EB%A6%BC-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. geom_boxplot() : 상자그림 그래프 그리기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-geom-line-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">2.6.</span> <span class="nav-text">2.6. geom_line() : 선그래프 그리기</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%EB%8B%A8%EC%9B%90-ggplot-%ED%95%A8%EC%88%98%EB%A5%BC-%EC%A0%95%EA%B5%90%ED%95%98%EA%B2%8C-%EA%B7%B8%EB%A6%AC%EA%B8%B0-215p"><span class="nav-number"></span> <span class="nav-text">4단원 ggplot() 함수를 정교하게 그리기  (215p)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-col-x3D-fill-x3D-1%EA%B0%9C%EC%9D%98-%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-2%EA%B0%9C-%EB%B3%80%EC%88%98%EB%A5%BC-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">1. col&#x3D;, fill&#x3D; : 1개의 그래프에 2개 변수를 반영하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E2%80%98col-x3D-%E2%80%99-geom-point-%EC%82%B0%EC%A0%90%EB%8F%84%EC%97%90-%EB%B3%80%EC%88%98%EB%A5%BC-%EC%B6%94%EA%B0%80%ED%95%B4%EC%84%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. ‘col&#x3D;’+geom_point() : 산점도에 변수를 추가해서 그리기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E2%80%98fill-x3D-%E2%80%99-geom-bar-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-2%EA%B0%9C-%EB%B2%94%EC%A3%BC-%EB%82%B4%EC%9A%A9%EC%9D%84-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. ‘fill&#x3D;’+geom_bar() : 막대그래프에 2개 범주 내용을 반영하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E2%80%98col-x3D-%E2%80%99-geom-line-%EC%84%A0%EA%B7%B8%EB%9E%98%ED%94%84%EC%97%90-2%EA%B0%9C-%EB%B2%94%EC%A3%BC-%EB%82%B4%EC%9A%A9%EC%9D%84-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. ‘col&#x3D;’+geom_line() : 선그래프에 2개 범주 내용을 반영하기</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84%EC%9D%98-%EC%88%9C%EC%84%9C-%EB%B3%80%EA%B2%BD"><span class="nav-number">2.</span> <span class="nav-text">2. 막대그래프의 순서 변경</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-reorder-%ED%81%AC%EA%B8%B0-%EC%88%9C%EC%9C%BC%EB%A1%9C-%EC%A0%95%EB%A0%AC"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. reorder() : 크기 순으로 정렬</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-scale-x-discrete-limits-x3D-c-%EA%B7%B8%EB%9E%98%ED%94%84-%EC%88%9C%EC%84%9C%EB%A5%BC-%EC%A7%81%EC%A0%91-%EC%A0%95%ED%95%98%EA%B8%B0-SKIP"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. scale_x_discrete(limits&#x3D;c()) : 그래프 순서를 직접 정하기  [SKIP]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-coord-flip-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84%EB%A5%BC-90%EB%8F%84-%ED%9A%8C%EC%A0%84%ED%95%B4%EC%84%9C-%EC%88%98%ED%8F%89%EC%9C%BC%EB%A1%9C-%EA%B7%B8%EB%A6%AC%EA%B8%B0-SKIP"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. coord_flip() : 막대그래프를 90도 회전해서 수평으로 그리기  [SKIP]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-xlim-ylim-x%EC%B6%95%EA%B3%BC-y%EC%B6%95%EC%9D%98-%EB%B2%94%EC%9C%84-%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0-SKIP"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. xlim(), ylim() : x축과 y축의 범위 지정하기  [SKIP]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-ggtitle-xlab-ylab-%EA%B7%B8%EB%9E%98%ED%94%84%EC%99%80-%EC%B6%95%EC%97%90-%EC%9D%B4%EB%A6%84-%EB%B6%99%EC%9D%B4%EA%B8%B0-SKIP"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. ggtitle(), xlab(), ylab() : 그래프와 축에 이름 붙이기  [SKIP]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%EB%8B%A8%EC%9B%90-ggplot2-%EA%B0%95%EC%9D%98-%EC%B1%85X"><span class="nav-number"></span> <span class="nav-text">5단원 ggplot2 강의 (책X)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%EC%82%B0%EC%A0%90%EB%8F%84-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%AC%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="nav-number">1.</span> <span class="nav-text">1. 산점도 그래프 그리는 방법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-colour-%EC%9E%85%EB%A0%A5-%EC%9C%84%EC%B9%98-%EB%B3%80%EA%B2%BD%ED%95%B4%EB%B3%B4%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. colour 입력 위치 변경해보기</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B7%B8%EB%A6%AC%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">2. 히스토그램 그리기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%EC%98%B5%EC%85%98"><span class="nav-number">3.</span> <span class="nav-text">3. 옵션</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
         
-            
-                
+      </div>
 
-            
-                
-    <div class="widget-wrap">
-        <h3 class="widget-title">recents</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2022/06/28/R_home/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2022/06/28/R_home/" class="title">R을 이용한 공공데이터 분석 필기모음</a></p>
-                            <p class="item-date"><time datetime="2022-06-28T00:00:00.000Z" itemprop="datePublished">2022-06-28</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/google_colab_github_commit/Untitled.png)" alt="구글 코랩(Phython)을 GitHub에 업로드하는 방법" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2022/06/27/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%E1%84%87%204fc35a56f73945b0a1a4e729c6fff10b/" class="title">구글 코랩(Phython)을 GitHub에 업로드하는 방법</a></p>
-                            <p class="item-date"><time datetime="2022-06-26T16:00:00.000Z" itemprop="datePublished">2022-06-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2022/06/23/R_9/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/R_9_files/figure-html/unnamed-chunk-3-1.png)" alt="R을 이용한 공공데이터 분석_제9장" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2022/06/23/R_9/" class="title">R을 이용한 공공데이터 분석_제9장</a></p>
-                            <p class="item-date"><time datetime="2022-06-23T00:00:00.000Z" itemprop="datePublished">2022-06-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2022/06/22/R_8/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/R_8_files/figure-html/unnamed-chunk-1-1.png)" alt="R을 이용한 공공데이터 분석_제8장" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2022/06/22/R_8/" class="title">R을 이용한 공공데이터 분석_제8장</a></p>
-                            <p class="item-date"><time datetime="2022-06-21T17:00:00.000Z" itemprop="datePublished">2022-06-22</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2022/06/22/R_7/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/R_7_files/figure-html/unnamed-chunk-6-1.png)" alt="R을 이용한 공공데이터 분석_제7장" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2022/06/22/R_7/" class="title">R을 이용한 공공데이터 분석_제7장</a></p>
-                            <p class="item-date"><time datetime="2022-06-21T16:00:00.000Z" itemprop="datePublished">2022-06-22</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
     </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/28/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="/python/index.html" class="mobile-nav-link">Python</a>
+  
+    <a href="/notion/index.html" class="mobile-nav-link">Notion</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/17/hello-world/" class="mobile-nav-link">else</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
 
-            
-                
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">10</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-
-            
-                
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-            </ul>
-        </div>
-    </div>
-
-
-            
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
         
-    </div>
-</aside>
-
-                </div>
-            </div>
-        </div>
-        <footer id="footer">
-    <div class="container">
-        <div class="container-inner">
-            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
-            <div class="credit">
-                <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
-                </h1>
-                <p>&copy; 2022 John Doe</p>
-                
-                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
-                
-            </div>
-            <div class="footer-plugins">
-              
-    
-
-
-            </div>
-        </div>
-    </div>
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
 </footer>
 
-    </div>
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
     
     
-    <script>
-    var disqus_shortname = 'hexo-theme-hueman';
+</script>
     
-    
-    var disqus_url = 'https://sallyzmk.github.io/2022/06/23/R_9/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-    </script>
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
-
-    
-        
-<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-share.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-video.min.js"></script>
-
-    
-    
-        
-<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-
-    
-    
-
-    
-    
-    
+<script src="/js/script.js"></script>
 
 
+<script src="/js/bootstrap.js"></script>
 
-<!-- Custom Scripts -->
 
 <script src="/js/main.js"></script>
 
 
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
