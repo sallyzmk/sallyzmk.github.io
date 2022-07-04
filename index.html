@@ -102,6 +102,699 @@
         
           <section id="main">
   
+    <article id="post-python_5"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	<a href="/2022/07/04/python_5/" class="article-date">
+	  <time datetime="2022-07-03T16:00:00.000Z" itemprop="datePublished">July 4, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Chapter-05-1-결정-트리-가장-중요함"><a href="#Chapter-05-1-결정-트리-가장-중요함" class="headerlink" title="Chapter 05-1 결정 트리 (가장 중요함)"></a>Chapter 05-1 결정 트리 (가장 중요함)</h1><ul>
+<li>직관적이다.</li>
+<li>윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ</li>
+<li>유일한 단점 : 과대적합이 일어나기 쉽다.</li>
+</ul>
+<h2 id="wine-데이터-가져오기"><a href="#wine-데이터-가져오기" class="headerlink" title="wine 데이터 가져오기"></a>wine 데이터 가져오기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">wine = pd.read_csv(<span class="string">&#x27;https://bit.ly/wine_csv_data&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(wine.head)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;bound method NDFrame.head of       alcohol  sugar    pH  class
+0         9.4    1.9  3.51    0.0
+1         9.8    2.6  3.20    0.0
+2         9.8    2.3  3.26    0.0
+3         9.8    1.9  3.16    0.0
+4         9.4    1.9  3.51    0.0
+...       ...    ...   ...    ...
+6492     11.2    1.6  3.27    1.0
+6493      9.6    8.0  3.15    1.0
+6494      9.4    1.2  2.99    1.0
+6495     12.8    1.1  3.34    1.0
+6496     11.8    0.8  3.26    1.0
+
+[6497 rows x 4 columns]&gt;
+</code></pre>
+<h2 id="데이터-프레임-확인"><a href="#데이터-프레임-확인" class="headerlink" title="데이터 프레임 확인"></a>데이터 프레임 확인</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-a8722cad-7d96-44de-b84a-2c5352674b94">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alcohol</th>
+      <th>sugar</th>
+      <th>pH</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9.4</td>
+      <td>1.9</td>
+      <td>3.51</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9.8</td>
+      <td>2.6</td>
+      <td>3.20</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.8</td>
+      <td>2.3</td>
+      <td>3.26</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9.8</td>
+      <td>1.9</td>
+      <td>3.16</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9.4</td>
+      <td>1.9</td>
+      <td>3.51</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-a8722cad-7d96-44de-b84a-2c5352674b94')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-a8722cad-7d96-44de-b84a-2c5352674b94 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-a8722cad-7d96-44de-b84a-2c5352674b94&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/python_5/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<ul>
+<li>info() : 데이터 프레임의 각 열의 데이터 타입과 누락된 데이터가 있는지 확인.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 6497 entries, 0 to 6496
+Data columns (total 4 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   alcohol  6497 non-null   float64
+ 1   sugar    6497 non-null   float64
+ 2   pH       6497 non-null   float64
+ 3   class    6497 non-null   float64
+dtypes: float64(4)
+memory usage: 203.2 KB
+</code></pre>
+<ul>
+<li>describe(): 열에 대한 간략한 통계 출력. 최소, 최대, 평균값 등을 볼 수 있다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine.describe()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alcohol</th>
+      <th>sugar</th>
+      <th>pH</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>6497.000000</td>
+      <td>6497.000000</td>
+      <td>6497.000000</td>
+      <td>6497.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>10.491801</td>
+      <td>5.443235</td>
+      <td>3.218501</td>
+      <td>0.753886</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.192712</td>
+      <td>4.757804</td>
+      <td>0.160787</td>
+      <td>0.430779</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>8.000000</td>
+      <td>0.600000</td>
+      <td>2.720000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>9.500000</td>
+      <td>1.800000</td>
+      <td>3.110000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>10.300000</td>
+      <td>3.000000</td>
+      <td>3.210000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>11.300000</td>
+      <td>8.100000</td>
+      <td>3.320000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>14.900000</td>
+      <td>65.800000</td>
+      <td>4.010000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/python_5/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<h2 id="데이터-가공하기"><a href="#데이터-가공하기" class="headerlink" title="데이터 가공하기"></a>데이터 가공하기</h2><ul>
+<li>알코올 도수, 당도, pH값 단위 표준화</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = wine [[<span class="string">&#x27;alcohol&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>]].to_numpy()</span><br><span class="line">target = wine[<span class="string">&#x27;class&#x27;</span>].to_numpy()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine[<span class="string">&#x27;class&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.0    4898
+0.0    1599
+Name: class, dtype: int64
+</code></pre>
+<h2 id="훈련데이터-분리"><a href="#훈련데이터-분리" class="headerlink" title="훈련데이터 분리"></a>훈련데이터 분리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train_test_split() 함수는 설정값을 지정하지 않으면 25%를 테스트 세트로 지정합니다.</span></span><br><span class="line"><span class="comment"># 샘플 개수가 충분히 많으므로 20% 정도만 테스트 세트로 나눈다. test_size=0.2</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    data, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
+
+<h2 id="표준화-처리"><a href="#표준화-처리" class="headerlink" title="표준화 처리"></a>표준화 처리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss = StandardScaler()</span><br><span class="line">ss.fit(train_input)</span><br><span class="line"></span><br><span class="line">train_scaled = ss.transform(train_input)</span><br><span class="line">test_scaled = ss.transform(test_input)</span><br></pre></td></tr></table></figure>
+
+<h2 id="로지스틱-회귀-모델-훈련-lr"><a href="#로지스틱-회귀-모델-훈련-lr" class="headerlink" title="로지스틱 회귀 모델 훈련 (lr)"></a>로지스틱 회귀 모델 훈련 (lr)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">lr = LogisticRegression()</span><br><span class="line">lr.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(lr.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(lr.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.7808350971714451
+0.7776923076923077
+</code></pre>
+<ul>
+<li>[결과 해석]</li>
+<li>점수가 높지 않음. 생각보다 화이트 와인을 골라내기 어려움. 과소적합.</li>
+<li>해결책: 규제 매개 변수 C의 값을 바꿔보자. &#x2F; solver 매개변수에서 다른 알고리즘을 선택하자&#x2F; 다항 특성을 만들어 추가하자.</li>
+</ul>
+<h2 id="로지스틱-회귀가-학습한-계수와-절편"><a href="#로지스틱-회귀가-학습한-계수와-절편" class="headerlink" title="로지스틱 회귀가 학습한 계수와 절편"></a>로지스틱 회귀가 학습한 계수와 절편</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[ 0.51270274  1.6733911  -0.68767781]] [1.81777902]
+</code></pre>
+<h2 id="결정트리-모델-만들기-dt"><a href="#결정트리-모델-만들기-dt" class="headerlink" title="결정트리 모델 만들기 (dt)"></a>결정트리 모델 만들기 (dt)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># criterion&#123;“gini”, “entropy”, “log_loss”&#125;, default=”gini”</span></span><br><span class="line"><span class="comment"># dt = DecisionTreeClassifier(criterion = &#x27;entropy&#x27;, max_depth = 7, random_state=42)</span></span><br><span class="line">dt = DecisionTreeClassifier(random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target)) <span class="comment"># 훈련 세트</span></span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target)) <span class="comment"># 테스트 세트</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.996921300750433
+0.8592307692307692
+</code></pre>
+<ul>
+<li>[결과 해석]</li>
+<li>훈련 정확도 : 0.99</li>
+<li>테스트 정확도 : 0.85</li>
+<li>과대적합이 일어났다.</li>
+<li>차이가 생기는 이유 : 예를 들어 훈련때는 깔끔한 데이터(검,파,빨)로 훈련을 했으나, 테스트 시에는 섞인 데이터((검+파))가 들어오기 때문</li>
+<li>해결책 : 색상이 아닌 도형으로 분류를 한다?</li>
+<li>깊이가 너무 깊으면 섞여있는 데이터를 분류하기 힘들다. 때문에 당장 정확도는 약간 떨어질지 몰라도 깊이를 적당하게 조정한다. (max_depth&#x3D; )<br>-max_depth&#x3D; 을 지정해준 이후로는 훈련데이터 정확도는 떨어져도 과대,과소적합이 생기지 않았다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">3</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8454877814123533
+0.8415384615384616
+</code></pre>
+<ul>
+<li>[결과 해석]</li>
+<li>max_depth&#x3D; 3으로 지정하는 것이 과소,과대적합이 일어나지 않고 가장 바람직한 모델이 된다.</li>
+</ul>
+<h2 id="위에서-만든-결정트리-모델-객체를-plot-tree-함수에-전달하여-시각화"><a href="#위에서-만든-결정트리-모델-객체를-plot-tree-함수에-전달하여-시각화" class="headerlink" title="위에서 만든 결정트리 모델 객체를 plot_tree() 함수에 전달하여 시각화"></a>위에서 만든 결정트리 모델 객체를 plot_tree() 함수에 전달하여 시각화</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="literal">None</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.996921300750433
+0.8592307692307692
+</code></pre>
+<p><img src="/images/python_5/output_28_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">7</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8895516644217818
+0.8630769230769231
+</code></pre>
+<p><img src="/images/python_5/output_29_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">8</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9003271117952665
+0.8576923076923076
+</code></pre>
+<p><img src="/images/python_5/output_30_1.png" alt="png"></p>
+<ul>
+<li>max_depth&#x3D; 8이 되는 순간 과대적합이 생긴다.</li>
+<li>고로 max_depth&#x3D; 7 정도가 가장 적합하다.</li>
+</ul>
+<h2 id="노드란-무엇인가"><a href="#노드란-무엇인가" class="headerlink" title="노드란 무엇인가?"></a>노드란 무엇인가?</h2><ul>
+<li>루트 노드, 노드, 리프노드(&#x3D;말단노드)</li>
+<li>루트 노드읽는 법<ul>
+<li>테스트 조건</li>
+<li>불순도</li>
+<li>총 샘플 수 </li>
+<li>클래스별 샘플 수</li>
+</ul>
+<ul>
+<li>filled&#x3D; True 함수<ul>
+<li>클래스마다 색깔을 부여하고, 어떤 클래스의 비율이 높아지면 점점 진한 색으로 표시한다. 직관적.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt, max_depth = <span class="number">1</span>,</span><br><span class="line">          filled= <span class="literal">True</span>,</span><br><span class="line">          feature_names= [<span class="string">&#x27;alcohal&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 루트 노드, 노드, 리프노드(=말단노드)</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_5/output_33_0.png" alt="png"></p>
+<h2 id="불순도"><a href="#불순도" class="headerlink" title="불순도"></a>불순도</h2><ul>
+<li><p>한 범주 안에서 서로 다른 데이터가 얼마나 섞여 있는지를 나타냄.</p>
+</li>
+<li><p>흰색과 검은색이 각각 50개 섞여 있다.</p>
+<ul>
+<li>불순도 최대 : 0.5</li>
+</ul>
+</li>
+<li><p>흰색과 검은색이 완전 100% 분리가 됨</p>
+<ul>
+<li>흰색 노드 불순도 최소 : 0</li>
+<li>검은색 노드 불순도 최소 : 0</li>
+</ul>
+</li>
+<li><p>비율</p>
+</li>
+<li><p>레드와인 5:5 화이트와인 -&gt; 불순도가 가장 높을 때.gini 불순도의 수치 0.5</p>
+</li>
+</ul>
+<h2 id="엔트로피-Entropy"><a href="#엔트로피-Entropy" class="headerlink" title="엔트로피(Entropy)"></a>엔트로피(Entropy)</h2><ul>
+<li>불순도와 개념이 비슷하다.</li>
+<li>불확실한 정도를 의미함. 0~1 사이</li>
+<li>흰색과 검은색이 각각 50개 섞여 있다.<ul>
+<li>엔트로피 최대 : 1</li>
+</ul>
+</li>
+<li>흰색과 검은색이 완전 100% 분리가 됨<ul>
+<li>흰색 노드 엔트로피 최소 : 0</li>
+<li>검은색 노드 엔트로피 최소 : 0</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"><span class="comment"># 엔트로피 사용</span></span><br><span class="line">dt = DecisionTreeClassifier(criterion = <span class="string">&#x27;entropy&#x27;</span>, max_depth = <span class="number">7</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.885703290359823
+0.8669230769230769
+</code></pre>
+<p><img src="/images/python_5/output_36_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결과</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt, max_depth = <span class="number">1</span>,</span><br><span class="line">          filled= <span class="literal">True</span>,</span><br><span class="line">          feature_names= [<span class="string">&#x27;alcohal&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_5/output_37_0.png" alt="png"></p>
+<h2 id="특성-중요도"><a href="#특성-중요도" class="headerlink" title="특성 중요도"></a>특성 중요도</h2><ul>
+<li>어떤 특성이 결정 트리 모델에 영향을 주었는가?</li>
+<li>어떤 기준, 특성이 가장 확실하게 분리를 시켜줄 수 있느냐? (여기에서는 sugar)</li>
+<li>인과관계와는 상관이 없다.</li>
+<li>(회귀분석: 독립변수와 종속변수 사이의 인과관계를 따짐)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(dt.feature_importances_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.15247834 0.68293075 0.16459092]
+</code></pre>
+<h2 id="현업에서의-적용"><a href="#현업에서의-적용" class="headerlink" title="현업에서의 적용"></a>현업에서의 적용</h2><ul>
+<li>현업에서 DecisionTreeClassifier (1970년대)</li>
+<li>랜덤포레스트. XGBoost 하이퍼파라미터 매우 많음</li>
+</ul>
+<h1 id="Chapter-05-2-교차-검증과-그리드-서치"><a href="#Chapter-05-2-교차-검증과-그리드-서치" class="headerlink" title="Chapter 05-2 교차 검증과 그리드 서치"></a>Chapter 05-2 교차 검증과 그리드 서치</h1><ul>
+<li>함부로 건들이지 말아라.</li>
+<li>물론 다 시도해보면 퀄은 올라가겠지만 비효율적이다.</li>
+</ul>
+<h2 id="검증-세트"><a href="#검증-세트" class="headerlink" title="검증 세트"></a>검증 세트</h2><ul>
+<li>훈련세트와 테스트세트</li>
+<li>훈련 : 교과서 공부하는 것 훈련세트, 모의평가</li>
+<li>검증 : 강남대성 모의고사 문제지<br>——-파라미터는 훈련과 검증을 열심히 조지구..!——-</li>
+<li>테스트 : 6모, 9모</li>
+<li>실전 : 수능</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 가져오기</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">wine = pd.read_csv(<span class="string">&#x27;https://bit.ly/wine_csv_data&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(wine.head)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 가공하기</span></span><br><span class="line">data = wine [[<span class="string">&#x27;alcohol&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>]].to_numpy()</span><br><span class="line">target = wine[<span class="string">&#x27;class&#x27;</span>].to_numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 분리</span></span><br><span class="line"><span class="comment"># 훈련 80%</span></span><br><span class="line"><span class="comment"># 테스트 20%</span></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    data, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;bound method NDFrame.head of       alcohol  sugar    pH  class
+0         9.4    1.9  3.51    0.0
+1         9.8    2.6  3.20    0.0
+2         9.8    2.3  3.26    0.0
+3         9.8    1.9  3.16    0.0
+4         9.4    1.9  3.51    0.0
+...       ...    ...   ...    ...
+6492     11.2    1.6  3.27    1.0
+6493      9.6    8.0  3.15    1.0
+6494      9.4    1.2  2.99    1.0
+6495     12.8    1.1  3.34    1.0
+6496     11.8    0.8  3.26    1.0
+
+[6497 rows x 4 columns]&gt;
+
+
+
+
+
+((5197, 3), (1300, 3), (5197,), (1300,))
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 훈련 80%</span></span><br><span class="line"><span class="comment"># 검증 20%</span></span><br><span class="line">sub_input, val_input, sub_target, val_target = train_test_split(</span><br><span class="line">    train_input, train_target, test_size = <span class="number">0.2</span>, random_state=<span class="number">42</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">sub_input.shape, val_input.shape, sub_target.shape, val_target.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((4157, 3), (1040, 3), (4157,), (1040,))
+</code></pre>
+<ul>
+<li>훈련데이터: train(X), sub_input, sub_target</li>
+<li>검증데이터: val_input, val_target</li>
+<li>테스트데이터: test_input, test_target</li>
+</ul>
+<h2 id="모형-만들기"><a href="#모형-만들기" class="headerlink" title="모형 만들기"></a>모형 만들기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">dt = DecisionTreeClassifier(random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(sub_input,sub_target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 성과 : &quot;</span>, dt.score(sub_input, sub_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;검증 성과 : &quot;</span>, dt.score(val_input, val_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;마지막 최종 : &quot;</span>, dt.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련 성과 :  0.9971133028626413
+검증 성과 :  0.864423076923077
+마지막 최종 :  0.8569230769230769
+</code></pre>
+<ul>
+<li>어느정도 일치해야지 안정적이다고 한다.</li>
+<li>훈련: 87%</li>
+<li>검증: 86%<br>——보통 이정도에서만 끝남</li>
+<li>최종: 55%</li>
+<li>모형을 배포할지 말지 결정은 최종에 따라 결정된다.</li>
+<li>훈련과 검증은 과대적합을 조정했으나, 최종 결과가 55%가 나왔기 때문에 모형 배포는 불가하다.</li>
+</ul>
+<h3 id="교차검증"><a href="#교차검증" class="headerlink" title="교차검증"></a>교차검증</h3><ul>
+<li>데이터 셋을 반복 분할</li>
+<li>For loop</li>
+<li>샘플링 편향적일 수 있다.</li>
+<li>교차검증을 한다고 해서, 정확도가 무조건 올라간다?! (X)</li>
+<li>모형을 안정적으로 만들어 준다, 편향성 예방<ul>
+<li>과대적합 방지</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 책에 없는 내용</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"></span><br><span class="line">df = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터를 K 폴트로 나눈다.</span></span><br><span class="line">folds = KFold(n_splits=<span class="number">5</span>, shuffle= <span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> train_idx, valid_idx <span class="keyword">in</span> folds.split(df):</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;훈련데이터 : <span class="subst">&#123;df[train_idx]&#125;</span>, 검증 데이터 : <span class="subst">&#123;df[valid_idx]&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련데이터 : [1 2 3 4 5 7 8 9], 검증 데이터 : [ 6 10]
+훈련데이터 : [ 2  3  4  5  6  7  8 10], 검증 데이터 : [1 9]
+훈련데이터 : [ 1  2  3  5  6  7  9 10], 검증 데이터 : [4 8]
+훈련데이터 : [ 1  4  5  6  7  8  9 10], 검증 데이터 : [2 3]
+훈련데이터 : [ 1  2  3  4  6  8  9 10], 검증 데이터 : [5 7]
+</code></pre>
+<h2 id="교차-검증-함수"><a href="#교차-검증-함수" class="headerlink" title="교차 검증 함수"></a>교차 검증 함수</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_validate</span><br><span class="line">scores = cross_validate(dt,train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(scores)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균 : &quot;</span>, np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;fit_time&#39;: array([0.01930737, 0.01765442, 0.02578688, 0.022542  , 0.01724601]), &#39;score_time&#39;: array([0.00949001, 0.00124788, 0.00840759, 0.00133181, 0.00768995]), &#39;test_score&#39;: array([0.86923077, 0.84615385, 0.87680462, 0.84889317, 0.83541867])&#125;
+평균 :  0.855300214703487
+</code></pre>
+<h2 id="StratifiedKFold-사용"><a href="#StratifiedKFold-사용" class="headerlink" title="StratifiedKFold 사용"></a>StratifiedKFold 사용</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line">scores = cross_validate(dt, train_input, train_target, cv = StratifiedKFold())</span><br><span class="line"><span class="built_in">print</span>(scores)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균 : &quot;</span>, np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;fit_time&#39;: array([0.01292014, 0.01056361, 0.01049542, 0.01041055, 0.01058245]), &#39;score_time&#39;: array([0.00140882, 0.00116181, 0.00110102, 0.00124288, 0.00108576]), &#39;test_score&#39;: array([0.86923077, 0.84615385, 0.87680462, 0.84889317, 0.83541867])&#125;
+평균 :  0.855300214703487
+</code></pre>
+<h3 id="10폴드-교차검증을-수행"><a href="#10폴드-교차검증을-수행" class="headerlink" title="10폴드 교차검증을 수행"></a>10폴드 교차검증을 수행</h3><ul>
+<li>가장 좋아짐.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line">splitter = StratifiedKFold(n_splits = <span class="number">10</span>, shuffle = <span class="literal">True</span>, random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_validate(dt, train_input, train_target, cv = splitter)</span><br><span class="line"><span class="built_in">print</span>(scores)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균 : &quot;</span>, np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;fit_time&#39;: array([0.03280711, 0.04228663, 0.02831173, 0.03076744, 0.02979231,
+       0.01984262, 0.03593683, 0.03715229, 0.04245949, 0.03987837]), &#39;score_time&#39;: array([0.00103736, 0.00581765, 0.01219463, 0.00096822, 0.0007534 ,
+       0.00889254, 0.00699735, 0.00105405, 0.00105524, 0.00118446]), &#39;test_score&#39;: array([0.83461538, 0.87884615, 0.85384615, 0.85384615, 0.84615385,
+       0.87307692, 0.85961538, 0.85549133, 0.85163776, 0.86705202])&#125;
+평균 :  0.8574181117533719
+</code></pre>
+<h2 id="하이퍼파라미터-튜닝"><a href="#하이퍼파라미터-튜닝" class="headerlink" title="하이퍼파라미터 튜닝"></a>하이퍼파라미터 튜닝</h2><ul>
+<li>그리드 서치<ul>
+<li>사람이 수동적으로 입력</li>
+<li>max_depth : [1,3,7]</li>
+</ul>
+</li>
+<li>랜덤 서치<ul>
+<li>사람이 범위만 지정, 최적을 찾아내렴.</li>
+<li>max_depth : 1~10 &#x2F; by random</li>
+</ul>
+</li>
+<li>베이지안 옵티마이제이션</li>
+<li>AutoML: 범위조차 알아서….</li>
+<li>사람의 개입 없이 하이퍼파라미터 튜닝을 자동을 수행하는 기술을 AutoML이라고 함.<ul>
+<li>예1) PyCaret , <a target="_blank" rel="noopener" href="https://pycaret.gitbook.io/docs/">https://pycaret.gitbook.io/docs/</a></li>
+</ul>
+</li>
+<li>각 모델마다 적게는 1-2개에서 많게는 5-6개의 매개변수를 제공한다.<ul>
+<li>XGBoost 100개?</li>
+</ul>
+</li>
+<li>하이퍼파라미터와 동시에 교차검증을 수행.<ul>
+<li>미친짓</li>
+</ul>
+</li>
+</ul>
+<p>교차검증 5 번</p>
+<ul>
+<li><p>Max Depth &#x3D; 1, 3, 7</p>
+</li>
+<li><p>Criterion &#x3D; gini, entropy</p>
+</li>
+<li><p>교차검증 1번 돌 때, Max Depth 3번 적용</p>
+</li>
+<li><p>총 결과값 3 * 5 * 2나옴.</p>
+</li>
+<li><p>그러나 우리가 궁금한 것은 Best 1개만 알면 된다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;max_depth&#x27;</span> : [<span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>],</span><br><span class="line">    <span class="string">&#x27;min_impurity_decrease&#x27;</span> : [<span class="number">0.0001</span>, <span class="number">0.0002</span>, <span class="number">0.0003</span>, <span class="number">0.0004</span>, <span class="number">0.0005</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gs = GridSearchCV(DecisionTreeClassifier(random_state=<span class="number">42</span>), params, n_jobs=-<span class="number">1</span>)</span><br><span class="line">gs.fit(train_input, train_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>GridSearchCV(estimator=DecisionTreeClassifier(random_state=42), n_jobs=-1,
+             param_grid=&#123;&#39;max_depth&#39;: [1, 3, 7],
+                         &#39;min_impurity_decrease&#39;: [0.0001, 0.0002, 0.0003,
+                                                   0.0004, 0.0005]&#125;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;best : &quot;</span>, gs.best_estimator_)</span><br><span class="line">dt = gs.best_estimator_</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 결과 best :  DecisionTreeClassifier(min_impurity_decrease=0.0001, random_state=42)</span></span><br><span class="line"><span class="comment"># 2 &#x27;max_depth&#x27; : [1, 3, 7], 추가 이후</span></span><br><span class="line"><span class="comment"># 3 결과 best :  DecisionTreeClassifier(max_depth=7, min_impurity_decrease=0.0005,random_state=42)</span></span><br><span class="line"><span class="comment"># 등등 계속 업데이트해서 사용할 수는 있으나</span></span><br><span class="line"><span class="comment"># 첫 결과에서 0.0001가 나왔다가도 min_impurity_decrease 숫자를 0.0001로 픽스시켜서는 안된다.</span></span><br><span class="line"><span class="comment"># 왜냐면 서로 영향을 주기 때문에 다른 파라미터가 추가 되면 최적 결과가 바뀔 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>best :  DecisionTreeClassifier(max_depth=7, min_impurity_decrease=0.0005,
+                       random_state=42)
+</code></pre>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-python_4"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -4813,266 +5506,6 @@ mango
 <!-- Table of Contents -->
 
   
-    <article id="post-R_8"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2022/06/22/R_8/">R을 이용한 공공데이터 분석_제8장</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2022/06/22/R_8/" class="article-date">
-	  <time datetime="2022-06-21T17:00:00.000Z" itemprop="datePublished">June 22, 2022</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="제8장-통계분석"><a href="#제8장-통계분석" class="headerlink" title="제8장 통계분석"></a>제8장 통계분석</h2><h1 id="0단원-자율학습"><a href="#0단원-자율학습" class="headerlink" title="0단원 자율학습"></a>0단원 자율학습</h1><ul>
-<li>~~분석을 사용하야된다! -&gt; 선행연구를 찾아보기, 해당 분석 방법의 가설 설정 예시를 확인하기</li>
-<li><a target="_blank" rel="noopener" href="http://www.yes24.com/Product/Goods/32991798">크롤리의 통계학 강의(The R Book 축약본)</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.yes24.com/Product/Goods/12458880">The R Book)</a></li>
-<li>강의 추천<a target="_blank" rel="noopener" href="https://pabi.smartlearn.io/#courses">데이터사이언스를 위한 통계학입문Ⅰ</a></li>
-</ul>
-<h1 id="1단원-분석-방법-172p"><a href="#1단원-분석-방법-172p" class="headerlink" title="1단원 분석 방법 (172p)"></a>1단원 분석 방법 (172p)</h1><h2 id="1-기술-통계"><a href="#1-기술-통계" class="headerlink" title="1. 기술 통계"></a>1. 기술 통계</h2><ul>
-<li>기술통계 : 평균, 최솟갑스 최댓값, 중간값</li>
-<li>일반인들은 이정도만 알아도 업무가능.</li>
-</ul>
-<h2 id="2-추론-통계"><a href="#2-추론-통계" class="headerlink" title="2. 추론 통계"></a>2. 추론 통계</h2><ul>
-<li>변수 간의 관계를 파악 &#x2F; 새로운 사실을 발견(&#x3D;추정)</li>
-</ul>
-<h3 id="2-1-평균-차이-검정-핵심"><a href="#2-1-평균-차이-검정-핵심" class="headerlink" title="2.1. 평균 차이 검정  [핵심]"></a>2.1. 평균 차이 검정  [핵심]</h3><ul>
-<li>&#x3D;평균분석, 숫자</li>
-<li>가설 검정 : 평균의 차이를 검정</li>
-<li>ex. 남자의 평균 키와 여자의 평균 키는 차이가 있을 것이다.(핵심키워드: 평균, 그룹_남&#x2F;녀, 차이)</li>
-</ul>
-<h3 id="2-2-교차분석"><a href="#2-2-교차분석" class="headerlink" title="2.2. 교차분석"></a>2.2. 교차분석</h3><ul>
-<li>&#x3D;빈도분석, 문자열</li>
-<li>가설검정 : 각 범주별 빈도를 활용해서 관계성을 검정</li>
-<li>ex. 작은 아파트에서의 대형 티비 구매율과 큰 평수 아파트의 대형 티비 구매율 비교</li>
-</ul>
-<h3 id="2-3-상관관계분석"><a href="#2-3-상관관계분석" class="headerlink" title="2.3. 상관관계분석"></a>2.3. 상관관계분석</h3><ul>
-<li>수치 데이터, </li>
-<li>그래프가 1로 수렴 : 양의 상관관계(우상향 그래프)</li>
-<li>그래프가 -1로 수렴 : 음의 상관관계(우하향 그래프프)</li>
-<li>그래프가 0으로 수렴 : 두 수치 데이터 간에 상관관계가 없음(그래프가 엉망이면)</li>
-<li>두 변수간의 상관관계가 있느냐 없느냐?</li>
-<li>ex. 기온에 따라 아이스 아메리카노 판매량을 비교</li>
-</ul>
-<h3 id="2-4-회귀분석-핵심"><a href="#2-4-회귀분석-핵심" class="headerlink" title="2.4. 회귀분석  [핵심]"></a>2.4. 회귀분석  [핵심]</h3><ul>
-<li>회귀 분석: 독립변수와 종속변수 간의 인과관계를 분석하는 통계적 방법</li>
-<li>단순회귀분석: 독립변수가 1석, 다중회귀본석: 독립변수가 2개</li>
-<li>단순회귀분석: y(종속변수) &#x3D; a(기울기)x+b(상수항)</li>
-<li>가설검정 x값이 y값에 영향을 주느냐?</li>
-<li>ex. 기온(독립변수)이 판매량(종속변수)에 [긍정적인&#x2F;부정적인인]영향을 주고 있을 것이다.</li>
-</ul>
-<h1 id="2단원-통계-검정-176p"><a href="#2단원-통계-검정-176p" class="headerlink" title="2단원 통계 검정 (176p)"></a>2단원 통계 검정 (176p)</h1><h2 id="1-가설-hypothesis"><a href="#1-가설-hypothesis" class="headerlink" title="1. 가설 (hypothesis)"></a>1. 가설 (hypothesis)</h2><ul>
-<li>귀무가설: 두 집단의 평균 차이가 없다.</li>
-<li>대립가설: 두 집단의 평균 차이가 있다. (평소 우리가 궁금해 하는 분야)</li>
-</ul>
-<h2 id="2-유의수준-反오차범위"><a href="#2-유의수준-反오차범위" class="headerlink" title="2. 유의수준(反오차범위)"></a>2. 유의수준(反오차범위)</h2><ul>
-<li>유의수준_p-value(p값): 귀무설(평균 차이 X)이 맞는데도 대립가설(평균 차이 O)을 채택할 확률</li>
-<li>예외가 있을 수는 있으나, 이를 인정해주되(허용할 수 있는 예외 범위) 일반화할 수는 없다.</li>
-<li>가설 검정에서 인정하는 유의 수준 [5%, 1%, 0.1%, 10%]</li>
-<li>유의수준의 범위가 넓으면 연구 결과를 얻기 쉽지만 정확성이 떨어짐.</li>
-<li>유의수준의 범위가 좁으면 연구 결과를 얻기 어렵만 정확성이 높아짐.</li>
-</ul>
-<h2 id="2-2-오차범위"><a href="#2-2-오차범위" class="headerlink" title="2.(2) 오차범위"></a>2.(2) 오차범위</h2><ul>
-<li>오차범위&#x3D;신뢰수준(confidence level)</li>
-<li>오차범위 내에 있다 -&gt; 이 설문을 다음에 또 해보면 결과가 다르게 나올 수 있다. 아직까지 차이가 크지 않다.</li>
-<li>오차범위 밖에 있다 -&gt; 이 설문을 다음에 또 해보면 결과가 똑같게 나온다. 최종결과 굳어짐.</li>
-</ul>
-<h2 id="3-척도-SKIP"><a href="#3-척도-SKIP" class="headerlink" title="3. 척도  [SKIP]"></a>3. 척도  [SKIP]</h2><ul>
-<li>척도: 측정도구, 수치로 표시됨.</li>
-<li>명목척도: 대상의 특성이나 범주 구분, 산술연산 X     ex.성별, 결혼유무, 종교, 인종</li>
-<li>서열척도: 대상의 등급순위,           산술연산 X     ex.계급, 사회계층, 자격등급</li>
-<li>등간척도: 대상을 일정 간격으로 구분, 덧셈과 뺄젬 O  ex.온도, 학력, 시험점수</li>
-<li>비율척도: 대상을 비율로 구분,         4칙연산 O     ex.연령, 무게</li>
-</ul>
-<h1 id="3단원-통계-분석-사례-178p"><a href="#3단원-통계-분석-사례-178p" class="headerlink" title="3단원 통계 분석 사례 (178p)"></a>3단원 통계 분석 사례 (178p)</h1><ul>
-<li>[통계 검정 사전 준비]</li>
-<li>분석을 위한 데이터가 적절한지 검정</li>
-<li>등분산 검정, 정규성 검정(수치 데이터가 정규 분포를 이루는가)</li>
-<li>귀무가설, 대립가설을 적절하게 설정 </li>
-<li><pre><code>+ex. 서울이 부산보다 잘 살것이다-&gt;가설이 아님
-</code></pre>
-</li>
-<li><pre><code>+ex. 서울의 평균 임금과 부산의 평균 임금이 차이가 있을 것이다.
-</code></pre>
-</li>
-<li><pre><code>+선행연구(논문)을 찾아 양식을 응용하기
-</code></pre>
-</li>
-<li></li>
-<li>[통계검정 종류]</li>
-<li>평균 차이 검점: (두 그룹 간의) 수치 데이터 + 범주 데이터</li>
-<li><pre><code>+중급이상_ 세 그룹 이상 평균 차이 검정
-</code></pre>
-</li>
-<li>비율 차이 검정(교차분석): 범주 데이터</li>
-<li>상관관계: 수치 데이터</li>
-<li>회귀: </li>
-<li></li>
-<li>[테스트]</li>
-<li>t.test, chisq.test, cor.test</li>
-<li>p.value</li>
-<li><pre><code>+p.value &gt; 0.05 -&gt; 귀무가설 지지
-</code></pre>
-</li>
-<li><pre><code>+p.value &lt; 0.05 -&gt; 대립가설 지지
-</code></pre>
-</li>
-</ul>
-<h2 id="1-두-집단의-평균-차이-검정"><a href="#1-두-집단의-평균-차이-검정" class="headerlink" title="1. 두 집단의 평균 차이 검정"></a>1. 두 집단의 평균 차이 검정</h2><ul>
-<li>t.test 어떻게 데이터를 입력하는지 확인</li>
-<li>결과가 나오면 p-value 확인, 유의수준 0.05이상-&gt;귀무가설, 유의수준 0.05이하-&gt;대립가설</li>
-<li></li>
-<li>t.test(data&#x3D;데이터세트,종속변수_반응변수_y(비교값)~독립변수_설명변수_x(비교대상))</li>
-<li>t.test(데이터세트$종속변수(비교값)~데이터세트$독립변수(비교대상))</li>
-<li></li>
-<li>등분산 검정: 두 그룹의 평균 차이 검정이전에 사전 필수 검증이 필요하다. 데이터 양이 비슷한가. 조건이 비슷한가. ex.10건 vs 100건 비교할 수 없음.</li>
-<li>두 그룹간의 분산이 비슷하면 –&gt; t.test(모수검정)</li>
-<li>두 구룹간의 분산이 다르면 –&gt; 비모수 검정</li>
-<li>귀무가설: 두 그룹간의 분산이 비슷하다.</li>
-<li>대립가설: 두 그룹간의 분산이 다르다.</li>
-<li>등분산 검정에서는 귀무가설을 지지해야 t.test를 사용할 수 있다.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">,</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시각화</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">ggplot<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>trans<span class="punctuation">,</span>y<span class="operator">=</span>cty<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_boxplot<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_8_files/figure-html/unnamed-chunk-1-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 평균값이 크게 차이나는지 확인하기 애매하다</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 때문에 t.test 통계검정을 한다.</span></span><br><span class="line"><span class="comment"># 귀무가설 : auto와 manual의 cty 평균은 차이가 없다.</span></span><br><span class="line"><span class="comment"># 대립가설 : auto와 manual의 cty 평균은 차이가 있다.</span></span><br><span class="line">t.test<span class="punctuation">(</span>data <span class="operator">=</span> mpg1<span class="punctuation">,</span>cty <span class="operator">~</span> trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Welch Two Sample t-test</span><br><span class="line">## </span><br><span class="line">## data:  cty by trans</span><br><span class="line">## t = -4.5375, df = 132.32, p-value = 1.263e-05</span><br><span class="line">## alternative hypothesis: true difference in means between group auto and group manual is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  -3.887311 -1.527033</span><br><span class="line">## sample estimates:</span><br><span class="line">##   mean in group auto mean in group manual </span><br><span class="line">##             15.96815             18.67532</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">                  <span class="comment"># 종속변수 ~ 독립변수</span></span><br><span class="line">                  <span class="comment"># 반응변수 ~ 설명변수</span></span><br><span class="line">                  <span class="comment"># y          x</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 등분산 검정, 귀무가설이어야 t.test를 사용할 수 있다. p-value 0.05 이상여야함.</span></span><br><span class="line">var.test<span class="punctuation">(</span>data <span class="operator">=</span> mpg1<span class="punctuation">,</span> cty<span class="operator">~</span>trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	F test to compare two variances</span><br><span class="line">## </span><br><span class="line">## data:  cty by trans</span><br><span class="line">## F = 0.73539, num df = 156, denom df = 76, p-value = 0.1101</span><br><span class="line">## alternative hypothesis: true ratio of variances is not equal to 1</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  0.4912917 1.0719468</span><br><span class="line">## sample estimates:</span><br><span class="line">## ratio of variances </span><br><span class="line">##          0.7353887</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시각화 방법 1</span></span><br><span class="line">ggplot<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> cty<span class="punctuation">,</span> fill <span class="operator">=</span> trans<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_histogram<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_8_files/figure-html/unnamed-chunk-1-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시각화 방법 2</span></span><br><span class="line">ggplot<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> cty<span class="punctuation">,</span> fill <span class="operator">=</span> trans<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_density<span class="punctuation">(</span>alpha <span class="operator">=</span> <span class="number">0.1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_8_files/figure-html/unnamed-chunk-1-3.png"><!-- --></p>
-<h2 id="2-교차분석"><a href="#2-교차분석" class="headerlink" title="2. 교차분석"></a>2. 교차분석</h2><ul>
-<li>chisq.test() 함수 활용</li>
-<li>교차분석: 범주형 변수들이 관계가 있다는 것을 입증.</li>
-<li>평균의 차이가 아니라 ‘비율에 차이’가 있는지를 검정합니다.</li>
-<li>교차분석 검정은 R의 chisq.test() 함수로 진행</li>
-<li>귀무가설 : trans에 따라 drv(4,f,r)의 (비율)차이가 없다.</li>
-<li>대립가설 : trans에 따라 drv의 차이가 있다.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 빈도표</span></span><br><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span> <span class="comment"># 교차분석</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##           4  f  r</span><br><span class="line">##   auto   75 65 17</span><br><span class="line">##   manual 28 41  8</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 비율</span></span><br><span class="line">prop.table<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##                  4         f         r</span><br><span class="line">##   auto   0.4777070 0.4140127 0.1082803</span><br><span class="line">##   manual 0.3636364 0.5324675 0.1038961</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결과- auto 4륜 구동(4)인 47.8%, manual 전륜구동(f) 53.2%가 가장 많음</span></span><br><span class="line"><span class="comment"># 가정- 실제로 통계적으로 봤을 때, 차이가 있는지 검정</span></span><br><span class="line"><span class="comment"># 귀무가설 : trans에 따라 drv(4,f,r)의 (비율)차이가 없다.</span></span><br><span class="line"><span class="comment"># 대립가설 : trans에 따라 drv의 차이가 있다. </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법 1</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s Chi-squared test</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$trans and mpg1$drv</span><br><span class="line">## X-squared = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법 2</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s Chi-squared test</span><br><span class="line">## </span><br><span class="line">## data:  table(mpg1$trans, mpg1$drv)</span><br><span class="line">## X-squared = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법 3</span></span><br><span class="line">summary<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Number of cases in table: 234 </span><br><span class="line">## Number of factors: 2 </span><br><span class="line">## Test for independence of all factors:</span><br><span class="line">## 	Chisq = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># p-value를 확인하고 귀무/대립가설인지 확인</span></span><br><span class="line"><span class="comment"># 결과- trans에 따라 drv(4,f,r)의 (비율)차이가 없다.</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-상관관계분석"><a href="#3-상관관계분석" class="headerlink" title="3. 상관관계분석"></a>3. 상관관계분석</h2><ul>
-<li>cor.test() 함수 활용</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">cor.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">,</span>mpg1<span class="operator">$</span>hwy<span class="punctuation">)</span>  <span class="comment"># 상관관계 분석</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s product-moment correlation</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$cty and mpg1$hwy</span><br><span class="line">## t = 49.585, df = 232, p-value &lt; 2.2e-16</span><br><span class="line">## alternative hypothesis: true correlation is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  0.9433129 0.9657663</span><br><span class="line">## sample estimates:</span><br><span class="line">##       cor </span><br><span class="line">## 0.9559159</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결과 - p-value 가 2.2/10의16승 보다 작다. -&gt; 0.05보다 작음 -&gt; 대립가설 채택, </span></span><br><span class="line"><span class="comment"># sample estimates: 0.9559159 상관관계가 1에 가까움 -&gt; 상관관계가 높다</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-회귀분석"><a href="#4-회귀분석" class="headerlink" title="4. 회귀분석)"></a>4. 회귀분석)</h2><ul>
-<li>회귀: (기초통계에서) 어떤 특정한 결과에 ‘영향’을 주는 주 요인이 무엇이냐? 이를 찾는 것이 회귀.</li>
-<li><pre><code>+ex. 매출에 영향을 주는 주 요인을 찾기 -날씨, 유명인 홍보, 음식 맛이 변함...
-</code></pre>
-</li>
-<li></li>
-<li>[귀무가설 &amp; 대립가설 존재]</li>
-<li>귀무가설 : x(독립변수)가  y(종속변수)에 영향을 주지 않는다.</li>
-<li>대립가설 : x(독립변수)가  y(종속변수)에 영향을 준다.</li>
-<li>lm() 함수 사용: lm(종속변수~독립변수, data)</li>
-<li></li>
-<li>회귀의 중요성 </li>
-<li>[회귀 분석 종류] (확장성이 높음)</li>
-<li>1세대 회귀 방법론 : 다항회귀분석, 다중회귀분석, 포아송회귀분석, etc</li>
-<li>2세대 회귀 방법론 : 구조방정식</li>
-<li></li>
-<li>[머신러닝, 인공지능] (예측기능을 제공)</li>
-<li>y &#x3D; ax + b</li>
-</ul>
-<h3 id="4-1-단순회귀분석"><a href="#4-1-단순회귀분석" class="headerlink" title="4.1. 단순회귀분석"></a>4.1. 단순회귀분석</h3><ul>
-<li>단순회귀분석: 독립변수가 1개, 종속변수가 1개일 때 분석하는 방식. 또한 회귀분석의 변수는 독립변수와 종속변수 모두 등간척도 또는 비율척도이어야 한다.</li>
-<li>lm(data&#x3D;데이터세트,종속변수~독립변수)</li>
-<li>lm(종속변수~독립변수,)</li>
-<li>lm(데이터세트$종속변수~데이터세트$독립변수)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">&lt;-</span> lm<span class="punctuation">(</span>data <span class="operator">=</span> mtcars<span class="punctuation">,</span>mpg<span class="operator">~</span>disp<span class="punctuation">)</span> <span class="comment"># 회귀분석 결과를 RA에 넣기</span></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span> <span class="comment"># 상세한 분석 결과 출력력</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##     Min      1Q  Median      3Q     Max </span><br><span class="line">## -4.8922 -2.2022 -0.9631  1.6272  7.2305 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.041215   0.004712  -8.747 9.38e-10 ***</span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 3.251 on 30 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709 </span><br><span class="line">## F-statistic: 76.51 on 1 and 30 DF,  p-value: 9.38e-10</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [결과 확인]</span></span><br><span class="line"><span class="comment"># 1. 우선 전체 식에 대한 p-value 확인</span></span><br><span class="line"><span class="comment"># p-value가 0.05 이상= 귀무가설이라면</span></span><br><span class="line"><span class="comment"># →데이터 처리 (쓸데없는 데이터 처리/데이터수집)</span></span><br><span class="line"><span class="comment"># →회귀는 영향을 주는 요인을 찾는 것이기 때문</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 개별 요인의 Pr(&gt;|t|)(=p-value) 확인</span></span><br><span class="line"><span class="comment"># p-value가 0.05 이상= 귀무가설이라면</span></span><br><span class="line"><span class="comment"># →해당 요인을 한.개.씩 제거하고 다시 lm() 함수 돌리기 </span></span><br><span class="line"><span class="comment"># (한꺼번에 여러 요인을 지우면 안된다.)</span></span><br><span class="line"><span class="comment"># →1번부터 반복</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. ANOVA (분산분석)</span></span><br><span class="line"><span class="comment"># 1,2번 모두 p-value &lt; 0.05 (대립가설)이 되는 y 식을 찾으면 서로 같은 식인지 비교확인해야함.</span></span><br><span class="line"><span class="comment"># 식1 : y = disp + var1 + var2 + var3</span></span><br><span class="line"><span class="comment"># 식2 : y = disp + var1 + var2</span></span><br><span class="line"><span class="comment"># 때문에 요인을 적당히 사전에 차출해야한다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 컬럼 갯수가 100개 -&gt; 변수를 선택해야함</span></span><br><span class="line"><span class="comment"># [변수 선택법]</span></span><br><span class="line"><span class="comment"># 전진선택법, 후진소거법, 단계적선택법</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. R-squared</span></span><br><span class="line"><span class="comment"># R-squared (결정계수) = 설명력 = 0 ~ 1</span></span><br><span class="line"><span class="comment"># 1로 수렴할 수록 설명력이 좋다.</span></span><br><span class="line"><span class="comment"># R-squared는 결정계수, Adjusted R-squared는 수정된 결정계수</span></span><br><span class="line"><span class="comment"># 두 수치 모두 1에 가까울 수록 회귀계수의 설명력이 높음</span></span><br><span class="line"><span class="comment"># 결정계수는 독립변수가 많아질 수 록 증가하는 특징이 있음.(다중회귀분석 해당당)</span></span><br><span class="line"><span class="comment"># Multiple R-squared:  0.7183 -&gt; 70% 원인 이를 100으로 채우기 위해 요인을 찾아서 1에 가깝게 만들도록 한다.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-2-다중회귀분석"><a href="#4-2-다중회귀분석" class="headerlink" title="4.2. 다중회귀분석"></a>4.2. 다중회귀분석</h3><ul>
-<li>다중회귀분석: 종속변수에 영향을 주는 독립변수가 복수일 때 분석하는 방식.</li>
-<li>여러 독립변수들은 서로 영향을 주면서 종속변수에 영향을 주기 때문에 한 독립변수가 종속변수에 미치는 영향력은 단순회귀분석을 했을 때와 다중회귀분석을 했을 때에 달라집니다.</li>
-<li>lm(data&#x3D;데이터세트,종속변수~독립변수1+독립변수2+…)</li>
-<li>lm(종속변수~독립변수1+독립변수2+…,)</li>
-<li>lm(데이터세트$종속변수~데이터세트$독립변수1+독립변수2+…)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm<span class="punctuation">(</span>data<span class="operator">=</span>mtcars<span class="punctuation">,</span>mpg<span class="operator">~</span>disp<span class="operator">+</span>hp<span class="operator">+</span>wt<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">## (Intercept)         disp           hp           wt  </span><br><span class="line">##   37.105505    -0.000937    -0.031157    -3.800891</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">&lt;-</span>lm<span class="punctuation">(</span>data<span class="operator">=</span>mtcars<span class="punctuation">,</span>mpg<span class="operator">~</span>disp<span class="operator">+</span>hp<span class="operator">+</span>wt<span class="punctuation">)</span> <span class="comment"># 회귀분석 결과를 RA에 넣기</span></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##    Min     1Q Median     3Q    Max </span><br><span class="line">## -3.891 -1.640 -0.172  1.061  5.861 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 37.105505   2.110815  17.579  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.000937   0.010350  -0.091  0.92851    </span><br><span class="line">## hp          -0.031157   0.011436  -2.724  0.01097 *  </span><br><span class="line">## wt          -3.800891   1.066191  -3.565  0.00133 ** </span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 2.639 on 28 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.8268,	Adjusted R-squared:  0.8083 </span><br><span class="line">## F-statistic: 44.57 on 3 and 28 DF,  p-value: 8.65e-11</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [결과]</span></span><br><span class="line"><span class="comment"># 1. p-value: 8.65e-11 -&gt; 0.01보다 작음 -&gt; 회귀모형 적합</span></span><br><span class="line"><span class="comment"># 2. 개별 요인의 Pr(&gt;|t|)(=p-value) 확인</span></span><br><span class="line"><span class="comment"># 3. Adjusted R-squared:  0.8083 -&gt; 결정계수ㅏ 0.0로 놏아져서 회귀모델의 설명력이 높아짐. </span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -5173,6 +5606,18 @@ mango
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2022/07/04/python_5/">(no title)</a></h6>
+              <span>July 4, 2022</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2022/07/01/python_4/">혼공머 Chapter 04</a></h6>
               <span>July 1, 2022</span>
             </div>
@@ -5227,18 +5672,6 @@ mango
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2022/06/28/Python_NumPy/">Python NymPy</a></h6>
-              <span>June 28, 2022</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -5257,7 +5690,7 @@ mango
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">21</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">21</span></li></ul>
     </div>
   </div>
 

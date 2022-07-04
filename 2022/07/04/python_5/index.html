@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Chapter 05-1 결정 트리 (가장 중요함) 직관적이다. 윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ 유일한 단점 : 과대적합이 일어나기 쉽다.  wine 데이터 가져오기123import pandas as pdwine &#x3D; pd.read_csv(&amp;#x27;https:&#x2F;&#x2F;bit.ly&#x2F;wine_csv_data&amp;#x27;)print(wine.head)  &amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="나의 첫번째 블로그">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/07/04/python_5/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="Chapter 05-1 결정 트리 (가장 중요함) 직관적이다. 윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ 유일한 단점 : 과대적합이 일어나기 쉽다.  wine 데이터 가져오기123import pandas as pdwine &#x3D; pd.read_csv(&amp;#x27;https:&#x2F;&#x2F;bit.ly&#x2F;wine_csv_data&amp;#x27;)print(wine.head)  &amp;l">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_28_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_29_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_30_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_33_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_36_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_37_0.png">
+<meta property="article:published_time" content="2022-07-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-04T08:40:53.962Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/python_5/output_28_1.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Categories/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Categories/">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Python_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Python_home/">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Notion_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Notion_home/">notion</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-python_5" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	<a href="/2022/07/04/python_5/" class="article-date">
+	  <time datetime="2022-07-03T16:00:00.000Z" itemprop="datePublished">July 4, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Chapter-05-1-결정-트리-가장-중요함"><a href="#Chapter-05-1-결정-트리-가장-중요함" class="headerlink" title="Chapter 05-1 결정 트리 (가장 중요함)"></a>Chapter 05-1 결정 트리 (가장 중요함)</h1><ul>
+<li>직관적이다.</li>
+<li>윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ</li>
+<li>유일한 단점 : 과대적합이 일어나기 쉽다.</li>
+</ul>
+<h2 id="wine-데이터-가져오기"><a href="#wine-데이터-가져오기" class="headerlink" title="wine 데이터 가져오기"></a>wine 데이터 가져오기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">wine = pd.read_csv(<span class="string">&#x27;https://bit.ly/wine_csv_data&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(wine.head)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;bound method NDFrame.head of       alcohol  sugar    pH  class
+0         9.4    1.9  3.51    0.0
+1         9.8    2.6  3.20    0.0
+2         9.8    2.3  3.26    0.0
+3         9.8    1.9  3.16    0.0
+4         9.4    1.9  3.51    0.0
+...       ...    ...   ...    ...
+6492     11.2    1.6  3.27    1.0
+6493      9.6    8.0  3.15    1.0
+6494      9.4    1.2  2.99    1.0
+6495     12.8    1.1  3.34    1.0
+6496     11.8    0.8  3.26    1.0
+
+[6497 rows x 4 columns]&gt;
+</code></pre>
+<h2 id="데이터-프레임-확인"><a href="#데이터-프레임-확인" class="headerlink" title="데이터 프레임 확인"></a>데이터 프레임 확인</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-a8722cad-7d96-44de-b84a-2c5352674b94">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alcohol</th>
+      <th>sugar</th>
+      <th>pH</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9.4</td>
+      <td>1.9</td>
+      <td>3.51</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9.8</td>
+      <td>2.6</td>
+      <td>3.20</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.8</td>
+      <td>2.3</td>
+      <td>3.26</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9.8</td>
+      <td>1.9</td>
+      <td>3.16</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9.4</td>
+      <td>1.9</td>
+      <td>3.51</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-a8722cad-7d96-44de-b84a-2c5352674b94')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-a8722cad-7d96-44de-b84a-2c5352674b94 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-a8722cad-7d96-44de-b84a-2c5352674b94&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/python_5/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<ul>
+<li>info() : 데이터 프레임의 각 열의 데이터 타입과 누락된 데이터가 있는지 확인.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 6497 entries, 0 to 6496
+Data columns (total 4 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   alcohol  6497 non-null   float64
+ 1   sugar    6497 non-null   float64
+ 2   pH       6497 non-null   float64
+ 3   class    6497 non-null   float64
+dtypes: float64(4)
+memory usage: 203.2 KB
+</code></pre>
+<ul>
+<li>describe(): 열에 대한 간략한 통계 출력. 최소, 최대, 평균값 등을 볼 수 있다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine.describe()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>alcohol</th>
+      <th>sugar</th>
+      <th>pH</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>6497.000000</td>
+      <td>6497.000000</td>
+      <td>6497.000000</td>
+      <td>6497.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>10.491801</td>
+      <td>5.443235</td>
+      <td>3.218501</td>
+      <td>0.753886</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.192712</td>
+      <td>4.757804</td>
+      <td>0.160787</td>
+      <td>0.430779</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>8.000000</td>
+      <td>0.600000</td>
+      <td>2.720000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>9.500000</td>
+      <td>1.800000</td>
+      <td>3.110000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>10.300000</td>
+      <td>3.000000</td>
+      <td>3.210000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>11.300000</td>
+      <td>8.100000</td>
+      <td>3.320000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>14.900000</td>
+      <td>65.800000</td>
+      <td>4.010000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-7bfdc612-f5ac-4473-bdd8-4e02c3f34bf8&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/python_5/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<h2 id="데이터-가공하기"><a href="#데이터-가공하기" class="headerlink" title="데이터 가공하기"></a>데이터 가공하기</h2><ul>
+<li>알코올 도수, 당도, pH값 단위 표준화</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = wine [[<span class="string">&#x27;alcohol&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>]].to_numpy()</span><br><span class="line">target = wine[<span class="string">&#x27;class&#x27;</span>].to_numpy()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine[<span class="string">&#x27;class&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.0    4898
+0.0    1599
+Name: class, dtype: int64
+</code></pre>
+<h2 id="훈련데이터-분리"><a href="#훈련데이터-분리" class="headerlink" title="훈련데이터 분리"></a>훈련데이터 분리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train_test_split() 함수는 설정값을 지정하지 않으면 25%를 테스트 세트로 지정합니다.</span></span><br><span class="line"><span class="comment"># 샘플 개수가 충분히 많으므로 20% 정도만 테스트 세트로 나눈다. test_size=0.2</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    data, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
+
+<h2 id="표준화-처리"><a href="#표준화-처리" class="headerlink" title="표준화 처리"></a>표준화 처리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss = StandardScaler()</span><br><span class="line">ss.fit(train_input)</span><br><span class="line"></span><br><span class="line">train_scaled = ss.transform(train_input)</span><br><span class="line">test_scaled = ss.transform(test_input)</span><br></pre></td></tr></table></figure>
+
+<h2 id="로지스틱-회귀-모델-훈련-lr"><a href="#로지스틱-회귀-모델-훈련-lr" class="headerlink" title="로지스틱 회귀 모델 훈련 (lr)"></a>로지스틱 회귀 모델 훈련 (lr)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">lr = LogisticRegression()</span><br><span class="line">lr.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(lr.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(lr.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.7808350971714451
+0.7776923076923077
+</code></pre>
+<ul>
+<li>[결과 해석]</li>
+<li>점수가 높지 않음. 생각보다 화이트 와인을 골라내기 어려움. 과소적합.</li>
+<li>해결책: 규제 매개 변수 C의 값을 바꿔보자. &#x2F; solver 매개변수에서 다른 알고리즘을 선택하자&#x2F; 다항 특성을 만들어 추가하자.</li>
+</ul>
+<h2 id="로지스틱-회귀가-학습한-계수와-절편"><a href="#로지스틱-회귀가-학습한-계수와-절편" class="headerlink" title="로지스틱 회귀가 학습한 계수와 절편"></a>로지스틱 회귀가 학습한 계수와 절편</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[ 0.51270274  1.6733911  -0.68767781]] [1.81777902]
+</code></pre>
+<h2 id="결정트리-모델-만들기-dt"><a href="#결정트리-모델-만들기-dt" class="headerlink" title="결정트리 모델 만들기 (dt)"></a>결정트리 모델 만들기 (dt)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># criterion&#123;“gini”, “entropy”, “log_loss”&#125;, default=”gini”</span></span><br><span class="line"><span class="comment"># dt = DecisionTreeClassifier(criterion = &#x27;entropy&#x27;, max_depth = 7, random_state=42)</span></span><br><span class="line">dt = DecisionTreeClassifier(random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target)) <span class="comment"># 훈련 세트</span></span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target)) <span class="comment"># 테스트 세트</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.996921300750433
+0.8592307692307692
+</code></pre>
+<ul>
+<li>[결과 해석]</li>
+<li>훈련 정확도 : 0.99</li>
+<li>테스트 정확도 : 0.85</li>
+<li>과대적합이 일어났다.</li>
+<li>차이가 생기는 이유 : 예를 들어 훈련때는 깔끔한 데이터(검,파,빨)로 훈련을 했으나, 테스트 시에는 섞인 데이터((검+파))가 들어오기 때문</li>
+<li>해결책 : 색상이 아닌 도형으로 분류를 한다?</li>
+<li>깊이가 너무 깊으면 섞여있는 데이터를 분류하기 힘들다. 때문에 당장 정확도는 약간 떨어질지 몰라도 깊이를 적당하게 조정한다. (max_depth&#x3D; )<br>-max_depth&#x3D; 을 지정해준 이후로는 훈련데이터 정확도는 떨어져도 과대,과소적합이 생기지 않았다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">3</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8454877814123533
+0.8415384615384616
+</code></pre>
+<ul>
+<li>[결과 해석]</li>
+<li>max_depth&#x3D; 3으로 지정하는 것이 과소,과대적합이 일어나지 않고 가장 바람직한 모델이 된다.</li>
+</ul>
+<h2 id="위에서-만든-결정트리-모델-객체를-plot-tree-함수에-전달하여-시각화"><a href="#위에서-만든-결정트리-모델-객체를-plot-tree-함수에-전달하여-시각화" class="headerlink" title="위에서 만든 결정트리 모델 객체를 plot_tree() 함수에 전달하여 시각화"></a>위에서 만든 결정트리 모델 객체를 plot_tree() 함수에 전달하여 시각화</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="literal">None</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.996921300750433
+0.8592307692307692
+</code></pre>
+<p><img src="/images/python_5/output_28_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">7</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8895516644217818
+0.8630769230769231
+</code></pre>
+<p><img src="/images/python_5/output_29_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">8</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9003271117952665
+0.8576923076923076
+</code></pre>
+<p><img src="/images/python_5/output_30_1.png" alt="png"></p>
+<ul>
+<li>max_depth&#x3D; 8이 되는 순간 과대적합이 생긴다.</li>
+<li>고로 max_depth&#x3D; 7 정도가 가장 적합하다.</li>
+</ul>
+<h2 id="노드란-무엇인가"><a href="#노드란-무엇인가" class="headerlink" title="노드란 무엇인가?"></a>노드란 무엇인가?</h2><ul>
+<li>루트 노드, 노드, 리프노드(&#x3D;말단노드)</li>
+<li>루트 노드읽는 법<ul>
+<li>테스트 조건</li>
+<li>불순도</li>
+<li>총 샘플 수 </li>
+<li>클래스별 샘플 수</li>
+</ul>
+<ul>
+<li>filled&#x3D; True 함수<ul>
+<li>클래스마다 색깔을 부여하고, 어떤 클래스의 비율이 높아지면 점점 진한 색으로 표시한다. 직관적.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt, max_depth = <span class="number">1</span>,</span><br><span class="line">          filled= <span class="literal">True</span>,</span><br><span class="line">          feature_names= [<span class="string">&#x27;alcohal&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 루트 노드, 노드, 리프노드(=말단노드)</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_5/output_33_0.png" alt="png"></p>
+<h2 id="불순도"><a href="#불순도" class="headerlink" title="불순도"></a>불순도</h2><ul>
+<li><p>한 범주 안에서 서로 다른 데이터가 얼마나 섞여 있는지를 나타냄.</p>
+</li>
+<li><p>흰색과 검은색이 각각 50개 섞여 있다.</p>
+<ul>
+<li>불순도 최대 : 0.5</li>
+</ul>
+</li>
+<li><p>흰색과 검은색이 완전 100% 분리가 됨</p>
+<ul>
+<li>흰색 노드 불순도 최소 : 0</li>
+<li>검은색 노드 불순도 최소 : 0</li>
+</ul>
+</li>
+<li><p>비율</p>
+</li>
+<li><p>레드와인 5:5 화이트와인 -&gt; 불순도가 가장 높을 때.gini 불순도의 수치 0.5</p>
+</li>
+</ul>
+<h2 id="엔트로피-Entropy"><a href="#엔트로피-Entropy" class="headerlink" title="엔트로피(Entropy)"></a>엔트로피(Entropy)</h2><ul>
+<li>불순도와 개념이 비슷하다.</li>
+<li>불확실한 정도를 의미함. 0~1 사이</li>
+<li>흰색과 검은색이 각각 50개 섞여 있다.<ul>
+<li>엔트로피 최대 : 1</li>
+</ul>
+</li>
+<li>흰색과 검은색이 완전 100% 분리가 됨<ul>
+<li>흰색 노드 엔트로피 최소 : 0</li>
+<li>검은색 노드 엔트로피 최소 : 0</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"><span class="comment"># 엔트로피 사용</span></span><br><span class="line">dt = DecisionTreeClassifier(criterion = <span class="string">&#x27;entropy&#x27;</span>, max_depth = <span class="number">7</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.885703290359823
+0.8669230769230769
+</code></pre>
+<p><img src="/images/python_5/output_36_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결과</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt, max_depth = <span class="number">1</span>,</span><br><span class="line">          filled= <span class="literal">True</span>,</span><br><span class="line">          feature_names= [<span class="string">&#x27;alcohal&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_5/output_37_0.png" alt="png"></p>
+<h2 id="특성-중요도"><a href="#특성-중요도" class="headerlink" title="특성 중요도"></a>특성 중요도</h2><ul>
+<li>어떤 특성이 결정 트리 모델에 영향을 주었는가?</li>
+<li>어떤 기준, 특성이 가장 확실하게 분리를 시켜줄 수 있느냐? (여기에서는 sugar)</li>
+<li>인과관계와는 상관이 없다.</li>
+<li>(회귀분석: 독립변수와 종속변수 사이의 인과관계를 따짐)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(dt.feature_importances_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.15247834 0.68293075 0.16459092]
+</code></pre>
+<h2 id="현업에서의-적용"><a href="#현업에서의-적용" class="headerlink" title="현업에서의 적용"></a>현업에서의 적용</h2><ul>
+<li>현업에서 DecisionTreeClassifier (1970년대)</li>
+<li>랜덤포레스트. XGBoost 하이퍼파라미터 매우 많음</li>
+</ul>
+<h1 id="Chapter-05-2-교차-검증과-그리드-서치"><a href="#Chapter-05-2-교차-검증과-그리드-서치" class="headerlink" title="Chapter 05-2 교차 검증과 그리드 서치"></a>Chapter 05-2 교차 검증과 그리드 서치</h1><ul>
+<li>함부로 건들이지 말아라.</li>
+<li>물론 다 시도해보면 퀄은 올라가겠지만 비효율적이다.</li>
+</ul>
+<h2 id="검증-세트"><a href="#검증-세트" class="headerlink" title="검증 세트"></a>검증 세트</h2><ul>
+<li>훈련세트와 테스트세트</li>
+<li>훈련 : 교과서 공부하는 것 훈련세트, 모의평가</li>
+<li>검증 : 강남대성 모의고사 문제지<br>——-파라미터는 훈련과 검증을 열심히 조지구..!——-</li>
+<li>테스트 : 6모, 9모</li>
+<li>실전 : 수능</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 가져오기</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">wine = pd.read_csv(<span class="string">&#x27;https://bit.ly/wine_csv_data&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(wine.head)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 가공하기</span></span><br><span class="line">data = wine [[<span class="string">&#x27;alcohol&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>]].to_numpy()</span><br><span class="line">target = wine[<span class="string">&#x27;class&#x27;</span>].to_numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 분리</span></span><br><span class="line"><span class="comment"># 훈련 80%</span></span><br><span class="line"><span class="comment"># 테스트 20%</span></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    data, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;bound method NDFrame.head of       alcohol  sugar    pH  class
+0         9.4    1.9  3.51    0.0
+1         9.8    2.6  3.20    0.0
+2         9.8    2.3  3.26    0.0
+3         9.8    1.9  3.16    0.0
+4         9.4    1.9  3.51    0.0
+...       ...    ...   ...    ...
+6492     11.2    1.6  3.27    1.0
+6493      9.6    8.0  3.15    1.0
+6494      9.4    1.2  2.99    1.0
+6495     12.8    1.1  3.34    1.0
+6496     11.8    0.8  3.26    1.0
+
+[6497 rows x 4 columns]&gt;
+
+
+
+
+
+((5197, 3), (1300, 3), (5197,), (1300,))
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 훈련 80%</span></span><br><span class="line"><span class="comment"># 검증 20%</span></span><br><span class="line">sub_input, val_input, sub_target, val_target = train_test_split(</span><br><span class="line">    train_input, train_target, test_size = <span class="number">0.2</span>, random_state=<span class="number">42</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">sub_input.shape, val_input.shape, sub_target.shape, val_target.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((4157, 3), (1040, 3), (4157,), (1040,))
+</code></pre>
+<ul>
+<li>훈련데이터: train(X), sub_input, sub_target</li>
+<li>검증데이터: val_input, val_target</li>
+<li>테스트데이터: test_input, test_target</li>
+</ul>
+<h2 id="모형-만들기"><a href="#모형-만들기" class="headerlink" title="모형 만들기"></a>모형 만들기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">dt = DecisionTreeClassifier(random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(sub_input,sub_target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 성과 : &quot;</span>, dt.score(sub_input, sub_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;검증 성과 : &quot;</span>, dt.score(val_input, val_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;마지막 최종 : &quot;</span>, dt.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련 성과 :  0.9971133028626413
+검증 성과 :  0.864423076923077
+마지막 최종 :  0.8569230769230769
+</code></pre>
+<ul>
+<li>어느정도 일치해야지 안정적이다고 한다.</li>
+<li>훈련: 87%</li>
+<li>검증: 86%<br>——보통 이정도에서만 끝남</li>
+<li>최종: 55%</li>
+<li>모형을 배포할지 말지 결정은 최종에 따라 결정된다.</li>
+<li>훈련과 검증은 과대적합을 조정했으나, 최종 결과가 55%가 나왔기 때문에 모형 배포는 불가하다.</li>
+</ul>
+<h3 id="교차검증"><a href="#교차검증" class="headerlink" title="교차검증"></a>교차검증</h3><ul>
+<li>데이터 셋을 반복 분할</li>
+<li>For loop</li>
+<li>샘플링 편향적일 수 있다.</li>
+<li>교차검증을 한다고 해서, 정확도가 무조건 올라간다?! (X)</li>
+<li>모형을 안정적으로 만들어 준다, 편향성 예방<ul>
+<li>과대적합 방지</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 책에 없는 내용</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"></span><br><span class="line">df = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터를 K 폴트로 나눈다.</span></span><br><span class="line">folds = KFold(n_splits=<span class="number">5</span>, shuffle= <span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> train_idx, valid_idx <span class="keyword">in</span> folds.split(df):</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;훈련데이터 : <span class="subst">&#123;df[train_idx]&#125;</span>, 검증 데이터 : <span class="subst">&#123;df[valid_idx]&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련데이터 : [1 2 3 4 5 7 8 9], 검증 데이터 : [ 6 10]
+훈련데이터 : [ 2  3  4  5  6  7  8 10], 검증 데이터 : [1 9]
+훈련데이터 : [ 1  2  3  5  6  7  9 10], 검증 데이터 : [4 8]
+훈련데이터 : [ 1  4  5  6  7  8  9 10], 검증 데이터 : [2 3]
+훈련데이터 : [ 1  2  3  4  6  8  9 10], 검증 데이터 : [5 7]
+</code></pre>
+<h2 id="교차-검증-함수"><a href="#교차-검증-함수" class="headerlink" title="교차 검증 함수"></a>교차 검증 함수</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_validate</span><br><span class="line">scores = cross_validate(dt,train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(scores)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균 : &quot;</span>, np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;fit_time&#39;: array([0.01930737, 0.01765442, 0.02578688, 0.022542  , 0.01724601]), &#39;score_time&#39;: array([0.00949001, 0.00124788, 0.00840759, 0.00133181, 0.00768995]), &#39;test_score&#39;: array([0.86923077, 0.84615385, 0.87680462, 0.84889317, 0.83541867])&#125;
+평균 :  0.855300214703487
+</code></pre>
+<h2 id="StratifiedKFold-사용"><a href="#StratifiedKFold-사용" class="headerlink" title="StratifiedKFold 사용"></a>StratifiedKFold 사용</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line">scores = cross_validate(dt, train_input, train_target, cv = StratifiedKFold())</span><br><span class="line"><span class="built_in">print</span>(scores)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균 : &quot;</span>, np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;fit_time&#39;: array([0.01292014, 0.01056361, 0.01049542, 0.01041055, 0.01058245]), &#39;score_time&#39;: array([0.00140882, 0.00116181, 0.00110102, 0.00124288, 0.00108576]), &#39;test_score&#39;: array([0.86923077, 0.84615385, 0.87680462, 0.84889317, 0.83541867])&#125;
+평균 :  0.855300214703487
+</code></pre>
+<h3 id="10폴드-교차검증을-수행"><a href="#10폴드-교차검증을-수행" class="headerlink" title="10폴드 교차검증을 수행"></a>10폴드 교차검증을 수행</h3><ul>
+<li>가장 좋아짐.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line">splitter = StratifiedKFold(n_splits = <span class="number">10</span>, shuffle = <span class="literal">True</span>, random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_validate(dt, train_input, train_target, cv = splitter)</span><br><span class="line"><span class="built_in">print</span>(scores)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균 : &quot;</span>, np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;fit_time&#39;: array([0.03280711, 0.04228663, 0.02831173, 0.03076744, 0.02979231,
+       0.01984262, 0.03593683, 0.03715229, 0.04245949, 0.03987837]), &#39;score_time&#39;: array([0.00103736, 0.00581765, 0.01219463, 0.00096822, 0.0007534 ,
+       0.00889254, 0.00699735, 0.00105405, 0.00105524, 0.00118446]), &#39;test_score&#39;: array([0.83461538, 0.87884615, 0.85384615, 0.85384615, 0.84615385,
+       0.87307692, 0.85961538, 0.85549133, 0.85163776, 0.86705202])&#125;
+평균 :  0.8574181117533719
+</code></pre>
+<h2 id="하이퍼파라미터-튜닝"><a href="#하이퍼파라미터-튜닝" class="headerlink" title="하이퍼파라미터 튜닝"></a>하이퍼파라미터 튜닝</h2><ul>
+<li>그리드 서치<ul>
+<li>사람이 수동적으로 입력</li>
+<li>max_depth : [1,3,7]</li>
+</ul>
+</li>
+<li>랜덤 서치<ul>
+<li>사람이 범위만 지정, 최적을 찾아내렴.</li>
+<li>max_depth : 1~10 &#x2F; by random</li>
+</ul>
+</li>
+<li>베이지안 옵티마이제이션</li>
+<li>AutoML: 범위조차 알아서….</li>
+<li>사람의 개입 없이 하이퍼파라미터 튜닝을 자동을 수행하는 기술을 AutoML이라고 함.<ul>
+<li>예1) PyCaret , <a target="_blank" rel="noopener" href="https://pycaret.gitbook.io/docs/">https://pycaret.gitbook.io/docs/</a></li>
+</ul>
+</li>
+<li>각 모델마다 적게는 1-2개에서 많게는 5-6개의 매개변수를 제공한다.<ul>
+<li>XGBoost 100개?</li>
+</ul>
+</li>
+<li>하이퍼파라미터와 동시에 교차검증을 수행.<ul>
+<li>미친짓</li>
+</ul>
+</li>
+</ul>
+<p>교차검증 5 번</p>
+<ul>
+<li><p>Max Depth &#x3D; 1, 3, 7</p>
+</li>
+<li><p>Criterion &#x3D; gini, entropy</p>
+</li>
+<li><p>교차검증 1번 돌 때, Max Depth 3번 적용</p>
+</li>
+<li><p>총 결과값 3 * 5 * 2나옴.</p>
+</li>
+<li><p>그러나 우리가 궁금한 것은 Best 1개만 알면 된다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;max_depth&#x27;</span> : [<span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>],</span><br><span class="line">    <span class="string">&#x27;min_impurity_decrease&#x27;</span> : [<span class="number">0.0001</span>, <span class="number">0.0002</span>, <span class="number">0.0003</span>, <span class="number">0.0004</span>, <span class="number">0.0005</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gs = GridSearchCV(DecisionTreeClassifier(random_state=<span class="number">42</span>), params, n_jobs=-<span class="number">1</span>)</span><br><span class="line">gs.fit(train_input, train_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>GridSearchCV(estimator=DecisionTreeClassifier(random_state=42), n_jobs=-1,
+             param_grid=&#123;&#39;max_depth&#39;: [1, 3, 7],
+                         &#39;min_impurity_decrease&#39;: [0.0001, 0.0002, 0.0003,
+                                                   0.0004, 0.0005]&#125;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;best : &quot;</span>, gs.best_estimator_)</span><br><span class="line">dt = gs.best_estimator_</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 결과 best :  DecisionTreeClassifier(min_impurity_decrease=0.0001, random_state=42)</span></span><br><span class="line"><span class="comment"># 2 &#x27;max_depth&#x27; : [1, 3, 7], 추가 이후</span></span><br><span class="line"><span class="comment"># 3 결과 best :  DecisionTreeClassifier(max_depth=7, min_impurity_decrease=0.0005,random_state=42)</span></span><br><span class="line"><span class="comment"># 등등 계속 업데이트해서 사용할 수는 있으나</span></span><br><span class="line"><span class="comment"># 첫 결과에서 0.0001가 나왔다가도 min_impurity_decrease 숫자를 0.0001로 픽스시켜서는 안된다.</span></span><br><span class="line"><span class="comment"># 왜냐면 서로 영향을 주기 때문에 다른 파라미터가 추가 되면 최적 결과가 바뀔 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>best :  DecisionTreeClassifier(max_depth=7, min_impurity_decrease=0.0005,
+                       random_state=42)
+</code></pre>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/01/python_4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">혼공머 Chapter 04</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-05-1-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC-%EA%B0%80%EC%9E%A5-%EC%A4%91%EC%9A%94%ED%95%A8"><span class="nav-number">1.</span> <span class="nav-text">Chapter 05-1 결정 트리 (가장 중요함)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wine-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text">wine 데이터 가져오기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%94%84%EB%A0%88%EC%9E%84-%ED%99%95%EC%9D%B8"><span class="nav-number">1.2.</span> <span class="nav-text">데이터 프레임 확인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EA%B3%B5%ED%95%98%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text">데이터 가공하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9B%88%EB%A0%A8%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A6%AC"><span class="nav-number">1.4.</span> <span class="nav-text">훈련데이터 분리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%91%9C%EC%A4%80%ED%99%94-%EC%B2%98%EB%A6%AC"><span class="nav-number">1.5.</span> <span class="nav-text">표준화 처리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%AA%A8%EB%8D%B8-%ED%9B%88%EB%A0%A8-lr"><span class="nav-number">1.6.</span> <span class="nav-text">로지스틱 회귀 모델 훈련 (lr)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80%EA%B0%80-%ED%95%99%EC%8A%B5%ED%95%9C-%EA%B3%84%EC%88%98%EC%99%80-%EC%A0%88%ED%8E%B8"><span class="nav-number">1.7.</span> <span class="nav-text">로지스틱 회귀가 학습한 계수와 절편</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-dt"><span class="nav-number">1.8.</span> <span class="nav-text">결정트리 모델 만들기 (dt)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9C%84%EC%97%90%EC%84%9C-%EB%A7%8C%EB%93%A0-%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC-%EB%AA%A8%EB%8D%B8-%EA%B0%9D%EC%B2%B4%EB%A5%BC-plot-tree-%ED%95%A8%EC%88%98%EC%97%90-%EC%A0%84%EB%8B%AC%ED%95%98%EC%97%AC-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">1.9.</span> <span class="nav-text">위에서 만든 결정트리 모델 객체를 plot_tree() 함수에 전달하여 시각화</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%85%B8%EB%93%9C%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80"><span class="nav-number">1.10.</span> <span class="nav-text">노드란 무엇인가?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B6%88%EC%88%9C%EB%8F%84"><span class="nav-number">1.11.</span> <span class="nav-text">불순도</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%97%94%ED%8A%B8%EB%A1%9C%ED%94%BC-Entropy"><span class="nav-number">1.12.</span> <span class="nav-text">엔트로피(Entropy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8A%B9%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84"><span class="nav-number">1.13.</span> <span class="nav-text">특성 중요도</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%98%84%EC%97%85%EC%97%90%EC%84%9C%EC%9D%98-%EC%A0%81%EC%9A%A9"><span class="nav-number">1.14.</span> <span class="nav-text">현업에서의 적용</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-05-2-%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D%EA%B3%BC-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%84%9C%EC%B9%98"><span class="nav-number">2.</span> <span class="nav-text">Chapter 05-2 교차 검증과 그리드 서치</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B2%80%EC%A6%9D-%EC%84%B8%ED%8A%B8"><span class="nav-number">2.1.</span> <span class="nav-text">검증 세트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AA%A8%ED%98%95-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">2.2.</span> <span class="nav-text">모형 만들기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D"><span class="nav-number">2.2.1.</span> <span class="nav-text">교차검증</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D-%ED%95%A8%EC%88%98"><span class="nav-number">2.3.</span> <span class="nav-text">교차 검증 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StratifiedKFold-%EC%82%AC%EC%9A%A9"><span class="nav-number">2.4.</span> <span class="nav-text">StratifiedKFold 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10%ED%8F%B4%EB%93%9C-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D%EC%9D%84-%EC%88%98%ED%96%89"><span class="nav-number">2.4.1.</span> <span class="nav-text">10폴드 교차검증을 수행</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%98%EC%9D%B4%ED%8D%BC%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%ED%8A%9C%EB%8B%9D"><span class="nav-number">2.5.</span> <span class="nav-text">하이퍼파라미터 튜닝</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Categories/" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Python_home/" class="mobile-nav-link">Python</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Notion_home/" class="mobile-nav-link">Notion</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
