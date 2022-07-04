@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="0. 자율학습 파이썬 시각화 참고 블로그 (https:&#x2F;&#x2F;jehyunlee.github.io&#x2F;)  파이썬 주요 라이브러리 Machine Learning  정형 데이터 사이킷런(https:&#x2F;&#x2F;scikit-learn.org&#x2F;stable&#x2F;)   Deep Learning  비정형 데이터 Tensorflow(구글) vs Pytorch(페이스북) 교재_혼공머: Ten">
+<meta property="og:type" content="article">
+<meta property="og:title" content="나의 첫번째 블로그">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/06/30/python_%203/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="0. 자율학습 파이썬 시각화 참고 블로그 (https:&#x2F;&#x2F;jehyunlee.github.io&#x2F;)  파이썬 주요 라이브러리 Machine Learning  정형 데이터 사이킷런(https:&#x2F;&#x2F;scikit-learn.org&#x2F;stable&#x2F;)   Deep Learning  비정형 데이터 Tensorflow(구글) vs Pytorch(페이스북) 교재_혼공머: Ten">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_3/output_11_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_3/output_13_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_3/output_18_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_3/output_20_0.png">
+<meta property="article:published_time" content="2022-06-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-04T03:16:18.604Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/python_3/output_11_0.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Categories/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Categories/">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Python_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Python_home/">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Notion_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Notion_home/">notion</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-python_ 3" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/30/python_%203/" class="article-date">
+	  <time datetime="2022-06-29T16:00:00.000Z" itemprop="datePublished">June 30, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0-자율학습"><a href="#0-자율학습" class="headerlink" title="0. 자율학습"></a>0. 자율학습</h1><ul>
+<li>파이썬 시각화 참고 블로그 (<a target="_blank" rel="noopener" href="https://jehyunlee.github.io/">https://jehyunlee.github.io/</a>)</li>
+</ul>
+<h2 id="파이썬-주요-라이브러리"><a href="#파이썬-주요-라이브러리" class="headerlink" title="파이썬 주요 라이브러리"></a>파이썬 주요 라이브러리</h2><ul>
+<li><p>Machine Learning</p>
+<ul>
+<li>정형 데이터</li>
+<li>사이킷런(<a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/">https://scikit-learn.org/stable/</a>)</li>
+</ul>
+</li>
+<li><p>Deep Learning</p>
+<ul>
+<li>비정형 데이터</li>
+<li>Tensorflow(구글) vs Pytorch(페이스북)</li>
+<li>교재_혼공머: Tensorflow</li>
+<li>R&amp;D 연구: Pytorch (NumPy와 문법이 유사)</li>
+<li>실제 상용서비스: Tensorflow (안드로이드, App)</li>
+</ul>
+</li>
+</ul>
+<h1 id="Chapter-01"><a href="#Chapter-01" class="headerlink" title="Chapter 01"></a>Chapter 01</h1><h2 id="생선-분류1-도미-45p"><a href="#생선-분류1-도미-45p" class="headerlink" title="생선 분류1 도미 (45p)"></a>생선 분류1 도미 (45p)</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/datasets/aungpyaeap/fish-market">데이터 다운로드</a></p>
+</li>
+<li><p>도미, 곤들매기, 농어 등등</p>
+</li>
+<li><p>이 생선들을 프로그램으로 분류한다.</p>
+</li>
+<li><ol>
+<li>30cm 도미라고 알려줘라</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fish_length = <span class="number">31</span></span><br><span class="line"><span class="keyword">if</span> fish_length &gt;= <span class="number">30</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;도미&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>도미
+</code></pre>
+<ul>
+<li><ol start="2">
+<li>도미의 데이터 (47p)</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 도미의 길이</span></span><br><span class="line">bream_length = [<span class="number">25.4</span>, <span class="number">26.3</span>, <span class="number">26.5</span>, <span class="number">29.0</span>, <span class="number">29.0</span>, <span class="number">29.7</span>, <span class="number">29.7</span>, <span class="number">30.0</span>, <span class="number">30.0</span>, <span class="number">30.7</span>, <span class="number">31.0</span>, <span class="number">31.0</span>, <span class="number">31.5</span>, <span class="number">32.0</span>, <span class="number">32.0</span>, <span class="number">32.0</span>, <span class="number">33.0</span>, <span class="number">33.0</span>, <span class="number">33.5</span>, <span class="number">33.5</span>, <span class="number">34.0</span>, <span class="number">34.0</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">36.0</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">38.5</span>, <span class="number">38.5</span>, <span class="number">39.5</span>, <span class="number">41.0</span>, <span class="number">41.0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 도미의 무게</span></span><br><span class="line">bream_weight = [<span class="number">242.0</span>, <span class="number">290.0</span>, <span class="number">340.0</span>, <span class="number">363.0</span>, <span class="number">430.0</span>, <span class="number">450.0</span>, <span class="number">500.0</span>, <span class="number">390.0</span>, <span class="number">450.0</span>, <span class="number">500.0</span>, <span class="number">475.0</span>, <span class="number">500.0</span>, <span class="number">500.0</span>, <span class="number">340.0</span>, <span class="number">600.0</span>, <span class="number">600.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">610.0</span>, <span class="number">650.0</span>, <span class="number">575.0</span>, <span class="number">685.0</span>, <span class="number">620.0</span>, <span class="number">680.0</span>, <span class="number">700.0</span>, <span class="number">725.0</span>, <span class="number">720.0</span>, <span class="number">714.0</span>, <span class="number">850.0</span>, <span class="number">1000.0</span>, <span class="number">920.0</span>, <span class="number">955.0</span>, <span class="number">925.0</span>, <span class="number">975.0</span>, <span class="number">950.0</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-가공-도미"><a href="#데이터-가공-도미" class="headerlink" title="데이터 가공 (도미)"></a>데이터 가공 (도미)</h2><ul>
+<li>여기서는 생략</li>
+</ul>
+<h2 id="도미-데이터-시각화"><a href="#도미-데이터-시각화" class="headerlink" title="도미 데이터 시각화"></a>도미 데이터 시각화</h2><ul>
+<li>여러 인사이트 확인을 위해 시각화 및 통계 수치 계산</li>
+<li>탐색적 자료 분석 (EDA : Exploratory Data Analysis)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이 코드는 참고만 한다.</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.scatter(bream_length, bream_weight)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_3/output_11_0.png" alt="png"></p>
+<h3 id="아래-코드를-사용해야되는-이유"><a href="#아래-코드를-사용해야되는-이유" class="headerlink" title="아래 코드를 사용해야되는 이유"></a>아래 코드를 사용해야되는 이유</h3><ul>
+<li>파이썬 시각화는 객체지향으로 한다. </li>
+<li>이유: 시각화를 더 아름답게 다듬기 위해</li>
+<li>캐글 시각화 참고할 때, 아래와 같이 하는 분들이 많다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(bream_length, bream_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_3/output_13_0.png" alt="png"></p>
+<h2 id="생선-분류2-빙어"><a href="#생선-분류2-빙어" class="headerlink" title="생선 분류2 빙어"></a>생선 분류2 빙어</h2><ul>
+<li><ol>
+<li>빙어 데이터 준비하기</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">smelt_length = [<span class="number">9.8</span>, <span class="number">10.5</span>, <span class="number">10.6</span>, <span class="number">11.0</span>, <span class="number">11.2</span>, <span class="number">11.3</span>, <span class="number">11.8</span>, <span class="number">11.8</span>, <span class="number">12.0</span>, <span class="number">12.2</span>, <span class="number">12.4</span>, <span class="number">13.0</span>, <span class="number">14.3</span>, <span class="number">15.0</span>]</span><br><span class="line">smelt_weight = [<span class="number">6.7</span>, <span class="number">7.5</span>, <span class="number">7.0</span>, <span class="number">9.7</span>, <span class="number">9.8</span>, <span class="number">8.7</span>, <span class="number">10.0</span>, <span class="number">9.9</span>, <span class="number">9.8</span>, <span class="number">12.2</span>, <span class="number">13.4</span>, <span class="number">12.2</span>, <span class="number">19.7</span>, <span class="number">19.9</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-가공-빙어"><a href="#데이터-가공-빙어" class="headerlink" title="데이터 가공 (빙어)"></a>데이터 가공 (빙어)</h2><ul>
+<li>여기서는 생략</li>
+</ul>
+<h2 id="빙어-데이터-시각화"><a href="#빙어-데이터-시각화" class="headerlink" title="빙어 데이터 시각화"></a>빙어 데이터 시각화</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(smelt_length, smelt_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_3/output_18_0.png" alt="png"></p>
+<h2 id="도미-빙어-데이터-시각화-50p"><a href="#도미-빙어-데이터-시각화-50p" class="headerlink" title="도미+빙어 데이터 시각화 (50p)"></a>도미+빙어 데이터 시각화 (50p)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(bream_length, bream_weight)</span><br><span class="line">ax.scatter(smelt_length, smelt_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/python_3/output_20_0.png" alt="png"></p>
+<h2 id="모델링을-위한-데이터-가공"><a href="#모델링을-위한-데이터-가공" class="headerlink" title="모델링을 위한 데이터 가공"></a>모델링을 위한 데이터 가공</h2><ul>
+<li><p>리스트 합치기</p>
+</li>
+<li><p>2차원 리스트 만들기</p>
+</li>
+<li><p>라벨링</p>
+</li>
+<li><p>두개의 리스트 합치기</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">length = bream_length + smelt_length</span><br><span class="line">weight = bream_weight + smelt_weight</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2차원 리스트로 만든다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fish_data = [[l,w] <span class="keyword">for</span> l, w <span class="keyword">in</span> <span class="built_in">zip</span>(length, weight)]</span><br><span class="line"><span class="comment"># fish_data</span></span><br><span class="line">fish_data[<span class="number">0</span>:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[[25.4, 242.0], [26.3, 290.0], [26.5, 340.0], [29.0, 363.0], [29.0, 430.0]]
+</code></pre>
+<h3 id="라벨링"><a href="#라벨링" class="headerlink" title="라벨링"></a>라벨링</h3><ul>
+<li>라벨링(&#x3D;지도, 지도학습), y값(종속변수)가 필요하다.</li>
+<li>문자를 숫자로 변경<ul>
+<li>모델링(&#x3D;알고리즘)은 문자 인식 불가, 숫자만 가능</li>
+</ul>
+</li>
+<li>도미인지 빙어인지 라벨링을 한다. (52p)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 리스트 연산자</span></span><br><span class="line"><span class="comment"># 모델링, 알고리즘은 문자 인식 불가, 반드시 숫자로 변경.</span></span><br><span class="line">fish_target = [<span class="number">1</span>] * <span class="number">35</span> +[<span class="number">0</span>] *<span class="number">14</span></span><br><span class="line"><span class="built_in">print</span>(fish_target)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</code></pre>
+<h2 id="모델링-x3D-알고리즘"><a href="#모델링-x3D-알고리즘" class="headerlink" title="모델링(&#x3D;알고리즘)"></a>모델링(&#x3D;알고리즘)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이 코드 말고 아래칸 코드 사용하기, 동일한 내용</span></span><br><span class="line"><span class="comment"># import sklearn</span></span><br><span class="line"><span class="comment"># model = sklearn.neighbors.KNeighborsClassifiter()</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ol start="0">
+<li>패키지 설치, 실행</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 패키지 설치</span></span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 클래스 인스턴스화(불러오기)</span></span><br><span class="line">kn = KNeighborsClassifier()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ol>
+<li>모형 학습 (fit)</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#       독립변수, 종속변수</span></span><br><span class="line">kn.fit(fish_data, fish_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>KNeighborsClassifier()
+</code></pre>
+<ul>
+<li><ol start="2">
+<li>모형이 잘 만들어졌는지 모형의 예측 정확도를 파악하기 (score)</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kn.score(fish_data, fish_target)</span><br><span class="line"><span class="comment"># [결과 해석] 1.0 = 100%</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.0
+</code></pre>
+<ul>
+<li><ol start="3">
+<li>실제 예측 해보기 (predict)</li>
+</ol>
+<ul>
+<li>새로운 물고기 도착</li>
+<li>길이 : 30, 몸무게 : 60</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fish_data가 2차원 데이터이기 때문에 대괄호 2개</span></span><br><span class="line">kn.predict([[<span class="number">30</span>, <span class="number">600</span>],[<span class="number">51</span>,<span class="number">75</span>],[<span class="number">77</span>,<span class="number">85</span>]])</span><br><span class="line"><span class="comment"># [결과 해석] 결과값이 1 이면 도미, 0 이면 빙어</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델에 넣어야 할 데이터가 많다면 -&gt; 반복문 사용</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1, 0, 0])
+</code></pre>
+<ul>
+<li><ol start="4">
+<li>간단한 프로그램 만들기</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int() : 숫자나 문자열을 정수형 데이터로 변환</span></span><br><span class="line">ac_length = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;물고기 길이를 입력하세요...&quot;</span>))</span><br><span class="line">ac_weigth = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;물고기 무게를 입력하세요...&quot;</span>))</span><br><span class="line"></span><br><span class="line">preds = <span class="built_in">int</span>(kn.predict([[ac_length, ac_weigth]]))</span><br><span class="line"><span class="keyword">if</span> preds == <span class="number">1</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;도미&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;빙어&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>물고기 길이를 입력하세요...14254
+물고기 무게를 입력하세요...123
+도미
+</code></pre>
+<h2 id="실험-단계-새로운-모델-제안"><a href="#실험-단계-새로운-모델-제안" class="headerlink" title="실험 단계 (새로운 모델 제안)"></a>실험 단계 (새로운 모델 제안)</h2><ul>
+<li>Default : 정확도 100%</li>
+<li>새로운 모델 : 정확도 70%</li>
+<li>여러 모델을 실험해 보고 가장 정확도가 높은 모델을 사용한다.</li>
+</ul>
+<h3 id="새로운-모델"><a href="#새로운-모델" class="headerlink" title="새로운 모델"></a>새로운 모델</h3><ul>
+<li>하이퍼 파라미터 세팅<ul>
+<li>n_neighbors &#x3D; 49 : 정확도 70%</li>
+</ul>
+</li>
+<li>default(아무것도 세팅 안함) : 정확도 100%</li>
+<li>결론 : 잘 모르면 어설프게 셋팅하지 말아라 -&gt; 정확도가 떨어질 수 있음.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kn49 = KNeighborsClassifier(n_neighbors=<span class="number">49</span>)</span><br><span class="line">kn49.fit(fish_data, fish_target)</span><br><span class="line">kn49.score(fish_data, fish_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0.7142857142857143
+</code></pre>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/30/python_%201/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/23/R_9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">R을 이용한 공공데이터 분석_제9장</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%EC%9E%90%EC%9C%A8%ED%95%99%EC%8A%B5"><span class="nav-number">1.</span> <span class="nav-text">0. 자율학습</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A3%BC%EC%9A%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC"><span class="nav-number">1.1.</span> <span class="nav-text">파이썬 주요 라이브러리</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-01"><span class="nav-number">2.</span> <span class="nav-text">Chapter 01</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%83%9D%EC%84%A0-%EB%B6%84%EB%A5%981-%EB%8F%84%EB%AF%B8-45p"><span class="nav-number">2.1.</span> <span class="nav-text">생선 분류1 도미 (45p)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EA%B3%B5-%EB%8F%84%EB%AF%B8"><span class="nav-number">2.2.</span> <span class="nav-text">데이터 가공 (도미)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8F%84%EB%AF%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">2.3.</span> <span class="nav-text">도미 데이터 시각화</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%95%84%EB%9E%98-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC%EB%90%98%EB%8A%94-%EC%9D%B4%EC%9C%A0"><span class="nav-number">2.3.1.</span> <span class="nav-text">아래 코드를 사용해야되는 이유</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%83%9D%EC%84%A0-%EB%B6%84%EB%A5%982-%EB%B9%99%EC%96%B4"><span class="nav-number">2.4.</span> <span class="nav-text">생선 분류2 빙어</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EA%B3%B5-%EB%B9%99%EC%96%B4"><span class="nav-number">2.5.</span> <span class="nav-text">데이터 가공 (빙어)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B9%99%EC%96%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">2.6.</span> <span class="nav-text">빙어 데이터 시각화</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8F%84%EB%AF%B8-%EB%B9%99%EC%96%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94-50p"><span class="nav-number">2.7.</span> <span class="nav-text">도미+빙어 데이터 시각화 (50p)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AA%A8%EB%8D%B8%EB%A7%81%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EA%B3%B5"><span class="nav-number">2.8.</span> <span class="nav-text">모델링을 위한 데이터 가공</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%9D%BC%EB%B2%A8%EB%A7%81"><span class="nav-number">2.8.1.</span> <span class="nav-text">라벨링</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AA%A8%EB%8D%B8%EB%A7%81-x3D-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98"><span class="nav-number">2.9.</span> <span class="nav-text">모델링(&#x3D;알고리즘)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%8B%A4%ED%97%98-%EB%8B%A8%EA%B3%84-%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%AA%A8%EB%8D%B8-%EC%A0%9C%EC%95%88"><span class="nav-number">2.10.</span> <span class="nav-text">실험 단계 (새로운 모델 제안)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%AA%A8%EB%8D%B8"><span class="nav-number">2.10.1.</span> <span class="nav-text">새로운 모델</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Categories/" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Python_home/" class="mobile-nav-link">Python</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Notion_home/" class="mobile-nav-link">Notion</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
