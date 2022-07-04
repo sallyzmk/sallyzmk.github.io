@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>나의 첫번째 블로그</title>
+  <title>혼공머 Chapter 04 | 나의 첫번째 블로그</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -11,15 +11,17 @@
   
   <meta name="description" content="Chapter 04-1 로지스틱 회귀 선형 회귀에서 출발  이진 분류 문제 해결  클래스 확률 예측  딥러닝에서도 사용됨  교재 177p  X가 사각형일 확률 30%  X가 삼각형일 확률 50%  X가 원일 확률 20%   전체 과정 정리  좋은 데이터    어떤 데이터인지 탐색하고    데이터 가공   2차원 리스트로 만들기 라벨링하기    데이터 분리(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="나의 첫번째 블로그">
-<meta property="og:url" content="https://sallyzmk.github.io/2022/07/01/python_%204/index.html">
+<meta property="og:title" content="혼공머 Chapter 04">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/07/01/python_4/index.html">
 <meta property="og:site_name" content="나의 첫번째 블로그">
 <meta property="og:description" content="Chapter 04-1 로지스틱 회귀 선형 회귀에서 출발  이진 분류 문제 해결  클래스 확률 예측  딥러닝에서도 사용됨  교재 177p  X가 사각형일 확률 30%  X가 삼각형일 확률 50%  X가 원일 확률 20%   전체 과정 정리  좋은 데이터    어떤 데이터인지 탐색하고    데이터 가공   2차원 리스트로 만들기 라벨링하기    데이터 분리(">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_4/output_77_0.png">
 <meta property="article:published_time" content="2022-06-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-04T03:29:51.568Z">
+<meta property="article:modified_time" content="2022-07-04T05:15:06.627Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/python_4/output_77_0.png">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -104,13 +106,23 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-python_ 4" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-python_4" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      혼공머 Chapter 04
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2022/07/01/python_%204/" class="article-date">
+	<a href="/2022/07/01/python_4/" class="article-date">
 	  <time datetime="2022-06-30T16:00:00.000Z" itemprop="datePublished">July 1, 2022</time>
 	</a>
 
@@ -830,7 +842,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line">plt.plot(train_score)</span><br><span class="line">plt.plot(test_score)</span><br><span class="line">plt.legend([<span class="string">&quot;train&quot;</span>, <span class="string">&quot;test&quot;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 결과 해석</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프보다 위에 있음 -&gt; 과소 적합</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프 간격이 가장 좁음 -&gt; 적당한 모델</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프 간격이 멀어짐 -&gt; 과대 적합 </span></span><br></pre></td></tr></table></figure>
 
 
-<p>![png](images&#x2F;python_ 4&#x2F;output_77_0.png)</p>
+<p><img src="/images/python_4/output_77_0.png" alt="png"></p>
 <h2 id="XGBoost-LightGBM-코드"><a href="#XGBoost-LightGBM-코드" class="headerlink" title="XGBoost, LightGBM 코드"></a>XGBoost, LightGBM 코드</h2><ul>
 <li>train-loss, train-accuary, test-loss, test-accu</li>
 </ul>
@@ -874,9 +886,9 @@ memory usage: 7.6+ KB
 <nav id="article-nav">
   
   
-    <a href="/2022/06/30/python_%202/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/06/30/python_3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">혼공머 Chapter 03</div>
     </a>
   
 </nav>

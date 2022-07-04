@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>나의 첫번째 블로그</title>
+  <title>혼공머 Chapter 03 | 나의 첫번째 블로그</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -11,19 +11,19 @@
   
   <meta name="description" content="0. 자율학습 파이썬 시각화 참고 블로그 (https:&#x2F;&#x2F;jehyunlee.github.io&#x2F;) 가장 최신의 알고리즘 논문 (https:&#x2F;&#x2F;paperswithcode.com&#x2F;)  Chapter 03-1 K-최근접 이웃 회귀 지도 학습 알고리즘은 크게 분류와 회귀 지도 학습 : 종속변수 존재 분류 : 도미와 빙어 분류 문제 해결 회귀 : 통계 회귀분석 y &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="나의 첫번째 블로그">
-<meta property="og:url" content="https://sallyzmk.github.io/2022/06/30/python_%202/index.html">
+<meta property="og:title" content="혼공머 Chapter 03">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/06/30/python_3/index.html">
 <meta property="og:site_name" content="나의 첫번째 블로그">
 <meta property="og:description" content="0. 자율학습 파이썬 시각화 참고 블로그 (https:&#x2F;&#x2F;jehyunlee.github.io&#x2F;) 가장 최신의 알고리즘 논문 (https:&#x2F;&#x2F;paperswithcode.com&#x2F;)  Chapter 03-1 K-최근접 이웃 회귀 지도 학습 알고리즘은 크게 분류와 회귀 지도 학습 : 종속변수 존재 분류 : 도미와 빙어 분류 문제 해결 회귀 : 통계 회귀분석 y &amp;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://sallyzmk.github.io/images/python_2/output_7_0.png">
-<meta property="og:image" content="https://sallyzmk.github.io/images/python_2/output_36_1.png">
-<meta property="og:image" content="https://sallyzmk.github.io/images/python_2/output_49_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_3/output_7_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_3/output_36_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_3/output_49_0.png">
 <meta property="article:published_time" content="2022-06-29T18:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-04T03:16:18.559Z">
+<meta property="article:modified_time" content="2022-07-04T05:20:30.540Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sallyzmk.github.io/images/python_2/output_7_0.png">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/python_3/output_7_0.png">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -108,13 +108,23 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-python_ 2" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-python_3" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      혼공머 Chapter 03
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2022/06/30/python_%202/" class="article-date">
+	<a href="/2022/06/30/python_3/" class="article-date">
 	  <time datetime="2022-06-29T18:00:00.000Z" itemprop="datePublished">June 30, 2022</time>
 	</a>
 
@@ -154,7 +164,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(perch_length, perch_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_2/output_7_0.png" alt="png"></p>
+<p><img src="/images/python_3/output_7_0.png" alt="png"></p>
 <ul>
 <li>모델링을 하기 위한 데이터 전처리 (여기서는 생략됨)<ul>
 <li>2차원 리스트</li>
@@ -301,7 +311,7 @@
 
 <pre><code>[[6. 7. 7.]] [[34  8 14]]
 </code></pre>
-<p><img src="/images/python_2/output_36_1.png" alt="png"></p>
+<p><img src="/images/python_3/output_36_1.png" alt="png"></p>
 <h3 id="결론"><a href="#결론" class="headerlink" title="결론 :"></a>결론 :</h3><ul>
 <li>머신러능 &#x3D; 알고리즘</li>
 <li>머신러닝&#x2F;딥러닝 &#x3D; 실험</li>
@@ -364,7 +374,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 구간별 직선을 그리기 위해 15에서 49까지 정수 배열을 만든다.</span></span><br><span class="line">point = np.arange(<span class="number">15</span>,<span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트의 산점도를 그린다.</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(train_input, train_target)</span><br><span class="line">plt.scatter(train_input[indexes], train_target[indexes], marker=<span class="string">&#x27;D&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 15에서 49까지 2차 방정식 그래프를 그린다.</span></span><br><span class="line">plt.plot(point, <span class="number">1.01</span>*point**<span class="number">2</span> - <span class="number">21.6</span>*point + <span class="number">116.05</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 50cm 농어 데이터</span></span><br><span class="line">plt.scatter(<span class="number">50</span>,<span class="number">1574</span>,marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_2/output_49_0.png" alt="png"></p>
+<p><img src="/images/python_3/output_49_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 모델 평가</span></span><br><span class="line"><span class="built_in">print</span>(lr.score(train_poly, train_target))</span><br><span class="line"><span class="built_in">print</span>(lr.score(test_poly, test_target))</span><br></pre></td></tr></table></figure>
 
 <pre><code>0.9706807451768623
@@ -412,19 +422,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2022/07/01/python_%204/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/07/01/python_4/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          (no title)
+          혼공머 Chapter 04
         
       </div>
     </a>
   
   
-    <a href="/2022/06/30/python_%201/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/06/30/python_2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">혼공머 Chapter 02</div>
     </a>
   
 </nav>

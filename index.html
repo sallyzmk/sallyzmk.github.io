@@ -102,13 +102,23 @@
         
           <section id="main">
   
-    <article id="post-python_ 4"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-python_4"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/07/01/python_4/">혼공머 Chapter 04</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2022/07/01/python_%204/" class="article-date">
+	<a href="/2022/07/01/python_4/" class="article-date">
 	  <time datetime="2022-06-30T16:00:00.000Z" itemprop="datePublished">July 1, 2022</time>
 	</a>
 
@@ -824,7 +834,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line">plt.plot(train_score)</span><br><span class="line">plt.plot(test_score)</span><br><span class="line">plt.legend([<span class="string">&quot;train&quot;</span>, <span class="string">&quot;test&quot;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 결과 해석</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프보다 위에 있음 -&gt; 과소 적합</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프 간격이 가장 좁음 -&gt; 적당한 모델</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프 간격이 멀어짐 -&gt; 과대 적합 </span></span><br></pre></td></tr></table></figure>
 
 
-<p>![png](images&#x2F;python_ 4&#x2F;output_77_0.png)</p>
+<p><img src="/images/python_4/output_77_0.png" alt="png"></p>
 <h2 id="XGBoost-LightGBM-코드"><a href="#XGBoost-LightGBM-코드" class="headerlink" title="XGBoost, LightGBM 코드"></a>XGBoost, LightGBM 코드</h2><ul>
 <li>train-loss, train-accuary, test-loss, test-accu</li>
 </ul>
@@ -844,13 +854,23 @@ memory usage: 7.6+ KB
 <!-- Table of Contents -->
 
   
-    <article id="post-python_ 2"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-python_3"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/30/python_3/">혼공머 Chapter 03</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2022/06/30/python_%202/" class="article-date">
+	<a href="/2022/06/30/python_3/" class="article-date">
 	  <time datetime="2022-06-29T18:00:00.000Z" itemprop="datePublished">June 30, 2022</time>
 	</a>
 
@@ -886,7 +906,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(perch_length, perch_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_2/output_7_0.png" alt="png"></p>
+<p><img src="/images/python_3/output_7_0.png" alt="png"></p>
 <ul>
 <li>모델링을 하기 위한 데이터 전처리 (여기서는 생략됨)<ul>
 <li>2차원 리스트</li>
@@ -1033,7 +1053,7 @@ memory usage: 7.6+ KB
 
 <pre><code>[[6. 7. 7.]] [[34  8 14]]
 </code></pre>
-<p><img src="/images/python_2/output_36_1.png" alt="png"></p>
+<p><img src="/images/python_3/output_36_1.png" alt="png"></p>
 <h3 id="결론"><a href="#결론" class="headerlink" title="결론 :"></a>결론 :</h3><ul>
 <li>머신러능 &#x3D; 알고리즘</li>
 <li>머신러닝&#x2F;딥러닝 &#x3D; 실험</li>
@@ -1096,7 +1116,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 구간별 직선을 그리기 위해 15에서 49까지 정수 배열을 만든다.</span></span><br><span class="line">point = np.arange(<span class="number">15</span>,<span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트의 산점도를 그린다.</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(train_input, train_target)</span><br><span class="line">plt.scatter(train_input[indexes], train_target[indexes], marker=<span class="string">&#x27;D&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 15에서 49까지 2차 방정식 그래프를 그린다.</span></span><br><span class="line">plt.plot(point, <span class="number">1.01</span>*point**<span class="number">2</span> - <span class="number">21.6</span>*point + <span class="number">116.05</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 50cm 농어 데이터</span></span><br><span class="line">plt.scatter(<span class="number">50</span>,<span class="number">1574</span>,marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_2/output_49_0.png" alt="png"></p>
+<p><img src="/images/python_3/output_49_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 모델 평가</span></span><br><span class="line"><span class="built_in">print</span>(lr.score(train_poly, train_target))</span><br><span class="line"><span class="built_in">print</span>(lr.score(test_poly, test_target))</span><br></pre></td></tr></table></figure>
 
 <pre><code>0.9706807451768623
@@ -1121,13 +1141,23 @@ memory usage: 7.6+ KB
 <!-- Table of Contents -->
 
   
-    <article id="post-python_ 1"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-python_2"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/30/python_2/">혼공머 Chapter 02</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2022/06/30/python_%201/" class="article-date">
+	<a href="/2022/06/30/python_2/" class="article-date">
 	  <time datetime="2022-06-29T17:00:00.000Z" itemprop="datePublished">June 30, 2022</time>
 	</a>
 
@@ -1205,7 +1235,7 @@ memory usage: 7.6+ KB
 <h2 id="시각화"><a href="#시각화" class="headerlink" title="시각화"></a>시각화</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(train_input[:, <span class="number">0</span>], train_input[:, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># 길이:train_input[:,0]), 무게: train_input[:,1]</span></span><br><span class="line">ax.scatter(test_input[:, <span class="number">0</span>], test_input[:, <span class="number">1</span>])</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_1/output_19_0.png" alt="png"></p>
+<p><img src="/images/python_2/output_19_0.png" alt="png"></p>
 <h2 id="두번째-머신러닝-프로그램"><a href="#두번째-머신러닝-프로그램" class="headerlink" title="두번째 머신러닝 프로그램"></a>두번째 머신러닝 프로그램</h2><ul>
 <li>첫번째 머신러닝 프로그램은 모든 데이터를 넣고 모든 데이터로 검증하면 답지를 외우고 문제를 푸는 것과 같음</li>
 <li>그러므로 두번째 머신러닝 프로그램은 train데이터와 test데이터를 분리했다.</li>
@@ -1396,7 +1426,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(train_input[:, <span class="number">0</span>], train_input[:, <span class="number">1</span>])</span><br><span class="line">ax.scatter(<span class="number">25</span>, <span class="number">150</span>, marker = <span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_1/output_50_0.png" alt="png"></p>
+<p><img src="/images/python_2/output_50_0.png" alt="png"></p>
 <ul>
 <li><p>세모는 도미와 더 가깝지만 모델은 빙어로 인식했다.</p>
 </li>
@@ -1412,14 +1442,14 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">distances, indexes = kn.kneighbors([[<span class="number">25</span>, <span class="number">150</span>]])</span><br><span class="line">plt.scatter(train_input[:,<span class="number">0</span>], train_input[:,<span class="number">1</span>])</span><br><span class="line">plt.scatter(<span class="number">25</span>, <span class="number">150</span>, marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.scatter(train_input[indexes,<span class="number">0</span>], train_input[indexes,<span class="number">1</span>], marker=<span class="string">&#x27;D&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_1/output_53_0.png" alt="png"></p>
+<p><img src="/images/python_2/output_53_0.png" alt="png"></p>
 <ul>
 <li>이는 서로 다른 기반을 같은 범위(1000)으로 둬서 길이 단위가 1개로 뭉쳐쳐 나온다.</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(train_input[:,<span class="number">0</span>], train_input[:,<span class="number">1</span>])</span><br><span class="line">plt.scatter(<span class="number">25</span>, <span class="number">150</span>, marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.scatter(train_input[indexes,<span class="number">0</span>], train_input[indexes,<span class="number">1</span>], marker=<span class="string">&#x27;D&#x27;</span>)</span><br><span class="line">plt.xlim((<span class="number">0</span>, <span class="number">1000</span>))</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_1/output_55_0.png" alt="png"></p>
+<p><img src="/images/python_2/output_55_0.png" alt="png"></p>
 <p>98p</p>
 <ul>
 <li>두 특성(길이와 무게)의 값이 높은 범위가 매우 다름</li>
@@ -1443,11 +1473,11 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(train_scaled[:,<span class="number">0</span>], train_scaled[:,<span class="number">1</span>])</span><br><span class="line">plt.scatter(<span class="number">25</span>, <span class="number">150</span>, marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 노란 세모는 통계처리가(Feature Engineering) 안돼 있어 혼자 동떨어져있다.</span></span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_1/output_60_0.png" alt="png"></p>
+<p><img src="/images/python_2/output_60_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">new = ([<span class="number">25</span>, <span class="number">150</span>] - mean) / std</span><br><span class="line">plt.scatter(train_scaled[:,<span class="number">0</span>], train_scaled[:,<span class="number">1</span>])</span><br><span class="line">plt.scatter(new[<span class="number">0</span>], new[<span class="number">1</span>], marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 단위가 바뀜</span></span><br><span class="line"><span class="comment"># 제대로 분류됨</span></span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_1/output_61_0.png" alt="png"></p>
+<p><img src="/images/python_2/output_61_0.png" alt="png"></p>
 <ul>
 <li>통계 처리 전 : KNN –&gt;&gt; 예측이 틀림</li>
 <li>통계처리 : Feature Engineering<ul>
@@ -1483,7 +1513,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">distances, indexes = kn.kneighbors([new])</span><br><span class="line">plt.scatter(train_scaled[:,<span class="number">0</span>], train_scaled[:,<span class="number">1</span>])</span><br><span class="line">plt.scatter(new[<span class="number">0</span>], new[<span class="number">1</span>], marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.scatter(train_scaled[indexes,<span class="number">0</span>], train_scaled[indexes,<span class="number">1</span>], marker=<span class="string">&#x27;D&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 스케일링 한 이후의 모델은 드디어 수상한 도미 한 마리를(노란 세모) 도미 쪽과 유사하게 생각한다.</span></span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_1/output_68_0.png" alt="png"></p>
+<p><img src="/images/python_2/output_68_0.png" alt="png"></p>
 
       
     </div>
@@ -1500,13 +1530,23 @@ memory usage: 7.6+ KB
 <!-- Table of Contents -->
 
   
-    <article id="post-python_ 3"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-python_1"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/30/python_1/">혼공머 Chapter 01</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
-	<a href="/2022/06/30/python_%203/" class="article-date">
+	<a href="/2022/06/30/python_1/" class="article-date">
 	  <time datetime="2022-06-29T16:00:00.000Z" itemprop="datePublished">June 30, 2022</time>
 	</a>
 
@@ -1569,7 +1609,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이 코드는 참고만 한다.</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.scatter(bream_length, bream_weight)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_3/output_11_0.png" alt="png"></p>
+<p><img src="/images/python_1/output_11_0.png" alt="png"></p>
 <h3 id="아래-코드를-사용해야되는-이유"><a href="#아래-코드를-사용해야되는-이유" class="headerlink" title="아래 코드를 사용해야되는 이유"></a>아래 코드를 사용해야되는 이유</h3><ul>
 <li>파이썬 시각화는 객체지향으로 한다. </li>
 <li>이유: 시각화를 더 아름답게 다듬기 위해</li>
@@ -1578,7 +1618,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(bream_length, bream_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_3/output_13_0.png" alt="png"></p>
+<p><img src="/images/python_1/output_13_0.png" alt="png"></p>
 <h2 id="생선-분류2-빙어"><a href="#생선-분류2-빙어" class="headerlink" title="생선 분류2 빙어"></a>생선 분류2 빙어</h2><ul>
 <li><ol>
 <li>빙어 데이터 준비하기</li>
@@ -1593,11 +1633,11 @@ memory usage: 7.6+ KB
 <h2 id="빙어-데이터-시각화"><a href="#빙어-데이터-시각화" class="headerlink" title="빙어 데이터 시각화"></a>빙어 데이터 시각화</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(smelt_length, smelt_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_3/output_18_0.png" alt="png"></p>
+<p><img src="/images/python_1/output_18_0.png" alt="png"></p>
 <h2 id="도미-빙어-데이터-시각화-50p"><a href="#도미-빙어-데이터-시각화-50p" class="headerlink" title="도미+빙어 데이터 시각화 (50p)"></a>도미+빙어 데이터 시각화 (50p)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(bream_length, bream_weight)</span><br><span class="line">ax.scatter(smelt_length, smelt_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_3/output_20_0.png" alt="png"></p>
+<p><img src="/images/python_1/output_20_0.png" alt="png"></p>
 <h2 id="모델링을-위한-데이터-가공"><a href="#모델링을-위한-데이터-가공" class="headerlink" title="모델링을 위한 데이터 가공"></a>모델링을 위한 데이터 가공</h2><ul>
 <li><p>리스트 합치기</p>
 </li>
@@ -1736,6 +1776,16 @@ memory usage: 7.6+ KB
     <article id="post-Python_Pandas"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/29/Python_Pandas/">Python Pandas</a>
+    </h1>
+  
+
+      </header>
     
     <div class="article-meta">
       
@@ -3383,6 +3433,16 @@ Park        15     15      15           15        14     15    15       15
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/28/Python_NumPy/">Python NymPy</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	<a href="/2022/06/28/Python_NumPy/" class="article-date">
@@ -3686,6 +3746,16 @@ memory usage: 1.9+ KB
     <article id="post-Python_Basic"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/27/Python_Basic/">Python 기초문법</a>
+    </h1>
+  
+
+      </header>
     
     <div class="article-meta">
       
@@ -4270,6 +4340,16 @@ mango
     <article id="post-what_is_A_I"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/27/what_is_A_I/">인공지능과 데이터 과학</a>
+    </h1>
+  
+
+      </header>
     
     <div class="article-meta">
       
@@ -5093,7 +5173,7 @@ mango
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/07/01/python_%204/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2022/07/01/python_4/">혼공머 Chapter 04</a></h6>
               <span>July 1, 2022</span>
             </div>
 
@@ -5105,7 +5185,7 @@ mango
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/30/python_%202/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2022/06/30/python_3/">혼공머 Chapter 03</a></h6>
               <span>June 30, 2022</span>
             </div>
 
@@ -5117,7 +5197,7 @@ mango
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/30/python_%201/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2022/06/30/python_2/">혼공머 Chapter 02</a></h6>
               <span>June 30, 2022</span>
             </div>
 
@@ -5129,7 +5209,7 @@ mango
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/30/python_%203/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2022/06/30/python_1/">혼공머 Chapter 01</a></h6>
               <span>June 30, 2022</span>
             </div>
 
@@ -5141,7 +5221,7 @@ mango
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/29/Python_Pandas/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2022/06/29/Python_Pandas/">Python Pandas</a></h6>
               <span>June 29, 2022</span>
             </div>
 
@@ -5153,7 +5233,7 @@ mango
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/28/Python_NumPy/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2022/06/28/Python_NumPy/">Python NymPy</a></h6>
               <span>June 28, 2022</span>
             </div>
 
