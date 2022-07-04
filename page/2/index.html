@@ -102,6 +102,637 @@
         
           <section id="main">
   
+    <article id="post-R_6"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/21/R_6/">R을 이용한 공공데이터 분석_제6장</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/21/R_6/" class="article-date">
+	  <time datetime="2022-06-20T17:00:00.000Z" itemprop="datePublished">June 21, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="제6장-데이터-가공-분석-프로세스"><a href="#제6장-데이터-가공-분석-프로세스" class="headerlink" title="제6장 데이터 가공 (분석 프로세스)"></a>제6장 데이터 가공 (분석 프로세스)</h2><h1 id="0단원-자율학습"><a href="#0단원-자율학습" class="headerlink" title="0단원 자율학습"></a>0단원 자율학습</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://r4ds.had.co.nz/transform.html">5장 데이터 변환</a></li>
+<li>코드 위주로 다 쳐보기</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 설치해야되는 패키지들</span></span><br><span class="line"><span class="comment"># install.packages(&quot;nycflights13&quot;)</span></span><br><span class="line"><span class="comment"># install.packages(&quot;tidyverse&quot;)</span></span><br><span class="line"><span class="comment"># library(nycflights13)</span></span><br><span class="line"><span class="comment"># library(tidyverse)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1단원-데이터-전처리-98p"><a href="#1단원-데이터-전처리-98p" class="headerlink" title="1단원 데이터 전처리 (98p)"></a>1단원 데이터 전처리 (98p)</h1><ul>
+<li>데이터 전처리를 위한 도구(패키지) 2가지 차이</li>
+<li>dplyr : 10GB 이내, 매우 쉬움</li>
+<li>data.table : 50GB, 어려움</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 라이브러리 불러오기</span></span><br><span class="line"><span class="comment"># install.packages(&quot;dplyr&quot;)</span></span><br><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 다음의 패키지를 부착합니다: &#x27;dplyr&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:stats&#x27;:</span><br><span class="line">## </span><br><span class="line">##     filter, lag</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:base&#x27;:</span><br><span class="line">## </span><br><span class="line">##     intersect, setdiff, setequal, union</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  mpg1 <span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 99p 방법1, 방법2 차이 설명</span></span><br><span class="line"><span class="comment"># %&gt;% : 파이프 연산자 pipe operator</span></span><br><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data2 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span></span><br><span class="line">  select<span class="punctuation">(</span>drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span> <span class="operator">%&gt;%</span></span><br><span class="line">  filter<span class="punctuation">(</span>drv <span class="operator">==</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">data3 <span class="operator">&lt;-</span>select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span></span><br><span class="line">data3 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>data3<span class="punctuation">,</span> drv <span class="operator">==</span><span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="중요도-높은-함수들"><a href="#중요도-높은-함수들" class="headerlink" title="중요도 높은 함수들"></a>중요도 높은 함수들</h1><ul>
+<li>4.select : 컬럼명 추출</li>
+<li>5.filter : 행 추출 (조건식)</li>
+<li>6.mutate : 파생변수, 데이터 분석에 있어 중요함. 기존에 있던 데이터에서 변수를 새로 만듬. ex.총매출액, 영업이익</li>
+<li>7.group by 와 7.summarise()는 함께간다 : 비교를 해야 데이터가 의미가 있음</li>
+</ul>
+<h1 id="2단원-rename"><a href="#2단원-rename" class="headerlink" title="2단원 rename()"></a>2단원 rename()</h1><ul>
+<li>이름 바꾸기, 변수 이름을 한 번에 여러개 바꿀 수 있음.</li>
+</ul>
+<h1 id="3단원-count"><a href="#3단원-count" class="headerlink" title="3단원 count()"></a>3단원 count()</h1><ul>
+<li>count() &#x3D; table(): 데이터세트의 ‘범주형 변수’에서 범주들의 빈도를 센다.</li>
+</ul>
+<h1 id="4단원-select"><a href="#4단원-select" class="headerlink" title="4단원 select()"></a>4단원 select()</h1><ul>
+<li>데이터세트의 열 추출&#x2F;삭제하여 새로운 객체를 만들 때 사용.</li>
+<li>데이터세트의 용량이 너무 많으면 X, 필요한 열만 추출하여 분석</li>
+</ul>
+<h2 id="1-필요한-열을-추출하기"><a href="#1-필요한-열을-추출하기" class="headerlink" title="1. 필요한 열을 추출하기"></a>1. 필요한 열을 추출하기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_1 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> select<span class="punctuation">(</span>manufacturer<span class="punctuation">,</span>trans<span class="punctuation">,</span>cty<span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>mpg1_1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  3 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_2 <span class="operator">&lt;-</span>select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="punctuation">,</span>trans<span class="punctuation">,</span>cty<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-불필요한-열-삭제-후-필요한-열만-남기기"><a href="#2-불필요한-열-삭제-후-필요한-열만-남기기" class="headerlink" title="2. 불필요한 열 삭제 후 필요한 열만 남기기"></a>2. 불필요한 열 삭제 후 필요한 열만 남기기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_type1 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> select<span class="punctuation">(</span><span class="operator">-</span>cty<span class="punctuation">,</span><span class="operator">-</span>hwy<span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>mpg1_type1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  3 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_type2 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> select<span class="punctuation">(</span><span class="operator">-</span><span class="built_in">c</span><span class="punctuation">(</span>cty<span class="punctuation">,</span>hwy<span class="punctuation">)</span><span class="punctuation">)</span> <span class="comment">#c() 클론,변수들을 묶어둠.</span></span><br><span class="line"><span class="comment"># 방법3</span></span><br><span class="line">mpg1_type3 <span class="operator">&lt;-</span>select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span><span class="operator">-</span>cty<span class="punctuation">,</span><span class="operator">-</span>hwy<span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법4</span></span><br><span class="line">mpg1_type4 <span class="operator">&lt;-</span>select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span><span class="operator">-</span><span class="built_in">c</span><span class="punctuation">(</span>cty<span class="punctuation">,</span>hwy<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="5단원-slice-filter"><a href="#5단원-slice-filter" class="headerlink" title="5단원 slice(),filter()"></a>5단원 slice(),filter()</h1><h2 id="1-slice-행의-일부를-추출하기"><a href="#1-slice-행의-일부를-추출하기" class="headerlink" title="1. slice(): 행의 일부를 추출하기"></a>1. slice(): 행의 일부를 추출하기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1 <span class="operator">%&gt;%</span> slice<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##   manufacturer trans drv cty hwy</span><br><span class="line">## 1         audi  auto   f  18  29</span><br><span class="line">## 2         audi  auto   f  21  30</span><br><span class="line">## 3         audi  auto   f  16  26</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">slice<span class="punctuation">(</span>mpg1<span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##   manufacturer trans drv cty hwy</span><br><span class="line">## 1         audi  auto   f  18  29</span><br><span class="line">## 2         audi  auto   f  21  30</span><br><span class="line">## 3         audi  auto   f  16  26</span><br></pre></td></tr></table></figure>
+<h2 id="2-filter-조건에-맞는-행을-추출하기"><a href="#2-filter-조건에-맞는-행을-추출하기" class="headerlink" title="2. filter(): 조건에 맞는 행을 추출하기"></a>2. filter(): 조건에 맞는 행을 추출하기</h2><h3 id="2-1-비교값이-같은-데이터-추출"><a href="#2-1-비교값이-같은-데이터-추출" class="headerlink" title="2.1. 비교값이 같은 데이터 추출"></a>2.1. 비교값이 같은 데이터 추출</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1 </span></span><br><span class="line">mpg1_hd1 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_hd2 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">max</span><span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span> <span class="comment"># cty의 최댓값 구하기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 35</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>cty<span class="operator">==</span><span class="number">35</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##   manufacturer  trans drv cty hwy</span><br><span class="line">## 1   volkswagen manual   f  35  44</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>cty<span class="operator">==</span><span class="number">35</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##   manufacturer  trans drv cty hwy</span><br><span class="line">## 1   volkswagen manual   f  35  44</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법3</span></span><br><span class="line">mpg1 <span class="operator">%&gt;%</span>filter<span class="punctuation">(</span>cty<span class="operator">==</span><span class="built_in">max</span><span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##   manufacturer  trans drv cty hwy</span><br><span class="line">## 1   volkswagen manual   f  35  44</span><br></pre></td></tr></table></figure>
+<ul>
+<li>‘&#x3D;’: 지정하거나 입력, ‘&#x3D;&#x3D;’:비교해서 같다</li>
+</ul>
+<h3 id="2-2-비교값이-다른-데이터-추출"><a href="#2-2-비교값이-다른-데이터-추출" class="headerlink" title="2.2. 비교값이 다른 데이터 추출"></a>2.2. 비교값이 다른 데이터 추출</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_no_hd1 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer<span class="operator">!=</span><span class="string">&quot;hyundai&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_no_hd2 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="operator">!=</span><span class="string">&quot;hyundai&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>‘&#x3D;!’: 같지 않다</li>
+</ul>
+<h3 id="2-3-비교값이-크거나-작은-데이터-추출"><a href="#2-3-비교값이-크거나-작은-데이터-추출" class="headerlink" title="2.3. 비교값이 크거나 작은 데이터 추출"></a>2.3. 비교값이 크거나 작은 데이터 추출</h3><h4 id="2-3-1-비교값이-작은-lt-데이터-추출"><a href="#2-3-1-비교값이-작은-lt-데이터-추출" class="headerlink" title="2.3.1. 비교값이 작은(&lt;) 데이터 추출"></a>2.3.1. 비교값이 작은(&lt;) 데이터 추출</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mean<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span> <span class="comment"># cty의 평균 구하기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 16.85897</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_low1 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>cty<span class="operator">&lt;</span><span class="number">16.85897</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_low2 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>cty<span class="operator">&lt;</span><span class="number">16.85897</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법3</span></span><br><span class="line">mpg1_low3 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>cty<span class="operator">&lt;</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-3-2-비교값이-작거나-같은-lt-x3D-데이터-추출"><a href="#2-3-2-비교값이-작거나-같은-lt-x3D-데이터-추출" class="headerlink" title="2.3.2. 비교값이 작거나 같은(&lt;&#x3D;) 데이터 추출"></a>2.3.2. 비교값이 작거나 같은(&lt;&#x3D;) 데이터 추출</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quantile<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span> <span class="comment">#1사분위수 알아보기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##   0%  25%  50%  75% 100% </span><br><span class="line">##    9   14   17   19   35</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_low4 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>cty<span class="operator">&lt;=</span><span class="number">14</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_low5 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>cty<span class="operator">&lt;=</span><span class="number">14</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-3-3-비교값이-큰-gt-데이터-추출"><a href="#2-3-3-비교값이-큰-gt-데이터-추출" class="headerlink" title="2.3.3. 비교값이 큰(&gt;) 데이터 추출"></a>2.3.3. 비교값이 큰(&gt;) 데이터 추출</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">median<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span> <span class="comment">#중앙값 구하기기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 17</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_hight1 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>cty<span class="operator">&gt;</span><span class="number">17</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_hight2 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>cty<span class="operator">&gt;</span><span class="number">17</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법3</span></span><br><span class="line">mpg1_hight3 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>cty<span class="operator">&gt;</span>median<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-3-4-비교값이-크거나-같은-gt-x3D-데이터-추출"><a href="#2-3-4-비교값이-크거나-같은-gt-x3D-데이터-추출" class="headerlink" title="2.3.4. 비교값이 크거나 같은(&gt;&#x3D;) 데이터 추출"></a>2.3.4. 비교값이 크거나 같은(&gt;&#x3D;) 데이터 추출</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quantile<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##   0%  25%  50%  75% 100% </span><br><span class="line">##    9   14   17   19   35</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_hight4 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>cty<span class="operator">&gt;=</span><span class="number">19</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_hight5 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>cty<span class="operator">&gt;=</span><span class="number">19</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-4-복수의-조건을-충족하는-데이터-추출"><a href="#2-4-복수의-조건을-충족하는-데이터-추출" class="headerlink" title="2.4. 복수의 조건을 충족하는 데이터 추출"></a>2.4. 복수의 조건을 충족하는 데이터 추출</h3><h4 id="2-4-1-조건이-2개일-때"><a href="#2-4-1-조건이-2개일-때" class="headerlink" title="2.4.1. 조건이 2개일 때"></a>2.4.1. 조건이 2개일 때</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mpg1에서 manufacturer가 hyundai이면서 cty가 모든 자동차의 평균 이상인 데이터를 추출하기</span></span><br><span class="line"></span><br><span class="line">mean<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span> <span class="comment">#cty 평균구하기기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 16.85897</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpq1_hd3 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="operator">&amp;</span>cty<span class="operator">&gt;=</span><span class="number">16.85897</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpq1_hd4 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="operator">&amp;</span>cty<span class="operator">&gt;=</span><span class="number">16.85897</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법3</span></span><br><span class="line">mpq1_hd5 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="operator">&amp;</span>cty<span class="operator">&gt;=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-4-2-조건이-3개일-때"><a href="#2-4-2-조건이-3개일-때" class="headerlink" title="2.4.2. 조건이 3개일 때"></a>2.4.2. 조건이 3개일 때</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mpg1의 manufacturer가 hyundai이면서, trans가 auto이고, cty가 전체 자동차의 중앙값 이상인 데이터를 추출하기</span></span><br><span class="line"></span><br><span class="line">median<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span> <span class="comment">#cty 중앙값 구하기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 17</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpq1_hd6 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="operator">&amp;</span>trans<span class="operator">==</span><span class="string">&quot;auto&quot;</span><span class="operator">&amp;</span>cty<span class="operator">&gt;=</span><span class="number">17</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpq1_hd7 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="operator">&amp;</span>trans<span class="operator">==</span><span class="string">&quot;auto&quot;</span><span class="operator">&amp;</span>cty<span class="operator">&gt;=</span><span class="number">17</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법3</span></span><br><span class="line">mpq1_hd8 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="operator">&amp;</span>trans<span class="operator">==</span><span class="string">&quot;auto&quot;</span><span class="operator">&amp;</span>cty<span class="operator">&gt;=</span>median<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-복수-조건-중-하나라도-충족하는-데이터-추출"><a href="#2-5-복수-조건-중-하나라도-충족하는-데이터-추출" class="headerlink" title="2.5. 복수 조건 중 하나라도 충족하는 데이터 추출"></a>2.5. 복수 조건 중 하나라도 충족하는 데이터 추출</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mpg1에서 일본 자동차들의 데이터만 추출해서 새로운 객체에 입력하기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1_j1 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer<span class="operator">==</span><span class="string">&quot;honda&quot;</span><span class="operator">|</span>manufacturer<span class="operator">==</span><span class="string">&quot;nissan&quot;</span><span class="operator">|</span></span><br><span class="line">                            manufacturer<span class="operator">==</span><span class="string">&quot;subaru&quot;</span><span class="operator">|</span>manufacturer<span class="operator">==</span><span class="string">&quot;toyota&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1_j2 <span class="operator">&lt;-</span>filter<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="operator">==</span><span class="string">&quot;honda&quot;</span><span class="operator">|</span>manufacturer<span class="operator">==</span><span class="string">&quot;nissan&quot;</span><span class="operator">|</span></span><br><span class="line">                            manufacturer<span class="operator">==</span><span class="string">&quot;subaru&quot;</span><span class="operator">|</span>manufacturer<span class="operator">==</span><span class="string">&quot;toyota&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 방법3</span></span><br><span class="line">mpg1_j3 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>manufacturer <span class="operator">%in%</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;honda&quot;</span><span class="punctuation">,</span><span class="string">&quot;nissan&quot;</span><span class="punctuation">,</span><span class="string">&quot;subaru&quot;</span><span class="punctuation">,</span><span class="string">&quot;toyota&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>shift+\ &#x3D; ‘|’: 여러 조건 중 하나만 충족되면 조건에 해당하는 데이터를 모두 추출</li>
+<li>‘%in% c()’: c()안에 있는 것을 모두 포함한다.</li>
+</ul>
+<h3 id="2-6-열을-추출한-후에-조건에-맞는행을-추출하기"><a href="#2-6-열을-추출한-후에-조건에-맞는행을-추출하기" class="headerlink" title="2.6. 열을 추출한 후에 조건에 맞는행을 추출하기"></a>2.6. 열을 추출한 후에 조건에 맞는행을 추출하기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mpg1에서 manufactrer,cty 열을 추출한 후에 manufacturer가 hyundai인 자동차 중에 cty가 전체 평균 이상인 데이터를 추출해서 새로운 객체 mpg1_hd9에 입력한다.</span></span><br><span class="line"></span><br><span class="line">mean<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span> <span class="comment">#cty 평균 구하기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 16.85897</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1_hd9 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span>  <span class="comment">#새 객체에 입력</span></span><br><span class="line">  select<span class="punctuation">(</span>manufacturer<span class="punctuation">,</span>cty<span class="punctuation">)</span> <span class="operator">%&gt;%</span> <span class="comment">#2개 변수 추출</span></span><br><span class="line">  filter<span class="punctuation">(</span>manufacturer<span class="operator">==</span><span class="string">&quot;hyundai&quot;</span><span class="operator">&amp;</span>cty<span class="operator">&gt;=</span><span class="number">16.85897</span><span class="punctuation">)</span> <span class="comment">#조건부여해서 행 추출</span></span><br></pre></td></tr></table></figure>
+<h1 id="6단원-mutate"><a href="#6단원-mutate" class="headerlink" title="6단원 mutate()"></a>6단원 mutate()</h1><h2 id="1-1개의-파생변수-만들기"><a href="#1-1개의-파생변수-만들기" class="headerlink" title="1. 1개의 파생변수 만들기"></a>1. 1개의 파생변수 만들기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mpg1에는 cty(도시에서의 연비)와 hwy(고속도로에서의 연비) 변수가 있습니다. </span></span><br><span class="line"><span class="comment"># mpg1에 두 변수를 합친 total 변수를 만들어서 새 객체 mpg2에 입력하빈다.</span></span><br><span class="line"></span><br><span class="line">mpg2 <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total<span class="operator">=</span>cty<span class="operator">+</span>hwy<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">str<span class="punctuation">(</span>mpg2<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  6 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br><span class="line">##  $ total       : int  47 50 51 51 42 44 45 44 41 48 ...</span><br></pre></td></tr></table></figure>
+<h2 id="2-복수의-파생변수-만들기"><a href="#2-복수의-파생변수-만들기" class="headerlink" title="2. 복수의 파생변수 만들기"></a>2. 복수의 파생변수 만들기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># total 변수(cty+hwy)와 mean 변수((cty+hwy)/2)를 동시에 만들어 새로운 객체 mpg3에 입력한다.</span></span><br><span class="line"></span><br><span class="line">mpg3 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total<span class="operator">=</span>cty<span class="operator">+</span>hwy<span class="punctuation">,</span></span><br><span class="line">         mean<span class="operator">=</span><span class="punctuation">(</span>cty<span class="operator">+</span>hwy<span class="punctuation">)</span><span class="operator">/</span><span class="number">2</span><span class="punctuation">)</span> <span class="comment">#mean=(cty+hwy)/2는 total1/2로 써되 됨.</span></span><br><span class="line"></span><br><span class="line">str<span class="punctuation">(</span>mpg3<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  7 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br><span class="line">##  $ total       : int  47 50 51 51 42 44 45 44 41 48 ...</span><br><span class="line">##  $ mean        : num  23.5 25 25.5 25.5 21 22 22.5 22 20.5 24 ...</span><br></pre></td></tr></table></figure>
+<h2 id="3-강의-내용"><a href="#3-강의-내용" class="headerlink" title="3. 강의 내용"></a>3. 강의 내용</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">glimpse<span class="punctuation">(</span>iris<span class="punctuation">)</span> <span class="comment"># glimpse()=str(): 데이터 미리보기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## Rows: 150</span><br><span class="line">## Columns: 5</span><br><span class="line">## $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.…</span><br><span class="line">## $ Sepal.Width  &lt;dbl&gt; 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.…</span><br><span class="line">## $ Petal.Length &lt;dbl&gt; 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1.5, 1.…</span><br><span class="line">## $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.…</span><br><span class="line">## $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iris <span class="operator">%&gt;%</span> </span><br><span class="line">  <span class="comment"># Species, setosa,versicolor</span></span><br><span class="line">  filter<span class="punctuation">(</span>Species <span class="operator">==</span> <span class="string">&quot;setosa&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span><br><span class="line">## 1           5.1         3.5          1.4         0.2  setosa</span><br><span class="line">## 2           4.9         3.0          1.4         0.2  setosa</span><br><span class="line">## 3           4.7         3.2          1.3         0.2  setosa</span><br><span class="line">## 4           4.6         3.1          1.5         0.2  setosa</span><br><span class="line">## 5           5.0         3.6          1.4         0.2  setosa</span><br><span class="line">## 6           5.4         3.9          1.7         0.4  setosa</span><br><span class="line">## 7           4.6         3.4          1.4         0.3  setosa</span><br><span class="line">## 8           5.0         3.4          1.5         0.2  setosa</span><br><span class="line">## 9           4.4         2.9          1.4         0.2  setosa</span><br><span class="line">## 10          4.9         3.1          1.5         0.1  setosa</span><br><span class="line">## 11          5.4         3.7          1.5         0.2  setosa</span><br><span class="line">## 12          4.8         3.4          1.6         0.2  setosa</span><br><span class="line">## 13          4.8         3.0          1.4         0.1  setosa</span><br><span class="line">## 14          4.3         3.0          1.1         0.1  setosa</span><br><span class="line">## 15          5.8         4.0          1.2         0.2  setosa</span><br><span class="line">## 16          5.7         4.4          1.5         0.4  setosa</span><br><span class="line">## 17          5.4         3.9          1.3         0.4  setosa</span><br><span class="line">## 18          5.1         3.5          1.4         0.3  setosa</span><br><span class="line">## 19          5.7         3.8          1.7         0.3  setosa</span><br><span class="line">## 20          5.1         3.8          1.5         0.3  setosa</span><br><span class="line">## 21          5.4         3.4          1.7         0.2  setosa</span><br><span class="line">## 22          5.1         3.7          1.5         0.4  setosa</span><br><span class="line">## 23          4.6         3.6          1.0         0.2  setosa</span><br><span class="line">## 24          5.1         3.3          1.7         0.5  setosa</span><br><span class="line">## 25          4.8         3.4          1.9         0.2  setosa</span><br><span class="line">## 26          5.0         3.0          1.6         0.2  setosa</span><br><span class="line">## 27          5.0         3.4          1.6         0.4  setosa</span><br><span class="line">## 28          5.2         3.5          1.5         0.2  setosa</span><br><span class="line">## 29          5.2         3.4          1.4         0.2  setosa</span><br><span class="line">## 30          4.7         3.2          1.6         0.2  setosa</span><br><span class="line">## 31          4.8         3.1          1.6         0.2  setosa</span><br><span class="line">## 32          5.4         3.4          1.5         0.4  setosa</span><br><span class="line">## 33          5.2         4.1          1.5         0.1  setosa</span><br><span class="line">## 34          5.5         4.2          1.4         0.2  setosa</span><br><span class="line">## 35          4.9         3.1          1.5         0.2  setosa</span><br><span class="line">## 36          5.0         3.2          1.2         0.2  setosa</span><br><span class="line">## 37          5.5         3.5          1.3         0.2  setosa</span><br><span class="line">## 38          4.9         3.6          1.4         0.1  setosa</span><br><span class="line">## 39          4.4         3.0          1.3         0.2  setosa</span><br><span class="line">## 40          5.1         3.4          1.5         0.2  setosa</span><br><span class="line">## 41          5.0         3.5          1.3         0.3  setosa</span><br><span class="line">## 42          4.5         2.3          1.3         0.3  setosa</span><br><span class="line">## 43          4.4         3.2          1.3         0.2  setosa</span><br><span class="line">## 44          5.0         3.5          1.6         0.6  setosa</span><br><span class="line">## 45          5.1         3.8          1.9         0.4  setosa</span><br><span class="line">## 46          4.8         3.0          1.4         0.3  setosa</span><br><span class="line">## 47          5.1         3.8          1.6         0.2  setosa</span><br><span class="line">## 48          4.6         3.2          1.4         0.2  setosa</span><br><span class="line">## 49          5.3         3.7          1.5         0.2  setosa</span><br><span class="line">## 50          5.0         3.3          1.4         0.2  setosa</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iris <span class="operator">%&gt;%</span></span><br><span class="line">  <span class="comment"># Species, setosa,versicolor</span></span><br><span class="line">  filter<span class="punctuation">(</span>Species <span class="operator">!=</span><span class="string">&quot;virginica&quot;</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span></span><br><span class="line">  select<span class="punctuation">(</span>Sepal.Length<span class="punctuation">,</span>Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>Sepal.Length <span class="operator">&gt;</span> <span class="number">5.0</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total <span class="operator">=</span> Sepal.Length <span class="operator">+</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> glimpse<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">-&gt;</span>data4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Rows: 69</span><br><span class="line">## Columns: 3</span><br><span class="line">## $ Sepal.Length &lt;dbl&gt; 5.1, 5.4, 5.4, 5.8, 5.7, 5.4, 5.1, 5.7, 5.1, 5.4, 5.1, 5.…</span><br><span class="line">## $ Sepal.Width  &lt;dbl&gt; 3.5, 3.9, 3.7, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.…</span><br><span class="line">## $ total        &lt;dbl&gt; 8.6, 9.3, 9.1, 9.8, 10.1, 9.3, 8.6, 9.5, 8.9, 8.8, 8.8, 8…</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iris <span class="operator">%&gt;%</span></span><br><span class="line">  <span class="comment"># Species, setosa,versicolor</span></span><br><span class="line">  filter<span class="punctuation">(</span>Species <span class="operator">!=</span><span class="string">&quot;virginica&quot;</span> <span class="operator">&amp;</span> Sepal.Length <span class="operator">&gt;</span> <span class="number">5.0</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span></span><br><span class="line">  select<span class="punctuation">(</span>Sepal.Length<span class="punctuation">,</span>Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total <span class="operator">=</span> Sepal.Length <span class="operator">+</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> glimpse<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">-&gt;</span>data4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Rows: 69</span><br><span class="line">## Columns: 3</span><br><span class="line">## $ Sepal.Length &lt;dbl&gt; 5.1, 5.4, 5.4, 5.8, 5.7, 5.4, 5.1, 5.7, 5.1, 5.4, 5.1, 5.…</span><br><span class="line">## $ Sepal.Width  &lt;dbl&gt; 3.5, 3.9, 3.7, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.…</span><br><span class="line">## $ total        &lt;dbl&gt; 8.6, 9.3, 9.1, 9.8, 10.1, 9.3, 8.6, 9.5, 8.9, 8.8, 8.8, 8…</span><br></pre></td></tr></table></figure>
+
+<h1 id="7단원-group-by-summarise-n"><a href="#7단원-group-by-summarise-n" class="headerlink" title="7단원 group_by(),summarise(),n()"></a>7단원 group_by(),summarise(),n()</h1><ul>
+<li>집단별 통계량 : ‘집단으로 쪼개고(split), 집단별로 적용하고(apply), 결과를 합쳐서(combine)’ 분석하는 방식</li>
+<li>group by 와 summarise()는 함께간다. 비교를 해야 데이터가 의미가 있음</li>
+</ul>
+<h2 id="1-집단-분류-group-by"><a href="#1-집단-분류-group-by" class="headerlink" title="1. 집단 분류 group_by()"></a>1. 집단 분류 group_by()</h2><ul>
+<li>group_by() 함수의 ()안에 ‘범주형 변수’의 이름을 적으면 행을 범주별로 분류한다.</li>
+<li>ex.</li>
+<li>mpg1의 trans 변수는 auto와 manual 2개 범주로 구성</li>
+<li>group_by(trans)를 하면 모든 행을 auto와 manual로 분류함.</li>
+</ul>
+<h2 id="2-집단의-통계-구하기-summarise"><a href="#2-집단의-통계-구하기-summarise" class="headerlink" title="2. 집단의 통계 구하기 summarise()"></a>2. 집단의 통계 구하기 summarise()</h2><ul>
+<li>집단별로 통계값을 구할 때 사용하는 함수.</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##          m</span><br><span class="line">## 1 16.85897</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mean<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 16.85897</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">,</span>s<span class="operator">=</span><span class="built_in">sum</span><span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">,</span>med<span class="operator">=</span>median<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##          m    s med</span><br><span class="line">## 1 16.85897 3945  17</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> summarise<span class="punctuation">(</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">,</span><span class="built_in">sum</span><span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">,</span>median<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span> <span class="comment"># 변수 이름 미지정정</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##   mean(cty) sum(cty) median(cty)</span><br><span class="line">## 1  16.85897     3945          17</span><br></pre></td></tr></table></figure>
+<h2 id="3-집단으로-분류해서-집단별-통계-구하기"><a href="#3-집단으로-분류해서-집단별-통계-구하기" class="headerlink" title="3. 집단으로 분류해서 집단별 통계 구하기"></a>3. 집단으로 분류해서 집단별 통계 구하기</h2><h3 id="3-1-1개-변수를-집단-분류해서-통계-구하기-group-by-변수-summarise"><a href="#3-1-1개-변수를-집단-분류해서-통계-구하기-group-by-변수-summarise" class="headerlink" title="3.1. 1개 변수를 집단 분류해서 통계 구하기: group_by(변수)+summarise"></a>3.1. 1개 변수를 집단 분류해서 통계 구하기: group_by(변수)+summarise</h3><ul>
+<li>데이터를 집단으로 분류한 후, 집단별로 통계를 구할 수 있음.</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법1</span></span><br><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>trans<span class="punctuation">)</span> <span class="operator">%&gt;%</span> <span class="comment"># auto와 manual 두 개의 집단으로 분류</span></span><br><span class="line">  summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span> <span class="comment"># 집단별로 cty 평균을 계산함</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 2</span><br><span class="line">##   trans      m</span><br><span class="line">##   &lt;chr&gt;  &lt;dbl&gt;</span><br><span class="line">## 1 auto    16.0</span><br><span class="line">## 2 manual  18.7</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법2</span></span><br><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>trans<span class="operator">==</span><span class="string">&quot;auto&quot;</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##          m</span><br><span class="line">## 1 15.96815</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>trans<span class="operator">==</span><span class="string">&quot;manual&quot;</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##          m</span><br><span class="line">## 1 18.67532</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-복수-변수를-집단-분류해서-통계-구하기-group-by-변수1-변수2-…-summarise"><a href="#3-2-복수-변수를-집단-분류해서-통계-구하기-group-by-변수1-변수2-…-summarise" class="headerlink" title="3.2. 복수 변수를 집단 분류해서 통계 구하기: group_by(변수1,변수2,…)+summarise"></a>3.2. 복수 변수를 집단 분류해서 통계 구하기: group_by(변수1,변수2,…)+summarise</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>trans<span class="operator">==</span><span class="string">&quot;auto&quot;</span><span class="operator">&amp;</span>drv<span class="operator">==</span><span class="string">&quot;4&quot;</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##          m</span><br><span class="line">## 1 13.85333</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 주의!!! trans 변수의 범주를 기준으로 분류한 후에 다시 trans의 범주별로 drv의 범주를 분류하는 것이므로 group_by(trans,drv)라고 하면 됨.</span></span><br><span class="line"><span class="comment"># 만약 group_by(drv,trans)로 하면 drv를 상위집단으로 해서 먼저 범주별로 분류하고, 다시 drv 범주별로 trans의 범주를 분류합니다!!!!!</span></span><br><span class="line"><span class="comment"># 어느 변수를 상위집단으로 놓느냐에 따라 결과가 바뀜</span></span><br><span class="line"></span><br><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>trans<span class="punctuation">,</span>drv<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## `summarise()` has grouped output by &#x27;trans&#x27;. You can override using the</span><br><span class="line">## `.groups` argument.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 6 × 3</span><br><span class="line">## # Groups:   trans [2]</span><br><span class="line">##   trans  drv       m</span><br><span class="line">##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;</span><br><span class="line">## 1 auto   4      13.9</span><br><span class="line">## 2 auto   f      19.1</span><br><span class="line">## 3 auto   r      13.3</span><br><span class="line">## 4 manual 4      15.6</span><br><span class="line">## 5 manual f      21.3</span><br><span class="line">## 6 manual r      15.8</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>drv<span class="punctuation">,</span>trans<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## `summarise()` has grouped output by &#x27;drv&#x27;. You can override using the `.groups`</span><br><span class="line">## argument.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 6 × 3</span><br><span class="line">## # Groups:   drv [3]</span><br><span class="line">##   drv   trans      m</span><br><span class="line">##   &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;</span><br><span class="line">## 1 4     auto    13.9</span><br><span class="line">## 2 4     manual  15.6</span><br><span class="line">## 3 f     auto    19.1</span><br><span class="line">## 4 f     manual  21.3</span><br><span class="line">## 5 r     auto    13.3</span><br><span class="line">## 6 r     manual  15.8</span><br></pre></td></tr></table></figure>
+<h2 id="4-집단별-빈도와-비율-구하기"><a href="#4-집단별-빈도와-비율-구하기" class="headerlink" title="4. 집단별 빈도와 비율 구하기"></a>4. 집단별 빈도와 비율 구하기</h2><h3 id="4-1-분류-집단별-데이터-빈도-구하기-group-by-변수-summarise-n-함수"><a href="#4-1-분류-집단별-데이터-빈도-구하기-group-by-변수-summarise-n-함수" class="headerlink" title="4.1. 분류 집단별 데이터 빈도 구하기:group_by(변수)+summarise(n()함수)"></a>4.1. 분류 집단별 데이터 빈도 구하기:group_by(변수)+summarise(n()함수)</h3><ul>
+<li>‘n()’: 집단의 데이터 숫자를 세어 빈도를 알려주는 함수.</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>trans<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>n<span class="operator">=</span>n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 2</span><br><span class="line">##   trans      n</span><br><span class="line">##   &lt;chr&gt;  &lt;int&gt;</span><br><span class="line">## 1 auto     157</span><br><span class="line">## 2 manual    77</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>trans<span class="punctuation">,</span>drv<span class="punctuation">)</span> <span class="operator">%&gt;%</span> <span class="comment">#2개 변수로 집단 분류</span></span><br><span class="line">  summarise<span class="punctuation">(</span>n<span class="operator">=</span>n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span>        <span class="comment">#집단별로 빈도 구하기</span></span><br><span class="line">            m<span class="operator">=</span>mean<span class="punctuation">(</span>cty<span class="punctuation">)</span><span class="punctuation">)</span>  <span class="comment">#집단별로 평균 구하기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## `summarise()` has grouped output by &#x27;trans&#x27;. You can override using the</span><br><span class="line">## `.groups` argument.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 6 × 4</span><br><span class="line">## # Groups:   trans [2]</span><br><span class="line">##   trans  drv       n     m</span><br><span class="line">##   &lt;chr&gt;  &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;</span><br><span class="line">## 1 auto   4        75  13.9</span><br><span class="line">## 2 auto   f        65  19.1</span><br><span class="line">## 3 auto   r        17  13.3</span><br><span class="line">## 4 manual 4        28  15.6</span><br><span class="line">## 5 manual f        41  21.3</span><br><span class="line">## 6 manual r         8  15.8</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-분류한-집단별-빈도와-비율-구하기-group-by-summarise-n-mutate-의-조합"><a href="#4-2-분류한-집단별-빈도와-비율-구하기-group-by-summarise-n-mutate-의-조합" class="headerlink" title="4.2. 분류한 집단별 빈도와 비율 구하기:group_by()+summarise(n()) + mutate()의 조합"></a>4.2. 분류한 집단별 빈도와 비율 구하기:group_by()+summarise(n()) + mutate()의 조합</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>trans<span class="punctuation">)</span> <span class="operator">%&gt;%</span>       <span class="comment"># trans 범주로 구분</span></span><br><span class="line">  summarise<span class="punctuation">(</span>n<span class="operator">=</span>n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span>      <span class="comment"># trans 범주별 데이터 빈도 구하기</span></span><br><span class="line">    mutate<span class="punctuation">(</span>total<span class="operator">=</span><span class="built_in">sum</span><span class="punctuation">(</span>n<span class="punctuation">)</span><span class="punctuation">,</span>    <span class="comment"># trans 범주별 빈도의 총계 구하기</span></span><br><span class="line">           pct<span class="operator">=</span>n<span class="operator">/</span>total<span class="operator">*</span><span class="number">100</span><span class="punctuation">)</span> <span class="comment"># trans 범주별 비율 구하기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 4</span><br><span class="line">##   trans      n total   pct</span><br><span class="line">##   &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span><br><span class="line">## 1 auto     157   234  67.1</span><br><span class="line">## 2 manual    77   234  32.9</span><br></pre></td></tr></table></figure>
+<h2 id="5-강의-내용"><a href="#5-강의-내용" class="headerlink" title="5. 강의 내용"></a>5. 강의 내용</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>trans<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>avg     <span class="operator">=</span> mean<span class="punctuation">(</span>cty<span class="punctuation">)</span>    <span class="comment"># 평균</span></span><br><span class="line">            <span class="punctuation">,</span> total <span class="operator">=</span> <span class="built_in">sum</span><span class="punctuation">(</span>cty<span class="punctuation">)</span>     <span class="comment"># 총합</span></span><br><span class="line">            <span class="punctuation">,</span> med   <span class="operator">=</span> median<span class="punctuation">(</span>cty<span class="punctuation">)</span>  <span class="comment"># 중간값</span></span><br><span class="line">            <span class="punctuation">,</span> count <span class="operator">=</span> n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span>         <span class="comment"># n(): group의 사이즈</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 5</span><br><span class="line">##   trans    avg total   med count</span><br><span class="line">##   &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span><br><span class="line">## 1 auto    16.0  2507    16   157</span><br><span class="line">## 2 manual  18.7  1438    18    77</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 피버테이블을 만듬.</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="8-11단원은-읽고-넘어가기"><a href="#8-11단원은-읽고-넘어가기" class="headerlink" title="8~11단원은 읽고 넘어가기"></a>8~11단원은 읽고 넘어가기</h1><ul>
+<li><ol start="8">
+<li>mutate() + ifelse() 연속 데이터로 범주변수 만들기</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>arrange()데이터 정렬하기</li>
+</ol>
+</li>
+<li>10.데이터 결합하기</li>
+<li>11.알아두면 유용한 함수</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-R_4"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/20/R_4/">R을 이용한 공공데이터 분석_제4장</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/20/R_4/" class="article-date">
+	  <time datetime="2022-06-19T17:00:00.000Z" itemprop="datePublished">June 20, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="제4장-데이터-내보내기-amp-불러오기"><a href="#제4장-데이터-내보내기-amp-불러오기" class="headerlink" title="제4장 데이터 내보내기 &amp; 불러오기"></a>제4장 데이터 내보내기 &amp; 불러오기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 엑셀 데이터</span></span><br><span class="line">no <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">,</span> <span class="number">4</span><span class="punctuation">,</span> <span class="number">5</span><span class="punctuation">)</span></span><br><span class="line">sex <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">)</span></span><br><span class="line">korean <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">87</span><span class="punctuation">,</span> <span class="number">92</span><span class="punctuation">,</span> <span class="number">95</span><span class="punctuation">,</span> <span class="number">81</span><span class="punctuation">,</span> <span class="number">87</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">exam <span class="operator">=</span> data.frame<span class="punctuation">(</span>no<span class="punctuation">,</span> sex<span class="punctuation">,</span> korean<span class="punctuation">)</span></span><br><span class="line">exam</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##   no    sex korean</span><br><span class="line">## 1  1   male     87</span><br><span class="line">## 2  2 female     92</span><br><span class="line">## 3  3   male     95</span><br><span class="line">## 4  4   male     81</span><br><span class="line">## 5  5 female     87</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>sex<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;male&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 타입</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>sex<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>no<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>korean<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>exam<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	5 obs. of  3 variables:</span><br><span class="line">##  $ no    : num  1 2 3 4 5</span><br><span class="line">##  $ sex   : chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;male&quot; ...</span><br><span class="line">##  $ korean: num  87 92 95 81 87</span><br></pre></td></tr></table></figure>
+<h1 id="1-경로"><a href="#1-경로" class="headerlink" title="1. 경로"></a>1. 경로</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getwd<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;C:/Users/human/Desktop/R_lexctue/source&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#setwd()</span></span><br><span class="line"><span class="operator">?</span>write.csv</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## httpd 도움말 서버를 시작합니다 ... 완료</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write.csv<span class="punctuation">(</span>x <span class="operator">=</span> exam<span class="punctuation">,</span> file <span class="operator">=</span> <span class="string">&quot;data/temp.csv&quot;</span><span class="punctuation">)</span> <span class="comment"># 위에 만든 엑셀데이터 exam을 temp.csv를 만들어 적어라</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>바탕화면에 dataset 폴더 생성, exam 객체 저장하세요</li>
+<li>데이터 불러오기</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">temp <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/temp.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#temp = read.csv(&quot;dataset/temp.csv&quot;) </span></span><br><span class="line"><span class="comment">#직전 상위 파일을 workdirectory로 지정하고 &quot;폴더명/파일명&quot;으로도 불러오기 가능</span></span><br><span class="line">write.csv<span class="punctuation">(</span>x <span class="operator">=</span> exam<span class="punctuation">,</span> file <span class="operator">=</span> <span class="string">&quot;data/exam.csv&quot;</span><span class="punctuation">)</span> <span class="comment">#데이터프레임을 cvs파일로 저장</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>R에서 예제파일 exam.csv를 객체 exam으로 입력해서 설명함. (51p)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exam <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/exam.csv&quot;</span><span class="punctuation">)</span> <span class="comment">#csv파일을 데이터프레임으로 읽기</span></span><br><span class="line">getwd<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;C:/Users/human/Desktop/R_lexctue/source&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">?</span>read.csv<span class="punctuation">(</span><span class="punctuation">)</span> <span class="comment">#입력</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install.packages(&quot;ggplot2&quot;)  #시각화 해주는 패키지</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">economics <span class="operator">&lt;-</span> ggplot2<span class="operator">::</span>economics</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-외부-데이터-불러오기"><a href="#2-외부-데이터-불러오기" class="headerlink" title="2. 외부 데이터 불러오기"></a>2. 외부 데이터 불러오기</h1><ul>
+<li>여기서 잠깐 (66p)</li>
+<li>실무 패키지 (분량이 많은 데이터를 불러올 때는 read.csv()보다 fread() 함수를 이용하는게 더 좋다.)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install.packages(&quot;data.table&quot;)</span></span><br><span class="line">library<span class="punctuation">(</span>data.table<span class="punctuation">)</span>  <span class="comment">#공식문서 확인</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="엑셀파일-불러오기"><a href="#엑셀파일-불러오기" class="headerlink" title="엑셀파일 불러오기"></a>엑셀파일 불러오기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install.packages(&quot;readxl&quot;)</span></span><br><span class="line">library<span class="punctuation">(</span>readxl<span class="punctuation">)</span></span><br><span class="line">read_excel<span class="punctuation">(</span><span class="string">&quot;data/student1_xl.xlsx&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 4</span><br><span class="line">##      no sex    height weight</span><br><span class="line">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span><br><span class="line">## 1     1 male      172     72</span><br><span class="line">## 2     2 female    165     62</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(3) 설명 (67p)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read.csv<span class="punctuation">(</span><span class="string">&quot;data/student1.csv&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##   school  Korea      X    X.1</span><br><span class="line">## 1     no    sex height weight</span><br><span class="line">## 2      1   male    172     72</span><br><span class="line">## 3      2 female    165     62</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read.csv<span class="punctuation">(</span><span class="string">&quot;data/student1.csv&quot;</span><span class="punctuation">,</span> skip <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##   no    sex height weight</span><br><span class="line">## 1  1   male    172     72</span><br><span class="line">## 2  2 female    165     62</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(4) 설명_엑셀 파일에 있는 복수의 시트에서 특정시트 불러오기 (68p)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read_excel<span class="punctuation">(</span><span class="string">&quot;data/student1_xl.xlsx&quot;</span><span class="punctuation">)</span> <span class="comment"># 첫번째 시트 불러오기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 4</span><br><span class="line">##      no sex    height weight</span><br><span class="line">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span><br><span class="line">## 1     1 male      172     72</span><br><span class="line">## 2     2 female    165     62</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read_excel<span class="punctuation">(</span><span class="string">&quot;data/student1_xl.xlsx&quot;</span><span class="punctuation">,</span> sheet <span class="operator">=</span><span class="number">2</span><span class="punctuation">)</span> <span class="comment"># 두번째 시트 불러오기</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 4</span><br><span class="line">##      no sex    `100M`  Lift</span><br><span class="line">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;</span><br><span class="line">## 1     1 male     13.2    12</span><br><span class="line">## 2     2 female   17.8     5</span><br></pre></td></tr></table></figure>
+<h2 id="txt파일-불러오기-69p"><a href="#txt파일-불러오기-69p" class="headerlink" title="txt파일 불러오기 (69p)"></a>txt파일 불러오기 (69p)</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#read.table()</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="SPSS파일-불러오기-73p"><a href="#SPSS파일-불러오기-73p" class="headerlink" title="SPSS파일 불러오기 (73p)"></a>SPSS파일 불러오기 (73p)</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install.packages(&quot;foreign&quot;)</span></span><br><span class="line">library<span class="punctuation">(</span>foreign<span class="punctuation">)</span></span><br><span class="line"><span class="operator">?</span>read.spss<span class="punctuation">(</span><span class="punctuation">)</span>  <span class="comment">#.sav 파일 읽어주는 함수</span></span><br><span class="line">student <span class="operator">&lt;-</span> read.spss<span class="punctuation">(</span><span class="string">&quot;data/student.sav&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## re-encoding from CP51949</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">as.data.frame<span class="punctuation">(</span>student<span class="punctuation">)</span> <span class="comment">#형변환 (리스트를 데이터프레임으로 변경)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##   no    sex height weight</span><br><span class="line">## 1  1 male      172     72</span><br><span class="line">## 2  2 female    165     62</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-R_3"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/20/R_3/">R을 이용한 공공데이터 분석_제3장</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/20/R_3/" class="article-date">
+	  <time datetime="2022-06-19T16:00:00.000Z" itemprop="datePublished">June 20, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="제3장-데이터의-구조"><a href="#제3장-데이터의-구조" class="headerlink" title="제3장 데이터의 구조"></a>제3장 데이터의 구조</h2><h1 id="1단원-용어의-이해"><a href="#1단원-용어의-이해" class="headerlink" title="1단원 용어의 이해"></a>1단원 용어의 이해</h1><h2 id="1-변수"><a href="#1-변수" class="headerlink" title="1. 변수"></a>1. 변수</h2><ul>
+<li>변수: ‘변하는 수’, ‘자료들을 넣어두는 창고’</li>
+</ul>
+<h2 id="2-함수"><a href="#2-함수" class="headerlink" title="2. 함수"></a>2. 함수</h2><ul>
+<li>함수: 데이터를 입력하면 정해진 공식에 따라 특정 과정을 수행하는 기능</li>
+</ul>
+<h2 id="3-패키지"><a href="#3-패키지" class="headerlink" title="3. 패키지"></a>3. 패키지</h2><ul>
+<li>패키지: 여러 함수가 들어있는 포장상자.</li>
+<li>함수를 사용하기 위해 패키지를 다운, 실행시켜야함.</li>
+<li>install.packages()</li>
+<li>library()</li>
+</ul>
+<h1 id="2단원-데이터-구조-42p"><a href="#2단원-데이터-구조-42p" class="headerlink" title="2단원 데이터 구조 (42p)"></a>2단원 데이터 구조 (42p)</h1><h2 id="1-벡터"><a href="#1-벡터" class="headerlink" title="1. 벡터"></a>1. 벡터</h2><ul>
+<li>벡터 (vector): 1차원의 집합이며, 같은 속성으로만 묶인다</li>
+</ul>
+<h3 id="1-1-숫자형-벡터-실수로-소수점-정수-무리수-등-모든-수-4칙연산-가능-연속형-데이터"><a href="#1-1-숫자형-벡터-실수로-소수점-정수-무리수-등-모든-수-4칙연산-가능-연속형-데이터" class="headerlink" title="1.1. 숫자형 벡터: 실수로(소수점, 정수 무리수 등 모든 수) 4칙연산 가능, 연속형 데이터"></a>1.1. 숫자형 벡터: 실수로(소수점, 정수 무리수 등 모든 수) 4칙연산 가능, 연속형 데이터</h3><h3 id="1-2-정수형-벡터-숫자형-벡터-中-정수-1-0-1-로만-구성-이산형-데이터"><a href="#1-2-정수형-벡터-숫자형-벡터-中-정수-1-0-1-로만-구성-이산형-데이터" class="headerlink" title="1.2. 정수형 벡터: 숫자형 벡터 中 정수(-1,0,1)로만 구성, 이산형 데이터"></a>1.2. 정수형 벡터: 숫자형 벡터 中 정수(-1,0,1)로만 구성, 이산형 데이터</h3><h3 id="1-3-문자형-벡터-연산-불가"><a href="#1-3-문자형-벡터-연산-불가" class="headerlink" title="1.3. 문자형 벡터: 연산 불가"></a>1.3. 문자형 벡터: 연산 불가</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;Hi&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Hello&quot;</span><span class="punctuation">)</span></span><br><span class="line">char_vector<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span> <span class="comment"># 숫자 1,2 인덱스</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;Hello&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class() 타입을 물어보는 함수</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>char_vector<span class="punctuation">)</span> <span class="comment"># 벡터의 유형을 알 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#character=char=문자</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-범주형-벡터"><a href="#1-4-범주형-벡터" class="headerlink" title="1.4. 범주형 벡터"></a>1.4. 범주형 벡터</h3><ul>
+<li>데이터가 일정 범위나 기준에 따라 유형(성별, 연령대)으로 분류되는 벡터, 이 때 유형을 레벨(level)이라고 한다</li>
+</ul>
+<h4 id="1-4-1-명목형-자료형-벡터-데이터-값-비교-불가-책X"><a href="#1-4-1-명목형-자료형-벡터-데이터-값-비교-불가-책X" class="headerlink" title="1.4.1. 명목형 자료형 벡터 : 데이터 값 비교 불가  (책X)"></a>1.4.1. 명목형 자료형 벡터 : 데이터 값 비교 불가  (책X)</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">locaiton_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;서울&quot;</span><span class="punctuation">,</span> <span class="string">&quot;인천&quot;</span><span class="punctuation">,</span> <span class="string">&quot;부산&quot;</span><span class="punctuation">)</span></span><br><span class="line">factor_location_vector <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>locaiton_vector<span class="punctuation">)</span></span><br><span class="line">factor_location_vector</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## [1] 서울 인천 부산</span><br><span class="line">## Levels: 부산 서울 인천</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_location_vector<span class="punctuation">)</span> <span class="comment"># 비서열</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;factor&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help<span class="punctuation">(</span>factor<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## httpd 도움말 서버를 시작합니다 ... 완료</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-2-순서형-자료형-벡터-데이터-값-순서-지정-책X"><a href="#1-4-2-순서형-자료형-벡터-데이터-값-순서-지정-책X" class="headerlink" title="1.4.2. 순서형 자료형 벡터 : 데이터 값 순서 지정  (책X)"></a>1.4.2. 순서형 자료형 벡터 : 데이터 값 순서 지정  (책X)</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">temperature_factor <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온낮음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">temperature_factor</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;기온높음&quot; &quot;기온보통&quot; &quot;기온낮음&quot; &quot;기온높음&quot; &quot;기온보통&quot; &quot;기온보통&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">factor_temperature_factor <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>temperature_factor<span class="punctuation">,</span> </span><br><span class="line">                                    ordered <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> </span><br><span class="line">                                    levels  <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                                                <span class="string">&quot;기온낮음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                                                <span class="string">&quot;기온높음&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">factor_temperature_factor</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## [1] 기온높음 기온보통 기온낮음 기온높음 기온보통 기온보통</span><br><span class="line">## Levels: 기온보통 &lt; 기온낮음 &lt; 기온높음</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_temperature_factor<span class="punctuation">)</span> <span class="comment"># 서열</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;ordered&quot; &quot;factor&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_location_vector<span class="punctuation">)</span> <span class="comment"># 비서열</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;factor&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/6_20_class_note(R)/Untitled%206.png" alt="Untitled"></p>
+<h3 id="1-5-논리형-벡터-참-TRUE-거짓-FALSE-논리값으로-구성된-베이터-논리값은-따옴표-없이-대문자로-쓴다"><a href="#1-5-논리형-벡터-참-TRUE-거짓-FALSE-논리값으로-구성된-베이터-논리값은-따옴표-없이-대문자로-쓴다" class="headerlink" title="1.5. 논리형 벡터: 참(TRUE),거짓(FALSE) 논리값으로 구성된 베이터. 논리값은 따옴표 없이 대문자로 쓴다"></a>1.5. 논리형 벡터: 참(TRUE),거짓(FALSE) 논리값으로 구성된 베이터. 논리값은 따옴표 없이 대문자로 쓴다</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logical_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">logical_vector</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1]  TRUE FALSE</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>logical_vector<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;logical&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-벡터-사용-주의-사항"><a href="#1-6-벡터-사용-주의-사항" class="headerlink" title="1.6. 벡터 사용 주의 사항"></a>1.6. 벡터 사용 주의 사항</h3><ul>
+<li>벡터는 함상 범주가 같아야한다.</li>
+<li>만약 속성이 서로 다르다면 상위 속성으로 강제변환 되며 이를 Coercion이라 부름. (논리형 ☞ 숫자형 ☞ 문자형)</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span> <span class="comment">#a의 유형은 숫자</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="string">&quot;hello&quot;</span><span class="punctuation">,</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="string">&quot;TRUE&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>b<span class="punctuation">)</span> <span class="comment">#b의 유형은 문자</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;1&quot;     &quot;2&quot;     &quot;hello&quot; &quot;TRUE&quot;  &quot;TRUE&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">)</span> <span class="comment">#c의 유형은 숫자</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span> <span class="comment">#문자가 아니기 때문에 &quot;&quot;표시가 없음</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1 2 1 0</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2-행렬"><a href="#2-행렬" class="headerlink" title="2. 행렬"></a>2. 행렬</h2><ul>
+<li>행렬 (Matrix): 행과 열을 갖는 2차원의 구조로, 같은 속성으로만 묶인다</li>
+<li>행은 가로 데이터, 열은 세로 데이터</li>
+<li>행은 데이터프레임에 들어있는 개별 데이터. R에서는 행을 관측치(observation 약칭 obs.)라고 표현한다.</li>
+<li>열은 벡터들로 구성&gt;데이터의 속성을 의미 </li>
+<li>데이터 분석은 기본적으로 열을 구성하는 변수들의 특성이나 변수 간 관계 등을 알아보는 것.</li>
+</ul>
+<h2 id="3-데이터프레임"><a href="#3-데이터프레임" class="headerlink" title="3. 데이터프레임"></a>3. 데이터프레임</h2><ul>
+<li>데이터프레임 (data.frame): 행과 열을 갖는 2차원의 구조로, 다른 속성도 묶인다</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - 엑셀 데이터</span></span><br><span class="line">no <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">,</span> <span class="number">4</span><span class="punctuation">,</span> <span class="number">5</span><span class="punctuation">)</span></span><br><span class="line">sex <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">)</span></span><br><span class="line">korean <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">87</span><span class="punctuation">,</span> <span class="number">92</span><span class="punctuation">,</span> <span class="number">95</span><span class="punctuation">,</span> <span class="number">81</span><span class="punctuation">,</span> <span class="number">87</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">exam <span class="operator">=</span> data.frame<span class="punctuation">(</span>no<span class="punctuation">,</span> sex<span class="punctuation">,</span> korean<span class="punctuation">)</span></span><br><span class="line">exam</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##   no    sex korean</span><br><span class="line">## 1  1   male     87</span><br><span class="line">## 2  2 female     92</span><br><span class="line">## 3  3   male     95</span><br><span class="line">## 4  4   male     81</span><br><span class="line">## 5  5 female     87</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>sex<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;male&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 타입</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>sex<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exam<span class="operator">$</span>no</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>no<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>exam<span class="operator">$</span>korean<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;numeric&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>exam<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	5 obs. of  3 variables:</span><br><span class="line">##  $ no    : num  1 2 3 4 5</span><br><span class="line">##  $ sex   : chr  &quot;male&quot; &quot;female&quot; &quot;male&quot; &quot;male&quot; ...</span><br><span class="line">##  $ korean: num  87 92 95 81 87</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="4-리스트"><a href="#4-리스트" class="headerlink" title="4. 리스트"></a>4. 리스트</h2><ul>
+<li>리스트(list): 가장 광범위한 객체로써, 벡터, 행렬, 데이터프레임, 리스트도 묶는다</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-hello-world"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/17/hello-world/">AI 데이터 플랫폼을 활용한 빅데이터 분석 전문가 과정</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/17/hello-world/" class="article-date">
+	  <time datetime="2022-06-17T04:52:28.129Z" itemprop="datePublished">June 17, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="어려워도-포기하지-말고-차근차근-잘-해-보자"><a href="#어려워도-포기하지-말고-차근차근-잘-해-보자" class="headerlink" title="어려워도 포기하지 말고 차근차근 잘 해 보자!!"></a>어려워도 포기하지 말고 차근차근 잘 해 보자!!</h2>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-R함수 공부하는 방법 e6d8d38b2bc04008ad8f13176beeacd3"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -567,57 +1198,11 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-Categories"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2022/06/16/Categories/">Categories</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2022/06/16/Categories/" class="article-date">
-	  <time datetime="2022-06-15T15:00:00.000Z" itemprop="datePublished">June 16, 2022</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><a href="https://sallyzmk.github.io/2022/06/16/Python_home/">Python</a></li>
-<li><a href="https://sallyzmk.github.io/2022/06/16/R_home/">R</a></li>
-<li><a href="https://sallyzmk.github.io/2022/06/16/Notion_home/">Notion</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next</a>
   </nav>
 
 </section>
@@ -749,8 +1334,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/23/R_9/">R을 이용한 공공데이터 분석_제9장</a></h6>
-              <span>June 23, 2022</span>
+              <h6 style="margin: 0;"><a href="/2022/06/29/Python_Pandas/">(no title)</a></h6>
+              <span>June 29, 2022</span>
             </div>
 
           </li>
@@ -761,8 +1346,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/22/R_8/">R을 이용한 공공데이터 분석_제8장</a></h6>
-              <span>June 22, 2022</span>
+              <h6 style="margin: 0;"><a href="/2022/06/28/Python_NumPy/">(no title)</a></h6>
+              <span>June 28, 2022</span>
             </div>
 
           </li>
@@ -773,8 +1358,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/06/22/R_7/">R을 이용한 공공데이터 분석_제7장</a></h6>
-              <span>June 22, 2022</span>
+              <h6 style="margin: 0;"><a href="/2022/06/27/Python_Basic/">(no title)</a></h6>
+              <span>June 27, 2022</span>
             </div>
 
           </li>
@@ -797,7 +1382,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">21</span></li></ul>
     </div>
   </div>
 
