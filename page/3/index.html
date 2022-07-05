@@ -102,6 +102,131 @@
         
           <section id="main">
   
+    <article id="post-Git 설치 및 초기 설정"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/17/Git%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%B4%88%EA%B8%B0%20%EC%84%A4%EC%A0%95/">Git 설치 및 초기 설정</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/17/Git%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%B4%88%EA%B8%B0%20%EC%84%A4%EC%A0%95/" class="article-date">
+	  <time datetime="2022-06-16T18:00:00.000Z" itemprop="datePublished">June 17, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-설치-및-초기-설정"><a href="#Git-설치-및-초기-설정" class="headerlink" title="Git 설치 및 초기 설정"></a><strong>Git 설치 및 초기 설정</strong></h1><ul>
+<li>git 다운로드 웹사이트 : <a target="_blank" rel="noopener" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></li>
+<li>관리자 권한으로 실행</li>
+<li>설정 별도 수정 불필요, 마지막에 Lanch Git Bash만 체크)</li>
+</ul>
+<p><img src="/images/Git_download/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>로그인을 하기 위해 로컬PC와 Github 연결</li>
+<li>Github에서 우측 상단 프로필 클릭&gt; Your repositories &gt; New &gt; Add a README file 체크하지 않고 &gt; 생성</li>
+</ul>
+<p><img src="/images/Git_download/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>시작화면에서 우클릭 &gt; Git Bash Here 클릭</li>
+</ul>
+<p><img src="/images/Git_download/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li><strong>mkdir human0616</strong>    #mkdir : 새 폴더 생성</li>
+<li><strong>cd human0616</strong>&#x2F;    #cd : change directory, cd human Tab 누르면 파일명 자동 완성</li>
+<li>#pwd : 현재 경로</li>
+<li>#Github 코드 한 줄 씩 복사해서 우클릭 Paste (붙여넣기)</li>
+</ul>
+<p><img src="/images/Git_download/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li><p><code>echo &quot;# human0616&quot; &gt;&gt; README.md</code></p>
+<blockquote>
+<p>human0616 파일 안에 생성된 파일 우클릭&gt;연결프로그램&gt;메모장</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/images/Git_download/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li><p>#<code>git init</code> : 파일 초기화</p>
+<p>  숨긴 항목 확인하면 .git 파일 있음</p>
+</li>
+</ul>
+<p><img src="/images/Git_download/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li><p>#<code>git add</code> 파일명 : 파일 한개만 업로드</p>
+</li>
+<li><p>#<code>git add.(X)</code> <code>git add . (O)</code></p>
+<p>  <code>git add .</code> : 폴더 내 모든 파일 업로드</p>
+</li>
+<li><p><code>git commit -m &quot;first commit&quot;</code></p>
+<p>  #에러 뜸, Please teall me who you are.</p>
+<p>  git config —global user.email 가입 시 기입한 본인 메일 주소</p>
+<p>  git config —global user.name 내 닉네임</p>
+<p>  <code>git commit -m &quot;first commit&quot;</code> 재실행</p>
+<p>  <img src="/images/Git_download/Untitled%206.png" alt="Untitled"></p>
+<p>  #<code>git branch -M main</code> : 별거 없음</p>
+<p>  #<code>git remote add origin [https://github.com/sallyzmk/human0616.git](https://github.com/sallyzmk/human0616.git)</code> : 로컬이랑 git hub 연결</p>
+<p>  #<code>git push -u origin main</code> : 입력하면 아래 화면 뜸</p>
+<blockquote>
+<p>sign in with your browser </p>
+</blockquote>
+<blockquote>
+<p>Authorize GitcredentialManager</p>
+</blockquote>
+<blockquote>
+<p>GitHub 새로 고침하면 화면이 바뀌어 있음</p>
+</blockquote>
+<p>  <img src="/images/Git_download/Untitled%207.png" alt="Untitled"></p>
+<p>  <img src="/images/Git_download/Untitled%208.png" alt="Untitled"></p>
+<p>  <img src="/images/Git_download/Untitled%209.png" alt="Untitled"></p>
+<p>  끝!!!</p>
+<hr>
+<h1 id="GIT-동기화-컴퓨터-시작했을-때"><a href="#GIT-동기화-컴퓨터-시작했을-때" class="headerlink" title="GIT 동기화 (컴퓨터 시작했을 때)"></a><strong>GIT 동기화</strong> (컴퓨터 시작했을 때)</h1><p>  #<strong>git clone</strong> <a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a>~~~(주소 복붙): 기초 작업이 안돼 있을 때, 폴더 없을 때</p>
+<p>  <img src="/images/Git_download/Untitled%2010.png" alt="Untitled"></p>
+<p>  #<strong>git pull</strong> : 폴더는 존재하고 내용만 새로 다운 받을 때 사용 </p>
+<pre><code>         (기초 작업이 되어있는 상태에서, 코드 재 다운)
+</code></pre>
+<ul>
+<li>다른 컴에서 파일을 조작한 적 있다면</li>
+<li>앉자마자 git pull 부터!</li>
+<li>새로운 작업을 할 땐,  git pull을 해서 원격 저장소에 있는 최신 프로젝트를 가져와 준 뒤, 작업을 하고 그리고 나서 git push를 해주어야 한다.</li>
+</ul>
+<hr>
+<h1 id="커밋하는-방법-업로드"><a href="#커밋하는-방법-업로드" class="headerlink" title="커밋하는 방법 (업로드)"></a><strong>커밋하는 방법 (업로드)</strong></h1><p>  [커밋 (commit) : 파일을 추가하거나 변경 내용을 <strong>저장소</strong>에 업로드하는 작업]</p>
+<p>  git add . </p>
+<p>  git commit -m “your_message”  </p>
+<p>  git push -u origin main</p>
+<p>  #”” 입력 메새지는 일종의 제목 같은 것</p>
+<p>  #git push -u 만 쳐도 괜찮지만 정석은 git push -u origin main</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-프로그램 다운로드 설치"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -319,7 +444,7 @@
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.notion.so/NumPy-b76659fce0554312bb6257d5a1b97d5d">NumPy 라이브러리 설치방법</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://www.notion.so/e35b732f173d4fd4905688de4ccf5ba9">블로그 만들기</a></p>
+<li><p><a href="">블로그 만들기</a></p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.notion.so/R-GitHub-5bebaa25c5e547d1850935126d05fc0e">R파일을 GitHub에 업로드하는 방법</a></p>
 </li>
@@ -576,7 +701,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">24</span></li></ul>
     </div>
   </div>
 
