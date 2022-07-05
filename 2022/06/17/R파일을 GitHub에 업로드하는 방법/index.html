@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>R파일을 GitHub에 업로드하는 방법 | 나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="R파일을 GitHub에 업로드하는 방법R을 깃허브에 올리고 싶을 때_1 (생성)1. github에서 저장소 생성 (add a readme file 체크!!) 1.(2) git clone으로 바탕화면에 깃허브 파일 땡겨오기  1git clone [https:&#x2F;&#x2F;github.com&#x2F;sallyzmk&#x2F;R_lectue.git](https:&#x2F;&#x2F;github.com&#x2F;sa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R파일을 GitHub에 업로드하는 방법">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/06/17/R%ED%8C%8C%EC%9D%BC%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="R파일을 GitHub에 업로드하는 방법R을 깃허브에 올리고 싶을 때_1 (생성)1. github에서 저장소 생성 (add a readme file 체크!!) 1.(2) git clone으로 바탕화면에 깃허브 파일 땡겨오기  1git clone [https:&#x2F;&#x2F;github.com&#x2F;sallyzmk&#x2F;R_lectue.git](https:&#x2F;&#x2F;github.com&#x2F;sa">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%201.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%202.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%203.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%204.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%205.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%206.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%207.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%208.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%209.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2010.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2011.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2012.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2013.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2014.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2015.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2016.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2017.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2018.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2019.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2020.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2021.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2022.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2023.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2024.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2025.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled%2026.png">
+<meta property="article:published_time" content="2022-06-16T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-05T03:00:01.792Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/R_file_github_commit/Untitled.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Categories/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Categories/">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Python_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Python_home/">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Notion_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Notion_home/">notion</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-R파일을 GitHub에 업로드하는 방법" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      R파일을 GitHub에 업로드하는 방법
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/17/R%ED%8C%8C%EC%9D%BC%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/" class="article-date">
+	  <time datetime="2022-06-16T22:00:00.000Z" itemprop="datePublished">June 17, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="R파일을-GitHub에-업로드하는-방법"><a href="#R파일을-GitHub에-업로드하는-방법" class="headerlink" title="R파일을 GitHub에 업로드하는 방법"></a>R파일을 GitHub에 업로드하는 방법</h1><h2 id="R을-깃허브에-올리고-싶을-때-1-생성"><a href="#R을-깃허브에-올리고-싶을-때-1-생성" class="headerlink" title="R을 깃허브에 올리고 싶을 때_1 (생성)"></a><strong>R을 깃허브에 올리고 싶을 때_1</strong> (생성)</h2><h3 id="1-github에서-저장소-생성-add-a-readme-file-체크"><a href="#1-github에서-저장소-생성-add-a-readme-file-체크" class="headerlink" title="1. github에서 저장소 생성 (add a readme file 체크!!)"></a>1. github에서 저장소 생성 (add a readme file 체크!!)</h3><p><img src="/images/R_file_github_commit/Untitled.png" alt="Untitled"></p>
+<h3 id="1-2-git-clone으로-바탕화면에-깃허브-파일-땡겨오기"><a href="#1-2-git-clone으로-바탕화면에-깃허브-파일-땡겨오기" class="headerlink" title="1.(2) git clone으로 바탕화면에 깃허브 파일 땡겨오기"></a>1.(2) git clone으로 바탕화면에 깃허브 파일 땡겨오기</h3><p><img src="/images/R_file_github_commit/Untitled%201.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%202.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [https://github.com/sallyzmk/R_lectue.git](https://github.com/sallyzmk/R_lectue.git)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-R실행하기-생성된-R-lectue-파일을-R로-실행해야됨"><a href="#2-R실행하기-생성된-R-lectue-파일을-R로-실행해야됨" class="headerlink" title="2. R실행하기 (생성된 R_lectue 파일을 R로 실행해야됨)"></a>2. R실행하기 (생성된 R_lectue 파일을 R로 실행해야됨)</h3><h3 id="3-R-들어가서-create-a-project-클릭"><a href="#3-R-들어가서-create-a-project-클릭" class="headerlink" title="3. R 들어가서 create a project 클릭"></a>3. R 들어가서 create a project 클릭</h3><p><img src="/images/R_file_github_commit/Untitled%203.png" alt="Untitled"></p>
+<h3 id="4-existing-dirextory-클릭-directory-x3D-폴더"><a href="#4-existing-dirextory-클릭-directory-x3D-폴더" class="headerlink" title="4. existing dirextory 클릭 (directory &#x3D; 폴더)"></a>4. existing dirextory 클릭 (directory &#x3D; 폴더)</h3><p><img src="/images/R_file_github_commit/Untitled%204.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%205.png" alt="Untitled"></p>
+<h3 id="5-R-lectue-파일-찾기-파일명-한글-X"><a href="#5-R-lectue-파일-찾기-파일명-한글-X" class="headerlink" title="5. R_lectue 파일 찾기 (파일명 한글 X)"></a>5. R_lectue 파일 찾기 (파일명 한글 X)</h3><p><img src="/images/R_file_github_commit/Untitled%206.png" alt="Untitled"></p>
+<h3 id="6-셋팅이-됨"><a href="#6-셋팅이-됨" class="headerlink" title="6. 셋팅이 됨"></a>6. 셋팅이 됨</h3><p><img src="/images/R_file_github_commit/Untitled%207.png" alt="Untitled"></p>
+<h3 id="7-파일-나누기-개인-스타일"><a href="#7-파일-나누기-개인-스타일" class="headerlink" title="7. 파일 나누기 (개인 스타일)"></a>7. 파일 나누기 (개인 스타일)</h3><p><img src="/images/R_file_github_commit/Untitled%208.png" alt="Untitled"></p>
+<h3 id="8-source-파일에-들어가서-gt-set-as-working-directory-기본-파일-저장-위치-경로-설정"><a href="#8-source-파일에-들어가서-gt-set-as-working-directory-기본-파일-저장-위치-경로-설정" class="headerlink" title="8. source 파일에 들어가서 &gt; set as working directory 기본 파일 저장 위치(경로) 설정"></a>8. source 파일에 들어가서 &gt; set as working directory 기본 파일 저장 위치(경로) 설정</h3><p><img src="/images/R_file_github_commit/Untitled%209.png" alt="Untitled"></p>
+<hr>
+<h2 id="R을-깃허브에-올리고-싶을-때-2-업로드"><a href="#R을-깃허브에-올리고-싶을-때-2-업로드" class="headerlink" title="R을 깃허브에 올리고 싶을 때_2 (업로드)"></a><strong>R을 깃허브에 올리고 싶을 때_2 (업로드)</strong></h2><h3 id="1-R에서-source-폴더-안으로-들어가-set-as-working-directory-입력"><a href="#1-R에서-source-폴더-안으로-들어가-set-as-working-directory-입력" class="headerlink" title="1. R에서 source 폴더 안으로 들어가, set as working directory 입력"></a>1. R에서 source 폴더 안으로 들어가, set as working directory 입력</h3><p><img src="/images/R_file_github_commit/Untitled%2010.png" alt="Untitled"></p>
+<h3 id="2-파일을-R-Markdowm-눌러서-마크-다운으로-변환-시키기-누르면-설치할거냐-뜸-설치하기"><a href="#2-파일을-R-Markdowm-눌러서-마크-다운으로-변환-시키기-누르면-설치할거냐-뜸-설치하기" class="headerlink" title="2. 파일을 R Markdowm 눌러서 마크 다운으로 변환 시키기 (누르면 ~설치할거냐 뜸, 설치하기.)"></a>2. 파일을 R Markdowm 눌러서 마크 다운으로 변환 시키기 (누르면 ~설치할거냐 뜸, 설치하기.)</h3><p><img src="/images/R_file_github_commit/Untitled%2011.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2012.png" alt="Untitled"></p>
+<p>presentation : 프레젠테이션으로도 만들 수 있음</p>
+<p>shiny : 데스크탑 같은거 블로그 처럼? (확실X)</p>
+<p>pdf, word : 이런건 또 무언가를 설치해야됨</p>
+<h3 id="3-title-변경하기"><a href="#3-title-변경하기" class="headerlink" title="3. title 변경하기 ,"></a>3. title 변경하기 ,</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: &quot;Day-1 Visualization&quot;</span><br><span class="line">output:</span><br><span class="line">  html_document:</span><br><span class="line">    keep_md: true</span><br><span class="line">date: &#x27;2022-06-17&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/R_file_github_commit/Untitled%2013.png" alt="Untitled"></p>
+<h3 id="4-저장하기-이름-같아도-Rmd라-생성가능"><a href="#4-저장하기-이름-같아도-Rmd라-생성가능" class="headerlink" title="4. 저장하기, 이름 같아도 Rmd라 생성가능"></a>4. 저장하기, 이름 같아도 Rmd라 생성가능</h3><p><img src="/images/R_file_github_commit/Untitled%2014.png" alt="Untitled"></p>
+<p>생성된 모습</p>
+<p><img src="/images/R_file_github_commit/Untitled%2015.png" alt="Untitled"></p>
+<h3 id="5-knit-누르면-새로운-창이-열림"><a href="#5-knit-누르면-새로운-창이-열림" class="headerlink" title="5. knit 누르면 새로운 창이 열림"></a>5. knit 누르면 새로운 창이 열림</h3><p><img src="/images/R_file_github_commit/Untitled%2016.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2017.png" alt="Untitled"></p>
+<h3 id="6-맨-밑에-아래-코드-복사-붙여넣기"><a href="#6-맨-밑에-아래-코드-복사-붙여넣기" class="headerlink" title="6. 맨 밑에 아래 코드 복사 붙여넣기"></a>6. 맨 밑에 아래 코드 복사 붙여넣기</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## ggplot2 시각화</span><br><span class="line">- 다음과 같이 시각화를 작성한다.</span><br><span class="line"></span><br><span class="line">```&#123;r&#125;</span><br><span class="line">library(ggplot2)</span><br><span class="line">ggplot(data = iris, aes(x = Sepal.Length,</span><br><span class="line">                        y = Sepal.Width)) +</span><br><span class="line">  geom_point()</span><br></pre></td></tr></table></figure>
+<p>&#96;&#96;&#96;</p>
+<p>*옆에 초록색 버튼 누르면 해당 언어 코드 입력 창이 생성 됨</p>
+<p><img src="/images/R_file_github_commit/Untitled%2018.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2019.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2020.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2021.png" alt="Untitled"></p>
+<h3 id="8-md-파일-복사해서-blog-gt-source-gt-posts-gt-파일-안에-복붙"><a href="#8-md-파일-복사해서-blog-gt-source-gt-posts-gt-파일-안에-복붙" class="headerlink" title="8. md 파일 복사해서 blog&gt;source&gt;_posts&gt;파일 안에 복붙"></a>8. md 파일 복사해서 blog&gt;source&gt;_posts&gt;파일 안에 복붙</h3><p><img src="/images/R_file_github_commit/Untitled%2022.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2023.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2024.png" alt="Untitled"></p>
+<h3 id="9-blog-파일-파이참-실행"><a href="#9-blog-파일-파이참-실행" class="headerlink" title="9. blog 파일 파이참 실행"></a>9. blog 파일 파이참 실행</h3><ul>
+<li>터미널창 git bash 에서 hexo server 실행 &gt; hexo 블로그에 업데이트 됨.</li>
+</ul>
+<p><img src="/images/R_file_github_commit/Untitled%2025.png" alt="Untitled"></p>
+<p><img src="/images/R_file_github_commit/Untitled%2026.png" alt="Untitled"></p>
+<h3 id="10-업로드-하기"><a href="#10-업로드-하기" class="headerlink" title="10. 업로드 하기"></a>10. 업로드 하기</h3><p>git add .<br>git commit -m “update”<br>git push -u origin main</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/17/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          구글 코랩(Phython)을 GitHub에 업로드하는 방법
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/17/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">블로그 만들기</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#R%ED%8C%8C%EC%9D%BC%EC%9D%84-GitHub%EC%97%90-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="nav-number">1.</span> <span class="nav-text">R파일을 GitHub에 업로드하는 방법</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#R%EC%9D%84-%EA%B9%83%ED%97%88%EB%B8%8C%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B3%A0-%EC%8B%B6%EC%9D%84-%EB%95%8C-1-%EC%83%9D%EC%84%B1"><span class="nav-number">1.1.</span> <span class="nav-text">R을 깃허브에 올리고 싶을 때_1 (생성)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-github%EC%97%90%EC%84%9C-%EC%A0%80%EC%9E%A5%EC%86%8C-%EC%83%9D%EC%84%B1-add-a-readme-file-%EC%B2%B4%ED%81%AC"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. github에서 저장소 생성 (add a readme file 체크!!)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-git-clone%EC%9C%BC%EB%A1%9C-%EB%B0%94%ED%83%95%ED%99%94%EB%A9%B4%EC%97%90-%EA%B9%83%ED%97%88%EB%B8%8C-%ED%8C%8C%EC%9D%BC-%EB%95%A1%EA%B2%A8%EC%98%A4%EA%B8%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.(2) git clone으로 바탕화면에 깃허브 파일 땡겨오기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-R%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0-%EC%83%9D%EC%84%B1%EB%90%9C-R-lectue-%ED%8C%8C%EC%9D%BC%EC%9D%84-R%EB%A1%9C-%EC%8B%A4%ED%96%89%ED%95%B4%EC%95%BC%EB%90%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">2. R실행하기 (생성된 R_lectue 파일을 R로 실행해야됨)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-R-%EB%93%A4%EC%96%B4%EA%B0%80%EC%84%9C-create-a-project-%ED%81%B4%EB%A6%AD"><span class="nav-number">1.1.4.</span> <span class="nav-text">3. R 들어가서 create a project 클릭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-existing-dirextory-%ED%81%B4%EB%A6%AD-directory-x3D-%ED%8F%B4%EB%8D%94"><span class="nav-number">1.1.5.</span> <span class="nav-text">4. existing dirextory 클릭 (directory &#x3D; 폴더)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-R-lectue-%ED%8C%8C%EC%9D%BC-%EC%B0%BE%EA%B8%B0-%ED%8C%8C%EC%9D%BC%EB%AA%85-%ED%95%9C%EA%B8%80-X"><span class="nav-number">1.1.6.</span> <span class="nav-text">5. R_lectue 파일 찾기 (파일명 한글 X)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%EC%85%8B%ED%8C%85%EC%9D%B4-%EB%90%A8"><span class="nav-number">1.1.7.</span> <span class="nav-text">6. 셋팅이 됨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%ED%8C%8C%EC%9D%BC-%EB%82%98%EB%88%84%EA%B8%B0-%EA%B0%9C%EC%9D%B8-%EC%8A%A4%ED%83%80%EC%9D%BC"><span class="nav-number">1.1.8.</span> <span class="nav-text">7. 파일 나누기 (개인 스타일)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-source-%ED%8C%8C%EC%9D%BC%EC%97%90-%EB%93%A4%EC%96%B4%EA%B0%80%EC%84%9C-gt-set-as-working-directory-%EA%B8%B0%EB%B3%B8-%ED%8C%8C%EC%9D%BC-%EC%A0%80%EC%9E%A5-%EC%9C%84%EC%B9%98-%EA%B2%BD%EB%A1%9C-%EC%84%A4%EC%A0%95"><span class="nav-number">1.1.9.</span> <span class="nav-text">8. source 파일에 들어가서 &gt; set as working directory 기본 파일 저장 위치(경로) 설정</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R%EC%9D%84-%EA%B9%83%ED%97%88%EB%B8%8C%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B3%A0-%EC%8B%B6%EC%9D%84-%EB%95%8C-2-%EC%97%85%EB%A1%9C%EB%93%9C"><span class="nav-number">1.2.</span> <span class="nav-text">R을 깃허브에 올리고 싶을 때_2 (업로드)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-R%EC%97%90%EC%84%9C-source-%ED%8F%B4%EB%8D%94-%EC%95%88%EC%9C%BC%EB%A1%9C-%EB%93%A4%EC%96%B4%EA%B0%80-set-as-working-directory-%EC%9E%85%EB%A0%A5"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. R에서 source 폴더 안으로 들어가, set as working directory 입력</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%ED%8C%8C%EC%9D%BC%EC%9D%84-R-Markdowm-%EB%88%8C%EB%9F%AC%EC%84%9C-%EB%A7%88%ED%81%AC-%EB%8B%A4%EC%9A%B4%EC%9C%BC%EB%A1%9C-%EB%B3%80%ED%99%98-%EC%8B%9C%ED%82%A4%EA%B8%B0-%EB%88%84%EB%A5%B4%EB%A9%B4-%EC%84%A4%EC%B9%98%ED%95%A0%EA%B1%B0%EB%83%90-%EB%9C%B8-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 파일을 R Markdowm 눌러서 마크 다운으로 변환 시키기 (누르면 ~설치할거냐 뜸, 설치하기.)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-title-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. title 변경하기 ,</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0-%EC%9D%B4%EB%A6%84-%EA%B0%99%EC%95%84%EB%8F%84-Rmd%EB%9D%BC-%EC%83%9D%EC%84%B1%EA%B0%80%EB%8A%A5"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 저장하기, 이름 같아도 Rmd라 생성가능</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-knit-%EB%88%84%EB%A5%B4%EB%A9%B4-%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%B0%BD%EC%9D%B4-%EC%97%B4%EB%A6%BC"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. knit 누르면 새로운 창이 열림</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%EB%A7%A8-%EB%B0%91%EC%97%90-%EC%95%84%EB%9E%98-%EC%BD%94%EB%93%9C-%EB%B3%B5%EC%82%AC-%EB%B6%99%EC%97%AC%EB%84%A3%EA%B8%B0"><span class="nav-number">1.2.6.</span> <span class="nav-text">6. 맨 밑에 아래 코드 복사 붙여넣기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-md-%ED%8C%8C%EC%9D%BC-%EB%B3%B5%EC%82%AC%ED%95%B4%EC%84%9C-blog-gt-source-gt-posts-gt-%ED%8C%8C%EC%9D%BC-%EC%95%88%EC%97%90-%EB%B3%B5%EB%B6%99"><span class="nav-number">1.2.7.</span> <span class="nav-text">8. md 파일 복사해서 blog&gt;source&gt;_posts&gt;파일 안에 복붙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-blog-%ED%8C%8C%EC%9D%BC-%ED%8C%8C%EC%9D%B4%EC%B0%B8-%EC%8B%A4%ED%96%89"><span class="nav-number">1.2.8.</span> <span class="nav-text">9. blog 파일 파이참 실행</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%EC%97%85%EB%A1%9C%EB%93%9C-%ED%95%98%EA%B8%B0"><span class="nav-number">1.2.9.</span> <span class="nav-text">10. 업로드 하기</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Categories/" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Python_home/" class="mobile-nav-link">Python</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Notion_home/" class="mobile-nav-link">Notion</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
