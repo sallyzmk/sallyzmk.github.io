@@ -9,24 +9,24 @@
   
   
   
-  <meta name="description" content="Chapter 05-1 결정 트리 (가장 중요함) 직관적이다. 윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ 유일한 단점 : 과대적합이 일어나기 쉽다.  wine 데이터 가져오기123import pandas as pdwine &#x3D; pd.read_csv(&amp;#x27;https:&#x2F;&#x2F;bit.ly&#x2F;wine_csv_data&amp;#x27;)print(wine.head)  &amp;l">
+  <meta name="description" content="0. 자율학습 딥러닝 논문.pdf 단톡방에 있음.  Chapter 05-1 결정 트리 (가장 중요함) 직관적이다. 윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ 유일한 단점 : 과대적합이 일어나기 쉽다.  wine 데이터 가져오기123import pandas as pdwine &#x3D; pd.read_csv(&amp;#x27;https:&#x2F;&#x2F;bit.ly&#x2F;wine_csv_da">
 <meta property="og:type" content="article">
 <meta property="og:title" content="혼공머 Chapter 05">
 <meta property="og:url" content="https://sallyzmk.github.io/2022/07/04/python_5/index.html">
 <meta property="og:site_name" content="나의 첫번째 블로그">
-<meta property="og:description" content="Chapter 05-1 결정 트리 (가장 중요함) 직관적이다. 윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ 유일한 단점 : 과대적합이 일어나기 쉽다.  wine 데이터 가져오기123import pandas as pdwine &#x3D; pd.read_csv(&amp;#x27;https:&#x2F;&#x2F;bit.ly&#x2F;wine_csv_data&amp;#x27;)print(wine.head)  &amp;l">
+<meta property="og:description" content="0. 자율학습 딥러닝 논문.pdf 단톡방에 있음.  Chapter 05-1 결정 트리 (가장 중요함) 직관적이다. 윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ 유일한 단점 : 과대적합이 일어나기 쉽다.  wine 데이터 가져오기123import pandas as pdwine &#x3D; pd.read_csv(&amp;#x27;https:&#x2F;&#x2F;bit.ly&#x2F;wine_csv_da">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_28_1.png">
 <meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_29_1.png">
 <meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_30_1.png">
-<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_33_0.png">
-<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_36_1.png">
-<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_37_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_31_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_34_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_37_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/python_5/output_38_0.png">
 <meta property="article:published_time" content="2022-07-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-04T23:59:26.624Z">
+<meta property="article:modified_time" content="2022-07-05T07:15:01.668Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sallyzmk.github.io/images/python_5/output_28_1.png">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/python_5/output_29_1.png">
   
   <link rel="icon" href="/css/images/favicon.ico">
   
@@ -140,7 +140,10 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Chapter-05-1-결정-트리-가장-중요함"><a href="#Chapter-05-1-결정-트리-가장-중요함" class="headerlink" title="Chapter 05-1 결정 트리 (가장 중요함)"></a>Chapter 05-1 결정 트리 (가장 중요함)</h1><ul>
+        <h1 id="0-자율학습"><a href="#0-자율학습" class="headerlink" title="0. 자율학습"></a>0. 자율학습</h1><ul>
+<li>딥러닝 논문.pdf 단톡방에 있음.</li>
+</ul>
+<h1 id="Chapter-05-1-결정-트리-가장-중요함"><a href="#Chapter-05-1-결정-트리-가장-중요함" class="headerlink" title="Chapter 05-1 결정 트리 (가장 중요함)"></a>Chapter 05-1 결정 트리 (가장 중요함)</h1><ul>
 <li>직관적이다.</li>
 <li>윰세 웅이 머리 속에 있는게 결정 트리임.ㅎ</li>
 <li>유일한 단점 : 과대적합이 일어나기 쉽다.</li>
@@ -556,19 +559,19 @@ Name: class, dtype: int64
 <pre><code>0.996921300750433
 0.8592307692307692
 </code></pre>
-<p><img src="/images/python_5/output_28_1.png" alt="png"></p>
+<p><img src="/images/python_5/output_29_1.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">7</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <pre><code>0.8895516644217818
 0.8630769230769231
 </code></pre>
-<p><img src="/images/python_5/output_29_1.png" alt="png"></p>
+<p><img src="/images/python_5/output_30_1.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> plot_tree</span><br><span class="line"></span><br><span class="line">dt = DecisionTreeClassifier(max_depth= <span class="number">8</span>, random_state=<span class="number">42</span>)</span><br><span class="line">dt.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(dt.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(dt.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <pre><code>0.9003271117952665
 0.8576923076923076
 </code></pre>
-<p><img src="/images/python_5/output_30_1.png" alt="png"></p>
+<p><img src="/images/python_5/output_31_1.png" alt="png"></p>
 <ul>
 <li>max_depth&#x3D; 8이 되는 순간 과대적합이 생긴다.</li>
 <li>고로 max_depth&#x3D; 7 정도가 가장 적합하다.</li>
@@ -592,7 +595,7 @@ Name: class, dtype: int64
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt, max_depth = <span class="number">1</span>,</span><br><span class="line">          filled= <span class="literal">True</span>,</span><br><span class="line">          feature_names= [<span class="string">&#x27;alcohal&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 루트 노드, 노드, 리프노드(=말단노드)</span></span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_5/output_33_0.png" alt="png"></p>
+<p><img src="/images/python_5/output_34_0.png" alt="png"></p>
 <h2 id="불순도"><a href="#불순도" class="headerlink" title="불순도"></a>불순도</h2><ul>
 <li><p>한 범주 안에서 서로 다른 데이터가 얼마나 섞여 있는지를 나타냄.</p>
 </li>
@@ -630,11 +633,11 @@ Name: class, dtype: int64
 <pre><code>0.885703290359823
 0.8669230769230769
 </code></pre>
-<p><img src="/images/python_5/output_36_1.png" alt="png"></p>
+<p><img src="/images/python_5/output_37_1.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결과</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">7</span>))</span><br><span class="line">plot_tree(dt, max_depth = <span class="number">1</span>,</span><br><span class="line">          filled= <span class="literal">True</span>,</span><br><span class="line">          feature_names= [<span class="string">&#x27;alcohal&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/images/python_5/output_37_0.png" alt="png"></p>
+<p><img src="/images/python_5/output_38_0.png" alt="png"></p>
 <h2 id="특성-중요도"><a href="#특성-중요도" class="headerlink" title="특성 중요도"></a>특성 중요도</h2><ul>
 <li>어떤 특성이 결정 트리 모델에 영향을 주었는가?</li>
 <li>어떤 기준, 특성이 가장 확실하게 분리를 시켜줄 수 있느냐? (여기에서는 sugar)</li>
@@ -802,7 +805,67 @@ Name: class, dtype: int64
 <pre><code>best :  DecisionTreeClassifier(max_depth=7, min_impurity_decrease=0.0005,
                        random_state=42)
 </code></pre>
+<h1 id="Chapter-05-3-트리의-앙상블"><a href="#Chapter-05-3-트리의-앙상블" class="headerlink" title="Chapter 05-3 트리의 앙상블"></a>Chapter 05-3 트리의 앙상블</h1><h2 id="랜덤-포레스트"><a href="#랜덤-포레스트" class="headerlink" title="랜덤 포레스트"></a>랜덤 포레스트</h2><ul>
+<li><p>Decision Tree (나무 1개)</p>
+<ul>
+<li>랜덤 포레스트 (여러개 심음)</li>
+<li>샘플링</li>
+<li>Feature Importances</li>
+</ul>
+</li>
+<li><p>과대적합되는 것을 막아주고 검증 세트와 테스트 세트에서 안정적인 성능을 얻을 수 있다.</p>
+</li>
+<li><p>예측해야 할 행의 갯수, 100만개</p>
+</li>
+<li><p>컬럼의 갯수(독립변수) 200개 –&gt; 100개</p>
+<ul>
+<li>sqrt(): </li>
+<li>나무 100개를 심고 평균을 내자</li>
+<li>나무 1개 당 컬럼을 10개로</li>
+<li>T1 mae : 20 &#x2F; T2 mae: 30 &#x2F; T3 mae 10, …</li>
+<li>T1~T100 mae : 20 &lt;–이게 전체적인 평가지표</li>
+</ul>
+</li>
+<li><p>샘플링: 부트스트랩 샘플 (복원 추출) -&gt; 결정트리 훈련</p>
+<ul>
+<li>주머니에 구슬을 다시 넣고 섞고 @개 추출</li>
+<li>(결정트리는 주머니에서 추출, 다시 안넣고, 또 추출했다.-&gt;정형데이터)</li>
+<li>시간이 오래걸림</li>
+<li>vote 투표로 결정됨?</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 라이브러리 설치</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, cross_validate</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 불러오기</span></span><br><span class="line">wine = pd. read_csv(<span class="string">&#x27;https://bit.ly/wine_csv_data&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># input, target 분리</span></span><br><span class="line">data = wine[[<span class="string">&#x27;alcohol&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>]].to_numpy()</span><br><span class="line">target= wine[<span class="string">&#x27;class&#x27;</span>].to_numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(data, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델링</span></span><br><span class="line">rf= RandomForestClassifier(n_jobs=-<span class="number">1</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 평가</span></span><br><span class="line">scores = cross_validate(rf, train_input, train_target, return_train_score=<span class="literal">True</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 특성 중요도 계산 (랜덤 포레스트의 특성 중요도 : 각 결정 트리의 특성 중요도를 취합한 것)</span></span><br><span class="line">rf.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(rf.feature_importances_)</span><br><span class="line"></span><br><span class="line"><span class="comment"># OOB (out of bag : 한 번도 안 뽑힌 것들은 검증에 사용 가능: 랜텀 포레스트는 각 트리의 OOB 점수를 평균하여 출력)</span></span><br><span class="line">rf= RandomForestClassifier(oob_score=<span class="literal">True</span>, n_jobs=-<span class="number">1</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rf.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(rf.oob_score_)</span><br></pre></td></tr></table></figure>
 
+<pre><code>0.9973541965122431 0.8905151032797809
+[0.23167441 0.50039841 0.26792718]
+0.8934000384837406
+</code></pre>
+<h2 id="엑스트라-트리-SKIP"><a href="#엑스트라-트리-SKIP" class="headerlink" title="엑스트라 트리  [SKIP]"></a>엑스트라 트리  [SKIP]</h2><h2 id="그래이디언트-부스팅"><a href="#그래이디언트-부스팅" class="headerlink" title="그래이디언트 부스팅"></a>그래이디언트 부스팅</h2><ul>
+<li>깊이가 얕은 결정 트리를 사용하여 이전 트리의 오차를 보완</li>
+<li>유기적, 상호 보완적</li>
+<li>T1 ~ TN 증가하면서 오차를 보정해주며 정확성을 높임</li>
+<li>경사하강법의 원리를 이용함</li>
+<li>단점: 정확성은 좋으나 속도가 너무 느림</li>
+<li>해결책: XGBoost, LightGBM</li>
+</ul>
+<h3 id="랜덤포레스트와의-차이점"><a href="#랜덤포레스트와의-차이점" class="headerlink" title="랜덤포레스트와의 차이점"></a>랜덤포레스트와의 차이점</h3><ul>
+<li>랜덤 포레스트는 각 나무간 상호 연관성이 없다.</li>
+<li>부스팅은 각 나무간 상호 연관성 있음</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line">gb = GradientBoostingClassifier(random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_validate(gb,train_input, train_target, return_train_score=<span class="literal">True</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8881086892152563 0.8720430147331015
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 학습률 조정 (100-&gt;500 증가, learning_rate= 기본값은 0.1)</span></span><br><span class="line">gb = GradientBoostingClassifier(n_estimators=<span class="number">500</span>, learning_rate=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_validate(gb, train_input, train_target, return_train_score = <span class="literal">True</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9464595437171814 0.8780082549788999
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 특성 중요도</span></span><br><span class="line">gb.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(gb.feature_importances_)</span><br><span class="line"><span class="comment"># [결과 해석] 그레이디언트 부스팅이 랜텀 포레스트보다 일부 특성(당도)에 더 집중합니다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.15872278 0.68010884 0.16116839]
+</code></pre>
+<h2 id="히스토그램-기반-그레이디언트-부스팅-SKIP"><a href="#히스토그램-기반-그레이디언트-부스팅-SKIP" class="headerlink" title="히스토그램 기반 그레이디언트 부스팅  [SKIP]"></a>히스토그램 기반 그레이디언트 부스팅  [SKIP]</h2>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -841,6 +904,15 @@ Name: class, dtype: int64
     
 <nav id="article-nav">
   
+    <a href="/2022/07/05/python_6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          혼공머 Chapter 06
+        
+      </div>
+    </a>
+  
   
     <a href="/2022/07/01/python_4/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
@@ -858,7 +930,7 @@ Name: class, dtype: int64
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-05-1-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC-%EA%B0%80%EC%9E%A5-%EC%A4%91%EC%9A%94%ED%95%A8"><span class="nav-number">1.</span> <span class="nav-text">Chapter 05-1 결정 트리 (가장 중요함)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wine-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0"><span class="nav-number">1.1.</span> <span class="nav-text">wine 데이터 가져오기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%94%84%EB%A0%88%EC%9E%84-%ED%99%95%EC%9D%B8"><span class="nav-number">1.2.</span> <span class="nav-text">데이터 프레임 확인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EA%B3%B5%ED%95%98%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text">데이터 가공하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9B%88%EB%A0%A8%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A6%AC"><span class="nav-number">1.4.</span> <span class="nav-text">훈련데이터 분리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%91%9C%EC%A4%80%ED%99%94-%EC%B2%98%EB%A6%AC"><span class="nav-number">1.5.</span> <span class="nav-text">표준화 처리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%AA%A8%EB%8D%B8-%ED%9B%88%EB%A0%A8-lr"><span class="nav-number">1.6.</span> <span class="nav-text">로지스틱 회귀 모델 훈련 (lr)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80%EA%B0%80-%ED%95%99%EC%8A%B5%ED%95%9C-%EA%B3%84%EC%88%98%EC%99%80-%EC%A0%88%ED%8E%B8"><span class="nav-number">1.7.</span> <span class="nav-text">로지스틱 회귀가 학습한 계수와 절편</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-dt"><span class="nav-number">1.8.</span> <span class="nav-text">결정트리 모델 만들기 (dt)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9C%84%EC%97%90%EC%84%9C-%EB%A7%8C%EB%93%A0-%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC-%EB%AA%A8%EB%8D%B8-%EA%B0%9D%EC%B2%B4%EB%A5%BC-plot-tree-%ED%95%A8%EC%88%98%EC%97%90-%EC%A0%84%EB%8B%AC%ED%95%98%EC%97%AC-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">1.9.</span> <span class="nav-text">위에서 만든 결정트리 모델 객체를 plot_tree() 함수에 전달하여 시각화</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%85%B8%EB%93%9C%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80"><span class="nav-number">1.10.</span> <span class="nav-text">노드란 무엇인가?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B6%88%EC%88%9C%EB%8F%84"><span class="nav-number">1.11.</span> <span class="nav-text">불순도</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%97%94%ED%8A%B8%EB%A1%9C%ED%94%BC-Entropy"><span class="nav-number">1.12.</span> <span class="nav-text">엔트로피(Entropy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8A%B9%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84"><span class="nav-number">1.13.</span> <span class="nav-text">특성 중요도</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%98%84%EC%97%85%EC%97%90%EC%84%9C%EC%9D%98-%EC%A0%81%EC%9A%A9"><span class="nav-number">1.14.</span> <span class="nav-text">현업에서의 적용</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-05-2-%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D%EA%B3%BC-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%84%9C%EC%B9%98"><span class="nav-number">2.</span> <span class="nav-text">Chapter 05-2 교차 검증과 그리드 서치</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B2%80%EC%A6%9D-%EC%84%B8%ED%8A%B8"><span class="nav-number">2.1.</span> <span class="nav-text">검증 세트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AA%A8%ED%98%95-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">2.2.</span> <span class="nav-text">모형 만들기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D"><span class="nav-number">2.2.1.</span> <span class="nav-text">교차검증</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D-%ED%95%A8%EC%88%98"><span class="nav-number">2.3.</span> <span class="nav-text">교차 검증 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StratifiedKFold-%EC%82%AC%EC%9A%A9"><span class="nav-number">2.4.</span> <span class="nav-text">StratifiedKFold 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10%ED%8F%B4%EB%93%9C-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D%EC%9D%84-%EC%88%98%ED%96%89"><span class="nav-number">2.4.1.</span> <span class="nav-text">10폴드 교차검증을 수행</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%98%EC%9D%B4%ED%8D%BC%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%ED%8A%9C%EB%8B%9D"><span class="nav-number">2.5.</span> <span class="nav-text">하이퍼파라미터 튜닝</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%EC%9E%90%EC%9C%A8%ED%95%99%EC%8A%B5"><span class="nav-number">1.</span> <span class="nav-text">0. 자율학습</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-05-1-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC-%EA%B0%80%EC%9E%A5-%EC%A4%91%EC%9A%94%ED%95%A8"><span class="nav-number">2.</span> <span class="nav-text">Chapter 05-1 결정 트리 (가장 중요함)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wine-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0"><span class="nav-number">2.1.</span> <span class="nav-text">wine 데이터 가져오기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%94%84%EB%A0%88%EC%9E%84-%ED%99%95%EC%9D%B8"><span class="nav-number">2.2.</span> <span class="nav-text">데이터 프레임 확인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%80%EA%B3%B5%ED%95%98%EA%B8%B0"><span class="nav-number">2.3.</span> <span class="nav-text">데이터 가공하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9B%88%EB%A0%A8%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A6%AC"><span class="nav-number">2.4.</span> <span class="nav-text">훈련데이터 분리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%91%9C%EC%A4%80%ED%99%94-%EC%B2%98%EB%A6%AC"><span class="nav-number">2.5.</span> <span class="nav-text">표준화 처리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%AA%A8%EB%8D%B8-%ED%9B%88%EB%A0%A8-lr"><span class="nav-number">2.6.</span> <span class="nav-text">로지스틱 회귀 모델 훈련 (lr)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80%EA%B0%80-%ED%95%99%EC%8A%B5%ED%95%9C-%EA%B3%84%EC%88%98%EC%99%80-%EC%A0%88%ED%8E%B8"><span class="nav-number">2.7.</span> <span class="nav-text">로지스틱 회귀가 학습한 계수와 절편</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-dt"><span class="nav-number">2.8.</span> <span class="nav-text">결정트리 모델 만들기 (dt)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9C%84%EC%97%90%EC%84%9C-%EB%A7%8C%EB%93%A0-%EA%B2%B0%EC%A0%95%ED%8A%B8%EB%A6%AC-%EB%AA%A8%EB%8D%B8-%EA%B0%9D%EC%B2%B4%EB%A5%BC-plot-tree-%ED%95%A8%EC%88%98%EC%97%90-%EC%A0%84%EB%8B%AC%ED%95%98%EC%97%AC-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">2.9.</span> <span class="nav-text">위에서 만든 결정트리 모델 객체를 plot_tree() 함수에 전달하여 시각화</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%85%B8%EB%93%9C%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80"><span class="nav-number">2.10.</span> <span class="nav-text">노드란 무엇인가?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B6%88%EC%88%9C%EB%8F%84"><span class="nav-number">2.11.</span> <span class="nav-text">불순도</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%97%94%ED%8A%B8%EB%A1%9C%ED%94%BC-Entropy"><span class="nav-number">2.12.</span> <span class="nav-text">엔트로피(Entropy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8A%B9%EC%84%B1-%EC%A4%91%EC%9A%94%EB%8F%84"><span class="nav-number">2.13.</span> <span class="nav-text">특성 중요도</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%98%84%EC%97%85%EC%97%90%EC%84%9C%EC%9D%98-%EC%A0%81%EC%9A%A9"><span class="nav-number">2.14.</span> <span class="nav-text">현업에서의 적용</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-05-2-%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D%EA%B3%BC-%EA%B7%B8%EB%A6%AC%EB%93%9C-%EC%84%9C%EC%B9%98"><span class="nav-number">3.</span> <span class="nav-text">Chapter 05-2 교차 검증과 그리드 서치</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B2%80%EC%A6%9D-%EC%84%B8%ED%8A%B8"><span class="nav-number">3.1.</span> <span class="nav-text">검증 세트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AA%A8%ED%98%95-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">3.2.</span> <span class="nav-text">모형 만들기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D"><span class="nav-number">3.2.1.</span> <span class="nav-text">교차검증</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B5%90%EC%B0%A8-%EA%B2%80%EC%A6%9D-%ED%95%A8%EC%88%98"><span class="nav-number">3.3.</span> <span class="nav-text">교차 검증 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StratifiedKFold-%EC%82%AC%EC%9A%A9"><span class="nav-number">3.4.</span> <span class="nav-text">StratifiedKFold 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10%ED%8F%B4%EB%93%9C-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D%EC%9D%84-%EC%88%98%ED%96%89"><span class="nav-number">3.4.1.</span> <span class="nav-text">10폴드 교차검증을 수행</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%95%98%EC%9D%B4%ED%8D%BC%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%ED%8A%9C%EB%8B%9D"><span class="nav-number">3.5.</span> <span class="nav-text">하이퍼파라미터 튜닝</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-05-3-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EC%95%99%EC%83%81%EB%B8%94"><span class="nav-number">4.</span> <span class="nav-text">Chapter 05-3 트리의 앙상블</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%9E%9C%EB%8D%A4-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8"><span class="nav-number">4.1.</span> <span class="nav-text">랜덤 포레스트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%97%91%EC%8A%A4%ED%8A%B8%EB%9D%BC-%ED%8A%B8%EB%A6%AC-SKIP"><span class="nav-number">4.2.</span> <span class="nav-text">엑스트라 트리  [SKIP]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%B7%B8%EB%9E%98%EC%9D%B4%EB%94%94%EC%96%B8%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85"><span class="nav-number">4.3.</span> <span class="nav-text">그래이디언트 부스팅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%99%80%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90"><span class="nav-number">4.3.1.</span> <span class="nav-text">랜덤포레스트와의 차이점</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8-%EA%B8%B0%EB%B0%98-%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%94%94%EC%96%B8%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-SKIP"><span class="nav-number">4.4.</span> <span class="nav-text">히스토그램 기반 그레이디언트 부스팅  [SKIP]</span></a></li></ol></li></ol>
     
     </div>
   </aside>
