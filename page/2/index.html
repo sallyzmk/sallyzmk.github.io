@@ -102,369 +102,6 @@
         
           <section id="main">
   
-    <article id="post-R_9"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2022/06/23/R_9/">R을 이용한 공공데이터 분석_제9장</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2022/06/23/R_9/" class="article-date">
-	  <time datetime="2022-06-23T00:00:00.000Z" itemprop="datePublished">June 23, 2022</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="제9장-그래프-그리기"><a href="#제9장-그래프-그리기" class="headerlink" title="제9장 그래프 그리기"></a>제9장 그래프 그리기</h2><h1 id="0단원-자율학습"><a href="#0단원-자율학습" class="headerlink" title="0단원 자율학습"></a>0단원 자율학습</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://r4ds.had.co.nz/data-visualisation.html">3장데이터 시각화</a></li>
-<li><a target="_blank" rel="noopener" href="https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html">ggplot2 자체 사이트</a></li>
-</ul>
-<h1 id="1단원-기본-지식-192p-SKIP"><a href="#1단원-기본-지식-192p-SKIP" class="headerlink" title="1단원 기본 지식 (192p)  [SKIP]"></a>1단원 기본 지식 (192p)  [SKIP]</h1><ul>
-<li>그래프를 그리는 목적 2가지: </li>
-<li>1분석하는 데이터의 특징을 탐색적으로 알아보기 위해 간략하게 그리는 경우</li>
-<li>2 데이터 분석 결과를 보고서에 싣기 위해서 정교한 그래프를 그리는 경우.</li>
-</ul>
-<h1 id="2단원-R-제공-그래프-함수-plot-barplot-hist-boxplot-193p-SKIP"><a href="#2단원-R-제공-그래프-함수-plot-barplot-hist-boxplot-193p-SKIP" class="headerlink" title="2단원 R 제공 그래프 함수 : plot(), barplot(), hist(), boxplot() (193p)  [SKIP]"></a>2단원 R 제공 그래프 함수 : plot(), barplot(), hist(), boxplot() (193p)  [SKIP]</h1><h2 id="0-라이브러리-불러오기"><a href="#0-라이브러리-불러오기" class="headerlink" title="0. 라이브러리 불러오기"></a>0. 라이브러리 불러오기</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="1-plot-함수"><a href="#1-plot-함수" class="headerlink" title="1. plot() 함수"></a>1. plot() 함수</h2><ul>
-<li>2개의 좌표로 표시된 데이터를 그래프로 그림.산점도(scatter plot)를 표현할 때 사용.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 한 점 그리기</span></span><br><span class="line">plot<span class="punctuation">(</span><span class="number">2</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-3-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 복수의 점 그리기</span></span><br><span class="line">x<span class="operator">=</span><span class="number">1</span><span class="operator">:</span><span class="number">20</span></span><br><span class="line">y<span class="operator">=</span>x<span class="operator">^</span><span class="number">2</span></span><br><span class="line">plot<span class="punctuation">(</span>x<span class="punctuation">,</span>y<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-3-2.png"><!-- --></p>
-<h2 id="2-barplot-함수"><a href="#2-barplot-함수" class="headerlink" title="2. barplot() 함수"></a>2. barplot() 함수</h2><ul>
-<li>명목형 변수의 빈도를 박대그래프로 그릴 때 사용</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line">a<span class="operator">&lt;-</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   4   f   r </span><br><span class="line">## 103 106  25</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">barplot<span class="punctuation">(</span>a<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-4-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a<span class="operator">&lt;-</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>drv<span class="punctuation">)</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   4   f   r </span><br><span class="line">## 103 106  25</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">barplot<span class="punctuation">(</span>a<span class="punctuation">,</span>hoiz <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span>  <span class="comment"># 가로로 표시</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## Warning in plot.window(xlim, ylim, log = log, ...): &quot;hoiz&quot;는 그래픽 매개변수가</span><br><span class="line">## 아닙니다</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## Warning in axis(if (horiz) 2 else 1, at = at.l, labels = names.arg, lty =</span><br><span class="line">## axis.lty, : &quot;hoiz&quot;는 그래픽 매개변수가 아닙니다</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## Warning in title(main = main, sub = sub, xlab = xlab, ylab = ylab, ...):</span><br><span class="line">## &quot;hoiz&quot;는 그래픽 매개변수가 아닙니다</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## Warning in axis(if (horiz) 1 else 2, cex.axis = cex.axis, ...): &quot;hoiz&quot;는 그래픽</span><br><span class="line">## 매개변수가 아닙니다</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-4-2.png"><!-- --></p>
-<h2 id="3-hist-함수"><a href="#3-hist-함수" class="headerlink" title="3. hist() 함수"></a>3. hist() 함수</h2><ul>
-<li>히스토그램(histogram, 도수분포표)을 그리는 그래프.</li>
-<li>barplot() 함수는 X축에 명목형 변수를 두고 변수의 빈도수를 그림으로 그리지만, hist()함수에서는 X축이 수치형 연속형 변수이야한다.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 6개 구간으로 구분</span></span><br><span class="line">hist<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-5-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 지정한 20 구간으로 구분</span></span><br><span class="line">hist<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">20</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-5-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># prob=T : 빈도수를 기준으로 확율밀도를 구해서 그래프를 그린다.</span></span><br><span class="line"><span class="comment"># y 축에 빈도수 대신 확률밀도가 표시.</span></span><br><span class="line">hist<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">20</span><span class="punctuation">,</span>prob<span class="operator">=</span><span class="built_in">T</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hist<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">20</span><span class="punctuation">,</span>prob<span class="operator">=</span><span class="built_in">T</span><span class="punctuation">)</span></span><br><span class="line">lines<span class="punctuation">(</span>density<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-5-3.png"><!-- --></p>
-<h2 id="4-boxplot-함수"><a href="#4-boxplot-함수" class="headerlink" title="4. boxplot() 함수"></a>4. boxplot() 함수</h2><ul>
-<li>설명</li>
-</ul>
-<h1 id="3단원-ggplot-그래프-201p-여기부터"><a href="#3단원-ggplot-그래프-201p-여기부터" class="headerlink" title="3단원 ggplot 그래프 (201p) 여기부터!!!"></a>3단원 ggplot 그래프 (201p) 여기부터!!!</h1><h2 id="1-기본개념"><a href="#1-기본개념" class="headerlink" title="1. 기본개념"></a>1. 기본개념</h2><ul>
-<li>ggplot2는 그래프를 한꺼번에 그리지 않고 전체 그림의 일부를 투명한 그림판에 나눠 그린 후에 그림판을 겹쳐서 완성한다.</li>
-<li>그림한을 레이어(layer)라고 한다.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install.packages(&quot;ggplot2&quot;)</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-그래프-그리기"><a href="#2-그래프-그리기" class="headerlink" title="2. 그래프 그리기"></a>2. 그래프 그리기</h2><h3 id="2-1-geom-point-산점도-그리기"><a href="#2-1-geom-point-산점도-그리기" class="headerlink" title="2.1. geom_point : 산점도 그리기"></a>2.1. geom_point : 산점도 그리기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">diamonds<span class="operator">&lt;-</span>ggplot2<span class="operator">::</span>diamonds <span class="comment"># diamonds 데이터세트를 새 객체 diamonds에 입력</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Step 1. x축 y축 지정</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">,</span>y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-9-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Step 2. geom_point()라는 산점도 그래프로 데이터를 표시</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">,</span>y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span>geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-9-2.png"><!-- --></p>
-<h3 id="2-2-막대그래프-그리기"><a href="#2-2-막대그래프-그리기" class="headerlink" title="2.2. 막대그래프 그리기"></a>2.2. 막대그래프 그리기</h3><ul>
-<li>1 geom_bar() : ggplot2가 원자료에서 범주별 크기를 구해서 막대그래프 그리기</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법 1. x축에 범주형 변수만 지정, ggplot2가 범주별 빈도수를 구해 막대 그래프로 표시</span></span><br><span class="line">ggplot<span class="punctuation">(</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>cut<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_bar<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-10-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span>diamonds<span class="operator">$</span>cut<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##      Fair      Good Very Good   Premium     Ideal </span><br><span class="line">##      1610      4906     12082     13791     21551</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 방법 2. x축에 범주형 변수, y축에 연속형 변수</span></span><br><span class="line"><span class="comment"># 이때는 geom_bar()안에 stat = &quot;identity&quot;를 적어줘야함</span></span><br><span class="line">ggplot<span class="punctuation">(</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>cut<span class="punctuation">,</span>y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_bar<span class="punctuation">(</span>stat <span class="operator">=</span> <span class="string">&quot;identity&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-10-2.png"><!-- --></p>
-<ul>
-<li>2 geom_col() : 범주별로 정해진 값을 토대로 막대그래프 그리기</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 다음의 패키지를 부착합니다: &#x27;dplyr&#x27;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:stats&#x27;:</span><br><span class="line">## </span><br><span class="line">##     filter, lag</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:base&#x27;:</span><br><span class="line">## </span><br><span class="line">##     intersect, setdiff, setequal, union</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cut 범주별 평균 가격 구하기</span></span><br><span class="line">cut_price <span class="operator">&lt;-</span>diamonds <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>cut<span class="punctuation">)</span> <span class="operator">%&gt;%</span> <span class="comment"># cut 범주별 데이터 분류</span></span><br><span class="line">  summarise<span class="punctuation">(</span>mean_price<span class="operator">=</span>mean<span class="punctuation">(</span>price<span class="punctuation">)</span><span class="punctuation">)</span> <span class="comment">#cut의 범주별 평균가격 구하기</span></span><br><span class="line"></span><br><span class="line">cut_price  <span class="comment"># cut의 범주별 평균가격</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 5 × 2</span><br><span class="line">##   cut       mean_price</span><br><span class="line">##   &lt;ord&gt;          &lt;dbl&gt;</span><br><span class="line">## 1 Fair           4359.</span><br><span class="line">## 2 Good           3929.</span><br><span class="line">## 3 Very Good      3982.</span><br><span class="line">## 4 Premium        4584.</span><br><span class="line">## 5 Ideal          3458.</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-geom-histogram-히스토그램-도수분포표-그리기"><a href="#2-3-geom-histogram-히스토그램-도수분포표-그리기" class="headerlink" title="2.3. geom_histogram() : 히스토그램(도수분포표) 그리기"></a>2.3. geom_histogram() : 히스토그램(도수분포표) 그리기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_histogram<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-12-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">range</span><span class="punctuation">(</span>diamonds<span class="operator">$</span>carat<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 0.20 5.01</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">(</span><span class="number">5.01</span><span class="operator">-</span><span class="number">.020</span><span class="punctuation">)</span><span class="operator">/</span><span class="number">30</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 0.1663333</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_histogram<span class="punctuation">(</span>binwidth <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-12-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_histogram<span class="punctuation">(</span>binwidth <span class="operator">=</span> <span class="number">0.01</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-12-3.png"><!-- --></p>
-<h3 id="2-4-geom-density-커널-밀도-곡선"><a href="#2-4-geom-density-커널-밀도-곡선" class="headerlink" title="2.4. geom_density() : 커널 밀도 곡선"></a>2.4. geom_density() : 커널 밀도 곡선</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_density<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-13-1.png"><!-- --></p>
-<h3 id="2-5-geom-boxplot-상자그림-그래프-그리기"><a href="#2-5-geom-boxplot-상자그림-그래프-그리기" class="headerlink" title="2.5. geom_boxplot() : 상자그림 그래프 그리기"></a>2.5. geom_boxplot() : 상자그림 그래프 그리기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span><span class="number">1</span><span class="punctuation">,</span>y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span>geom_boxplot<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-14-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>cut<span class="punctuation">,</span>y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_boxplot<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-14-2.png"><!-- --></p>
-<h3 id="2-6-geom-line-선그래프-그리기"><a href="#2-6-geom-line-선그래프-그리기" class="headerlink" title="2.6. geom_line() : 선그래프 그리기"></a>2.6. geom_line() : 선그래프 그리기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>cars<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	50 obs. of  2 variables:</span><br><span class="line">##  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span><br><span class="line">##  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> cars<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>speed<span class="punctuation">,</span>y<span class="operator">=</span>dist<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_line<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-15-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 실업자수 변화</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> economics<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>date<span class="punctuation">,</span>y<span class="operator">=</span>unemploy<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_line<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-15-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 개인저축률 변화</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> economics<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>date<span class="punctuation">,</span>y<span class="operator">=</span>psavert<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_line<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-15-3.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 두 개 데이터를 한 화면에 비교</span></span><br><span class="line">ggplot<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_line<span class="punctuation">(</span>data<span class="operator">=</span>economics<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>date<span class="punctuation">,</span>y<span class="operator">=</span>uempmed<span class="punctuation">,</span> color<span class="operator">=</span><span class="string">&quot;red&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_line<span class="punctuation">(</span>data <span class="operator">=</span> economics<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>date<span class="punctuation">,</span> y<span class="operator">=</span>psavert<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-15-4.png"><!-- --></p>
-<h1 id="4단원-ggplot-함수를-정교하게-그리기-215p"><a href="#4단원-ggplot-함수를-정교하게-그리기-215p" class="headerlink" title="4단원 ggplot() 함수를 정교하게 그리기  (215p)"></a>4단원 ggplot() 함수를 정교하게 그리기  (215p)</h1><h2 id="1-col-x3D-fill-x3D-1개의-그래프에-2개-변수를-반영하기"><a href="#1-col-x3D-fill-x3D-1개의-그래프에-2개-변수를-반영하기" class="headerlink" title="1. col&#x3D;, fill&#x3D; : 1개의 그래프에 2개 변수를 반영하기"></a>1. col&#x3D;, fill&#x3D; : 1개의 그래프에 2개 변수를 반영하기</h2><h3 id="1-1-‘col-x3D-’-geom-point-산점도에-변수를-추가해서-그리기"><a href="#1-1-‘col-x3D-’-geom-point-산점도에-변수를-추가해서-그리기" class="headerlink" title="1.1. ‘col&#x3D;’+geom_point() : 산점도에 변수를 추가해서 그리기"></a>1.1. ‘col&#x3D;’+geom_point() : 산점도에 변수를 추가해서 그리기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">,</span>y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-17-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">,</span>y<span class="operator">=</span>price<span class="punctuation">,</span>col<span class="operator">=</span>cut<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span> <span class="comment">#col(color)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-17-2.png"><!-- --></p>
-<h3 id="1-2-‘fill-x3D-’-geom-bar-막대그래프에-2개-범주-내용을-반영하기"><a href="#1-2-‘fill-x3D-’-geom-bar-막대그래프에-2개-범주-내용을-반영하기" class="headerlink" title="1.2. ‘fill&#x3D;’+geom_bar() : 막대그래프에 2개 범주 내용을 반영하기"></a>1.2. ‘fill&#x3D;’+geom_bar() : 막대그래프에 2개 범주 내용을 반영하기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> color<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_bar<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-18-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> color<span class="punctuation">,</span> fill<span class="operator">=</span>cut<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_bar<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-18-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> color<span class="punctuation">,</span> fill<span class="operator">=</span>cut<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_bar<span class="punctuation">(</span>position <span class="operator">=</span> <span class="string">&quot;dodge&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-18-3.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> color<span class="punctuation">,</span> fill<span class="operator">=</span>cut<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_bar<span class="punctuation">(</span>position <span class="operator">=</span> <span class="string">&quot;fill&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-18-4.png"><!-- --></p>
-<h3 id="1-3-‘col-x3D-’-geom-line-선그래프에-2개-범주-내용을-반영하기"><a href="#1-3-‘col-x3D-’-geom-line-선그래프에-2개-범주-내용을-반영하기" class="headerlink" title="1.3. ‘col&#x3D;’+geom_line() : 선그래프에 2개 범주 내용을 반영하기"></a>1.3. ‘col&#x3D;’+geom_line() : 선그래프에 2개 범주 내용을 반영하기</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leisure <span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&quot;data/leisure.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>leisure<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	200 obs. of  3 variables:</span><br><span class="line">##  $ age    : int  2 2 3 3 4 4 5 5 6 6 ...</span><br><span class="line">##  $ sex    : chr  &quot;female&quot; &quot;male&quot; &quot;female&quot; &quot;male&quot; ...</span><br><span class="line">##  $ expense: num  25.8 21 30 16.3 25.7 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>leisure<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>age<span class="punctuation">,</span>y<span class="operator">=</span>expense<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_line<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-19-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 색상 추가</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>leisure<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>age<span class="punctuation">,</span>y<span class="operator">=</span>expense<span class="punctuation">,</span>col<span class="operator">=</span>sex<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_line<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-19-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 그래프 사이즈, 라인 생김새 변경</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data<span class="operator">=</span>leisure<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>age<span class="punctuation">,</span>y<span class="operator">=</span>expense<span class="punctuation">,</span>col<span class="operator">=</span>sex<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_line<span class="punctuation">(</span>size <span class="operator">=</span> <span class="number">1.5</span><span class="punctuation">,</span> linetype <span class="operator">=</span> <span class="number">3</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-19-3.png"><!-- --></p>
-<h2 id="2-막대그래프의-순서-변경"><a href="#2-막대그래프의-순서-변경" class="headerlink" title="2. 막대그래프의 순서 변경"></a>2. 막대그래프의 순서 변경</h2><ul>
-<li>막대그래프에서 막대는 기본적으로 범주이름의 순서대로 정렬됨.</li>
-<li>이런 경우 막대의 크기가 들쭉날쭉해서 분석 결과를 한눈에 알기 어려움.</li>
-</ul>
-<h3 id="2-1-reorder-크기-순으로-정렬"><a href="#2-1-reorder-크기-순으로-정렬" class="headerlink" title="2.1. reorder() : 크기 순으로 정렬"></a>2.1. reorder() : 크기 순으로 정렬</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br><span class="line">mpg1<span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;data/mpg1.csv&quot;</span><span class="punctuation">,</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">drv_hwy <span class="operator">&lt;-</span>mpg1 <span class="operator">%&gt;%</span> </span><br><span class="line">  group_by<span class="punctuation">(</span>drv<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  summarise<span class="punctuation">(</span>mean_hwy<span class="operator">=</span>mean<span class="punctuation">(</span>hwy<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 기본그래프</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>drv<span class="punctuation">,</span>y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_col<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-20-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 오름차순</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>reorder<span class="punctuation">(</span>drv<span class="punctuation">,</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">,</span>y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_col<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-20-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 내림차순</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>reorder<span class="punctuation">(</span>drv<span class="punctuation">,</span><span class="operator">-</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">,</span>y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_col<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-20-3.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>reorder<span class="punctuation">(</span>drv<span class="punctuation">,</span><span class="operator">-</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">                          y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_col<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  labs<span class="punctuation">(</span></span><br><span class="line">    title <span class="operator">=</span> <span class="string">&quot;그래프 제목&quot;</span><span class="punctuation">,</span></span><br><span class="line">    subtitle <span class="operator">=</span> <span class="string">&quot;그래프 소제목&quot;</span><span class="punctuation">,</span></span><br><span class="line">    x <span class="operator">=</span> <span class="string">&quot;x변수명&quot;</span><span class="punctuation">,</span></span><br><span class="line">    y <span class="operator">=</span> <span class="string">&quot;y변수명&quot;</span><span class="punctuation">,</span></span><br><span class="line">    caption <span class="operator">=</span> <span class="string">&quot;데이터 출처&quot;</span></span><br><span class="line">  <span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-20-4.png"><!-- --></p>
-<h3 id="2-2-scale-x-discrete-limits-x3D-c-그래프-순서를-직접-정하기-SKIP"><a href="#2-2-scale-x-discrete-limits-x3D-c-그래프-순서를-직접-정하기-SKIP" class="headerlink" title="2.2. scale_x_discrete(limits&#x3D;c()) : 그래프 순서를 직접 정하기  [SKIP]"></a>2.2. scale_x_discrete(limits&#x3D;c()) : 그래프 순서를 직접 정하기  [SKIP]</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x27;r,f,s&#x27; 순서대로 그리기</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>drv<span class="punctuation">,</span> y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_col<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  scale_x_discrete<span class="punctuation">(</span>limits<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;r&quot;</span><span class="punctuation">,</span> <span class="string">&quot;f&quot;</span><span class="punctuation">,</span> <span class="string">&quot;4&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-21-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 일부만 선택해서 그래프 그리기.</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>drv<span class="punctuation">,</span> y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_col<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  scale_x_discrete<span class="punctuation">(</span>limits<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;r&quot;</span><span class="punctuation">,</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## Warning: Removed 1 rows containing missing values (position_stack).</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-21-2.png"><!-- --></p>
-<h3 id="2-3-coord-flip-막대그래프를-90도-회전해서-수평으로-그리기-SKIP"><a href="#2-3-coord-flip-막대그래프를-90도-회전해서-수평으로-그리기-SKIP" class="headerlink" title="2.3. coord_flip() : 막대그래프를 90도 회전해서 수평으로 그리기  [SKIP]"></a>2.3. coord_flip() : 막대그래프를 90도 회전해서 수평으로 그리기  [SKIP]</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 기본 형태</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>drv<span class="punctuation">,</span> y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_col<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-22-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 수평으로 그리기</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> drv_hwy<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>drv<span class="punctuation">,</span> y<span class="operator">=</span>mean_hwy<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_col<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span> coord_flip<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-22-2.png"><!-- --></p>
-<h3 id="2-4-xlim-ylim-x축과-y축의-범위-지정하기-SKIP"><a href="#2-4-xlim-ylim-x축과-y축의-범위-지정하기-SKIP" class="headerlink" title="2.4. xlim(), ylim() : x축과 y축의 범위 지정하기  [SKIP]"></a>2.4. xlim(), ylim() : x축과 y축의 범위 지정하기  [SKIP]</h3><ul>
-<li>그래프 모양은 전체 화면에 고르게 그려지는 것이 보기에 좋다.</li>
-<li>데이터가 한 곳으로 몰려있지 않게 축의 범위를 지정할 수 있다.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 기본 형태</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">,</span> y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-23-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 범위 지정 했을 때</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">,</span> y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  xlim<span class="punctuation">(</span><span class="number">0</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  ylim<span class="punctuation">(</span><span class="number">0</span><span class="punctuation">,</span><span class="number">18000</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## Warning: Removed 332 rows containing missing values (geom_point).</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-23-2.png"><!-- --></p>
-<h3 id="2-5-ggtitle-xlab-ylab-그래프와-축에-이름-붙이기-SKIP"><a href="#2-5-ggtitle-xlab-ylab-그래프와-축에-이름-붙이기-SKIP" class="headerlink" title="2.5. ggtitle(), xlab(), ylab() : 그래프와 축에 이름 붙이기  [SKIP]"></a>2.5. ggtitle(), xlab(), ylab() : 그래프와 축에 이름 붙이기  [SKIP]</h3><ul>
-<li>뒤에 ‘5단원 &gt; 3.옵션 &gt; theme_classic() : 그래프 테마 바꾸는 법’이 더욱 디테일하게 관리 가능.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> diamonds<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>carat<span class="punctuation">,</span> y<span class="operator">=</span>price<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">+</span> </span><br><span class="line">  ggtitle<span class="punctuation">(</span><span class="string">&quot;다이아몬드 캐럿별 가격 분포&quot;</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  xlab<span class="punctuation">(</span><span class="string">&quot;캐럿&quot;</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  ylab<span class="punctuation">(</span><span class="string">&quot;가격&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-24-1.png"><!-- --></p>
-<h1 id="5단원-ggplot2-강의-책X"><a href="#5단원-ggplot2-강의-책X" class="headerlink" title="5단원 ggplot2 강의 (책X)"></a>5단원 ggplot2 강의 (책X)</h1><h2 id="1-산점도-그래프-그리는-방법"><a href="#1-산점도-그래프-그리는-방법" class="headerlink" title="1. 산점도 그래프 그리는 방법"></a>1. 산점도 그래프 그리는 방법</h2><ul>
-<li>산점도 : X축 수치형 연속형 데이터, y축 수치형 연속형 데이터</li>
-<li>색상 값: <a target="_blank" rel="noopener" href="https://color.adobe.com/ko/create/color-wheel">adobe colour</a></li>
-<li><a target="_blank" rel="noopener" href="https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html">옵션 사용법</a></li>
-<li>코드는 깃허브 R 파일 안에 있다.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>readxl<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 데이터 불러오기</span></span><br><span class="line">who_disease <span class="operator">&lt;-</span> read_xlsx<span class="punctuation">(</span><span class="string">&quot;data/who_disease.xlsx&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 기본 시각화</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#aes는 축을 관리함함</span></span><br><span class="line"><span class="comment"># + 뒤에는 그래프 종류</span></span><br><span class="line"></span><br><span class="line"><span class="operator">?</span>geom_point</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## httpd 도움말 서버를 시작합니다 ... 완료</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션 1. alpha : 투명도 주기</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span>alpha<span class="operator">=</span><span class="number">0.1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션 2. colour : 색상 변화</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span>alpha<span class="operator">=</span><span class="number">0.1</span><span class="punctuation">,</span> colour<span class="operator">=</span><span class="string">&quot;red&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-3.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span>alpha<span class="operator">=</span><span class="number">0.1</span><span class="punctuation">,</span> colour<span class="operator">=</span><span class="string">&quot;#9FCFE3&quot;</span><span class="punctuation">)</span> <span class="comment">#adode 가서 색상 </span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-4.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션 3. fill 색상을 채워 넣을 때</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span>fill<span class="operator">=</span><span class="string">&quot;#BCF8FA&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-5.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션 4. group</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-6.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션 5. shape : 모양</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span>shape<span class="operator">=</span><span class="number">1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-7.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션 6. size : 크기</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span>size<span class="operator">=</span><span class="number">8</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-8.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵션 7. stroke</span></span><br><span class="line">ggplot<span class="punctuation">(</span>who_disease<span class="punctuation">,</span>aes<span class="punctuation">(</span>x <span class="operator">=</span> year<span class="punctuation">,</span> y <span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-25-9.png"><!-- --></p>
-<h3 id="1-1-colour-입력-위치-변경해보기"><a href="#1-1-colour-입력-위치-변경해보기" class="headerlink" title="1.1. colour 입력 위치 변경해보기"></a>1.1. colour 입력 위치 변경해보기</h3><ul>
-<li>원래 : geom_point(colour&#x3D;red_색상값)</li>
-<li>aes 안에 colour_옵션을 넣을 땐 ()에 컬럼명 넣기!</li>
-<li>ggplot(데이터, aes(x&#x3D; 변수, y&#x3D; 변수, colour&#x3D;컬럼명, 옵션&#x3D;컬럼명)) + geom_point()</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># colour 입력 위치 변경해보기</span></span><br><span class="line">str<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	150 obs. of  5 variables:</span><br><span class="line">##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span><br><span class="line">##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span><br><span class="line">##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span><br><span class="line">##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span><br><span class="line">##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>iris<span class="punctuation">,</span> aes<span class="punctuation">(</span>x<span class="operator">=</span> Sepal.Length<span class="punctuation">,</span></span><br><span class="line">                 y<span class="operator">=</span> Sepal.Width<span class="punctuation">,</span></span><br><span class="line">                 colour<span class="operator">=</span>Species<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-26-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 컬럼별로 색상이 나뉜다.</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-히스토그램-그리기"><a href="#2-히스토그램-그리기" class="headerlink" title="2. 히스토그램 그리기"></a>2. 히스토그램 그리기</h2><ul>
-<li>히스토그램은 데이터 분포가 어느 지역에 몰려있는지 확인해야한다.</li>
-<li>질병데이터 region &#x3D; AMR, year &#x3D; 1980, disease&#x3D; 백일해(pertussis)</li>
-<li>그래프는 변수에 따라 달라진다.</li>
-<li>그래프는 가공을 하고 그래프를 그려야한다.</li>
-<li>참고 자료 : RStudio &gt; Help &gt; Cheat Sheets &gt; data visualization with ggplot2</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 가공</span></span><br><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>who_disease<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## tibble [43,262 × 6] (S3: tbl_df/tbl/data.frame)</span><br><span class="line">##  $ region     : chr [1:43262] &quot;EMR&quot; &quot;EUR&quot; &quot;AFR&quot; &quot;EUR&quot; ...</span><br><span class="line">##  $ countryCode: chr [1:43262] &quot;AFG&quot; &quot;ALB&quot; &quot;DZA&quot; &quot;AND&quot; ...</span><br><span class="line">##  $ country    : chr [1:43262] &quot;Afghanistan&quot; &quot;Albania&quot; &quot;Algeria&quot; &quot;Andorra&quot; ...</span><br><span class="line">##  $ disease    : chr [1:43262] &quot;measles&quot; &quot;measles&quot; &quot;measles&quot; &quot;measles&quot; ...</span><br><span class="line">##  $ year       : num [1:43262] 2016 2016 2016 2016 2016 ...</span><br><span class="line">##  $ cases      : num [1:43262] 638 17 41 0 53 0 0 2 99 27 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data2 <span class="operator">&lt;-</span>who_disease <span class="operator">%&gt;%</span> </span><br><span class="line">    filter<span class="punctuation">(</span>region <span class="operator">==</span><span class="string">&#x27;AMR&#x27;</span><span class="punctuation">,</span></span><br><span class="line">           year <span class="operator">==</span> <span class="number">1980</span><span class="punctuation">,</span></span><br><span class="line">           disease <span class="operator">==</span> <span class="string">&#x27;pertussis&#x27;</span><span class="punctuation">,</span></span><br><span class="line">           cases <span class="operator">&gt;</span><span class="number">0</span><span class="punctuation">)</span> <span class="operator">-&gt;</span> data2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 가공된 데이터로 그래프 그리기</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data2<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_histogram<span class="punctuation">(</span>fill<span class="operator">=</span><span class="string">&quot;#BCF8FA&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-27-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data2<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_histogram<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-27-2.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data2<span class="punctuation">,</span> aes<span class="punctuation">(</span>x<span class="operator">=</span>country<span class="punctuation">,</span> y<span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_col<span class="punctuation">(</span><span class="punctuation">)</span>  <span class="comment"># 글씨가 겹쳐서 하나도 안보임</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-27-3.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data2<span class="punctuation">,</span> aes<span class="punctuation">(</span>x<span class="operator">=</span>country<span class="punctuation">,</span> y<span class="operator">=</span> cases<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_col<span class="punctuation">(</span>fill<span class="operator">=</span><span class="string">&quot;#BCF8FA&quot;</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  coord_flip<span class="punctuation">(</span><span class="punctuation">)</span> <span class="comment"># 옵션, 글씨를 알아볼 수 있도록 글씨 방향을 돌려줌</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-27-4.png"><!-- --></p>
-<h2 id="3-옵션"><a href="#3-옵션" class="headerlink" title="3. 옵션"></a>3. 옵션</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://exts.ggplot2.tidyverse.org/gallery/">그래프 옵션, ggplot expansion package</a></li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># labs() : 그래프에 설명을 추가</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> iris<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>Sepal.Length<span class="punctuation">,</span></span><br><span class="line">                          y<span class="operator">=</span>Sepal.Width<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">  geom_col<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  labs<span class="punctuation">(</span></span><br><span class="line">    title <span class="operator">=</span> <span class="string">&quot;그래프 제목&quot;</span><span class="punctuation">,</span></span><br><span class="line">    subtitle <span class="operator">=</span> <span class="string">&quot;그래프 소제목&quot;</span><span class="punctuation">,</span></span><br><span class="line">    x <span class="operator">=</span> <span class="string">&quot;x변수명&quot;</span><span class="punctuation">,</span></span><br><span class="line">    y <span class="operator">=</span> <span class="string">&quot;y변수명&quot;</span><span class="punctuation">,</span></span><br><span class="line">    caption <span class="operator">=</span> <span class="string">&quot;데이터 출처&quot;</span></span><br><span class="line">  <span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-28-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scale_color_manual() : 컬럼별로 색상을 나눌 때, 지정된 색상을 내가 바꾸는 법</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	150 obs. of  5 variables:</span><br><span class="line">##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span><br><span class="line">##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span><br><span class="line">##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span><br><span class="line">##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span><br><span class="line">##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> iris<span class="punctuation">,</span>aes<span class="punctuation">(</span>x<span class="operator">=</span>Sepal.Length<span class="punctuation">,</span> y<span class="operator">=</span>Sepal.Width<span class="punctuation">,</span> color<span class="operator">=</span>Species<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  labs<span class="punctuation">(</span></span><br><span class="line">    tile <span class="operator">=</span> <span class="string">&quot;제목&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    x<span class="operator">=</span><span class="string">&quot;길이&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    y<span class="operator">=</span><span class="string">&quot;넓이&quot;</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  scale_color_manual<span class="punctuation">(</span></span><br><span class="line">    labels <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;setosa&quot;</span><span class="punctuation">,</span> <span class="string">&quot;versicolor&quot;</span><span class="punctuation">,</span> <span class="string">&quot;virginica&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">    values <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;orange&quot;</span><span class="punctuation">,</span> <span class="string">&quot;blue&quot;</span><span class="punctuation">,</span> <span class="string">&quot;yellow&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-29-1.png"><!-- --></p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># theme_classic() : 그래프 테마 바꾸는 법</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	150 obs. of  5 variables:</span><br><span class="line">##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span><br><span class="line">##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span><br><span class="line">##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span><br><span class="line">##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span><br><span class="line">##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>iris<span class="punctuation">,</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> Sepal.Length<span class="punctuation">,</span> y <span class="operator">=</span> Sepal.Width<span class="punctuation">,</span> colour <span class="operator">=</span> Species<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  labs<span class="punctuation">(</span></span><br><span class="line">    title <span class="operator">=</span> <span class="string">&quot;제목&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    x <span class="operator">=</span> <span class="string">&quot;길이&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    y <span class="operator">=</span> <span class="string">&quot;너비&quot;</span></span><br><span class="line">  <span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  scale_color_manual<span class="punctuation">(</span></span><br><span class="line">    labels <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;setosa&quot;</span><span class="punctuation">,</span> <span class="string">&quot;versicolor&quot;</span><span class="punctuation">,</span> <span class="string">&quot;virginica&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span> </span><br><span class="line">    values <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;orange&quot;</span><span class="punctuation">,</span> <span class="string">&quot;blue&quot;</span><span class="punctuation">,</span>       <span class="string">&quot;yellow&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  theme_classic<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/R_9_files/figure-html/unnamed-chunk-30-1.png"><!-- --></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-R_8"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -1833,6 +1470,207 @@
 <!-- Table of Contents -->
 
   
+    <article id="post-블로그 만들기"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/17/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0/">블로그 만들기</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/17/%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="article-date">
+	  <time datetime="2022-06-16T21:00:00.000Z" itemprop="datePublished">June 17, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="블로그-만들기"><a href="#블로그-만들기" class="headerlink" title="블로그 만들기"></a>블로그 만들기</h1><h2 id="블로그-종류"><a href="#블로그-종류" class="headerlink" title="블로그 종류"></a><strong>블로그 종류</strong></h2><p>-티스토리 블로그 &#x2F; 네이버 블로그 &#x2F; medium(사이트) : 백그라운드를 접하긴 어려움</p>
+<p>-깃허브 블로그</p>
+<p>: hugo, hexo, jekyll (프레임워크)</p>
+<p>: HTML, CSS, GIT &amp; GIThub, 터미널 명령어</p>
+<p>: 마크다운</p>
+<p>-IT&#x2F;기획자 (제안서) &gt; 티스토리 블로그</p>
+<p>-개발자(코딩) &gt; 깃허브 블로그</p>
+<p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<h2 id="블로그-만드는-방법"><a href="#블로그-만드는-방법" class="headerlink" title="블로그 만드는 방법"></a><strong>블로그 만드는 방법</strong></h2><h3 id="STEP-1-설치"><a href="#STEP-1-설치" class="headerlink" title="STEP 1  설치"></a><strong>STEP 1  설치</strong></h3><p>1 윈도우 패키지 관리자 : <a target="_blank" rel="noopener" href="https://chocolatey.org/">https://chocolatey.org/</a></p>
+<p>2 nodejs 설치 : <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
+<p>둘 중 한개만 설치해도 됨. 1번이 안됐을 경우 2번 시도.</p>
+<ul>
+<li><p>1 윈도우 패키지 관리자 : <a target="_blank" rel="noopener" href="https://chocolatey.org/">https://chocolatey.org/</a></p>
+<p>  우측 상단 Install 클릭</p>
+<p>  윈도우 검색에서 windows powershell 관리자 권한으로 실행</p>
+<p>  파란색 창에 복사 붙여넣기</p>
+<p>  choco -? 입력</p>
+</li>
+</ul>
+<p><img src="/images/How_to_make_blog/Untitled.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%201.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%202.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%203.png" alt="Untitled"></p>
+<p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<ul>
+<li>2 nodejs 설치 : <a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a>  왼쪽 LTS 클릭  add to path 클릭!  네모칸 체크  windows powershell 변경 허용  cmd 열어서 node -v 입력 <blockquote>
+<p>v16.15.1 뜨는지 확인</p>
+</blockquote>
+<p>  cmd 끄고 관리자권한으로 재실행</p>
+<p>  npm install -g hexo-cli 입력</p>
+<blockquote>
+<p>설치 완료하면 됨</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/images/How_to_make_blog/Untitled%204.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%205.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%206.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%207.png" alt="Untitled"></p>
+<p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<h3 id="STEP-2-blog-저장소-생성-및-동기화"><a href="#STEP-2-blog-저장소-생성-및-동기화" class="headerlink" title="STEP 2  blog 저장소 생성 및 동기화"></a><strong>STEP 2  blog 저장소 생성 및 동기화</strong></h3><p>깃허브 가서 blog 저장소 만들기 (add a readme file 체크X)</p>
+<p><img src="/images/How_to_make_blog/Untitled%208.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%209.png" alt="Untitled"></p>
+<p>git bash here 실행시키기</p>
+<p>아래 코드 입력</p>
+<p>!주의!</p>
+<ul>
+<li><h1 id="hexo-init-blog-hexo-블로그-만듬"><a href="#hexo-init-blog-hexo-블로그-만듬" class="headerlink" title="hexo init blog : hexo 블로그 만듬."></a>hexo init blog : hexo 블로그 만듬.</h1></li>
+<li>#ls : 폴더랑 파일 다 보여줌</li>
+<li>git add .</li>
+</ul>
+<p>#전체 파일이기 때문</p>
+<p><code>git add README.md</code>X &lt;이건 파일 한 개</p>
+<ul>
+<li>커밋(업로드)하는 방법</li>
+</ul>
+<p>git add .<br>git commit -m “update”<br>git push -u origin main</p>
+<p><img src="/images/How_to_make_blog/Untitled%2010.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">echo &quot;# blog&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/sallyzmk/blog.git</span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line">git add . </span><br><span class="line">git commit -m “update”  </span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/How_to_make_blog/Untitled%2011.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2012.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2013.png" alt="Untitled"></p>
+<p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<h3 id="STEP-3-핵소-블로그-만들기"><a href="#STEP-3-핵소-블로그-만들기" class="headerlink" title="STEP 3  핵소 블로그 만들기"></a><strong>STEP 3  핵소 블로그 만들기</strong></h3><p>blog 파일 우클릭 파이참으로 실행</p>
+<p>우측 상단 클릭하여 수정 가능한 상태로 전환, 맨 밑 4번째 Terminal 실행</p>
+<p><img src="/images/How_to_make_blog/Untitled%2014.png" alt="Untitled"></p>
+<p>아래 화살표 클릭하여 Git Bash 실행</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># hexo 블로그 만들기 위한 환경 패키지 설치</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/How_to_make_blog/Untitled%2015.png" alt="Untitled"></p>
+<hr>
+<p>[쉬어가기]</p>
+<p>1옆에 &#96; 3번 누르기 &gt; 점 3개 뜸</p>
+<p>commandline  (관습적으로 명령어를 그 안에 담는다.)</p>
+<p>readme 파일에 쓰고 싶은 내용을 적는다</p>
+<p><img src="/images/How_to_make_blog/Untitled%2016.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2017.png" alt="Untitled"></p>
+<hr>
+<p>아래 명령어 입력</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># hexo 서버 만들어서 블로그 미리 확인.</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>액세스 허용</p>
+</blockquote>
+<blockquote>
+<p>http:~~~ 서버가 뜸 (내 로컬 웹사이트에만 열리는 링크)</p>
+</blockquote>
+<p><img src="/images/How_to_make_blog/Untitled%2018.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2019.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2020.png" alt="Untitled"></p>
+<p>테스트 : <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>  <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> </p>
+<p>→내 로컬 컴퓨터에서만 확인 가능</p>
+<p>배포 : 어플, 타인이 볼 수 있는 환경</p>
+<p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<h3 id="STEP-4-배포하는-방법"><a href="#STEP-4-배포하는-방법" class="headerlink" title="STEP 4 배포하는 방법"></a><strong>STEP 4 배포하는 방법</strong></h3><p>깃허브에서 새로운 repository 를 생성한다</p>
+<p>이름은 ‘나의 닉네임+ .github.io’</p>
+<p>(add a readme file 체크X)</p>
+<p><img src="/images/How_to_make_blog/Untitled%2021.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2022.png" alt="Untitled"></p>
+<p>파이참 pycharm 에서 왼쪽 _config.yml 클릭</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">url: https://sallyzmk.github.io</span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/sallyzmk/sallyzmk.github.io.git</span><br><span class="line">  branch: main</span><br><span class="line"></span><br><span class="line">#로 변경</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/How_to_make_blog/Untitled%2023.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2024.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2025.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># ctrl C 누르면 터널 나옴.</span><br><span class="line"># 배포하기</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/How_to_make_blog/Untitled%2026.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2027.png" alt="Untitled"></p>
+<p>active로 전환되면 <a href="https://sallyzmk.github.io/">https://sallyzmk.github.io</a></p>
+<p>들어가보면 블로그가 생성되어 있음.</p>
+<p><img src="/images/How_to_make_blog/Untitled%2028.png" alt="Untitled"></p>
+<p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<h3 id="STEP-5-블로그-수정하기"><a href="#STEP-5-블로그-수정하기" class="headerlink" title="STEP 5 블로그 수정하기"></a><strong>STEP 5 블로그 수정하기</strong></h3><p><a target="_blank" rel="noopener" href="https://hexo.io/ko/index.html">https://hexo.io/ko/index.html</a></p>
+<p>Docs(문서)에 들어가면 사용방법이 나옴</p>
+<p><img src="/images/How_to_make_blog/Untitled%2029.png" alt="Untitled"></p>
+<hr>
+<h2 id="헤드-타이틀-변경-방법"><a href="#헤드-타이틀-변경-방법" class="headerlink" title="헤드 타이틀 변경 방법"></a><strong>헤드 타이틀 변경 방법</strong></h2><p><img src="/images/How_to_make_blog/Untitled%2030.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2031.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2032.png" alt="Untitled"></p>
+<p>쨘!!!ㅎㅎㅎㅎ</p>
+<hr>
+<h2 id="블로그-내용-변경-방법"><a href="#블로그-내용-변경-방법" class="headerlink" title="블로그 내용 변경 방법"></a><strong>블로그 내용 변경 방법</strong></h2><p>source</p>
+<blockquote>
+<p>_posts </p>
+</blockquote>
+<blockquote>
+<p>hello-world.md</p>
+</blockquote>
+<p>들어가서 내용 수정</p>
+<p><img src="/images/How_to_make_blog/Untitled%2033.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2034.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2035.png" alt="Untitled"></p>
+<p><img src="/images/How_to_make_blog/Untitled%2036.png" alt="Untitled"></p>
+<hr>
+<h2 id="블로그-테마-변경-방법"><a href="#블로그-테마-변경-방법" class="headerlink" title="블로그 테마 변경 방법"></a><strong>블로그 테마 변경 방법</strong></h2><p>테마는 누군가 만드는 것 → 꾸준히 관리가 되고 있는지 확인 (mdui 깃허브를 찾아서 업데이트 날짜를 확인하기)</p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
+<p>(mdui) &#x2F; 혹은 구글에 hexo frame github 치고 들어가기.</p>
+<p>[추천테마]</p>
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-hueman/">https://ppoffice.github.io/hexo-theme-hueman/</a></p>
+<p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/">https://ppoffice.github.io/hexo-theme-icarus/</a></p>
+<p>오류나면 아래 명령어 입력해보기</p>
+<p><code>npm install --save bulma-stylus@0.8.0 hexo-renderer-inferno@^0.1.3</code></p>
+<p>[고른것]</p>
+<p><a target="_blank" rel="noopener" href="https://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/">https://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.sumoon.com/">http://www.sumoon.com/</a></p>
+<p>[최종]</p>
+<p><a target="_blank" rel="noopener" href="https://itimetraveler.github.io/hexo-theme-hipaper/">https://itimetraveler.github.io/hexo-theme-hipaper/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/iTimeTraveler/hexo-theme-hipaper">https://github.com/iTimeTraveler/hexo-theme-hipaper</a></p>
+<p>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<p><strong>STEP 6 블로그 파일 날렸을 때</strong></p>
+<p>git pull이 안됐을 때 해결 방법</p>
+<p><a target="_blank" rel="noopener" href="https://dschloe.github.io/settings/hexo_blog_reconnected/">https://dschloe.github.io/settings/hexo_blog_reconnected&#x2F;</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">(#깃허브에 있는 내용 받아오기</span><br><span class="line">git pull)</span><br><span class="line"></span><br><span class="line">#원래 코드</span><br><span class="line"></span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">echo &quot;# blog&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/sallyzmk/blog.git</span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line"># hexo 블로그 만들기 위한 환경 패키지 설치</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line"># hexo 서버 만들어서 블로그 미리 확인.</span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line">#파이참 창 확인</span><br><span class="line">1번. url: https://sallyzmk.github.io</span><br><span class="line">2번. </span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/sallyzmk/sallyzmk.github.io.git</span><br><span class="line">  branch: main</span><br><span class="line">  로 변경 하기</span><br><span class="line"></span><br><span class="line"># ctrl C 누르면 터널 나옴.</span><br><span class="line"># 배포하기</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"></span><br><span class="line"># 수정 끝났으면 커밋(업로드) 하기</span><br><span class="line"># 커밋(업로드)하는 방법</span><br><span class="line">git add .</span><br><span class="line">git commit -m “update”</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#git pull 에러 났을 때 대처법</span><br><span class="line"></span><br><span class="line">hexo init your_blog_repo # 여기는 각자 소스 레포 확인</span><br><span class="line">cd myblog</span><br><span class="line">git init </span><br><span class="line">git remote add origin https://github.com/sallyzmk/blog.git # 각자 소스 레포 주소</span><br><span class="line"></span><br><span class="line">git pull --set-upstream origin main # 에러 발생</span><br><span class="line"></span><br><span class="line">git clean -d -f</span><br><span class="line"></span><br><span class="line">git pull --set-upstream origin main # 에러 발생 안함 / 소스 확인</span><br><span class="line"></span><br><span class="line">npm install </span><br><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://sallyzmk.github.io/">https://sallyzmk.github.io</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
 
 
   <nav id="page-nav">
@@ -1933,18 +1771,6 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2022/07/05/NumPy%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%EC%84%A4%EC%B9%98%EB%B0%A9%EB%B2%95/">(no title)</a></h6>
-              <span>July 5, 2022</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2022/07/04/python_5/">혼공머 Chapter 05</a></h6>
               <span>July 4, 2022</span>
             </div>
@@ -1999,6 +1825,18 @@
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2022/06/29/Python_Pandas/">Python Pandas</a></h6>
+              <span>June 29, 2022</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -2017,7 +1855,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">25</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">26</span></li></ul>
     </div>
   </div>
 
