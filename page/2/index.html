@@ -102,6 +102,600 @@
         
           <section id="main">
   
+    <article id="post-Python_Basic"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/27/Python_Basic/">Python 기초문법</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/27/Python_Basic/" class="article-date">
+	  <time datetime="2022-06-26T17:00:00.000Z" itemprop="datePublished">June 27, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="자율학습"><a href="#자율학습" class="headerlink" title="자율학습"></a>자율학습</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://wikidocs.net/book/1">점프 투 파이썬</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dojang.io/course/view.php?id=7">파이썬 코딩 도장</a></p>
+</li>
+<li><p>파이썬을 실행하는 도구</p>
+<ul>
+<li>파이참 : 윈도우</li>
+<li>visual studio code : 리눅스</li>
+<li>주피터, 코랩 : 강의, 블로그</li>
+</ul>
+</li>
+<li><p>데이터 과학과 관련된 주요 라이브러리</p>
+<ul>
+<li>구글 코랩 : 이미 설치 됨</li>
+<li>로컬 : 환경설정을 추가로 해야함 (&#x3D;가상환경)</li>
+</ul>
+</li>
+<li><p>문자열, 리스트는 내장함수를 익히는 것이 포인트</p>
+</li>
+</ul>
+<h2 id="Hello-World-출력"><a href="#Hello-World-출력" class="headerlink" title="Hello World 출력"></a>Hello World 출력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello World&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Hello World
+</code></pre>
+<h2 id="주석처리"><a href="#주석처리" class="headerlink" title="주석처리"></a>주석처리</h2><ul>
+<li><p>1줄 주석 (#)</p>
+</li>
+<li><p>여러 줄 주석 처리 (“””  “””)</p>
+<ul>
+<li>함수 또는 클래스를 문서화 할 때 주로 사용</li>
+</ul>
+</li>
+<li><p>프로젝트 할 때</p>
+<ul>
+<li>전체 공정 100</li>
+<li>코드 &#x2F; 코드 문서화 &#x2F; 한글작업 문서화</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1줄 주석</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;1줄 주석&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">여러 줄 주석</span></span><br><span class="line"><span class="string">쌍따옴표 3개를 수미에 입력해주세요</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;여러줄 주석&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1줄 주석
+여러줄 주석
+</code></pre>
+<h2 id="변수-Scalar"><a href="#변수-Scalar" class="headerlink" title="변수 (Scalar)"></a>변수 (Scalar)</h2><ul>
+<li><p>자료형 - Scalar형, Non-Scalar형</p>
+</li>
+<li><p>Scalar형</p>
+</li>
+</ul>
+<ol>
+<li>파이썬 정수 변환 - int()</li>
+<li>파이썬 실수 변환 - float()</li>
+<li>파이썬 불리언 변환 - bool()</li>
+<li>None 자료형 - Null값, 값이 정해지지 않은 자료형</li>
+</ol>
+<ul>
+<li>Non-Scalar형</li>
+</ul>
+<ol start="3">
+<li>파이썬 문자열 변환 - str()<br><em>4. 파이썬 문자 변환 - chr()</em></li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blockdmask.tistory.com/432">https://blockdmask.tistory.com/432</a></li>
+</ul>
+<h3 id="수치형-자료형-int-float"><a href="#수치형-자료형-int-float" class="headerlink" title="수치형 자료형 (int, float)"></a>수치형 자료형 (int, float)</h3><ul>
+<li>int(정수): 정수를 정수 타입으로 변환하여 반환</li>
+<li>int(문자열): 문자열에 맞는 정수 타입 반환, 반환 불가 문자열-&gt; 오류남.</li>
+<li>int(불리언): True &#x3D;1, False &#x3D; 0</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_int = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(num_int)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(num_int))</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+&lt;class &#39;int&#39;&gt;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_float = <span class="number">0.1</span></span><br><span class="line"><span class="built_in">print</span>(num_float)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(num_float))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.1
+&lt;class &#39;float&#39;&gt;
+</code></pre>
+<h3 id="Bool형-True-False"><a href="#Bool형-True-False" class="headerlink" title="Bool형 (True, False)"></a>Bool형 (True, False)</h3><ul>
+<li>Python : True, False</li>
+<li>R : TRUE, FALSE</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool_true = <span class="literal">True</span></span><br><span class="line"><span class="built_in">print</span>(bool_true)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(bool_true))</span><br></pre></td></tr></table></figure>
+
+<pre><code>True
+&lt;class &#39;bool&#39;&gt;
+</code></pre>
+<h3 id="None-자료형"><a href="#None-자료형" class="headerlink" title="None 자료형"></a>None 자료형</h3><ul>
+<li>Null값, 값이 정해지지 않은 자료형</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">none_X = <span class="literal">None</span></span><br><span class="line"><span class="built_in">print</span>(none_X)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(none_X))</span><br></pre></td></tr></table></figure>
+
+<pre><code>None
+&lt;class &#39;NoneType&#39;&gt;
+</code></pre>
+<h2 id="사칙연산"><a href="#사칙연산" class="headerlink" title="사칙연산"></a>사칙연산</h2><ul>
+<li>정수형 사칙연산, 실수형 사칙연산</li>
+<li>!!!결괏값의 자료형 확인하기!!! 중요!</li>
+<li>因 정수형으로 계산했으나 결과가 실수형이 나올 수 있음</li>
+</ul>
+<h3 id="정수형-사칙연산"><a href="#정수형-사칙연산" class="headerlink" title="정수형 사칙연산"></a>정수형 사칙연산</h3><ul>
+<li>+, -, *, &#x2F;,</li>
+<li>**: 제곱</li>
+<li>% : 나눗셈 후 나머지를 반환</li>
+<li>&#x2F;&#x2F;: 나눗셈 후 몫을 반환</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">7</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a + b = &#x27;</span>, a+b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a - b = &#x27;</span>, a-b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a * b = &#x27;</span>, a*b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a / b = &#x27;</span>, a/b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a ** b = &#x27;</span>, a**b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a % b = &#x27;</span>, a%b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a // b = &#x27;</span>, a//b)</span><br></pre></td></tr></table></figure>
+
+<pre><code>a + b =  10
+a - b =  4
+a * b =  21
+a / b =  2.3333333333333335
+a ** b =  343
+a % b =  1
+a // b =  2
+</code></pre>
+<h3 id="실수형-사칙-연산"><a href="#실수형-사칙-연산" class="headerlink" title="실수형 사칙 연산"></a>실수형 사칙 연산</h3><p>+, -, *, &#x2F;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1.5</span></span><br><span class="line">b = <span class="number">2.5</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a + b = &#x27;</span>, a+b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a - b = &#x27;</span>, a-b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a * b = &#x27;</span>, a*b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a / b = &#x27;</span>, a/b)</span><br></pre></td></tr></table></figure>
+
+<pre><code>a + b =  4.0
+a - b =  -1.0
+a * b =  3.75
+a / b =  0.6
+hello
+</code></pre>
+<h2 id="논리형-연산자"><a href="#논리형-연산자" class="headerlink" title="논리형 연산자"></a>논리형 연산자</h2><ul>
+<li>Bool형</li>
+<li>True와 False 값으로 정의</li>
+<li>조건식<ul>
+<li>교집합(&#x3D;and), 합집합(&#x3D;or)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">and</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">and</span> <span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">and</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">and</span> <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>True
+False
+False
+False
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">or</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">or</span> <span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">or</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">or</span> <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>True
+True
+True
+False
+</code></pre>
+<h2 id="비교-연산자-gt-lt"><a href="#비교-연산자-gt-lt" class="headerlink" title="비교 연산자 (&gt;, &lt;)"></a>비교 연산자 (&gt;, &lt;)</h2><ul>
+<li>비교 연산자는 부등호를 의미한다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">4</span> &gt; <span class="number">3</span>) <span class="comment"># 참 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">4</span> &lt; <span class="number">3</span>) <span class="comment"># 거짓 = False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 응용 (논리형 &amp; 비교 연산자 응용)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">4</span> &gt; <span class="number">3</span> <span class="keyword">and</span> <span class="number">4</span> &lt; <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">4</span> &gt; <span class="number">3</span> <span class="keyword">or</span> <span class="number">4</span> &lt; <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>True
+False
+False
+True
+</code></pre>
+<h2 id="논리형-amp-비교-연산자-응용"><a href="#논리형-amp-비교-연산자-응용" class="headerlink" title="논리형 &amp; 비교 연산자 응용"></a>논리형 &amp; 비교 연산자 응용</h2><ul>
+<li>input()</li>
+<li>형변환 : 데이터 타입을 바꾸는 것</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># var = input(&quot;숫자를 입력하세요..!&quot;) # str 문자열</span></span><br><span class="line">var = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;숫자를 입력하세요..!&quot;</span>)) <span class="comment"># int 숫자열</span></span><br><span class="line"><span class="built_in">print</span>(var)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(var))</span><br></pre></td></tr></table></figure>
+
+<pre><code>숫자를 입력하세요..!1
+1
+&lt;class &#39;int&#39;&gt;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num1 = i]nt(<span class="built_in">input</span>(<span class="string">&quot;첫번째 숫자를 입력하세요..!&quot;</span>))</span><br><span class="line">num2 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;두번째 숫자를 입력하세요..!&quot;</span>))</span><br><span class="line">num3 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;세번째 숫자를 입력하세요..!&quot;</span>))</span><br><span class="line">num4 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;네번째 숫자를 입력하세요..!&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>첫번째 숫자를 입력하세요..!100
+두번째 숫자를 입력하세요..!22
+세번째 숫자를 입력하세요..!46
+네번째 숫자를 입력하세요..!577
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var1 = num1 &gt;= num2</span><br><span class="line">var2 = num3 &lt; num2</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(var1 <span class="keyword">and</span> var2)</span><br><span class="line"><span class="built_in">print</span>(var1 <span class="keyword">or</span> var2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>False
+True
+</code></pre>
+<h2 id="문자열-String-Non-Scalar"><a href="#문자열-String-Non-Scalar" class="headerlink" title="문자열 (String) (Non Scalar)"></a>문자열 (String) (Non Scalar)</h2><ul>
+<li><p>\n	문자열 안에서 줄을 바꿀 때 사용</p>
+</li>
+<li><p>\t	문자열 사이에 탭 간격을 줄 때 사용</p>
+</li>
+<li><p>\	문자 \를 그대로 표현할 때 사용</p>
+</li>
+<li><p>&#39;	작은따옴표(‘)를 그대로 표현할 때 사용</p>
+</li>
+<li><p>&quot;	큰따옴표(“)를 그대로 표현할 때 사용</p>
+</li>
+<li><p>\r	캐리지 리턴(줄 바꿈 문자, 현재 커서를 가장 앞으로 이동)</p>
+</li>
+<li><p>\f	폼 피드(줄 바꿈 문자, 현재 커서를 다음 줄로 이동)</p>
+</li>
+<li><p>\a	벨 소리(출력할 때 PC 스피커에서 ‘삑’ 소리가 난다)</p>
+</li>
+<li><p>\b	백 스페이스</p>
+</li>
+<li><p>\000	널 문자</p>
+</li>
+<li><p>이중에서 활용빈도가 높은 것은 \n, \t, \, &#39;, &quot;이다. 나머지는 프로그램에서 잘 사용하지 않는다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Hello World&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#x27;Hello World&#x27;&quot;</span>) <span class="comment"># 작은 따옴표를 표시해야될 때</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&quot;Hello World&quot;&#x27;</span>) <span class="comment"># 큰 따옴표를 표시해야될 때</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Hello World. \nMy name is Sally.&#x27;</span>) <span class="comment"># 줄 바꿔야 할 때 방법1 (\n)</span></span><br><span class="line"></span><br><span class="line">x = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">Hello World.</span></span><br><span class="line"><span class="string">My name is Sally.</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>  <span class="comment"># 줄 바꿔야 할 때 방법2 (&#x27;&#x27;&#x27; &#x27;&#x27;&#x27;)</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Hello World
+Hello World
+&#39;Hello World&#39;
+&quot;Hello World&quot;
+Hello World. 
+My name is Sally.
+
+Hello World.
+My name is Sally.
+</code></pre>
+<h2 id="String-Operators-문자열-연산자"><a href="#String-Operators-문자열-연산자" class="headerlink" title="String Operators (문자열 연산자)"></a>String Operators (문자열 연산자)</h2><ul>
+<li>문자열 연산자</li>
+<li>+, * 가능</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&quot;Hello &quot;</span></span><br><span class="line">str2 = <span class="string">&quot;World&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str1+str2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Hello World
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">greet = str1 + str2</span><br><span class="line"><span class="built_in">print</span>(greet * <span class="number">7</span>) <span class="comment"># n번 연속으로 출력된다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Hello WorldHello WorldHello WorldHello WorldHello WorldHello WorldHello World
+</code></pre>
+<h2 id="인덱싱"><a href="#인덱싱" class="headerlink" title="인덱싱"></a>인덱싱</h2><ul>
+<li>인덱싱은 0번째 부터 시작</li>
+<li>맨 마지막 열은 -1</li>
+<li>빈칸도 한 개로 인식 함</li>
+<li>len() : 문자열 인덱싱 할 시에 길이를 알려주는 함수.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&quot;Hello Kaggle&quot;</span></span><br><span class="line"><span class="built_in">print</span>(greeting)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">0</span>]) <span class="comment"># 0 번째</span></span><br><span class="line"><span class="built_in">print</span>(greeting[-<span class="number">1</span>]) <span class="comment"># 마지막 번째</span></span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">5</span>]) <span class="comment"># 빈칸</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 적용 예시</span></span><br><span class="line">greeting = <span class="string">&quot;Hello Kaggle&quot;</span></span><br><span class="line">i = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;숫자를 입력하세요...!&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(greeting[i])</span><br></pre></td></tr></table></figure>
+
+<pre><code>Hello Kaggle
+H
+e
+Hello
+숫자를 입력하세요...!7
+a
+</code></pre>
+<h2 id="슬라이싱"><a href="#슬라이싱" class="headerlink" title="슬라이싱"></a>슬라이싱</h2><ul>
+<li>[시작 인덱스:끝 인데스-1]</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&quot;Hello Kaggle&quot;</span></span><br><span class="line">(greeting)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(greeting[:<span class="number">5</span>]) <span class="comment"># 0~4 번째</span></span><br><span class="line"><span class="built_in">print</span>(greeting[-<span class="number">5</span>:]) <span class="comment"># -5 ~ 끝 번째</span></span><br><span class="line"><span class="built_in">print</span>(greeting[-<span class="number">5</span>:-<span class="number">1</span>]) <span class="comment"># -5 ~ -2 번째</span></span><br><span class="line"><span class="built_in">print</span>(greeting[:]) <span class="comment"># 처음 ~ 끝 번째</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">0</span>:<span class="number">10</span>:<span class="number">2</span>]) <span class="comment"># 0 ~ 9 번째까지 2 스탭씩</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>Hello
+aggle
+aggl
+Hello Kaggle
+HloKg
+</code></pre>
+<ul>
+<li>문자열 관련 메서드<ul>
+<li>split()</li>
+<li>sort()</li>
+<li>etc …</li>
+</ul>
+</li>
+</ul>
+<h2 id="리스트"><a href="#리스트" class="headerlink" title="리스트"></a>리스트</h2><ul>
+<li>[]로 표시</li>
+<li>[item1, item2, item3]</li>
+<li>리스트에는 많은게 들어간다. 때문에 리스트 관리를 잘 해야 한다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [] <span class="comment"># 빈 리스트 생성 방법 1</span></span><br><span class="line">a_func = <span class="built_in">list</span>() <span class="comment"># 빈 리스트 생성 방법 2</span></span><br><span class="line"></span><br><span class="line">b = [<span class="number">1</span>] <span class="comment"># 숫자 요소</span></span><br><span class="line">c = [<span class="string">&#x27;apple&#x27;</span>] <span class="comment"># 문자요소</span></span><br><span class="line">d = [<span class="number">1</span>, <span class="number">2</span>, [<span class="string">&#x27;apple&#x27;</span>], <span class="string">&#x27;apple&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(d)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, [&#39;apple&#39;], &#39;apple&#39;]
+</code></pre>
+<h3 id="리스트-값-추가하기-기본"><a href="#리스트-값-추가하기-기본" class="headerlink" title="리스트 값 추가하기 (기본)"></a>리스트 값 추가하기 (기본)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">a[<span class="number">1</span>] = <span class="string">&#x27;아무값&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0, &#39;아무 값&#39;, 2]
+</code></pre>
+<h3 id="리스트-값-추가하기-메서드-사용"><a href="#리스트-값-추가하기-메서드-사용" class="headerlink" title="리스트 값 추가하기 (메서드 사용)"></a>리스트 값 추가하기 (메서드 사용)</h3><ul>
+<li>class에 기본 저장된 메서드</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>]</span><br><span class="line">a.append(<span class="number">400</span>) <span class="comment"># a = a.append(400) XXX, 메서드를 사용할 때에는 별도 변수 저장이 필요 없다.</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">a.append([<span class="number">500</span>, <span class="number">600</span>])  <span class="comment"># [500, 600] 리스트로 들어가버림, 다른 메서드를 사용해야 함.</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">a.extend([<span class="number">500</span>, <span class="number">600</span>])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[100, 200, 300, 400]
+[100, 200, 300, 400, [500, 600]]
+[100, 200, 300, 400, [500, 600], 400, 500]
+</code></pre>
+<h3 id="리스트-값-추가하기-insert-사용"><a href="#리스트-값-추가하기-insert-사용" class="headerlink" title="리스트 값 추가하기 (insert 사용)"></a>리스트 값 추가하기 (insert 사용)</h3><ul>
+<li>insert(인덱스 위치, 값)</li>
+<li>리스트 맨 마지막에 값을 추가하는 것이 아닌 내가 <strong>원하는 위치에 값을 추가</strong>할 수 있다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>]</span><br><span class="line">a.insert(<span class="number">1</span>, <span class="number">1000</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[100, 1000, 200, 300]
+</code></pre>
+<h3 id="리스트-값-삭제하기-remove-del"><a href="#리스트-값-삭제하기-remove-del" class="headerlink" title="리스트 값 삭제하기 (remove(), del)"></a>리스트 값 삭제하기 (remove(), del)</h3><ul>
+<li>remove(): 특정 값 하나만 삭제, <strong>같은 값이 2개 이상</strong> 있을 경우 가장 <strong>앞에 있는 값 하나만 삭제</strong>됨.</li>
+<li>del 리스트[인덱스 번호]: 요소 번호, 인덱스 번호, 해당되는 요소가 삭제</li>
+<li>pop(): <ul>
+<li>x &#x3D; a.pop(1) # 인덱스 번호, 리스트의 2번째 요소를 삭제하라</li>
+<li>print(x) : 삭제된 값을 나타냄. 리스트의 2번째 요소.</li>
+</ul>
+</li>
+<li>clear(): 리스트 내 모든 값 삭제</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># remove()</span></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">a.remove(<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">b.remove(<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 1, 2]
+[4, 5, 7]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># del</span></span><br><span class="line">a= [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">del</span> a[<span class="number">1</span>] <span class="comment"># 요소 번호, 인덱스 번호, 해당되는 요소가 삭제</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> a[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0, 2, 3, 4]
+[3, 4]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pop()</span></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">a.pop(<span class="number">1</span>) <span class="comment"># 인덱스 번호</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line">rem = b.pop(<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(rem)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 3, 4, 5]
+[4, 5, 7, 8]
+6
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">rem = a.pop(<span class="number">1</span>) <span class="comment"># 인덱스 번호 -&gt; 2번째 번호</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(rem)</span><br><span class="line">x = a.pop() <span class="comment"># 인덱스 번호 -&gt; 맨 끝 번호</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 3, 4, 5]
+2
+[1, 3, 4]
+5
+</code></pre>
+<h3 id="리스트-값의-위치-불러오기-index"><a href="#리스트-값의-위치-불러오기-index" class="headerlink" title="리스트 값의 위치 불러오기 (index)"></a>리스트 값의 위치 불러오기 (index)</h3><ul>
+<li>index(“값”): 값의 위치를 불러옴</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># index() : 리스트 안의 값이 몇 번째 인덱스 순서에 해당되는지 알려줌</span></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">&quot;철수&quot;</span>, <span class="string">&quot;영희&quot;</span>, <span class="string">&quot;길동&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(a.index(<span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(b.index(<span class="string">&quot;길동&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="리스트의-정렬-sort"><a href="#리스트의-정렬-sort" class="headerlink" title="리스트의 정렬 (sort)"></a>리스트의 정렬 (sort)</h3><ul>
+<li>sort: 리스트의 정렬</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">a.sort()</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">b = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b.sort(reverse=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3, 4, 5]
+[5, 4, 3, 2, 1]
+</code></pre>
+<h2 id="도움말-부르기"><a href="#도움말-부르기" class="headerlink" title="도움말 부르기"></a>도움말 부르기</h2><ul>
+<li>help(list.sort)</li>
+<li>help(list.index)</li>
+<li>등등…</li>
+</ul>
+<h2 id="튜플"><a href="#튜플" class="headerlink" title="튜플"></a>튜플</h2><ul>
+<li><p>면접질문 : 리스트와 튜플의 차이가 뭐에요?</p>
+</li>
+<li><ol>
+<li>생김새가 다르다.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>수정, 삭제, 추가가 다 안된다.</li>
+</ol>
+</li>
+<li><p>리스트 : []</p>
+<ul>
+<li>수정, 삭제, 추가</li>
+</ul>
+</li>
+<li><p>튜플 : (,)</p>
+<ul>
+<li>‘, ‘찍어야 튜플로 인정, 안그럼 숫자로 인식.</li>
+<li>수정, 삭제, 추가가 다 안됨. 슬라이싱은 된다.</li>
+<li>바뀌어서는 안되는 리스트를 튜플을 사용.</li>
+<li>튜플&gt;리스트&gt;튜플 형변화로 수정은 가능하나..굳이? 그럴거면 그냥 리스트로 지정하세요!</li>
+<li>그냥 처음부터 지정을 잘 하자.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">tuple1 = (<span class="number">0</span>)</span><br><span class="line">tuple2 = (<span class="number">0</span>, )</span><br><span class="line">tuple3 = <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tuple1))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tuple2))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tuple3))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(tuple1)</span><br><span class="line"><span class="built_in">print</span>(tuple2)</span><br><span class="line"><span class="built_in">print</span>(tuple3)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;tuple&#39;&gt;
+&lt;class &#39;tuple&#39;&gt;
+0
+(0,)
+(0, 1, 2)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="comment"># del a[4]</span></span><br><span class="line"><span class="comment"># a[4] = 4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># doesn&#x27;t support 지원하지 않는다.</span></span><br><span class="line"><span class="comment"># 튜플은 수정이 불가하다.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="튜플-리스트-연산자"><a href="#튜플-리스트-연산자" class="headerlink" title="튜플, 리스트 연산자"></a>튜플, 리스트 연산자</h2><ul>
+<li>문자열 연산자 (+, *)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 튜플</span></span><br><span class="line">t1 = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">t2 = (<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(t1 + t2)</span><br><span class="line"><span class="built_in">print</span>(t1*<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 리스트</span></span><br><span class="line">y1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">y2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(y1 + y2)</span><br><span class="line"><span class="built_in">print</span>(y1*<span class="number">2</span>+y2*<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>(0, 1, 2, 3, 4, 5)
+(0, 1, 2, 0, 1, 2)
+[0, 1, 2, 3, 4, 5]
+[0, 1, 2, 0, 1, 2, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5]
+</code></pre>
+<h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><ul>
+<li>Key와 VAlue(값)으로 구성됨</li>
+<li>슬라이싱이 안된다. (슬라이싱은 값의 순서가 존재해야 함)</li>
+<li>딕셔너리는 순서라는 개념 자체가 존재하지 않음</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">temp_dict = &#123;</span><br><span class="line">    <span class="string">&#x27;teacher&#x27;</span> : <span class="string">&#x27;evan&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;class&#x27;</span> : <span class="number">15</span>,</span><br><span class="line">    <span class="string">&#x27;students&#x27;</span> : [<span class="string">&#x27;s1&#x27;</span>, <span class="string">&#x27;s2&#x27;</span>, <span class="string">&#x27;s3&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(temp_dict[<span class="string">&#x27;teacher&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(temp_dict[<span class="string">&#x27;class&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(temp_dict[<span class="string">&#x27;students&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>evan
+15
+[&#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;]
+</code></pre>
+<ul>
+<li>keys() 값만 출력 (   list(temp_dict.keys())   )</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">temp_dict.keys() <span class="comment"># list는 아님.</span></span><br><span class="line"><span class="built_in">list</span>(temp_dict.keys()) <span class="comment"># 형변환</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&#39;teacher&#39;, &#39;class&#39;, &#39;students&#39;]
+</code></pre>
+<ul>
+<li>values() 값만 출력 (temp_dict.values())</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp_dict.values()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>dict_values([&#39;evan&#39;, 15, [&#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;]])
+</code></pre>
+<ul>
+<li>items(): key-value 쌍으로, list와 tuple 형태로 반환</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp_dict.items()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>dict_items([(&#39;teacher&#39;, &#39;evan&#39;), (&#39;class&#39;, 15), (&#39;students&#39;, [&#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;])])
+</code></pre>
+<h2 id="조건문"><a href="#조건문" class="headerlink" title="조건문"></a>조건문</h2><ul>
+<li>잊지말고 ‘:’ 찍기!!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a = -5</span></span><br><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;숫자를 입력하세요..!&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">5</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;a는 5보다 크다&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt; <span class="number">0</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;a는 0보다 크다&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt; -<span class="number">5</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;a는 -5보다 크다&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;a는 -5보다 작다&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>숫자를 입력하세요..!7
+a는 5보다 크다
+</code></pre>
+<h2 id="반복문"><a href="#반복문" class="headerlink" title="반복문"></a>반복문</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hello World n번 출력하세요</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법 1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):  <span class="comment"># i는 변수, 바꿔도 된다.</span></span><br><span class="line">  <span class="built_in">print</span>(i+<span class="number">1</span>)  <span class="comment"># 파이썬은 0부터 시작</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법 2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):  <span class="comment"># i는 변수, 바꿔도 된다.</span></span><br><span class="line">  <span class="built_in">print</span>(i+<span class="number">1</span>, <span class="string">&quot;Hello World&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+Hello World
+2
+Hello World
+3
+Hello World
+1 Hello World
+2 Hello World
+3 Hello World
+</code></pre>
+<ul>
+<li>for loop if 조건문 사용 </li>
+<li>문자열, 리스트 등 -&gt; 시퀀스 데이터 (반복문 사용 가능)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Kaggle&quot;</span></span><br><span class="line"><span class="comment"># g가 시작하면 반복문을 멈추세요.</span></span><br><span class="line"><span class="comment"># print(x)의 위치에 따라 결과값이 다르게 나온다.</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">  <span class="built_in">print</span>(x)</span><br><span class="line">  <span class="keyword">if</span> x == <span class="string">&#x27;g&#x27;</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>K
+a
+g
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">  <span class="keyword">if</span> x == <span class="string">&#x27;g&#x27;</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<pre><code>K
+a
+</code></pre>
+<ul>
+<li>enumerate()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alphabets = [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> alphabets:</span><br><span class="line">  <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">alphabets = [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> index, value <span class="keyword">in</span> <span class="built_in">enumerate</span>(alphabets):</span><br><span class="line">  <span class="built_in">print</span>(index, value)</span><br></pre></td></tr></table></figure>
+
+<pre><code>A
+B
+C
+0 A
+1 B
+2 C
+</code></pre>
+<h2 id="리스트-컴프리헨션"><a href="#리스트-컴프리헨션" class="headerlink" title="리스트 컴프리헨션"></a>리스트 컴프리헨션</h2><p>list comprehension</p>
+<ul>
+<li>반복문을 한 줄로 푼 것.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fruits = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;kiwi&#x27;</span>, <span class="string">&#x27;mango&#x27;</span>]</span><br><span class="line">newlists = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 알파벳 a가 있는 과일만 추출 후, 새로운 리스트에 담기</span></span><br><span class="line"><span class="keyword">for</span> f <span class="keyword">in</span> fruits:</span><br><span class="line">  <span class="built_in">print</span>(f)</span><br><span class="line">  <span class="keyword">if</span> <span class="string">&quot;a&quot;</span> <span class="keyword">in</span> f:</span><br><span class="line">    newlists.append(f)</span><br><span class="line"><span class="built_in">print</span>(newlists)</span><br></pre></td></tr></table></figure>
+
+<pre><code>apple
+kiwi
+mango
+[&#39;apple&#39;, &#39;mango&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 리스트 컴프리헨션</span></span><br><span class="line">newlist = [fruit <span class="keyword">for</span> fruit <span class="keyword">in</span> fruits] </span><br><span class="line"><span class="built_in">print</span>(newlist)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;apple&#39;, &#39;kiwi&#39;, &#39;mango&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">newlist = [fruit <span class="keyword">for</span> fruit <span class="keyword">in</span> fruits <span class="keyword">if</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">in</span> fruit]</span><br><span class="line"><span class="built_in">print</span>(newlist)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;apple&#39;, &#39;mango&#39;]
+</code></pre>
+<h2 id="0627-복습-반복문"><a href="#0627-복습-반복문" class="headerlink" title="0627 복습 (반복문)"></a>0627 복습 (반복문)</h2><ul>
+<li>for loop and while loop</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):  <span class="comment"># 해당 루프를 3번 돌려라</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;안녕하세요&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):  <span class="comment"># 해당 루프를 3번 돌려라</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;No : &quot;</span>, i+<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">if</span> i == <span class="number">10</span>: <span class="comment"># 만약 i가 10이라면</span></span><br><span class="line">    <span class="keyword">break</span> <span class="comment"># 멈춰</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;안녕하세요&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Kaggle&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a: <span class="comment"># for돌다, i in a</span></span><br><span class="line">  <span class="built_in">print</span>(i)</span><br><span class="line">  <span class="keyword">if</span> i == <span class="string">&quot;a&quot;</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>리스트의 값이 존재</li>
+<li>전체 총합 구하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">sum</span> = <span class="number">0</span> <span class="comment"># 합치려면 변수를 만들어 줘야함</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> numbers:</span><br><span class="line">  <span class="built_in">print</span> (<span class="string">&quot;numbers: &quot;</span>, num)  <span class="comment"># 확인을 위해 프린트 한 것</span></span><br><span class="line">  <span class="built_in">sum</span> = <span class="built_in">sum</span> + num <span class="comment"># sum은 반복문 안에서만 돌고 있음</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;total: &quot;</span>, <span class="built_in">sum</span>) <span class="comment"># 확인을 위해 프린트 한 것</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;---최종 결괏값---&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fruits = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;kiwi&#x27;</span>, <span class="string">&#x27;mango&#x27;</span>]</span><br><span class="line">newlist = []  <span class="comment"># 반복문을 사용하기 위해 변수를 만들어주기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># apple을 꺼내서, a가 있나요? 있네요. newlist에 추가하세요.</span></span><br><span class="line"><span class="comment"># kiwi을 꺼내서, a가 있나요? 없네요. 그럼 넘어가세요.</span></span><br><span class="line"><span class="comment"># mango을 꺼내서, a가 있나요? 있네요. newlist에 추가하세요.</span></span><br><span class="line"><span class="keyword">for</span> fruit <span class="keyword">in</span> fruits:  <span class="comment"># fruits 리스트에서 요소를 꺼내서 변수 fruit에 적용한다.</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;조건문 밖: &quot;</span>, fruit)</span><br><span class="line">  <span class="keyword">if</span> <span class="string">&quot;a&quot;</span> <span class="keyword">in</span> fruit:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;조건문 안으로 들어옴: &quot;</span>, fruit)</span><br><span class="line">    newlist.append(fruit)</span><br><span class="line"><span class="built_in">print</span>(newlist)</span><br></pre></td></tr></table></figure>
+
+<h3 id="While-Loop"><a href="#While-Loop" class="headerlink" title="While Loop"></a>While Loop</h3><ul>
+<li>조건식이 들어간다, 조건식이 참일 때만 while문이 실행된다.</li>
+<li>while문 : 개발 할 때 while문을 자주 사용한다. 분석할 때 거의 사용할 일이 없다. 반복문을 주로 사용.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">10</span>: <span class="comment"># i&lt;10 조건식, 참일 때만 while문 코드가 실행 됨, 무한루프가 실행될 수 있음, 그래서 코드로 거짓이 나와 무한루프에서 빠져나올 수 있도록 함. </span></span><br><span class="line">  <span class="comment"># 코드</span></span><br><span class="line">  <span class="built_in">print</span>(i)</span><br><span class="line">  i += <span class="number">1</span>  <span class="comment"># 1씩 증가</span></span><br><span class="line">  <span class="comment"># i -= 1  # 1씩 감소</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="사용자-정의-함수"><a href="#사용자-정의-함수" class="headerlink" title="사용자 정의 함수"></a>사용자 정의 함수</h2><ul>
+<li>내가 필요에 의해 직접 함수를 작성</li>
+<li>def</li>
+<li><pre><code> return
+</code></pre>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a =<span class="number">0</span>, b=<span class="number">1</span></span>):</span><br><span class="line">  c= a+b</span><br><span class="line">  <span class="keyword">return</span> c  <span class="comment">#retun a+b 도 가능하다.</span></span><br><span class="line"><span class="built_in">print</span>(add(a=<span class="number">5</span>, b=<span class="number">4</span>))  <span class="comment"># 내가 a값 b값 입력하기</span></span><br><span class="line"><span class="built_in">print</span>(add())</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sub</span>(<span class="params">a =<span class="number">0</span>, b=<span class="number">1</span></span>):</span><br><span class="line">  c= a-b</span><br><span class="line">  <span class="keyword">return</span> c</span><br><span class="line"><span class="built_in">print</span>(sub())</span><br><span class="line"><span class="built_in">print</span>(sub(a=<span class="number">1</span>, b=<span class="number">7</span>))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mul</span>(<span class="params">a =<span class="number">0</span>, b=<span class="number">1</span></span>):</span><br><span class="line">  c= a*b</span><br><span class="line">  <span class="keyword">return</span> c</span><br><span class="line"><span class="built_in">print</span>(mul())</span><br><span class="line"><span class="built_in">print</span>(mul(a=<span class="number">1</span>, b=<span class="number">7</span>))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">div</span>(<span class="params">a =<span class="number">0</span>, b=<span class="number">1</span></span>):</span><br><span class="line">  c= a/b</span><br><span class="line">  <span class="keyword">return</span> c</span><br><span class="line"><span class="built_in">print</span>(div())</span><br><span class="line"><span class="built_in">print</span>(div(a=<span class="number">1</span>, b=<span class="number">7</span>))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">div</span>(<span class="params">a, b</span>):</span><br><span class="line">  c= a/b</span><br><span class="line">  <span class="keyword">return</span> c</span><br><span class="line"><span class="comment"># print(div())</span></span><br><span class="line"><span class="built_in">print</span>(div(<span class="number">1</span>, <span class="number">7</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="함수-문서화"><a href="#함수-문서화" class="headerlink" title="함수 문서화"></a>함수 문서화</h2><ul>
+<li>키워드 : Docstring</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">subtract</span>(<span class="params">a,b</span>):</span><br><span class="line">  <span class="string">&quot;&quot;&quot;a, b를 빼는 함수</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Parameters:</span></span><br><span class="line"><span class="string">a (int): int형 숫자 a가 입력</span></span><br><span class="line"><span class="string">b (int): int형 숫자 b가 입력</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Returns:</span></span><br><span class="line"><span class="string">  int: 반환값</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span></span><br><span class="line">  <span class="keyword">return</span> a-b</span><br><span class="line"><span class="built_in">print</span>(subtract.__doc__)</span><br><span class="line"><span class="built_in">print</span>(subtract(a=<span class="number">5</span>, b=<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-what_is_A_I"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -1728,145 +2322,11 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-구글 코랩(Phython)을 GitHub에 업로드하는 방법"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2022/06/17/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/">구글 코랩(Phython)을 GitHub에 업로드하는 방법</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2022/06/17/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/" class="article-date">
-	  <time datetime="2022-06-17T00:00:00.000Z" itemprop="datePublished">June 17, 2022</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="GitHub-Repository-초기-설정"><a href="#GitHub-Repository-초기-설정" class="headerlink" title="[GitHub Repository 초기 설정]"></a>[GitHub Repository 초기 설정]</h3><ol>
-<li>우선  Github에 가서 새 repository를 만든다.</li>
-</ol>
-<ul>
-<li><p>’Add a README file’ 체크</p>
-<ul>
-<li>’Add .gitignore &gt; .gitignore template:<strong>Python’</strong> 으로 변경</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/google_colab_github_commit/Untitled.png" alt="Untitled"></p>
-<ol>
-<li>파일 용량이 너무 크면 GitHub에 안 올라간다. 그래서 미리 data 파일 안에 있는 내용은 안 올라가게 설정해둘 수 있다.<ul>
-<li>.gitignore 파일을 열어 아래 코드를 적는다.</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># data</span><br><span class="line">data/파일명.csv # 특정 파일만 업로드 X</span><br><span class="line">data # data 파일 내에 있는 전체 파일 업로드 X</span><br></pre></td></tr></table></figure>
-<ul>
-<li>터미널에서 git add, commit, push를 할 때 gitignore 부터 git add . 해줘야 반영이 된다.</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .gitignore</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<ul>
-<li>초기 설정 때 한 번만 git add .gitignore해주고 이후로는 이전처럼 커밋(업로드)하면 된다.</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m “update”</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p><img src="/images/google_colab_github_commit/Untitled%201.png" alt="Untitled"></p>
-<p><img src="/images/google_colab_github_commit/Untitled%202.png" alt="Untitled"></p>
-<ol>
-<li>이제 Python을 사용해 보자. 파이썬을 실행할 수 있는 도구는 다양하다. 그 중에서 <strong>구글 코랩</strong>으로 파이썬을 사용했을 시에 GitHub에 저장하는 방법을 알아보자.</li>
-</ol>
-<h3 id="구글-코랩-기본설정"><a href="#구글-코랩-기본설정" class="headerlink" title="[구글 코랩 기본설정]"></a>[구글 코랩 기본설정]</h3><ul>
-<li><p>우선 구글 코랩에서 인공지능과 관련하여 파이썬을 실행 할 때는 </p>
-<p>시작과 동시에 구글코랩 GPU로 바꿔줘야한다!! 중요!!</p>
-</li>
-</ul>
-<p><img src="/images/google_colab_github_commit/Untitled%203.png" alt="Untitled"></p>
-<p><img src="/images/google_colab_github_commit/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>귀여운 것 설정 (소소한 행복이다)</li>
-</ul>
-<p><img src="/images/google_colab_github_commit/Untitled%205.png" alt="Untitled"></p>
-<p><img src="/images/google_colab_github_commit/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>코드 창 왼쪽에 코드 행 번호 표시하는 설정</li>
-</ul>
-<p><img src="/images/google_colab_github_commit/Untitled%207.png" alt="Untitled"></p>
-<h3 id="구글-코랩을-GitHub에-커밋하는-방법-1"><a href="#구글-코랩을-GitHub에-커밋하는-방법-1" class="headerlink" title="[구글 코랩을 GitHub에 커밋하는 방법 1]"></a>[구글 코랩을 GitHub에 커밋하는 방법 1]</h3><ul>
-<li>MD 파일로 전환 및 다운로드하여 각각 blog, python_lectures에 커밋하는 방법.</li>
-</ul>
-<ol>
-<li>구글 코랩에서 ‘다운로드 &gt; .ipynb 다운로드’를 한다.</li>
-</ol>
-<p><img src="/images/google_colab_github_commit/Untitled%208.png" alt="Untitled"></p>
-<ol>
-<li>구글 코랩에서 다운로드 받은 파일을 python_lectures로  복붙한다.</li>
-</ol>
-<p><img src="/images/google_colab_github_commit/Untitled%209.png" alt="Untitled"></p>
-<ol>
-<li>아나콘다 네비게이터 &gt; 관리자 권한으로 실행한다.</li>
-<li>아나콘대 네비게이터에서 Jupyter lab&#x2F; Jupyter notebook 을 실행하여 해당 파일을 찾아간다.</li>
-</ol>
-<p><img src="/images/google_colab_github_commit/Untitled%2010.png" alt="Untitled"></p>
-<p><img src="/images/google_colab_github_commit/Untitled%2011.png" alt="Untitled"></p>
-<ol>
-<li>markdown로 바꿔준다.</li>
-</ol>
-<p><img src="/images/google_colab_github_commit/Untitled%2012.png" alt="Untitled"></p>
-<p><img src="/images/google_colab_github_commit/Untitled%2013.png" alt="Untitled"></p>
-<ol>
-<li><p>MD 파일로 저장</p>
-<ul>
-<li>Jupyter lab은 save and~ markdown으로 저장</li>
-</ul>
-</li>
-</ol>
-<p><img src="/images/google_colab_github_commit/Untitled%2014.png" alt="Untitled"></p>
-<ul>
-<li>Jupyter note은 download as &gt; markdown으로 저장</li>
-</ul>
-<p><img src="/images/google_colab_github_commit/Untitled%2015.png" alt="Untitled"></p>
-<ol>
-<li>저장된 MD 파일을 각각 blog, python_lectures &gt; source파일에 복붙해서 커밋한다.</li>
-</ol>
-<h3 id="구글-코랩을-GitHub에-커밋하는-방법-2-복잡-비추"><a href="#구글-코랩을-GitHub에-커밋하는-방법-2-복잡-비추" class="headerlink" title="[구글 코랩을 GitHub에 커밋하는 방법 2] 복잡, 비추"></a>[구글 코랩을 GitHub에 커밋하는 방법 2] 복잡, 비추</h3><ul>
-<li><p>GitHub에 바로 저장하는 방법.</p>
-</li>
-<li><p>경로 지정 잘 하기, 블로그에 올릴 거라면 다운로드가 편하다.</p>
-</li>
-<li><p><em>주의</em> 나중에 로컬에서 깃허브로 업로드 할 때 git pull 먼저 해야 git push가 실행된다.</p>
-</li>
-</ul>
-<p><img src="/images/google_colab_github_commit/Untitled%2016.png" alt="Untitled"></p>
-<p><img src="/images/google_colab_github_commit/Untitled%2017.png" alt="Untitled"></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next</a>
+    <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next</a>
   </nav>
 
 </section>
@@ -1962,6 +2422,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2022/07/06/%EC%8B%9C%EA%B0%81%ED%99%94_%EB%B3%B5%EC%8A%B5_%EC%A0%95%EB%A6%AC/">시각화 복습 정리</a></h6>
+              <span>July 6, 2022</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2022/07/05/PyCaret_Sample/">PyCaret_Sample</a></h6>
               <span>July 5, 2022</span>
             </div>
@@ -2016,18 +2488,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2022/06/30/python_2/">혼공머 Chapter 02</a></h6>
-              <span>June 30, 2022</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -2046,7 +2506,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">26</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">26</span></li></ul>
     </div>
   </div>
 

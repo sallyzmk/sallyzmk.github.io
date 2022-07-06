@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>시각화 복습 정리 | 나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="0. 자율학습 [그래프]https:&#x2F;&#x2F;seaborn.pydata.org&#x2F;tutorial.html [색상값]https:&#x2F;&#x2F;matplotlib.org&#x2F;stable&#x2F;tutorials&#x2F;colors&#x2F;colormaps.html  데이터 분석 (머신러닝, 딥러닝) 프로세스  데이터 불러오기   csv, 오라클, MySQL, PostgreSQL, 클라우드 DB 연동">
+<meta property="og:type" content="article">
+<meta property="og:title" content="시각화 복습 정리">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/07/06/%EC%8B%9C%EA%B0%81%ED%99%94_%EB%B3%B5%EC%8A%B5_%EC%A0%95%EB%A6%AC/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="0. 자율학습 [그래프]https:&#x2F;&#x2F;seaborn.pydata.org&#x2F;tutorial.html [색상값]https:&#x2F;&#x2F;matplotlib.org&#x2F;stable&#x2F;tutorials&#x2F;colors&#x2F;colormaps.html  데이터 분석 (머신러닝, 딥러닝) 프로세스  데이터 불러오기   csv, 오라클, MySQL, PostgreSQL, 클라우드 DB 연동">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_7_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_10_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_12_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_15_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_17_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_19_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_21_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_23_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_33_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_35_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_39_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_40_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_42_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_46_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_47_1.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_50_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_52_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_56_0.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/output_58_0.png">
+<meta property="article:published_time" content="2022-07-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-06T23:58:08.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/visualization_review/output_7_1.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Categories/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Categories/">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Python_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Python_home/">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Notion_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Notion_home/">notion</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-시각화_복습_정리" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      시각화 복습 정리
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/07/06/%EC%8B%9C%EA%B0%81%ED%99%94_%EB%B3%B5%EC%8A%B5_%EC%A0%95%EB%A6%AC/" class="article-date">
+	  <time datetime="2022-07-05T16:00:00.000Z" itemprop="datePublished">July 6, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0-자율학습"><a href="#0-자율학습" class="headerlink" title="0. 자율학습"></a>0. 자율학습</h1><ul>
+<li>[그래프]<br><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/tutorial.html">https://seaborn.pydata.org/tutorial.html</a></li>
+<li>[색상값]<br><a target="_blank" rel="noopener" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">https://matplotlib.org/stable/tutorials/colors/colormaps.html</a></li>
+</ul>
+<h1 id="데이터-분석-머신러닝-딥러닝-프로세스"><a href="#데이터-분석-머신러닝-딥러닝-프로세스" class="headerlink" title="데이터 분석 (머신러닝, 딥러닝) 프로세스"></a>데이터 분석 (머신러닝, 딥러닝) 프로세스</h1><ul>
+<li><ol>
+<li>데이터 불러오기</li>
+</ol>
+<ul>
+<li>csv, 오라클, MySQL, PostgreSQL, 클라우드 DB 연동</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>데이터 탐색적 자료 분석</li>
+</ol>
+<ul>
+<li>데이터 전처리 -&gt; 시각화 -&gt; 데이터 전처리 -&gt; 시각화 반복</li>
+</ul>
+</li>
+<li><ol start="3">
+<li>잠정적인 컬럼의 갯수를 지정하야 함. (pca)</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>머신러닝 모델 (&#x3D;통계 모델링, t.test, 분산분석, 교차분석)</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>머신러닝 모델의 경우 -&gt; 배포 (현재로서는 X)</li>
+</ol>
+<ul>
+<li>JSP-스프링 웹개발시, 배우게 된다.</li>
+</ul>
+</li>
+<li><ol start="6">
+<li>통계 모델링의 경우, p-value 값 기준으로, 귀무가설 및 대립가설 검정</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>(머신러닝, 딥러닝 공통) 결과 보고서를 작성해야 함.</li>
+</ol>
+<ul>
+<li>PPT 만들어야 함.</li>
+<li>사기업은 매출로 인증</li>
+</ul>
+</li>
+</ul>
+<h1 id="그래프-복습"><a href="#그래프-복습" class="headerlink" title="그래프 복습"></a>그래프 복습</h1><ul>
+<li>수치형 데이터 시각화</li>
+<li>범주형 데이터 시각화</li>
+<li>데이터 관계 시각화</li>
+<li>matplotlib 라이브러리 방법(복잡)</li>
+<li>seaborn 라이브러리 방법(단순)<ul>
+<li>복작합 그래프 그려야지!! –&gt; matpltoltib</li>
+<li>1줄 그래프 –&gt; seaborn</li>
+</ul>
+</li>
+</ul>
+<h1 id="수치형-데이터-시각화"><a href="#수치형-데이터-시각화" class="headerlink" title="수치형 데이터 시각화"></a>수치형 데이터 시각화</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line">titanic.head()</span><br><span class="line"><span class="comment"># print(titanic.head())</span></span><br><span class="line"><span class="comment"># 수치형 데이터인지 문자형 데이터인지, 이분법인지 연속성데이터인지</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-1344c706-e32a-4f70-abbc-5585e3304147">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>class</th>
+      <th>who</th>
+      <th>adult_male</th>
+      <th>deck</th>
+      <th>embark_town</th>
+      <th>alive</th>
+      <th>alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-1344c706-e32a-4f70-abbc-5585e3304147')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-1344c706-e32a-4f70-abbc-5585e3304147 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-1344c706-e32a-4f70-abbc-5585e3304147&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/visualization_review/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<h2 id="히스토그램"><a href="#히스토그램" class="headerlink" title="히스토그램"></a>히스토그램</h2><ul>
+<li>ggplot와 식이 비슷함, 간단한데 그래프가 잘 나옴.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bins =10 : 10으로 나누자,</span></span><br><span class="line"><span class="comment"># hue =&#x27;alive&#x27; : 살았냐 안살았냐</span></span><br><span class="line">sns.histplot(data = titanic, x=<span class="string">&#x27;age&#x27;</span>, bins =<span class="number">10</span>, hue =<span class="string">&#x27;alive&#x27;</span>, multiple = <span class="string">&#x27;stack&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb544f04110&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_7_1.png" alt="png"></p>
+<ul>
+<li>위 그래프를 통하여 ~~~ : 그래프에 대한 설명 추가</li>
+</ul>
+<h2 id="커널밀도추정-함수-그래프"><a href="#커널밀도추정-함수-그래프" class="headerlink" title="커널밀도추정 함수 그래프"></a>커널밀도추정 함수 그래프</h2><ul>
+<li>연속형 데이터 1개만 쓸 때 사용</li>
+<li>분포를 알아볼 때 사용</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.kdeplot(data = titanic, x =<span class="string">&#x27;age&#x27;</span>, hue = <span class="string">&#x27;alive&#x27;</span>, multiple= <span class="string">&#x27;stack&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb544e00450&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_10_1.png" alt="png"></p>
+<h2 id="분포도"><a href="#분포도" class="headerlink" title="분포도"></a>분포도</h2><ul>
+<li>수치형 데이터 한개 컬럼의 분포를 나타내는 그래프</li>
+<li>정규분포인가?</li>
+<li>비정규분포(치우침)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.displot(data = titanic, x=<span class="string">&#x27;age&#x27;</span>, kde = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fb542d3c150&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_12_1.png" alt="png"></p>
+<h1 id="범주형-데이터-시각화"><a href="#범주형-데이터-시각화" class="headerlink" title="범주형 데이터 시각화"></a>범주형 데이터 시각화</h1><ul>
+<li>x축 범주형, y축 수치 데이터</li>
+<li>x축 범주형, y축 범주형<ul>
+<li>히트맵</li>
+</ul>
+</li>
+</ul>
+<h2 id="막대-그래프"><a href="#막대-그래프" class="headerlink" title="막대 그래프"></a>막대 그래프</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.barplot(x = <span class="string">&#x27;class&#x27;</span>, y=<span class="string">&#x27;fare&#x27;</span>, data=titanic)</span><br><span class="line"><span class="comment"># error bar : 오차 막대</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb54038bf90&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_15_1.png" alt="png"></p>
+<h2 id="포인트-플롯"><a href="#포인트-플롯" class="headerlink" title="포인트 플롯"></a>포인트 플롯</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.pointplot(x=<span class="string">&#x27;class&#x27;</span>, y=<span class="string">&#x27;fare&#x27;</span>, data=titanic)</span><br><span class="line"><span class="comment"># 강사님 블로그에 사이즈 변경하는 방법 나옴....그래프 까야됨.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb54038ba50&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_17_1.png" alt="png"></p>
+<h2 id="박스-플롯"><a href="#박스-플롯" class="headerlink" title="박스 플롯"></a>박스 플롯</h2><ul>
+<li>제1사 분위 : 전체 데이터 중 하위 2%</li>
+<li>사분위 범위 수(IQR) : 제 3사분위 - 제 1사분위</li>
+<li>최댓값: 제 3사분위 + (1.5 * IQR)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># boxplot</span></span><br><span class="line">sns.boxplot(x=<span class="string">&#x27;class&#x27;</span>,y=<span class="string">&#x27;age&#x27;</span>, data=titanic)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb54028dc50&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_19_1.png" alt="png"></p>
+<h2 id="바이올린-플롯"><a href="#바이올린-플롯" class="headerlink" title="바이올린 플롯"></a>바이올린 플롯</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.violinplot(x=<span class="string">&#x27;class&#x27;</span>, y=<span class="string">&#x27;age&#x27;</span>, hue=<span class="string">&#x27;sex&#x27;</span>,data=titanic, split=<span class="literal">True</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/visualization_review/output_21_0.png" alt="png"></p>
+<h2 id="카운트-플롯-범주형-데이터만"><a href="#카운트-플롯-범주형-데이터만" class="headerlink" title="카운트 플롯 (범주형 데이터만)"></a>카운트 플롯 (범주형 데이터만)</h2><ul>
+<li>범주형 데이터의 갯수 확인 할 때 사용</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(x=<span class="string">&#x27;alive&#x27;</span>, data=titanic)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb5401965d0&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_23_1.png" alt="png"></p>
+<h1 id="데이터-관계-시각화"><a href="#데이터-관계-시각화" class="headerlink" title="데이터 관계 시각화"></a>데이터 관계 시각화</h1><ul>
+<li>여러 데이터 사이의 관계도 파악 위한 그래프</li>
+</ul>
+<h2 id="히트맵"><a href="#히트맵" class="headerlink" title="히트맵"></a>히트맵</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flights = sns.load_dataset(<span class="string">&#x27;flights&#x27;</span>)</span><br><span class="line"><span class="comment"># flights.head()</span></span><br><span class="line"><span class="built_in">print</span>(flights.head())</span><br></pre></td></tr></table></figure>
+
+<pre><code>   year month  passengers
+0  1949   Jan         112
+1  1949   Feb         118
+2  1949   Mar         132
+3  1949   Apr         129
+4  1949   May         121
+</code></pre>
+<ul>
+<li>각 연도별, 월별 승객수 구하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flights[<span class="string">&#x27;year&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1949    12
+1950    12
+1951    12
+1952    12
+1953    12
+1954    12
+1955    12
+1956    12
+1957    12
+1958    12
+1959    12
+1960    12
+Name: year, dtype: int64
+</code></pre>
+<h3 id="pivot-Pivot-Tables-피봇-테이블-만드는-법"><a href="#pivot-Pivot-Tables-피봇-테이블-만드는-법" class="headerlink" title="pivot() Pivot Tables (피봇 테이블) 만드는 법"></a>pivot() Pivot Tables (피봇 테이블) 만드는 법</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 피벗 만드는 방법</span></span><br><span class="line"><span class="comment"># 코드를 판다스 튜토리얼에서 나온대로 입력 -&gt; 이해 -&gt; 적용</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;foo&#x27;</span>: [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;two&#x27;</span>,</span><br><span class="line">                           <span class="string">&#x27;two&#x27;</span>],</span><br><span class="line">                   <span class="string">&#x27;bar&#x27;</span>: [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">                   <span class="string">&#x27;baz&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">                   <span class="string">&#x27;zoo&#x27;</span>: [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>, <span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, <span class="string">&#x27;t&#x27;</span>]&#125;)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-0a0646f2-2e34-4e11-9cf8-81b372e31345">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>foo</th>
+      <th>bar</th>
+      <th>baz</th>
+      <th>zoo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>A</td>
+      <td>1</td>
+      <td>x</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>one</td>
+      <td>B</td>
+      <td>2</td>
+      <td>y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>one</td>
+      <td>C</td>
+      <td>3</td>
+      <td>z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>two</td>
+      <td>A</td>
+      <td>4</td>
+      <td>q</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>two</td>
+      <td>B</td>
+      <td>5</td>
+      <td>w</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>two</td>
+      <td>C</td>
+      <td>6</td>
+      <td>t</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-0a0646f2-2e34-4e11-9cf8-81b372e31345')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-0a0646f2-2e34-4e11-9cf8-81b372e31345 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-0a0646f2-2e34-4e11-9cf8-81b372e31345&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/visualization_review/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.pivot(index=<span class="string">&#x27;foo&#x27;</span>, columns=<span class="string">&#x27;bar&#x27;</span>, values=<span class="string">&#x27;baz&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-0e2601f4-c5cb-44ce-999f-9807879e477e">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>bar</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>foo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-0e2601f4-c5cb-44ce-999f-9807879e477e')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-0e2601f4-c5cb-44ce-999f-9807879e477e button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-0e2601f4-c5cb-44ce-999f-9807879e477e&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/visualization_review/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flights_pivot = flights.pivot(index = <span class="string">&#x27;month&#x27;</span>, columns= <span class="string">&#x27;year&#x27;</span> , values=<span class="string">&#x27;passengers&#x27;</span>)</span><br><span class="line">flights_pivot</span><br><span class="line"><span class="comment"># 어디가 많고 적인지 직관적이게 안보인다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-3b2f007f-2107-4d2f-9f91-f507488b3d8c">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year</th>
+      <th>1949</th>
+      <th>1950</th>
+      <th>1951</th>
+      <th>1952</th>
+      <th>1953</th>
+      <th>1954</th>
+      <th>1955</th>
+      <th>1956</th>
+      <th>1957</th>
+      <th>1958</th>
+      <th>1959</th>
+      <th>1960</th>
+    </tr>
+    <tr>
+      <th>month</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Jan</th>
+      <td>112</td>
+      <td>115</td>
+      <td>145</td>
+      <td>171</td>
+      <td>196</td>
+      <td>204</td>
+      <td>242</td>
+      <td>284</td>
+      <td>315</td>
+      <td>340</td>
+      <td>360</td>
+      <td>417</td>
+    </tr>
+    <tr>
+      <th>Feb</th>
+      <td>118</td>
+      <td>126</td>
+      <td>150</td>
+      <td>180</td>
+      <td>196</td>
+      <td>188</td>
+      <td>233</td>
+      <td>277</td>
+      <td>301</td>
+      <td>318</td>
+      <td>342</td>
+      <td>391</td>
+    </tr>
+    <tr>
+      <th>Mar</th>
+      <td>132</td>
+      <td>141</td>
+      <td>178</td>
+      <td>193</td>
+      <td>236</td>
+      <td>235</td>
+      <td>267</td>
+      <td>317</td>
+      <td>356</td>
+      <td>362</td>
+      <td>406</td>
+      <td>419</td>
+    </tr>
+    <tr>
+      <th>Apr</th>
+      <td>129</td>
+      <td>135</td>
+      <td>163</td>
+      <td>181</td>
+      <td>235</td>
+      <td>227</td>
+      <td>269</td>
+      <td>313</td>
+      <td>348</td>
+      <td>348</td>
+      <td>396</td>
+      <td>461</td>
+    </tr>
+    <tr>
+      <th>May</th>
+      <td>121</td>
+      <td>125</td>
+      <td>172</td>
+      <td>183</td>
+      <td>229</td>
+      <td>234</td>
+      <td>270</td>
+      <td>318</td>
+      <td>355</td>
+      <td>363</td>
+      <td>420</td>
+      <td>472</td>
+    </tr>
+    <tr>
+      <th>Jun</th>
+      <td>135</td>
+      <td>149</td>
+      <td>178</td>
+      <td>218</td>
+      <td>243</td>
+      <td>264</td>
+      <td>315</td>
+      <td>374</td>
+      <td>422</td>
+      <td>435</td>
+      <td>472</td>
+      <td>535</td>
+    </tr>
+    <tr>
+      <th>Jul</th>
+      <td>148</td>
+      <td>170</td>
+      <td>199</td>
+      <td>230</td>
+      <td>264</td>
+      <td>302</td>
+      <td>364</td>
+      <td>413</td>
+      <td>465</td>
+      <td>491</td>
+      <td>548</td>
+      <td>622</td>
+    </tr>
+    <tr>
+      <th>Aug</th>
+      <td>148</td>
+      <td>170</td>
+      <td>199</td>
+      <td>242</td>
+      <td>272</td>
+      <td>293</td>
+      <td>347</td>
+      <td>405</td>
+      <td>467</td>
+      <td>505</td>
+      <td>559</td>
+      <td>606</td>
+    </tr>
+    <tr>
+      <th>Sep</th>
+      <td>136</td>
+      <td>158</td>
+      <td>184</td>
+      <td>209</td>
+      <td>237</td>
+      <td>259</td>
+      <td>312</td>
+      <td>355</td>
+      <td>404</td>
+      <td>404</td>
+      <td>463</td>
+      <td>508</td>
+    </tr>
+    <tr>
+      <th>Oct</th>
+      <td>119</td>
+      <td>133</td>
+      <td>162</td>
+      <td>191</td>
+      <td>211</td>
+      <td>229</td>
+      <td>274</td>
+      <td>306</td>
+      <td>347</td>
+      <td>359</td>
+      <td>407</td>
+      <td>461</td>
+    </tr>
+    <tr>
+      <th>Nov</th>
+      <td>104</td>
+      <td>114</td>
+      <td>146</td>
+      <td>172</td>
+      <td>180</td>
+      <td>203</td>
+      <td>237</td>
+      <td>271</td>
+      <td>305</td>
+      <td>310</td>
+      <td>362</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th>Dec</th>
+      <td>118</td>
+      <td>140</td>
+      <td>166</td>
+      <td>194</td>
+      <td>201</td>
+      <td>229</td>
+      <td>278</td>
+      <td>306</td>
+      <td>336</td>
+      <td>337</td>
+      <td>405</td>
+      <td>432</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-3b2f007f-2107-4d2f-9f91-f507488b3d8c')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-3b2f007f-2107-4d2f-9f91-f507488b3d8c button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-3b2f007f-2107-4d2f-9f91-f507488b3d8c&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/visualization_review/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.heatmap(data = flights_pivot)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb53fe51450&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_33_1.png" alt="png"></p>
+<h2 id="라인플롯"><a href="#라인플롯" class="headerlink" title="라인플롯"></a>라인플롯</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.lineplot(x=<span class="string">&#x27;year&#x27;</span>, y=<span class="string">&#x27;passengers&#x27;</span>, data = flights)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb53fd75750&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_35_1.png" alt="png"></p>
+<h2 id="산점도"><a href="#산점도" class="headerlink" title="산점도"></a>산점도</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tips = sns.load_dataset(<span class="string">&#x27;tips&#x27;</span>)</span><br><span class="line"><span class="comment"># tips.head()</span></span><br><span class="line"><span class="built_in">print</span>(tips.head())</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-d6561988-7c33-4c45-9ae2-8e33a8ee44fd">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-d6561988-7c33-4c45-9ae2-8e33a8ee44fd')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-d6561988-7c33-4c45-9ae2-8e33a8ee44fd button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-d6561988-7c33-4c45-9ae2-8e33a8ee44fd&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/visualization_review/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<ul>
+<li>두개의 연속형 데이터<ul>
+<li>size는 카운트데이터이지 연속형 데이터는 아니다</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.scatterplot(x=<span class="string">&#x27;total_bill&#x27;</span>, y=<span class="string">&#x27;tip&#x27;</span>, hue = <span class="string">&#x27;time&#x27;</span>, data= tips)</span><br><span class="line"><span class="comment"># 점심 보다 저녁에 팁을 더 높게 준다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb540196a10&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_39_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.scatterplot(x=<span class="string">&#x27;total_bill&#x27;</span>, y=<span class="string">&#x27;tip&#x27;</span>, hue = <span class="string">&#x27;sex&#x27;</span>, data= tips)</span><br><span class="line"><span class="comment"># 왜 여자가 남자보다 팁을 더 적게 줄까?</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb5404093d0&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_40_1.png" alt="png"></p>
+<h2 id="회귀선"><a href="#회귀선" class="headerlink" title="회귀선"></a>회귀선</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.regplot(x= <span class="string">&#x27;total_bill&#x27;</span>, y=<span class="string">&#x27;tip&#x27;</span>, data=tips)</span><br><span class="line"><span class="comment"># 정확한 수치를 알고 싶다면 기울기를 알아야 한다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb53fc0fa10&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_42_1.png" alt="png"></p>
+<h1 id="머신러닝-리뷰"><a href="#머신러닝-리뷰" class="headerlink" title="머신러닝 리뷰"></a>머신러닝 리뷰</h1><ul>
+<li>가장 인기 있는 모델 <ul>
+<li>LightGBM,. XGboost</li>
+</ul>
+</li>
+</ul>
+<h2 id="선형-회귀"><a href="#선형-회귀" class="headerlink" title="선형 회귀"></a>선형 회귀</h2><ul>
+<li>선형 회귀식을 찾는 것이 중요</li>
+<li>$y &#x3D; 3x + 4$에 근사한 데이터 50개 생성</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 시드값 고정</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">intercept = <span class="number">4</span> <span class="comment"># 절편, 상수</span></span><br><span class="line">slope = <span class="number">3</span> <span class="comment"># 기울기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 변동성 주기 위해 노이즈 생성</span></span><br><span class="line">noise = np.random.randn(<span class="number">50</span>,<span class="number">1</span>)</span><br><span class="line">x=<span class="number">5</span>* np.random.rand(<span class="number">50</span>,<span class="number">1</span>) <span class="comment"># 0과 5 사이의 실숫값 50개 생성</span></span><br><span class="line">y = slope * x + intercept + noise</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 프레임 생성</span></span><br><span class="line">data = pd.DataFrame(&#123;<span class="string">&#x27;X&#x27;</span>: x[:,<span class="number">0</span>], <span class="string">&#x27;Y&#x27;</span>: y[:,<span class="number">0</span>]&#125;)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure>
+
+<pre><code>           X          Y
+0   0.794848   8.148596
+1   0.551876   6.055784
+2   3.281648  14.823682
+3   0.690915   8.313637
+4   0.982912   8.816293
+5   1.843626   8.553600
+6   4.104966  17.264987
+7   0.485506   5.305162
+8   4.189725  16.465955
+9   0.480492   5.852075
+10  4.882297  18.790936
+11  2.343256  12.484042
+12  4.883805  19.412454
+13  3.024228  13.194358
+14  3.696318  15.532817
+15  0.195939   4.921491
+16  1.414035   9.736184
+17  0.600983   5.597790
+18  1.480701   8.755171
+19  0.593639   4.926820
+20  1.589916   6.216758
+21  2.071315  10.867564
+22  0.320737   5.826649
+23  3.462361  13.644917
+24  2.833007  14.768776
+25  1.326947   6.526477
+26  2.616240  11.894479
+27  0.469703   5.221924
+28  2.879732  14.171977
+29  4.646481  19.408802
+30  1.592845   8.933482
+31  3.337052  14.389318
+32  0.658989   5.089182
+33  3.581636  12.764112
+34  1.447030   7.993179
+35  0.915957   6.904219
+36  2.932565  14.027985
+37  0.100538   5.503993
+38  4.144700  16.046774
+39  0.023477   3.768129
+40  3.389083  13.118695
+41  1.350040   6.630102
+42  3.675970  13.321640
+43  4.810943  20.383604
+44  1.243766   7.221645
+45  2.880787  12.204286
+46  2.960210  11.627834
+47  2.861260  13.361269
+48  1.115408   5.732327
+49  4.763745  18.078495
+</code></pre>
+  <div id="df-5f1cdf6e-a2cc-43eb-8402-b062efbc280a">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.794848</td>
+      <td>8.148596</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.551876</td>
+      <td>6.055784</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.281648</td>
+      <td>14.823682</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.690915</td>
+      <td>8.313637</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.982912</td>
+      <td>8.816293</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.843626</td>
+      <td>8.553600</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4.104966</td>
+      <td>17.264987</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.485506</td>
+      <td>5.305162</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4.189725</td>
+      <td>16.465955</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.480492</td>
+      <td>5.852075</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>4.882297</td>
+      <td>18.790936</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2.343256</td>
+      <td>12.484042</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4.883805</td>
+      <td>19.412454</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>3.024228</td>
+      <td>13.194358</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3.696318</td>
+      <td>15.532817</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.195939</td>
+      <td>4.921491</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1.414035</td>
+      <td>9.736184</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.600983</td>
+      <td>5.597790</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1.480701</td>
+      <td>8.755171</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.593639</td>
+      <td>4.926820</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1.589916</td>
+      <td>6.216758</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2.071315</td>
+      <td>10.867564</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.320737</td>
+      <td>5.826649</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3.462361</td>
+      <td>13.644917</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2.833007</td>
+      <td>14.768776</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1.326947</td>
+      <td>6.526477</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2.616240</td>
+      <td>11.894479</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0.469703</td>
+      <td>5.221924</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2.879732</td>
+      <td>14.171977</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>4.646481</td>
+      <td>19.408802</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1.592845</td>
+      <td>8.933482</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>3.337052</td>
+      <td>14.389318</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>0.658989</td>
+      <td>5.089182</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>3.581636</td>
+      <td>12.764112</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>1.447030</td>
+      <td>7.993179</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.915957</td>
+      <td>6.904219</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>2.932565</td>
+      <td>14.027985</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>0.100538</td>
+      <td>5.503993</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>4.144700</td>
+      <td>16.046774</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>0.023477</td>
+      <td>3.768129</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>3.389083</td>
+      <td>13.118695</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1.350040</td>
+      <td>6.630102</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>3.675970</td>
+      <td>13.321640</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>4.810943</td>
+      <td>20.383604</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>1.243766</td>
+      <td>7.221645</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>2.880787</td>
+      <td>12.204286</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>2.960210</td>
+      <td>11.627834</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2.861260</td>
+      <td>13.361269</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>1.115408</td>
+      <td>5.732327</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>4.763745</td>
+      <td>18.078495</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-5f1cdf6e-a2cc-43eb-8402-b062efbc280a')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-5f1cdf6e-a2cc-43eb-8402-b062efbc280a button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-5f1cdf6e-a2cc-43eb-8402-b062efbc280a&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;images/visualization_review/output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(data[<span class="string">&#x27;X&#x27;</span>], data[<span class="string">&#x27;Y&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/visualization_review/output_46_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line">sns.scatterplot(x = <span class="string">&#x27;X&#x27;</span>, y = <span class="string">&#x27;Y&#x27;</span>, data = data)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb53f5fe490&gt;
+</code></pre>
+<p><img src="/images/visualization_review/output_47_1.png" alt="png"></p>
+<h2 id="선형-회귀-모형-훈련"><a href="#선형-회귀-모형-훈련" class="headerlink" title="선형 회귀 모형 훈련"></a>선형 회귀 모형 훈련</h2><ul>
+<li>모형 생성 후, 회귀계수 3과 y절편 4에 근사한 값이 나와야 함.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line">lr_model = LinearRegression() <span class="comment">#선형 회귀 모델</span></span><br><span class="line">lr_model.fit(x,y) <span class="comment"># 모델 훈련</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;y절편:&#x27;</span>, lr_model.intercept_)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;회귀계수:&#x27;</span>, lr_model.coef_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>y절편: [4.05757639]
+회귀계수: [[3.03754061]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 예측값</span></span><br><span class="line">y_pred = lr_model.predict(x)</span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(x, y)</span><br><span class="line">ax.plot(x, y_pred, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># slope, intercept </span></span><br><span class="line">label = <span class="string">&#x27;slope: &#123;&#125;\nintercept: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(lr_model.coef_[<span class="number">0</span>][<span class="number">0</span>], <span class="number">2</span>), <span class="built_in">round</span>(lr_model.intercept_[<span class="number">0</span>], <span class="number">2</span>))</span><br><span class="line">ax.text(<span class="number">3.5</span>, <span class="number">4</span>, label, style =<span class="string">&#x27;italic&#x27;</span>, </span><br><span class="line">        fontsize = <span class="number">10</span>, color =<span class="string">&quot;green&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/visualization_review/output_50_0.png" alt="png"></p>
+<h3 id="로지스틱-회귀"><a href="#로지스틱-회귀" class="headerlink" title="로지스틱 회귀"></a>로지스틱 회귀</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">arr, scale=<span class="number">1</span></span>):</span><br><span class="line">    arr = np.asarray(arr)</span><br><span class="line">    result = <span class="number">1</span>/(<span class="number">1</span> + np.exp(-arr*scale))</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">x = np.linspace(-<span class="number">6</span>, <span class="number">6</span>)</span><br><span class="line">y = sigmoid(x)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(x, y)</span><br><span class="line">ax.grid(which=<span class="string">&#x27;major&#x27;</span>, axis=<span class="string">&#x27;y&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">ax.axvline(x=<span class="number">0</span>, color=<span class="string">&#x27;r&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">ax.set_ylim(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">ax.set_yticks([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0.5</span>])</span><br><span class="line">ax.text(<span class="number">0</span>-<span class="number">0.1</span>, <span class="number">0.5</span>, <span class="string">&#x27;0.5&#x27;</span>, ha=<span class="string">&#x27;right&#x27;</span>)</span><br><span class="line">ax.set_title(<span class="string">&#x27;Sigmoid Graph&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/visualization_review/output_52_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 라이브러리 불러오기</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report, confusion_matrix</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 가져오기</span></span><br><span class="line">x = np.arange(<span class="number">10</span>).reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">y = np.array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델 생성 및 학습</span></span><br><span class="line">model = LogisticRegression(solver=<span class="string">&#x27;liblinear&#x27;</span>, C=<span class="number">10.0</span>, random_state=<span class="number">0</span>)</span><br><span class="line">model.fit(x, y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>LogisticRegression(C=10.0, random_state=0, solver=&#39;liblinear&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 모형 평가</span></span><br><span class="line">p_pred = model.predict_proba(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p_pred&#x27;</span>, p_pred, sep =<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>p_pred
+[[0.97979027 0.02020973]
+ [0.94958202 0.05041798]
+ [0.87976149 0.12023851]
+ [0.73975066 0.26024934]
+ [0.52477284 0.47522716]
+ [0.30020373 0.69979627]
+ [0.1428487  0.8571513 ]
+ [0.06080627 0.93919373]
+ [0.02453462 0.97546538]
+ [0.00967652 0.99032348]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y_pred = model.predict(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;y_pred&#x27;</span>, y_pred)</span><br></pre></td></tr></table></figure>
+
+<pre><code>y_pred [0 0 0 0 0 1 1 1 1 1]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(x, y)</span><br><span class="line">ax.plot(x, p_pred[:, <span class="number">1</span>], color = <span class="string">&#x27;black&#x27;</span>,  marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">6</span>)</span><br><span class="line">ax.plot()</span><br><span class="line"></span><br><span class="line">ax.set_xticks(x)</span><br><span class="line">ax.set_yticks(np.arange(<span class="number">0</span>, <span class="number">1.1</span>, <span class="number">0.1</span>))</span><br><span class="line"></span><br><span class="line">ax.grid(which=<span class="string">&#x27;major&#x27;</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># y축 확률값, 1양성, 0음성, 검은 색이 각각의 확률값</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/visualization_review/output_56_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conf_m = confusion_matrix(y, y_pred)</span><br><span class="line"><span class="built_in">print</span>(conf_m)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[5 0]
+ [0 5]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cm = confusion_matrix(y, y_pred)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">8</span>, <span class="number">8</span>))</span><br><span class="line">ax.imshow(cm, cmap = <span class="string">&#x27;Pastel2&#x27;</span>)   <span class="comment"># 색상 변경</span></span><br><span class="line"><span class="comment"># https://matplotlib.org/stable/tutorials/colors/colormaps.html</span></span><br><span class="line">ax.grid(<span class="literal">False</span>)</span><br><span class="line">ax.xaxis.<span class="built_in">set</span>(ticks=(<span class="number">0</span>, <span class="number">1</span>), ticklabels=(<span class="string">&#x27;Predicted 0&#x27;</span>, <span class="string">&#x27;Predicted 1&#x27;</span>))</span><br><span class="line">ax.yaxis.<span class="built_in">set</span>(ticks=(<span class="number">0</span>, <span class="number">1</span>), ticklabels=(<span class="string">&#x27;Actual 0&#x27;</span>, <span class="string">&#x27;Actual 1&#x27;</span>))</span><br><span class="line">ax.set_ylim(<span class="number">1.5</span>, -<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">        ax.text(j, i, cm[i, j], ha=<span class="string">&#x27;center&#x27;</span>, va=<span class="string">&#x27;center&#x27;</span>, color=<span class="string">&#x27;black&#x27;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/visualization_review/output_58_0.png" alt="png"></p>
+<h3 id="결정-트리"><a href="#결정-트리" class="headerlink" title="결정 트리"></a>결정 트리</h3><ul>
+<li>분류와 회귀 문제에 모두 사용 가능</li>
+</ul>
+<h4 id="주요-개념"><a href="#주요-개념" class="headerlink" title="주요 개념"></a>주요 개념</h4><ul>
+<li>작동 원리<ul>
+<li>데이터를 가장 잘 구분하는 조건을 정함.</li>
+<li>조건을 기준으로 데이터를 두 범주로 나눔</li>
+<li>나뉜 각 범주의 데이터를 구분하는 조건을 정함</li>
+<li>각 조건을 기준으로 데이터를 두 범주로 나눔</li>
+<li>언제까지 계속 분할할지 정한 후, 최종 결정 값을 구함.</li>
+</ul>
+</li>
+<li>불순도(Impurity)<ul>
+<li>한 범주 안에 서로 다른 데이터가 얼마나 섞여 있는지 나타냄</li>
+<li>흰색과 검은색이 50:50으로 섞여 있다. (불순도 최대)</li>
+<li>흰색과 검은색으로 완전 분리 되었다. (불순도 최소)</li>
+</ul>
+</li>
+<li>엔트로피(Entropy)<ul>
+<li>불확실한 정도를 의미함. 0 ~ 1로 정함.</li>
+<li>흰색과 검은색이 50:50으로 섞여 있다. 엔트로피 1</li>
+<li>흰색과 검은색으로 완전 분리 되었다. 엔트로피 0</li>
+</ul>
+</li>
+<li>정보이득(Information Gain)<ul>
+<li>1에서 엔트로피를 뺀 수치</li>
+<li>정보 이득을 최대화하는 방향(엔트로피를 최소화 하는 방향)으로 노드를 분할함</li>
+</ul>
+</li>
+<li>지니 불순도(Gini Impurity)<ul>
+<li>지니 불순도 값이 클수록 불순도도 높고, 작을수록 불순도도 낮음. 엔트로피와 마찬가지로 지니 불순도가 낮아지는 방향으로 노드 분할함.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># tips 데이터셋 </span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line">titanic.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 15 columns):
+ #   Column       Non-Null Count  Dtype   
+---  ------       --------------  -----   
+ 0   survived     891 non-null    int64   
+ 1   pclass       891 non-null    int64   
+ 2   sex          891 non-null    object  
+ 3   age          714 non-null    float64 
+ 4   sibsp        891 non-null    int64   
+ 5   parch        891 non-null    int64   
+ 6   fare         891 non-null    float64 
+ 7   embarked     889 non-null    object  
+ 8   class        891 non-null    category
+ 9   who          891 non-null    object  
+ 10  adult_male   891 non-null    bool    
+ 11  deck         203 non-null    category
+ 12  embark_town  889 non-null    object  
+ 13  alive        891 non-null    object  
+ 14  alone        891 non-null    bool    
+dtypes: bool(2), category(2), float64(2), int64(4), object(5)
+memory usage: 80.7+ KB
+</code></pre>
+<ul>
+<li>survived 생존자 비율을 구하자<ul>
+<li>0: 사망자</li>
+<li>1: 생존자</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">titanic[<span class="string">&#x27;survived&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    549
+1    342
+Name: survived, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 추출</span></span><br><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = <span class="number">0.3</span>, random_state=<span class="number">42</span>)</span><br><span class="line">X_train.shape, X_test.shape, y_train.shape, y_test.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((623, 3), (268, 3), (623,), (268,))
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tree_model = DecisionTreeClassifier()</span><br><span class="line">tree_model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">acc = tree_model.score(X_test, y_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;모형 정확도 : <span class="subst">&#123;acc:<span class="number">.3</span>f&#125;</span>&#x27;</span>) <span class="comment"># 정확도 측정</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>모형 정확도 : 0.672
+</code></pre>
+<h3 id="랜덤-포레스트-x3D-디시젼-트리-외워"><a href="#랜덤-포레스트-x3D-디시젼-트리-외워" class="headerlink" title="랜덤 포레스트 &#x3D; 디시젼 트리 (외워!@)"></a>랜덤 포레스트 &#x3D; 디시젼 트리 (외워!@)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># tips 데이터셋 </span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line"></span><br><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = <span class="number">0.3</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델 훈련</span></span><br><span class="line">rf_model = RandomForestClassifier(random_state=<span class="number">42</span>) <span class="comment"># 랜덤 포레스트 정의</span></span><br><span class="line">rf_model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">acc = rf_model.score(X_test, y_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;모형 정확도 : <span class="subst">&#123;acc:<span class="number">.3</span>f&#125;</span>&#x27;</span>) <span class="comment"># 정확도 측정</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>모형 정확도 : 0.675
+</code></pre>
+<h1 id="XGBoost-amp-LightGBM-2016-2017"><a href="#XGBoost-amp-LightGBM-2016-2017" class="headerlink" title="XGBoost &amp; LightGBM (2016~2017)"></a>XGBoost &amp; LightGBM (2016~2017)</h1><ul>
+<li>전통적인 머신러닝 알고리즘의 융합<ul>
+<li>선형회귀 릿지 라쏘 과적합 방지 위한 규제</li>
+<li>결정 트리의 핵심적인 알고리즘</li>
+<li>경사 하강법</li>
+</ul>
+</li>
+<li>문제점 : 파라미터의 개수가 매우 많음.</li>
+<li>왜 많이 쓸까?<ul>
+<li>모델 학습 속도</li>
+<li>성능</li>
+<li>가장 좋은 모델이란, 학습 속도는 빠르면서 성능은 좋은 것(지금까지 나온 알고리즘 보다)</li>
+</ul>
+</li>
+<li>Python, JAVA<ul>
+<li>C, C++ &#x2F; r data.table 패키지 또한 C, C++로 만들어짐</li>
+</ul>
+</li>
+<li>추측<ul>
+<li>큰 회사들 개발<ul>
+<li>첫번째 옵션, 우리가 자체적으로 배포하자. -&gt;Python Wrapper API<ul>
+<li>R, 머신러닝 프레임워크 종류 다양</li>
+</ul>
+</li>
+<li>두번째 옵션, 파이썬 머신러닝 &#x3D; Scikit_Learn에서 쉽게 쓸 수 있도록 다시 개발, Scikit-Learn Wrapper API</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="XGBoost-Python-Wrapper-방식"><a href="#XGBoost-Python-Wrapper-방식" class="headerlink" title="XGBoost Python Wrapper 방식"></a>XGBoost Python Wrapper 방식</h2><ul>
+<li>X-train, y_train</li>
+<li>각 모듈에 맞도록 행렬을 재변환 해야함.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 코드 차이점을 생각</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb </span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 분리</span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line"><span class="comment"># titanic.info()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># X 독립변수, y 종속변수</span></span><br><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, </span><br><span class="line">                                                    y, </span><br><span class="line">                                                    stratify = y, </span><br><span class="line">                                                    test_size = <span class="number">0.3</span>, </span><br><span class="line">                                                    random_state=<span class="number">42</span>)</span><br><span class="line">X_train.shape, X_test.shape, y_train.shape, y_test.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((623, 3), (268, 3), (623,), (268,))
+</code></pre>
+<h3 id="별표-백개"><a href="#별표-백개" class="headerlink" title="별표 백개!!!!!"></a>별표 백개!!!!!</h3><ul>
+<li>여기가 핵심</li>
+<li>X_train -&gt; 사이킷런</li>
+<li>여기에서 구분 가능</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DMatrix -&gt;파이썬래퍼 Wrapper 코드</span></span><br><span class="line">dtrain=xgb.DMatrix(data = X_train, label =y_train)</span><br><span class="line">dtest = xgb.DMatrix(data = X_test, label = y_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dtrain)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;xgboost.core.DMatrix object at 0x7fb53e6dd090&gt;
+</code></pre>
+<ul>
+<li>머신러닝 코드</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from sklearn.tree~~이런게 없음</span></span><br><span class="line"><span class="comment"># xgb.train -&gt; 파이썬 래퍼  Wrapper 코드</span></span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;max_depth&#x27;</span> : <span class="number">3</span>,</span><br><span class="line">    <span class="string">&#x27;n_est imators&#x27;</span> : <span class="number">100</span>,</span><br><span class="line">    <span class="string">&#x27;eta&#x27;</span> : <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&#x27;objective&#x27;</span> : <span class="string">&#x27;binary:logistic&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">num_rounds = <span class="number">400</span>  <span class="comment"># 의사결정나무 에폭크와 비슷</span></span><br><span class="line"></span><br><span class="line">w_list = [(dtrain, <span class="string">&#x27;train&#x27;</span>), (dtest, <span class="string">&#x27;test&#x27;</span>)]</span><br><span class="line">xgb_ml = xgb.train(params = params, </span><br><span class="line">                   dtrain = dtrain, </span><br><span class="line">                   num_boost_round = <span class="number">400</span>, </span><br><span class="line">                   early_stopping_rounds = <span class="number">100</span>, </span><br><span class="line">                   evals = w_list)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0]	train-error:0.260032	test-error:0.302239
+Multiple eval metrics have been passed: &#39;test-error&#39; will be used for early stopping.
+
+Will train until test-error hasn&#39;t improved in 100 rounds.
+[1]	train-error:0.260032	test-error:0.302239
+[2]	train-error:0.260032	test-error:0.302239
+[3]	train-error:0.260032	test-error:0.302239
+[4]	train-error:0.260032	test-error:0.302239
+[5]	train-error:0.260032	test-error:0.302239
+[6]	train-error:0.260032	test-error:0.302239
+[7]	train-error:0.260032	test-error:0.302239
+[8]	train-error:0.260032	test-error:0.302239
+[9]	train-error:0.260032	test-error:0.302239
+[10]	train-error:0.260032	test-error:0.302239
+[11]	train-error:0.260032	test-error:0.302239
+[12]	train-error:0.260032	test-error:0.302239
+[13]	train-error:0.247191	test-error:0.298507
+[14]	train-error:0.247191	test-error:0.298507
+[15]	train-error:0.248796	test-error:0.302239
+[16]	train-error:0.248796	test-error:0.302239
+[17]	train-error:0.248796	test-error:0.302239
+[18]	train-error:0.248796	test-error:0.302239
+[19]	train-error:0.248796	test-error:0.302239
+[20]	train-error:0.248796	test-error:0.302239
+[21]	train-error:0.248796	test-error:0.302239
+[22]	train-error:0.248796	test-error:0.302239
+[23]	train-error:0.248796	test-error:0.302239
+[24]	train-error:0.248796	test-error:0.302239
+[25]	train-error:0.248796	test-error:0.302239
+[26]	train-error:0.248796	test-error:0.302239
+[27]	train-error:0.248796	test-error:0.302239
+[28]	train-error:0.247191	test-error:0.302239
+[29]	train-error:0.247191	test-error:0.302239
+[30]	train-error:0.247191	test-error:0.302239
+[31]	train-error:0.243981	test-error:0.298507
+[32]	train-error:0.247191	test-error:0.302239
+[33]	train-error:0.243981	test-error:0.298507
+[34]	train-error:0.243981	test-error:0.298507
+[35]	train-error:0.242376	test-error:0.294776
+[36]	train-error:0.24077	test-error:0.294776
+[37]	train-error:0.24077	test-error:0.294776
+[38]	train-error:0.24077	test-error:0.294776
+[39]	train-error:0.24077	test-error:0.294776
+[40]	train-error:0.24077	test-error:0.294776
+[41]	train-error:0.24077	test-error:0.294776
+[42]	train-error:0.24077	test-error:0.294776
+[43]	train-error:0.24077	test-error:0.294776
+[44]	train-error:0.24077	test-error:0.302239
+[45]	train-error:0.24077	test-error:0.302239
+[46]	train-error:0.24077	test-error:0.302239
+[47]	train-error:0.24077	test-error:0.302239
+[48]	train-error:0.24077	test-error:0.302239
+[49]	train-error:0.24077	test-error:0.302239
+[50]	train-error:0.24077	test-error:0.302239
+[51]	train-error:0.24077	test-error:0.302239
+[52]	train-error:0.23435	test-error:0.302239
+[53]	train-error:0.23435	test-error:0.302239
+[54]	train-error:0.232745	test-error:0.298507
+[55]	train-error:0.229535	test-error:0.298507
+[56]	train-error:0.229535	test-error:0.298507
+[57]	train-error:0.229535	test-error:0.298507
+[58]	train-error:0.229535	test-error:0.298507
+[59]	train-error:0.227929	test-error:0.294776
+[60]	train-error:0.227929	test-error:0.298507
+[61]	train-error:0.227929	test-error:0.298507
+[62]	train-error:0.227929	test-error:0.298507
+[63]	train-error:0.227929	test-error:0.298507
+[64]	train-error:0.227929	test-error:0.298507
+[65]	train-error:0.227929	test-error:0.298507
+[66]	train-error:0.227929	test-error:0.298507
+[67]	train-error:0.227929	test-error:0.298507
+[68]	train-error:0.227929	test-error:0.298507
+[69]	train-error:0.227929	test-error:0.298507
+[70]	train-error:0.227929	test-error:0.298507
+[71]	train-error:0.227929	test-error:0.298507
+[72]	train-error:0.227929	test-error:0.302239
+[73]	train-error:0.227929	test-error:0.302239
+[74]	train-error:0.229535	test-error:0.30597
+[75]	train-error:0.229535	test-error:0.30597
+[76]	train-error:0.229535	test-error:0.30597
+[77]	train-error:0.229535	test-error:0.30597
+[78]	train-error:0.229535	test-error:0.30597
+[79]	train-error:0.229535	test-error:0.30597
+[80]	train-error:0.229535	test-error:0.30597
+[81]	train-error:0.229535	test-error:0.30597
+[82]	train-error:0.229535	test-error:0.30597
+[83]	train-error:0.229535	test-error:0.30597
+[84]	train-error:0.229535	test-error:0.30597
+[85]	train-error:0.229535	test-error:0.30597
+[86]	train-error:0.229535	test-error:0.30597
+[87]	train-error:0.229535	test-error:0.30597
+[88]	train-error:0.229535	test-error:0.30597
+[89]	train-error:0.229535	test-error:0.30597
+[90]	train-error:0.229535	test-error:0.30597
+[91]	train-error:0.229535	test-error:0.30597
+[92]	train-error:0.229535	test-error:0.30597
+[93]	train-error:0.229535	test-error:0.30597
+[94]	train-error:0.227929	test-error:0.313433
+[95]	train-error:0.226324	test-error:0.313433
+[96]	train-error:0.223114	test-error:0.317164
+[97]	train-error:0.223114	test-error:0.317164
+[98]	train-error:0.223114	test-error:0.317164
+[99]	train-error:0.223114	test-error:0.317164
+[100]	train-error:0.223114	test-error:0.317164
+[101]	train-error:0.223114	test-error:0.317164
+[102]	train-error:0.223114	test-error:0.317164
+[103]	train-error:0.223114	test-error:0.317164
+[104]	train-error:0.223114	test-error:0.317164
+[105]	train-error:0.223114	test-error:0.317164
+[106]	train-error:0.223114	test-error:0.317164
+[107]	train-error:0.223114	test-error:0.317164
+[108]	train-error:0.223114	test-error:0.317164
+[109]	train-error:0.223114	test-error:0.317164
+[110]	train-error:0.223114	test-error:0.317164
+[111]	train-error:0.223114	test-error:0.317164
+[112]	train-error:0.223114	test-error:0.317164
+[113]	train-error:0.223114	test-error:0.317164
+[114]	train-error:0.223114	test-error:0.317164
+[115]	train-error:0.223114	test-error:0.317164
+[116]	train-error:0.223114	test-error:0.317164
+[117]	train-error:0.223114	test-error:0.317164
+[118]	train-error:0.223114	test-error:0.317164
+[119]	train-error:0.223114	test-error:0.317164
+[120]	train-error:0.223114	test-error:0.317164
+[121]	train-error:0.223114	test-error:0.317164
+[122]	train-error:0.223114	test-error:0.317164
+[123]	train-error:0.223114	test-error:0.317164
+[124]	train-error:0.224719	test-error:0.317164
+[125]	train-error:0.224719	test-error:0.317164
+[126]	train-error:0.224719	test-error:0.317164
+[127]	train-error:0.221509	test-error:0.317164
+[128]	train-error:0.223114	test-error:0.317164
+[129]	train-error:0.219904	test-error:0.313433
+[130]	train-error:0.215088	test-error:0.313433
+[131]	train-error:0.215088	test-error:0.313433
+[132]	train-error:0.215088	test-error:0.313433
+[133]	train-error:0.215088	test-error:0.313433
+[134]	train-error:0.215088	test-error:0.313433
+[135]	train-error:0.215088	test-error:0.313433
+Stopping. Best iteration:
+[35]	train-error:0.242376	test-error:0.294776
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 평가</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line">pred_probs = xgb_ml.predict(dtest)</span><br><span class="line">y_pred = [<span class="number">1</span> <span class="keyword">if</span> x&gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> pred_probs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 라벨과 실제 라벨 사이의 정확도 측정</span></span><br><span class="line">accuracy_score(y_pred,y_test)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0.6977611940298507
+</code></pre>
+<h2 id="XGBoost-Scikit-Learn-API-방식"><a href="#XGBoost-Scikit-Learn-API-방식" class="headerlink" title="XGBoost Scikit-Learn API 방식"></a>XGBoost Scikit-Learn API 방식</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from sklearn.tree import DecisionTreeClassifier</span></span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBClassifier <span class="comment"># API</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dt = DecisionTreeClassifier()</span></span><br><span class="line">xgb_model = XGBClassifier(objestive = <span class="string">&#x27;binary:logistic&#x27;</span>,</span><br><span class="line">                          n_estimators=<span class="number">100</span>,</span><br><span class="line">                          max_depth=<span class="number">3</span>,</span><br><span class="line">                          learning_rate = <span class="number">0.1</span>,</span><br><span class="line">                          num_rounds = <span class="number">400</span>,</span><br><span class="line">                          random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">w_list = [(X_train, y_train), (X_test, y_test)]</span><br><span class="line">xgb_model.fit(X_train, y_train, eval_set = w_list, eval_metric= <span class="string">&#x27;error&#x27;</span>, verbose=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">y_probas = xgb_model.predict_proba(X_test)</span><br><span class="line">y_pred = [<span class="number">1</span> <span class="keyword">if</span> x&gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> pred_probs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 라벨과 실제 라벨 사이의 정확도 측정</span></span><br><span class="line">accuracy_score(y_pred,y_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0]	validation_0-error:0.260032	validation_1-error:0.302239
+[1]	validation_0-error:0.260032	validation_1-error:0.302239
+[2]	validation_0-error:0.260032	validation_1-error:0.302239
+[3]	validation_0-error:0.260032	validation_1-error:0.302239
+[4]	validation_0-error:0.260032	validation_1-error:0.302239
+[5]	validation_0-error:0.260032	validation_1-error:0.302239
+[6]	validation_0-error:0.260032	validation_1-error:0.302239
+[7]	validation_0-error:0.260032	validation_1-error:0.302239
+[8]	validation_0-error:0.260032	validation_1-error:0.302239
+[9]	validation_0-error:0.260032	validation_1-error:0.302239
+[10]	validation_0-error:0.260032	validation_1-error:0.302239
+[11]	validation_0-error:0.260032	validation_1-error:0.302239
+[12]	validation_0-error:0.260032	validation_1-error:0.302239
+[13]	validation_0-error:0.247191	validation_1-error:0.298507
+[14]	validation_0-error:0.247191	validation_1-error:0.298507
+[15]	validation_0-error:0.248796	validation_1-error:0.302239
+[16]	validation_0-error:0.248796	validation_1-error:0.302239
+[17]	validation_0-error:0.248796	validation_1-error:0.302239
+[18]	validation_0-error:0.248796	validation_1-error:0.302239
+[19]	validation_0-error:0.248796	validation_1-error:0.302239
+[20]	validation_0-error:0.248796	validation_1-error:0.302239
+[21]	validation_0-error:0.248796	validation_1-error:0.302239
+[22]	validation_0-error:0.248796	validation_1-error:0.302239
+[23]	validation_0-error:0.248796	validation_1-error:0.302239
+[24]	validation_0-error:0.248796	validation_1-error:0.302239
+[25]	validation_0-error:0.248796	validation_1-error:0.302239
+[26]	validation_0-error:0.248796	validation_1-error:0.302239
+[27]	validation_0-error:0.248796	validation_1-error:0.302239
+[28]	validation_0-error:0.247191	validation_1-error:0.302239
+[29]	validation_0-error:0.247191	validation_1-error:0.302239
+[30]	validation_0-error:0.247191	validation_1-error:0.302239
+[31]	validation_0-error:0.243981	validation_1-error:0.298507
+[32]	validation_0-error:0.247191	validation_1-error:0.302239
+[33]	validation_0-error:0.243981	validation_1-error:0.298507
+[34]	validation_0-error:0.243981	validation_1-error:0.298507
+[35]	validation_0-error:0.242376	validation_1-error:0.294776
+[36]	validation_0-error:0.24077	validation_1-error:0.294776
+[37]	validation_0-error:0.24077	validation_1-error:0.294776
+[38]	validation_0-error:0.24077	validation_1-error:0.294776
+[39]	validation_0-error:0.24077	validation_1-error:0.294776
+[40]	validation_0-error:0.24077	validation_1-error:0.294776
+[41]	validation_0-error:0.24077	validation_1-error:0.294776
+[42]	validation_0-error:0.24077	validation_1-error:0.294776
+[43]	validation_0-error:0.24077	validation_1-error:0.294776
+[44]	validation_0-error:0.24077	validation_1-error:0.302239
+[45]	validation_0-error:0.24077	validation_1-error:0.302239
+[46]	validation_0-error:0.24077	validation_1-error:0.302239
+[47]	validation_0-error:0.24077	validation_1-error:0.302239
+[48]	validation_0-error:0.24077	validation_1-error:0.302239
+[49]	validation_0-error:0.24077	validation_1-error:0.302239
+[50]	validation_0-error:0.24077	validation_1-error:0.302239
+[51]	validation_0-error:0.24077	validation_1-error:0.302239
+[52]	validation_0-error:0.23435	validation_1-error:0.302239
+[53]	validation_0-error:0.23435	validation_1-error:0.302239
+[54]	validation_0-error:0.232745	validation_1-error:0.298507
+[55]	validation_0-error:0.229535	validation_1-error:0.298507
+[56]	validation_0-error:0.229535	validation_1-error:0.298507
+[57]	validation_0-error:0.229535	validation_1-error:0.298507
+[58]	validation_0-error:0.229535	validation_1-error:0.298507
+[59]	validation_0-error:0.227929	validation_1-error:0.294776
+[60]	validation_0-error:0.227929	validation_1-error:0.298507
+[61]	validation_0-error:0.227929	validation_1-error:0.298507
+[62]	validation_0-error:0.227929	validation_1-error:0.298507
+[63]	validation_0-error:0.227929	validation_1-error:0.298507
+[64]	validation_0-error:0.227929	validation_1-error:0.298507
+[65]	validation_0-error:0.227929	validation_1-error:0.298507
+[66]	validation_0-error:0.227929	validation_1-error:0.298507
+[67]	validation_0-error:0.227929	validation_1-error:0.298507
+[68]	validation_0-error:0.227929	validation_1-error:0.298507
+[69]	validation_0-error:0.227929	validation_1-error:0.298507
+[70]	validation_0-error:0.227929	validation_1-error:0.298507
+[71]	validation_0-error:0.227929	validation_1-error:0.298507
+[72]	validation_0-error:0.227929	validation_1-error:0.302239
+[73]	validation_0-error:0.227929	validation_1-error:0.302239
+[74]	validation_0-error:0.229535	validation_1-error:0.30597
+[75]	validation_0-error:0.229535	validation_1-error:0.30597
+[76]	validation_0-error:0.229535	validation_1-error:0.30597
+[77]	validation_0-error:0.229535	validation_1-error:0.30597
+[78]	validation_0-error:0.229535	validation_1-error:0.30597
+[79]	validation_0-error:0.229535	validation_1-error:0.30597
+[80]	validation_0-error:0.229535	validation_1-error:0.30597
+[81]	validation_0-error:0.229535	validation_1-error:0.30597
+[82]	validation_0-error:0.229535	validation_1-error:0.30597
+[83]	validation_0-error:0.229535	validation_1-error:0.30597
+[84]	validation_0-error:0.229535	validation_1-error:0.30597
+[85]	validation_0-error:0.229535	validation_1-error:0.30597
+[86]	validation_0-error:0.229535	validation_1-error:0.30597
+[87]	validation_0-error:0.229535	validation_1-error:0.30597
+[88]	validation_0-error:0.229535	validation_1-error:0.30597
+[89]	validation_0-error:0.229535	validation_1-error:0.30597
+[90]	validation_0-error:0.229535	validation_1-error:0.30597
+[91]	validation_0-error:0.229535	validation_1-error:0.30597
+[92]	validation_0-error:0.229535	validation_1-error:0.30597
+[93]	validation_0-error:0.229535	validation_1-error:0.30597
+[94]	validation_0-error:0.227929	validation_1-error:0.313433
+[95]	validation_0-error:0.226324	validation_1-error:0.313433
+[96]	validation_0-error:0.223114	validation_1-error:0.317164
+[97]	validation_0-error:0.223114	validation_1-error:0.317164
+[98]	validation_0-error:0.223114	validation_1-error:0.317164
+[99]	validation_0-error:0.223114	validation_1-error:0.317164
+
+
+
+
+
+0.6977611940298507
+</code></pre>
+<h2 id="Light-GBM-Python-Wrapper-방식"><a href="#Light-GBM-Python-Wrapper-방식" class="headerlink" title="Light GBM Python Wrapper 방식"></a>Light GBM Python Wrapper 방식</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb </span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># tips 데이터셋 </span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line"></span><br><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = <span class="number">0.3</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># XGBoost 코드와 유사하다. </span></span><br><span class="line">dtrain = lgb.Dataset(data = X_train, label = y_train)</span><br><span class="line">dtest = lgb.Dataset(data = X_test, label = y_test)</span><br><span class="line"></span><br><span class="line">params = &#123;<span class="string">&#x27;max_depth&#x27;</span>:<span class="number">3</span>,</span><br><span class="line">          <span class="string">&#x27;n_estimators&#x27;</span>:<span class="number">100</span>,</span><br><span class="line">          <span class="string">&#x27;learning_rate&#x27;</span>: <span class="number">0.1</span>,</span><br><span class="line">          <span class="string">&#x27;objective&#x27;</span>:<span class="string">&#x27;binary&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;metric&#x27;</span> : <span class="string">&#x27;binary_error&#x27;</span>, </span><br><span class="line">          <span class="string">&#x27;num_boost_round&#x27;</span> : <span class="number">400</span>, </span><br><span class="line">          <span class="string">&#x27;verbose&#x27;</span> : <span class="number">1</span>&#125; </span><br><span class="line"></span><br><span class="line">w_list = [dtrain, dtest]</span><br><span class="line">lgb_ml = lgb.train(params=params, train_set = dtrain,\</span><br><span class="line">                  early_stopping_rounds=<span class="number">100</span>, valid_sets= w_list)</span><br><span class="line"></span><br><span class="line">pred_probs = lgb_ml.predict(X_test)</span><br><span class="line">y_pred=[<span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> pred_probs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 라벨과 실제 라벨 사이의 정확도 측정</span></span><br><span class="line">accuracy_score(y_pred, y_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.7/dist-packages/lightgbm/engine.py:118: UserWarning: Found `num_boost_round` in params. Will use it instead of argument
+  warnings.warn(&quot;Found `&#123;&#125;` in params. Will use it instead of argument&quot;.format(alias))
+
+
+[1]	training&#39;s binary_error: 0.383628	valid_1&#39;s binary_error: 0.384328
+Training until validation scores don&#39;t improve for 100 rounds.
+[2]	training&#39;s binary_error: 0.383628	valid_1&#39;s binary_error: 0.384328
+[3]	training&#39;s binary_error: 0.354735	valid_1&#39;s binary_error: 0.369403
+[4]	training&#39;s binary_error: 0.29695	valid_1&#39;s binary_error: 0.354478
+[5]	training&#39;s binary_error: 0.272873	valid_1&#39;s binary_error: 0.33209
+[6]	training&#39;s binary_error: 0.272873	valid_1&#39;s binary_error: 0.33209
+[7]	training&#39;s binary_error: 0.269663	valid_1&#39;s binary_error: 0.317164
+[8]	training&#39;s binary_error: 0.269663	valid_1&#39;s binary_error: 0.317164
+[9]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[10]	training&#39;s binary_error: 0.269663	valid_1&#39;s binary_error: 0.309701
+[11]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[12]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[13]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[14]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[15]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[16]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[17]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[18]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[19]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[20]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[21]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[22]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[23]	training&#39;s binary_error: 0.271268	valid_1&#39;s binary_error: 0.313433
+[24]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[25]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[26]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[27]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[28]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[29]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[30]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[31]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[32]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[33]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[34]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[35]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[36]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[37]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[38]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[39]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.309701
+[40]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[41]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[42]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[43]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[44]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[45]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[46]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[47]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[48]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[49]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[50]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[51]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[52]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[53]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[54]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[55]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[56]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[57]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[58]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[59]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[60]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[61]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[62]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[63]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[64]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[65]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[66]	training&#39;s binary_error: 0.243981	valid_1&#39;s binary_error: 0.309701
+[67]	training&#39;s binary_error: 0.23435	valid_1&#39;s binary_error: 0.309701
+[68]	training&#39;s binary_error: 0.23435	valid_1&#39;s binary_error: 0.309701
+[69]	training&#39;s binary_error: 0.23435	valid_1&#39;s binary_error: 0.309701
+[70]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[71]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[72]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[73]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[74]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[75]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[76]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[77]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[78]	training&#39;s binary_error: 0.232745	valid_1&#39;s binary_error: 0.313433
+[79]	training&#39;s binary_error: 0.232745	valid_1&#39;s binary_error: 0.313433
+[80]	training&#39;s binary_error: 0.232745	valid_1&#39;s binary_error: 0.313433
+[81]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[82]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[83]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[84]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[85]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[86]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[87]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[88]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[89]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[90]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[91]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[92]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[93]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[94]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[95]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[96]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[97]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[98]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[99]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.317164
+[100]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[101]	training&#39;s binary_error: 0.23114	valid_1&#39;s binary_error: 0.30597
+[102]	training&#39;s binary_error: 0.23114	valid_1&#39;s binary_error: 0.30597
+[103]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[104]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.317164
+[105]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.317164
+[106]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.313433
+[107]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[108]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[109]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[110]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[111]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[112]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[113]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[114]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[115]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[116]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[117]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[118]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[119]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[120]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[121]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[122]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[123]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[124]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[125]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[126]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[127]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[128]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[129]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[130]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[131]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[132]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[133]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[134]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[135]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[136]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[137]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.309701
+[138]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.309701
+[139]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[140]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[141]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[142]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[143]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[144]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.320896
+[145]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[146]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[147]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[148]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[149]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[150]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[151]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[152]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[153]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[154]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[155]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[156]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[157]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[158]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[159]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[160]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[161]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[162]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[163]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[164]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[165]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[166]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[167]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[168]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[169]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[170]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[171]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[172]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[173]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[174]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[175]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[176]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[177]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[178]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[179]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[180]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[181]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[182]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[183]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[184]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[185]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[186]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[187]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[188]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[189]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[190]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[191]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[192]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[193]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[194]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[195]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[196]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[197]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[198]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[199]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[200]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[201]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+Early stopping, best iteration is:
+[101]	training&#39;s binary_error: 0.23114	valid_1&#39;s binary_error: 0.30597
+
+
+
+
+
+0.6940298507462687
+</code></pre>
+<h2 id="Light-GBM-Scikit-Learn-API-방식"><a href="#Light-GBM-Scikit-Learn-API-방식" class="headerlink" title="Light GBM Scikit-Learn API 방식"></a>Light GBM Scikit-Learn API 방식</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lightgbm <span class="keyword">import</span> LGBMClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># model </span></span><br><span class="line">w_list = [dtrain, dtest]</span><br><span class="line">model = LGBMClassifier(objective = <span class="string">&#x27;binary&#x27;</span>, </span><br><span class="line">                       metric = <span class="string">&#x27;binary_error&#x27;</span>,</span><br><span class="line">                       n_estimators=<span class="number">100</span>, </span><br><span class="line">                       learning_rate=<span class="number">0.1</span>, </span><br><span class="line">                       max_depth=<span class="number">3</span>, </span><br><span class="line">                       num_boost_round = <span class="number">400</span>,</span><br><span class="line">                       random_state = <span class="number">32</span>)</span><br><span class="line">model.fit(X_train, </span><br><span class="line">          y_train, </span><br><span class="line">          eval_set = [(X_train, y_train), (X_test, y_test)], </span><br><span class="line">          verbose=<span class="number">1</span>,</span><br><span class="line">          early_stopping_rounds = <span class="number">100</span>)</span><br><span class="line">y_probas = model.predict_proba(X_test) </span><br><span class="line">y_pred=[<span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> y_probas[:, <span class="number">1</span>]] <span class="comment"># 예측 라벨(0과 1로 예측)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 라벨과 실제 라벨 사이의 정확도 측정</span></span><br><span class="line">accuracy_score(y_pred, y_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.7/dist-packages/lightgbm/engine.py:118: UserWarning: Found `num_boost_round` in params. Will use it instead of argument
+  warnings.warn(&quot;Found `&#123;&#125;` in params. Will use it instead of argument&quot;.format(alias))
+
+
+[1]	training&#39;s binary_error: 0.383628	valid_1&#39;s binary_error: 0.384328
+Training until validation scores don&#39;t improve for 100 rounds.
+[2]	training&#39;s binary_error: 0.383628	valid_1&#39;s binary_error: 0.384328
+[3]	training&#39;s binary_error: 0.354735	valid_1&#39;s binary_error: 0.369403
+[4]	training&#39;s binary_error: 0.29695	valid_1&#39;s binary_error: 0.354478
+[5]	training&#39;s binary_error: 0.272873	valid_1&#39;s binary_error: 0.33209
+[6]	training&#39;s binary_error: 0.272873	valid_1&#39;s binary_error: 0.33209
+[7]	training&#39;s binary_error: 0.269663	valid_1&#39;s binary_error: 0.317164
+[8]	training&#39;s binary_error: 0.269663	valid_1&#39;s binary_error: 0.317164
+[9]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[10]	training&#39;s binary_error: 0.269663	valid_1&#39;s binary_error: 0.309701
+[11]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[12]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[13]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[14]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[15]	training&#39;s binary_error: 0.264848	valid_1&#39;s binary_error: 0.309701
+[16]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[17]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[18]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[19]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[20]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[21]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[22]	training&#39;s binary_error: 0.266453	valid_1&#39;s binary_error: 0.313433
+[23]	training&#39;s binary_error: 0.271268	valid_1&#39;s binary_error: 0.313433
+[24]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[25]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[26]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[27]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[28]	training&#39;s binary_error: 0.258427	valid_1&#39;s binary_error: 0.309701
+[29]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[30]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[31]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[32]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[33]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[34]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[35]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[36]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.309701
+[37]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[38]	training&#39;s binary_error: 0.255217	valid_1&#39;s binary_error: 0.317164
+[39]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.309701
+[40]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[41]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[42]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[43]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[44]	training&#39;s binary_error: 0.248796	valid_1&#39;s binary_error: 0.313433
+[45]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[46]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[47]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[48]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[49]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[50]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[51]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[52]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[53]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[54]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[55]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[56]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[57]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[58]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[59]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[60]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[61]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[62]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[63]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[64]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[65]	training&#39;s binary_error: 0.247191	valid_1&#39;s binary_error: 0.313433
+[66]	training&#39;s binary_error: 0.243981	valid_1&#39;s binary_error: 0.309701
+[67]	training&#39;s binary_error: 0.23435	valid_1&#39;s binary_error: 0.309701
+[68]	training&#39;s binary_error: 0.23435	valid_1&#39;s binary_error: 0.309701
+[69]	training&#39;s binary_error: 0.23435	valid_1&#39;s binary_error: 0.309701
+[70]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[71]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[72]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[73]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[74]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[75]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[76]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[77]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[78]	training&#39;s binary_error: 0.232745	valid_1&#39;s binary_error: 0.313433
+[79]	training&#39;s binary_error: 0.232745	valid_1&#39;s binary_error: 0.313433
+[80]	training&#39;s binary_error: 0.232745	valid_1&#39;s binary_error: 0.313433
+[81]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[82]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[83]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[84]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[85]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[86]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[87]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[88]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[89]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[90]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[91]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[92]	training&#39;s binary_error: 0.229535	valid_1&#39;s binary_error: 0.309701
+[93]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[94]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[95]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[96]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[97]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[98]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[99]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.317164
+[100]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[101]	training&#39;s binary_error: 0.23114	valid_1&#39;s binary_error: 0.30597
+[102]	training&#39;s binary_error: 0.23114	valid_1&#39;s binary_error: 0.30597
+[103]	training&#39;s binary_error: 0.227929	valid_1&#39;s binary_error: 0.309701
+[104]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.317164
+[105]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.317164
+[106]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.313433
+[107]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[108]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[109]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[110]	training&#39;s binary_error: 0.224719	valid_1&#39;s binary_error: 0.317164
+[111]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[112]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[113]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[114]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[115]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[116]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[117]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[118]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[119]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[120]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[121]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[122]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[123]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[124]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[125]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[126]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[127]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[128]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[129]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[130]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[131]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[132]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[133]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[134]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[135]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[136]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[137]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.309701
+[138]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.309701
+[139]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[140]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[141]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[142]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[143]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.309701
+[144]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.320896
+[145]	training&#39;s binary_error: 0.223114	valid_1&#39;s binary_error: 0.313433
+[146]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[147]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[148]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[149]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[150]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[151]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[152]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.313433
+[153]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[154]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[155]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[156]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[157]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[158]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[159]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[160]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[161]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[162]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[163]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[164]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[165]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[166]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[167]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[168]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[169]	training&#39;s binary_error: 0.219904	valid_1&#39;s binary_error: 0.324627
+[170]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[171]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[172]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[173]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[174]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[175]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[176]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[177]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[178]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[179]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[180]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[181]	training&#39;s binary_error: 0.221509	valid_1&#39;s binary_error: 0.328358
+[182]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[183]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[184]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[185]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[186]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[187]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[188]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[189]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[190]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[191]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[192]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[193]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[194]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[195]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[196]	training&#39;s binary_error: 0.216693	valid_1&#39;s binary_error: 0.320896
+[197]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[198]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[199]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[200]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+[201]	training&#39;s binary_error: 0.215088	valid_1&#39;s binary_error: 0.317164
+Early stopping, best iteration is:
+[101]	training&#39;s binary_error: 0.23114	valid_1&#39;s binary_error: 0.30597
+
+
+
+
+
+0.6940298507462687
+</code></pre>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/05/PyCaret_Sample/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PyCaret_Sample</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%EC%9E%90%EC%9C%A8%ED%95%99%EC%8A%B5"><span class="nav-number">1.</span> <span class="nav-text">0. 자율학습</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%94%A5%EB%9F%AC%EB%8B%9D-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4"><span class="nav-number">2.</span> <span class="nav-text">데이터 분석 (머신러닝, 딥러닝) 프로세스</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EB%B3%B5%EC%8A%B5"><span class="nav-number">3.</span> <span class="nav-text">그래프 복습</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%88%98%EC%B9%98%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">4.</span> <span class="nav-text">수치형 데이터 시각화</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9E%88%EC%8A%A4%ED%86%A0%EA%B7%B8%EB%9E%A8"><span class="nav-number">4.1.</span> <span class="nav-text">히스토그램</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%BB%A4%EB%84%90%EB%B0%80%EB%8F%84%EC%B6%94%EC%A0%95-%ED%95%A8%EC%88%98-%EA%B7%B8%EB%9E%98%ED%94%84"><span class="nav-number">4.2.</span> <span class="nav-text">커널밀도추정 함수 그래프</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B6%84%ED%8F%AC%EB%8F%84"><span class="nav-number">4.3.</span> <span class="nav-text">분포도</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%B2%94%EC%A3%BC%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">5.</span> <span class="nav-text">범주형 데이터 시각화</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84"><span class="nav-number">5.1.</span> <span class="nav-text">막대 그래프</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%8F%AC%EC%9D%B8%ED%8A%B8-%ED%94%8C%EB%A1%AF"><span class="nav-number">5.2.</span> <span class="nav-text">포인트 플롯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%95%EC%8A%A4-%ED%94%8C%EB%A1%AF"><span class="nav-number">5.3.</span> <span class="nav-text">박스 플롯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%B0-%ED%94%8C%EB%A1%AF"><span class="nav-number">5.4.</span> <span class="nav-text">바이올린 플롯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%B9%B4%EC%9A%B4%ED%8A%B8-%ED%94%8C%EB%A1%AF-%EB%B2%94%EC%A3%BC%ED%98%95-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A7%8C"><span class="nav-number">5.5.</span> <span class="nav-text">카운트 플롯 (범주형 데이터만)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B4%80%EA%B3%84-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">6.</span> <span class="nav-text">데이터 관계 시각화</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9E%88%ED%8A%B8%EB%A7%B5"><span class="nav-number">6.1.</span> <span class="nav-text">히트맵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pivot-Pivot-Tables-%ED%94%BC%EB%B4%87-%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B2%95"><span class="nav-number">6.1.1.</span> <span class="nav-text">pivot() Pivot Tables (피봇 테이블) 만드는 법</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%9D%BC%EC%9D%B8%ED%94%8C%EB%A1%AF"><span class="nav-number">6.2.</span> <span class="nav-text">라인플롯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%82%B0%EC%A0%90%EB%8F%84"><span class="nav-number">6.3.</span> <span class="nav-text">산점도</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9A%8C%EA%B7%80%EC%84%A0"><span class="nav-number">6.4.</span> <span class="nav-text">회귀선</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%A6%AC%EB%B7%B0"><span class="nav-number">7.</span> <span class="nav-text">머신러닝 리뷰</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80"><span class="nav-number">7.1.</span> <span class="nav-text">선형 회귀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%84%A0%ED%98%95-%ED%9A%8C%EA%B7%80-%EB%AA%A8%ED%98%95-%ED%9B%88%EB%A0%A8"><span class="nav-number">7.2.</span> <span class="nav-text">선형 회귀 모형 훈련</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80"><span class="nav-number">7.2.1.</span> <span class="nav-text">로지스틱 회귀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC"><span class="nav-number">7.2.2.</span> <span class="nav-text">결정 트리</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%A3%BC%EC%9A%94-%EA%B0%9C%EB%85%90"><span class="nav-number">7.2.2.1.</span> <span class="nav-text">주요 개념</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%9E%9C%EB%8D%A4-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-x3D-%EB%94%94%EC%8B%9C%EC%A0%BC-%ED%8A%B8%EB%A6%AC-%EC%99%B8%EC%9B%8C"><span class="nav-number">7.2.3.</span> <span class="nav-text">랜덤 포레스트 &#x3D; 디시젼 트리 (외워!@)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XGBoost-amp-LightGBM-2016-2017"><span class="nav-number">8.</span> <span class="nav-text">XGBoost &amp; LightGBM (2016~2017)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XGBoost-Python-Wrapper-%EB%B0%A9%EC%8B%9D"><span class="nav-number">8.1.</span> <span class="nav-text">XGBoost Python Wrapper 방식</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B3%84%ED%91%9C-%EB%B0%B1%EA%B0%9C"><span class="nav-number">8.1.1.</span> <span class="nav-text">별표 백개!!!!!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XGBoost-Scikit-Learn-API-%EB%B0%A9%EC%8B%9D"><span class="nav-number">8.2.</span> <span class="nav-text">XGBoost Scikit-Learn API 방식</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Light-GBM-Python-Wrapper-%EB%B0%A9%EC%8B%9D"><span class="nav-number">8.3.</span> <span class="nav-text">Light GBM Python Wrapper 방식</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Light-GBM-Scikit-Learn-API-%EB%B0%A9%EC%8B%9D"><span class="nav-number">8.4.</span> <span class="nav-text">Light GBM Scikit-Learn API 방식</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Categories/" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Python_home/" class="mobile-nav-link">Python</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Notion_home/" class="mobile-nav-link">Notion</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

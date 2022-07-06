@@ -102,6 +102,140 @@
         
           <section id="main">
   
+    <article id="post-구글 코랩(Phython)을 GitHub에 업로드하는 방법"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/06/17/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/">구글 코랩(Phython)을 GitHub에 업로드하는 방법</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/06/17/%EA%B5%AC%EA%B8%80%20%EC%BD%94%EB%9E%A9(Phython)%EC%9D%84%20GitHub%EC%97%90%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/" class="article-date">
+	  <time datetime="2022-06-17T00:00:00.000Z" itemprop="datePublished">June 17, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="GitHub-Repository-초기-설정"><a href="#GitHub-Repository-초기-설정" class="headerlink" title="[GitHub Repository 초기 설정]"></a>[GitHub Repository 초기 설정]</h3><ol>
+<li>우선  Github에 가서 새 repository를 만든다.</li>
+</ol>
+<ul>
+<li><p>’Add a README file’ 체크</p>
+<ul>
+<li>’Add .gitignore &gt; .gitignore template:<strong>Python’</strong> 으로 변경</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled.png" alt="Untitled"></p>
+<ol>
+<li>파일 용량이 너무 크면 GitHub에 안 올라간다. 그래서 미리 data 파일 안에 있는 내용은 안 올라가게 설정해둘 수 있다.<ul>
+<li>.gitignore 파일을 열어 아래 코드를 적는다.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># data</span><br><span class="line">data/파일명.csv # 특정 파일만 업로드 X</span><br><span class="line">data # data 파일 내에 있는 전체 파일 업로드 X</span><br></pre></td></tr></table></figure>
+<ul>
+<li>터미널에서 git add, commit, push를 할 때 gitignore 부터 git add . 해줘야 반영이 된다.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .gitignore</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<ul>
+<li>초기 설정 때 한 번만 git add .gitignore해주고 이후로는 이전처럼 커밋(업로드)하면 된다.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m “update”</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%201.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%202.png" alt="Untitled"></p>
+<ol>
+<li>이제 Python을 사용해 보자. 파이썬을 실행할 수 있는 도구는 다양하다. 그 중에서 <strong>구글 코랩</strong>으로 파이썬을 사용했을 시에 GitHub에 저장하는 방법을 알아보자.</li>
+</ol>
+<h3 id="구글-코랩-기본설정"><a href="#구글-코랩-기본설정" class="headerlink" title="[구글 코랩 기본설정]"></a>[구글 코랩 기본설정]</h3><ul>
+<li><p>우선 구글 코랩에서 인공지능과 관련하여 파이썬을 실행 할 때는 </p>
+<p>시작과 동시에 구글코랩 GPU로 바꿔줘야한다!! 중요!!</p>
+</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%203.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>귀여운 것 설정 (소소한 행복이다)</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%205.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>코드 창 왼쪽에 코드 행 번호 표시하는 설정</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%207.png" alt="Untitled"></p>
+<h3 id="구글-코랩을-GitHub에-커밋하는-방법-1"><a href="#구글-코랩을-GitHub에-커밋하는-방법-1" class="headerlink" title="[구글 코랩을 GitHub에 커밋하는 방법 1]"></a>[구글 코랩을 GitHub에 커밋하는 방법 1]</h3><ul>
+<li>MD 파일로 전환 및 다운로드하여 각각 blog, python_lectures에 커밋하는 방법.</li>
+</ul>
+<ol>
+<li>구글 코랩에서 ‘다운로드 &gt; .ipynb 다운로드’를 한다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%208.png" alt="Untitled"></p>
+<ol>
+<li>구글 코랩에서 다운로드 받은 파일을 python_lectures로  복붙한다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%209.png" alt="Untitled"></p>
+<ol>
+<li>아나콘다 네비게이터 &gt; 관리자 권한으로 실행한다.</li>
+<li>아나콘대 네비게이터에서 Jupyter lab&#x2F; Jupyter notebook 을 실행하여 해당 파일을 찾아간다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%2010.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%2011.png" alt="Untitled"></p>
+<ol>
+<li>markdown로 바꿔준다.</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%2012.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%2013.png" alt="Untitled"></p>
+<ol>
+<li><p>MD 파일로 저장</p>
+<ul>
+<li>Jupyter lab은 save and~ markdown으로 저장</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/google_colab_github_commit/Untitled%2014.png" alt="Untitled"></p>
+<ul>
+<li>Jupyter note은 download as &gt; markdown으로 저장</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%2015.png" alt="Untitled"></p>
+<ol>
+<li>저장된 MD 파일을 각각 blog, python_lectures &gt; source파일에 복붙해서 커밋한다.</li>
+</ol>
+<h3 id="구글-코랩을-GitHub에-커밋하는-방법-2-복잡-비추"><a href="#구글-코랩을-GitHub에-커밋하는-방법-2-복잡-비추" class="headerlink" title="[구글 코랩을 GitHub에 커밋하는 방법 2] 복잡, 비추"></a>[구글 코랩을 GitHub에 커밋하는 방법 2] 복잡, 비추</h3><ul>
+<li><p>GitHub에 바로 저장하는 방법.</p>
+</li>
+<li><p>경로 지정 잘 하기, 블로그에 올릴 거라면 다운로드가 편하다.</p>
+</li>
+<li><p><em>주의</em> 나중에 로컬에서 깃허브로 업로드 할 때 git pull 먼저 해야 git push가 실행된다.</p>
+</li>
+</ul>
+<p><img src="/images/google_colab_github_commit/Untitled%2016.png" alt="Untitled"></p>
+<p><img src="/images/google_colab_github_commit/Untitled%2017.png" alt="Untitled"></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-R파일을 GitHub에 업로드하는 방법"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -755,6 +889,7 @@
 <li><a href="https://sallyzmk.github.io/2022/07/01/python_5/">혼공머 Chapter 05</a></li>
 <li><a href="https://sallyzmk.github.io/2022/07/05/python_6/">혼공머 Chapter 06</a></li>
 <li><a href="https://sallyzmk.github.io/2022/07/05/PyCaret_Sample/">PyCaret_Sample</a></li>
+<li>[]</li>
 </ul>
 
       
@@ -797,7 +932,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://sallyzmk.github.io/2022/06/20/R_3/">제3장</a><br><a href="https://sallyzmk.github.io/2022/06/20/R_4/">제4장</a><br><a href="">제5장</a><br><a href="https://sallyzmk.github.io/2022/06/21/R_6/">제6장</a><br><a href="https://sallyzmk.github.io/2022/06/22/R_7/">제7장</a><br><a href="https://sallyzmk.github.io/2022/06/22/R_8/">제8장</a><br><a href="https://sallyzmk.github.io/2022/06/23/R_9/">제9장</a><br><a href="">제10장</a></p>
+        <p><a href="https://sallyzmk.github.io/2022/06/20/R_3/">제3장</a><br><a href="https://sallyzmk.github.io/2022/06/20/R_4/">제4장</a><br><a href="https://sallyzmk.github.io/2022/06/21/R_5/">제5장</a><br><a href="https://sallyzmk.github.io/2022/06/21/R_6/">제6장</a><br><a href="https://sallyzmk.github.io/2022/06/22/R_7/">제7장</a><br><a href="https://sallyzmk.github.io/2022/06/22/R_8/">제8장</a><br><a href="https://sallyzmk.github.io/2022/06/23/R_9/">제9장</a><br><a href="https://sallyzmk.github.io/2022/06/24/R_10/">제10장</a></p>
 
       
     </div>
@@ -877,57 +1012,11 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-Categories"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2022/06/16/Categories/">Categories</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2022/06/16/Categories/" class="article-date">
-	  <time datetime="2022-06-15T15:00:00.000Z" itemprop="datePublished">June 16, 2022</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><a href="https://sallyzmk.github.io/2022/06/16/Python_home/">Python</a></li>
-<li><a href="https://sallyzmk.github.io/2022/06/16/R_home/">R</a></li>
-<li><a href="https://sallyzmk.github.io/2022/06/16/Notion_home/">Notion</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next</a>
   </nav>
 
 </section>
@@ -1023,6 +1112,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2022/07/06/%EC%8B%9C%EA%B0%81%ED%99%94_%EB%B3%B5%EC%8A%B5_%EC%A0%95%EB%A6%AC/">시각화 복습 정리</a></h6>
+              <span>July 6, 2022</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2022/07/05/PyCaret_Sample/">PyCaret_Sample</a></h6>
               <span>July 5, 2022</span>
             </div>
@@ -1077,18 +1178,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2022/06/30/python_2/">혼공머 Chapter 02</a></h6>
-              <span>June 30, 2022</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1107,7 +1196,7 @@
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">26</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">26</span></li></ul>
     </div>
   </div>
 
