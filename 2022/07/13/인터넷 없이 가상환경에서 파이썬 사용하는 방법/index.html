@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>인터넷 없이 가상환경에서 파이썬 사용하는 방법 | 나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="인터넷 없이 가상환경에서 파이썬 사용하는 방법 2. 파일을 파이참으로 실행하기  아나콘다가 아닌  아래로 설정, ok 버튼 누르면 변경 완료 변경 완료된 화면 3. 기본 화면으로 돌아오면 venv 파일이 생성되어 있다. 4. 터미널을 켜고 git bash를 연다 5. which python 입력했을 때 venv로 들어 와있으면 가상환경 설정 완료 5.2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="인터넷 없이 가상환경에서 파이썬 사용하는 방법">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/07/13/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EC%97%86%EC%9D%B4%20%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="인터넷 없이 가상환경에서 파이썬 사용하는 방법 2. 파일을 파이참으로 실행하기  아나콘다가 아닌  아래로 설정, ok 버튼 누르면 변경 완료 변경 완료된 화면 3. 기본 화면으로 돌아오면 venv 파일이 생성되어 있다. 4. 터미널을 켜고 git bash를 연다 5. which python 입력했을 때 venv로 들어 와있으면 가상환경 설정 완료 5.2.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%201.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%202.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%203.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%204.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%205.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%206.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%207.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%208.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%209.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%2010.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%2011.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%2012.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%2013.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled%2014.png">
+<meta property="article:published_time" content="2022-07-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-13T01:12:40.672Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/no_internet_python/Untitled.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Categories/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Categories/">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Python_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Python_home/">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Notion_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Notion_home/">notion</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-인터넷 없이 가상환경에서 파이썬 사용하는 방법" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      인터넷 없이 가상환경에서 파이썬 사용하는 방법
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/07/13/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EC%97%86%EC%9D%B4%20%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/" class="article-date">
+	  <time datetime="2022-07-12T16:00:00.000Z" itemprop="datePublished">July 13, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="인터넷-없이-가상환경에서-파이썬-사용하는-방법"><a href="#인터넷-없이-가상환경에서-파이썬-사용하는-방법" class="headerlink" title="인터넷 없이 가상환경에서 파이썬 사용하는 방법"></a>인터넷 없이 가상환경에서 파이썬 사용하는 방법</h1><p><img src="/images/no_internet_python/Untitled.png" alt="Untitled"></p>
+<h3 id="2-파일을-파이참으로-실행하기"><a href="#2-파일을-파이참으로-실행하기" class="headerlink" title="2. 파일을 파이참으로 실행하기"></a>2. 파일을 파이참으로 실행하기</h3><p><img src="/images/no_internet_python/Untitled%201.png" alt="Untitled"></p>
+<p><img src="/images/no_internet_python/Untitled%202.png" alt="Untitled"></p>
+<h3 id="아나콘다가-아닌"><a href="#아나콘다가-아닌" class="headerlink" title="아나콘다가 아닌"></a>아나콘다가 아닌</h3><p><img src="/images/no_internet_python/Untitled%203.png" alt="Untitled"></p>
+<p><img src="/images/no_internet_python/Untitled%204.png" alt="Untitled"></p>
+<h3 id="아래로-설정-ok-버튼-누르면-변경-완료"><a href="#아래로-설정-ok-버튼-누르면-변경-완료" class="headerlink" title="아래로 설정, ok 버튼 누르면 변경 완료"></a>아래로 설정, ok 버튼 누르면 변경 완료</h3><p><img src="/images/no_internet_python/Untitled%205.png" alt="Untitled"></p>
+<h3 id="변경-완료된-화면"><a href="#변경-완료된-화면" class="headerlink" title="변경 완료된 화면"></a>변경 완료된 화면</h3><p><img src="/images/no_internet_python/Untitled%206.png" alt="Untitled"></p>
+<h3 id="3-기본-화면으로-돌아오면-venv-파일이-생성되어-있다"><a href="#3-기본-화면으로-돌아오면-venv-파일이-생성되어-있다" class="headerlink" title="3. 기본 화면으로 돌아오면 venv 파일이 생성되어 있다."></a>3. 기본 화면으로 돌아오면 venv 파일이 생성되어 있다.</h3><p><img src="/images/no_internet_python/Untitled%207.png" alt="Untitled"></p>
+<h3 id="4-터미널을-켜고-git-bash를-연다"><a href="#4-터미널을-켜고-git-bash를-연다" class="headerlink" title="4. 터미널을 켜고 git bash를 연다"></a>4. 터미널을 켜고 git bash를 연다</h3><p><img src="/images/no_internet_python/Untitled%208.png" alt="Untitled"></p>
+<h3 id="5-which-python-입력했을-때-venv로-들어-와있으면-가상환경-설정-완료"><a href="#5-which-python-입력했을-때-venv로-들어-와있으면-가상환경-설정-완료" class="headerlink" title="5. which python 입력했을 때 venv로 들어 와있으면 가상환경 설정 완료"></a>5. which python 입력했을 때 venv로 들어 와있으면 가상환경 설정 완료</h3><p><img src="/images/no_internet_python/Untitled%209.png" alt="Untitled"></p>
+<h3 id="5-2-venv가-뜨지-않는다면"><a href="#5-2-venv가-뜨지-않는다면" class="headerlink" title="5.2. venv가 뜨지 않는다면"></a>5.2. venv가 뜨지 않는다면</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source venv/Scripts/activate # 탭으로 경로 찾아야한다.</span><br><span class="line">	which python # 경로 재확인 venv 확인</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-install"><a href="#6-install" class="headerlink" title="6. install"></a>6. install</h3><ul>
+<li>로컬이 아닌 가상환경에 설치</li>
+<li>경로 확인 필수!</li>
+<li>~&#x2F;Desktop&#x2F;kaggle_lexctures(파일명)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">which python</span><br><span class="line"># 경로에 venv가 뜨는지 확인</span><br><span class="line"></span><br><span class="line">pip install numpy pandas matplotlib seaborn scikit-learn jupyterlab</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/no_internet_python/Untitled%2010.png" alt="Untitled"></p>
+<h3 id="설치-완료되면-Lib-파일이-생성된다"><a href="#설치-완료되면-Lib-파일이-생성된다" class="headerlink" title="설치 완료되면 Lib 파일이 생성된다"></a>설치 완료되면 Lib 파일이 생성된다</h3><p><img src="/images/no_internet_python/Untitled%2011.png" alt="Untitled"></p>
+<h3 id="7-jupyter-lab"><a href="#7-jupyter-lab" class="headerlink" title="7. jupyter lab"></a>7. jupyter lab</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter lab</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/no_internet_python/Untitled%2012.png" alt="Untitled"></p>
+<p><img src="/images/no_internet_python/Untitled%2013.png" alt="Untitled"></p>
+<h3 id="원하는-내용-입력"><a href="#원하는-내용-입력" class="headerlink" title="원하는 내용 입력"></a>원하는 내용 입력</h3><p><img src="/images/no_internet_python/Untitled%2014.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib as mpl</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import sklearn</span><br><span class="line"></span><br><span class="line"># 버전 확인</span><br><span class="line">print(&quot;pandas version : &quot;, pd.__version__)</span><br><span class="line">print(&quot;numpy version : &quot;, np.__version__)</span><br><span class="line">print(&quot;seaborn version: &quot;, sns.__version__)</span><br><span class="line">print(&quot;matplotlib version : &quot;, mpl.__version__)</span><br><span class="line">print(&quot;sklearn version : &quot;, mpl.__version__)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/07/%EC%BA%90%EA%B8%80%20%EC%B0%B8%EC%97%AC%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">캐글 참여하는 방법</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EC%9D%B8%ED%84%B0%EB%84%B7-%EC%97%86%EC%9D%B4-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="nav-number">1.</span> <span class="nav-text">인터넷 없이 가상환경에서 파이썬 사용하는 방법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%ED%8C%8C%EC%9D%BC%EC%9D%84-%ED%8C%8C%EC%9D%B4%EC%B0%B8%EC%9C%BC%EB%A1%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">2. 파일을 파이참으로 실행하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%95%84%EB%82%98%EC%BD%98%EB%8B%A4%EA%B0%80-%EC%95%84%EB%8B%8C"><span class="nav-number">1.0.2.</span> <span class="nav-text">아나콘다가 아닌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%95%84%EB%9E%98%EB%A1%9C-%EC%84%A4%EC%A0%95-ok-%EB%B2%84%ED%8A%BC-%EB%88%84%EB%A5%B4%EB%A9%B4-%EB%B3%80%EA%B2%BD-%EC%99%84%EB%A3%8C"><span class="nav-number">1.0.3.</span> <span class="nav-text">아래로 설정, ok 버튼 누르면 변경 완료</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B3%80%EA%B2%BD-%EC%99%84%EB%A3%8C%EB%90%9C-%ED%99%94%EB%A9%B4"><span class="nav-number">1.0.4.</span> <span class="nav-text">변경 완료된 화면</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%EA%B8%B0%EB%B3%B8-%ED%99%94%EB%A9%B4%EC%9C%BC%EB%A1%9C-%EB%8F%8C%EC%95%84%EC%98%A4%EB%A9%B4-venv-%ED%8C%8C%EC%9D%BC%EC%9D%B4-%EC%83%9D%EC%84%B1%EB%90%98%EC%96%B4-%EC%9E%88%EB%8B%A4"><span class="nav-number">1.0.5.</span> <span class="nav-text">3. 기본 화면으로 돌아오면 venv 파일이 생성되어 있다.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%ED%84%B0%EB%AF%B8%EB%84%90%EC%9D%84-%EC%BC%9C%EA%B3%A0-git-bash%EB%A5%BC-%EC%97%B0%EB%8B%A4"><span class="nav-number">1.0.6.</span> <span class="nav-text">4. 터미널을 켜고 git bash를 연다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-which-python-%EC%9E%85%EB%A0%A5%ED%96%88%EC%9D%84-%EB%95%8C-venv%EB%A1%9C-%EB%93%A4%EC%96%B4-%EC%99%80%EC%9E%88%EC%9C%BC%EB%A9%B4-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95-%EC%99%84%EB%A3%8C"><span class="nav-number">1.0.7.</span> <span class="nav-text">5. which python 입력했을 때 venv로 들어 와있으면 가상환경 설정 완료</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-venv%EA%B0%80-%EB%9C%A8%EC%A7%80-%EC%95%8A%EB%8A%94%EB%8B%A4%EB%A9%B4"><span class="nav-number">1.0.8.</span> <span class="nav-text">5.2. venv가 뜨지 않는다면</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-install"><span class="nav-number">1.0.9.</span> <span class="nav-text">6. install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%84%A4%EC%B9%98-%EC%99%84%EB%A3%8C%EB%90%98%EB%A9%B4-Lib-%ED%8C%8C%EC%9D%BC%EC%9D%B4-%EC%83%9D%EC%84%B1%EB%90%9C%EB%8B%A4"><span class="nav-number">1.0.10.</span> <span class="nav-text">설치 완료되면 Lib 파일이 생성된다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-jupyter-lab"><span class="nav-number">1.0.11.</span> <span class="nav-text">7. jupyter lab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9B%90%ED%95%98%EB%8A%94-%EB%82%B4%EC%9A%A9-%EC%9E%85%EB%A0%A5"><span class="nav-number">1.0.12.</span> <span class="nav-text">원하는 내용 입력</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Categories/" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Python_home/" class="mobile-nav-link">Python</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Notion_home/" class="mobile-nav-link">Notion</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
