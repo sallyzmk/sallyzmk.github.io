@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>가상환경 설치하기 | 나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="(반드시 타이핑하기)우분투 실행하기12username: humanpassword: 1234  ls 를 치면 아무 것도 안나옴 cd .. mkdir : 파일 생성 12345678910111213141516171819202122232425262728293031cd home&#x2F;cd human&#x2F;cd airflow&#x2F;# 모든 파일 삭제rm -rf *# 설치sudo ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="가상환경 설치하기">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/07/27/%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="(반드시 타이핑하기)우분투 실행하기12username: humanpassword: 1234  ls 를 치면 아무 것도 안나옴 cd .. mkdir : 파일 생성 12345678910111213141516171819202122232425262728293031cd home&#x2F;cd human&#x2F;cd airflow&#x2F;# 모든 파일 삭제rm -rf *# 설치sudo ap">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/Untitled.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/Untitled%201.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/Untitled%202.png">
+<meta property="og:image" content="https://sallyzmk.github.io/images/visualization_review/Untitled%203.png">
+<meta property="article:published_time" content="2022-07-26T18:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-27T09:17:36.788Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/images/visualization_review/Untitled.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Categories/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Categories/">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Python_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Python_home/">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Notion_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Notion_home/">notion</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-가상환경 설치하기" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      가상환경 설치하기
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/07/27/%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" class="article-date">
+	  <time datetime="2022-07-26T18:00:00.000Z" itemprop="datePublished">July 27, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="반드시-타이핑하기"><a href="#반드시-타이핑하기" class="headerlink" title="(반드시 타이핑하기)"></a>(반드시 타이핑하기)</h2><h2 id="우분투-실행하기"><a href="#우분투-실행하기" class="headerlink" title="우분투 실행하기"></a>우분투 실행하기</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username: human</span><br><span class="line">password: 1234</span><br></pre></td></tr></table></figure>
+
+<p>ls 를 치면 아무 것도 안나옴</p>
+<p>cd ..</p>
+<p>mkdir : 파일 생성</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">cd home/</span><br><span class="line">cd human/</span><br><span class="line">cd airflow/</span><br><span class="line"></span><br><span class="line"># 모든 파일 삭제</span><br><span class="line">rm -rf *</span><br><span class="line"></span><br><span class="line"># 설치</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt install python3-pip</span><br><span class="line"></span><br><span class="line">sudo pip3 install virtualenv</span><br><span class="line"></span><br><span class="line"># 가상환경 설치</span><br><span class="line">virtualenv venv</span><br><span class="line"></span><br><span class="line"># 리눅스는 bin/ 윈도우는 Script</span><br><span class="line">source venv/bin/activate</span><br><span class="line"></span><br><span class="line"># venv 가상환경 들어왔는지 확인</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line"># 경로 확인 및 복사 /home/human/airflow</span><br><span class="line">pwd</span><br><span class="line"></span><br><span class="line"># &lt;실무 예제로 배우는 데이터 공학&gt; 25p</span><br><span class="line">pip3 install &#x27;apache-airflow[postgres, slack, celery]&#x27;</span><br><span class="line"></span><br><span class="line"># 이상한 코드 주루룩 뜸</span><br><span class="line">vi ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/visualization_review/Untitled.png" alt="Untitled"></p>
+<h2 id="i를-치면-—INSERT—가-뜬다-enter가-쳐짐"><a href="#i를-치면-—INSERT—가-뜬다-enter가-쳐짐" class="headerlink" title="i를 치면 —INSERT—가 뜬다 (enter가 쳐짐)"></a>i를 치면 —INSERT—가 뜬다 (enter가 쳐짐)</h2><p><img src="/images/visualization_review/Untitled%201.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># pwd에서 나온 경로(/mnt/c/dataEngineering)를 복붙한다.</span><br><span class="line">export AIRFLOW_HOME=/mnt/c/dataEngineering</span><br><span class="line"></span><br><span class="line">## 저장하기</span><br><span class="line"># step1. esc 누르고 </span><br><span class="line">:wq! # step2. 저장하고 닫기</span><br><span class="line">:q # step2. 저장 안하고 닫기</span><br><span class="line"></span><br><span class="line"># step3. bash 터미널에서</span><br><span class="line">source ~/.bashrc</span><br><span class="line">source venv/bin/activate</span><br><span class="line">echo $AIRFLOW_HOME # 저장됐는지 확인</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/visualization_review/Untitled%202.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 가상환경에 접속한 후!!!!</span><br><span class="line">airflow db init</span><br><span class="line"></span><br><span class="line">airflow users create --username airflow --password airflow --firstname evan --lastname airflow --role Admin --email your_email@some.com</span><br><span class="line"></span><br><span class="line">airflow webserver -p 8081</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://localhost:8081/home">http://localhost:8081</a></p>
+<p>들어가서 –username airflow –password airflow</p>
+<h2 id="환경설정-끝"><a href="#환경설정-끝" class="headerlink" title="환경설정 끝"></a>환경설정 끝</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">## 노트 ##</span><br><span class="line"></span><br><span class="line">가상 환경 구성</span><br><span class="line">virtualenv venv</span><br><span class="line"></span><br><span class="line">가상환경 접속</span><br><span class="line">source venv/bin/activate</span><br><span class="line"></span><br><span class="line">가상환경 해제</span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h2 id="3장-강의를-위한-준비"><a href="#3장-강의를-위한-준비" class="headerlink" title="3장 강의를 위한 준비"></a>3장 강의를 위한 준비</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip3 install faker pandas</span><br><span class="line"></span><br><span class="line">code .</span><br></pre></td></tr></table></figure>
+
+<h2 id="vscode-실행-파일-생성-후-버전-확인"><a href="#vscode-실행-파일-생성-후-버전-확인" class="headerlink" title="vscode 실행, 파일 생성 후 버전 확인"></a>vscode 실행, 파일 생성 후 버전 확인</h2><p><img src="/images/visualization_review/Untitled%203.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># step1.py</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import faker</span><br><span class="line">print(pd.__version__)</span><br></pre></td></tr></table></figure>
+
+<h2 id="vi-편집기-공부"><a href="#vi-편집기-공부" class="headerlink" title="vi 편집기 공부!!"></a>vi 편집기 공부!!</h2>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/13/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EC%97%86%EC%9D%B4%20%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">인터넷 없이 가상환경에서 파이썬 사용하는 방법</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B0%98%EB%93%9C%EC%8B%9C-%ED%83%80%EC%9D%B4%ED%95%91%ED%95%98%EA%B8%B0"><span class="nav-number">1.</span> <span class="nav-text">(반드시 타이핑하기)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9A%B0%EB%B6%84%ED%88%AC-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0"><span class="nav-number">2.</span> <span class="nav-text">우분투 실행하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#i%EB%A5%BC-%EC%B9%98%EB%A9%B4-%E2%80%94INSERT%E2%80%94%EA%B0%80-%EB%9C%AC%EB%8B%A4-enter%EA%B0%80-%EC%B3%90%EC%A7%90"><span class="nav-number">3.</span> <span class="nav-text">i를 치면 —INSERT—가 뜬다 (enter가 쳐짐)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95-%EB%81%9D"><span class="nav-number">4.</span> <span class="nav-text">환경설정 끝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%EC%9E%A5-%EA%B0%95%EC%9D%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%A4%80%EB%B9%84"><span class="nav-number">5.</span> <span class="nav-text">3장 강의를 위한 준비</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode-%EC%8B%A4%ED%96%89-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1-%ED%9B%84-%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8"><span class="nav-number">6.</span> <span class="nav-text">vscode 실행, 파일 생성 후 버전 확인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi-%ED%8E%B8%EC%A7%91%EA%B8%B0-%EA%B3%B5%EB%B6%80"><span class="nav-number">7.</span> <span class="nav-text">vi 편집기 공부!!</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Categories/" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Python_home/" class="mobile-nav-link">Python</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Notion_home/" class="mobile-nav-link">Notion</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
