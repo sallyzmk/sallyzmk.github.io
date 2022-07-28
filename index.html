@@ -102,6 +102,87 @@
         
           <section id="main">
   
+    <article id="post-Airflow 강의"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2022/07/28/Airflow%20%EA%B0%95%EC%9D%98/">Airflow 강의</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/07/28/Airflow%20%EA%B0%95%EC%9D%98/" class="article-date">
+	  <time datetime="2022-07-27T16:00:00.000Z" itemprop="datePublished">July 28, 2022</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Airflow-강의"><a href="#Airflow-강의" class="headerlink" title="Airflow 강의"></a>Airflow 강의</h1><h2 id="airflow-tutorial"><a href="#airflow-tutorial" class="headerlink" title="airflow tutorial"></a><a href="%5Bhttps://airflow.apache.org/docs/apache-airflow/stable/tutorial.html%5D(https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html)">airflow tutorial</a></h2><h2 id="airflow-추천-도서"><a href="#airflow-추천-도서" class="headerlink" title="airflow 추천 도서"></a><a href="%5Bhttp://www.yes24.com/Product/Goods/107878326%5D(http://www.yes24.com/Product/Goods/107878326)">airflow 추천 도서</a></h2><h2 id="내가-생각하는-Airflow-정의"><a href="#내가-생각하는-Airflow-정의" class="headerlink" title="내가 생각하는 Airflow 정의"></a>내가 생각하는 Airflow 정의</h2><p>데이터는 끊임없이 생성이 된다.</p>
+<p>하여 데이터 분석가는 데이터를 잘 정리하여 수시로 데이터 베이스DB에 업데이트 해야 한다.</p>
+<p>Airflow는 수시로 데이터 베이스를 업데이트 하는 것을 자동으로 실행해 주는 프로그램이다.</p>
+<hr>
+<h1 id="3-1-파이썬으로-파일-쓰고-읽기"><a href="#3-1-파이썬으로-파일-쓰고-읽기" class="headerlink" title="[3.1 파이썬으로 파일 쓰고 읽기]"></a>[3.1 파이썬으로 파일 쓰고 읽기]</h1><ul>
+<li>교재 &lt;실무 예제로 배우는 데이터 공학&gt; 41p~50p</li>
+</ul>
+<h2 id="step1-py-파일-생성-및-하단-코드-입력"><a href="#step1-py-파일-생성-및-하단-코드-입력" class="headerlink" title="step1.py 파일 생성 및 하단 코드 입력"></a>step1.py 파일 생성 및 하단 코드 입력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> faker</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(pd.__version__)</span><br></pre></td></tr></table></figure>
+
+<h2 id="write-df-py-파일-생성-및-하단-코드-입력"><a href="#write-df-py-파일-생성-및-하단-코드-입력" class="headerlink" title="write_df.py 파일 생성 및 하단 코드 입력"></a>write_df.py 파일 생성 및 하단 코드 입력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> faker <span class="keyword">import</span> Faker</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    output = <span class="built_in">open</span>(<span class="string">&#x27;data.csv&#x27;</span>,mode=<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">    fake=Faker()</span><br><span class="line">    header=[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;street&#x27;</span>,<span class="string">&#x27;city&#x27;</span>,<span class="string">&#x27;state&#x27;</span>,<span class="string">&#x27;zip&#x27;</span>,<span class="string">&#x27;lng&#x27;</span>,<span class="string">&#x27;lat&#x27;</span>]</span><br><span class="line">    mywriter=csv.writer(output)</span><br><span class="line">    mywriter.writerow(header)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">        mywriter.writerow([fake.name(),fake.random_int(<span class="built_in">min</span>=<span class="number">18</span>, <span class="built_in">max</span>=<span class="number">80</span>, step=<span class="number">1</span>), fake.street_address(), fake.city(),fake.state(),fake.zipcode(),fake.longitude(),fake.latitude()])</span><br><span class="line">    output.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="read-df-py-파일-생성-및-하단-코드-입력"><a href="#read-df-py-파일-생성-및-하단-코드-입력" class="headerlink" title="read_df.py 파일 생성 및 하단 코드 입력"></a>read_df.py 파일 생성 및 하단 코드 입력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.csv&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        myreader = csv.DictReader(f)</span><br><span class="line">        headers = <span class="built_in">next</span>(myreader)</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> myreader:</span><br><span class="line">            <span class="built_in">print</span>(row[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="write-df-pd-py-파일-생성-및-하단-코드-입력"><a href="#write-df-pd-py-파일-생성-및-하단-코드-입력" class="headerlink" title="write_df_pd.py 파일 생성 및 하단 코드 입력"></a>write_df_pd.py 파일 생성 및 하단 코드 입력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    data = &#123;<span class="string">&#x27;Name&#x27;</span>:[<span class="string">&#x27;Paul&#x27;</span>, <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Susan&#x27;</span>,<span class="string">&#x27;Yolanda&#x27;</span>]</span><br><span class="line">    ,<span class="string">&#x27;Age&#x27;</span>:[<span class="number">23</span>,<span class="number">45</span>,<span class="number">18</span>,<span class="number">21</span>]&#125;</span><br><span class="line">    df=pd.DataFrame(data)</span><br><span class="line">    df.to_csv(<span class="string">&#x27;fromdf.CSV&#x27;</span>,index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="read-df-pd-py-파일-생성-및-하단-코드-입력"><a href="#read-df-pd-py-파일-생성-및-하단-코드-입력" class="headerlink" title="read_df_pd.py 파일 생성 및 하단 코드 입력"></a>read_df_pd.py 파일 생성 및 하단 코드 입력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br><span class="line">    df.head(<span class="number">10</span>)</span><br><span class="line">    <span class="comment"># print(df)</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="write-json-df-py-파일-생성-및-하단-코드-입력"><a href="#write-json-df-py-파일-생성-및-하단-코드-입력" class="headerlink" title="write_json_df.py 파일 생성 및 하단 코드 입력"></a>write_json_df.py 파일 생성 및 하단 코드 입력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> faker <span class="keyword">import</span> Faker</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    output = <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">    fake = Faker()</span><br><span class="line">    alldata =&#123;&#125;</span><br><span class="line">    alldata[<span class="string">&#x27;records&#x27;</span>] = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> X <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">        data=&#123;<span class="string">&quot;name&quot;</span>:fake.name(),<span class="string">&quot;age&quot;</span>:fake.random_int(<span class="built_in">min</span>=<span class="number">18</span>, <span class="built_in">max</span>=<span class="number">80</span>, step=<span class="number">1</span>),<span class="string">&quot;street&quot;</span>:fake.street_address(),<span class="string">&quot;city&quot;</span>:fake.city(),<span class="string">&quot;state&quot;</span>:fake.state(),<span class="string">&quot;zip&quot;</span>:fake.zipcode(),<span class="string">&quot;lng&quot;</span>:<span class="built_in">float</span>(fake.longitude()),<span class="string">&quot;lat&quot;</span>:<span class="built_in">float</span>(fake.latitude())&#125;</span><br><span class="line">        alldata[<span class="string">&#x27;records&#x27;</span>].append(data)</span><br><span class="line">    json.dump(alldata,output)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="read-json-df-py-파일-생성-및-하단-코드-입력"><a href="#read-json-df-py-파일-생성-및-하단-코드-입력" class="headerlink" title="read_json_df.py 파일 생성 및 하단 코드 입력"></a>read_json_df.py 파일 생성 및 하단 코드 입력</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> pandas.io.json <span class="keyword">as</span> pd_JSON</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_json</span>():</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.json&quot;</span>,<span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data= json.load(f)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(data))</span><br><span class="line">    <span class="built_in">print</span>(data[<span class="string">&#x27;records&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_pandas</span>():</span><br><span class="line">    df = pd.read_json(<span class="string">&#x27;data.json&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;기본 방법은 조금 복잡해요! :\n&quot;</span>, df.head())</span><br><span class="line"></span><br><span class="line">    f=<span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">    data = pd_JSON.loads(f.read())</span><br><span class="line">    <span class="comment">#print(data)</span></span><br><span class="line">    df = pd.json_normalize(data,record_path=<span class="string">&#x27;records&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;다른 방법도 복잡해요 :\n&quot;</span>, df.head())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># read_json()</span></span><br><span class="line">    read_pandas()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="3-2-아파치-에어플로-데이터-파이프라인-구축"><a href="#3-2-아파치-에어플로-데이터-파이프라인-구축" class="headerlink" title="[3.2 아파치 에어플로 데이터 파이프라인 구축]"></a>[3.2 아파치 에어플로 데이터 파이프라인 구축]</h1><ul>
+<li>교재 &lt;실무 예제로 배우는 데이터 공학&gt; 51p~57p</li>
+</ul>
+<h2 id="Airflow-들어가기"><a href="#Airflow-들어가기" class="headerlink" title="Airflow 들어가기"></a>Airflow 들어가기</h2><h3 id="dags-폴더-만들기"><a href="#dags-폴더-만들기" class="headerlink" title="dags 폴더 만들기"></a>dags 폴더 만들기</h3><h3 id="data-csv-파일-dags폴더로-옮기기"><a href="#data-csv-파일-dags폴더로-옮기기" class="headerlink" title="data.csv 파일 dags폴더로 옮기기"></a>data.csv 파일 dags폴더로 옮기기</h3><h3 id="airflowcsv-py-파일-생성-및-하단-코드-입력"><a href="#airflowcsv-py-파일-생성-및-하단-코드-입력" class="headerlink" title="airflowcsv.py 파일 생성 및 하단 코드 입력"></a>airflowcsv.py 파일 생성 및 하단 코드 입력</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># 51p</span></span><br><span class="line"><span class="keyword">import</span> datetime <span class="keyword">as</span> dt</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> airflow</span><br><span class="line"><span class="keyword">from</span> airflow <span class="keyword">import</span> DAG</span><br><span class="line"><span class="keyword">from</span> airflow.operators.bash <span class="keyword">import</span> BashOperator</span><br><span class="line"><span class="keyword">from</span> airflow.operators.python <span class="keyword">import</span> PythonOperator</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(pd.__version__)</span></span><br><span class="line"><span class="comment"># print(airflow.__version__)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">csvToJson</span>():</span><br><span class="line">    df=pd.read_csv(<span class="string">&#x27;dags/data.csv&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i,r <span class="keyword">in</span> df.iterrows():</span><br><span class="line">        <span class="built_in">print</span>(r[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">    df.to_json(<span class="string">&#x27;fromAirflow.json&#x27;</span>,orient=<span class="string">&#x27;records&#x27;</span>)</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">default_args = &#123;</span><br><span class="line">    <span class="string">&#x27;owner&#x27;</span>: <span class="string">&#x27;evan&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;start_date&#x27;</span>: dt.datetime(<span class="number">2022</span>, <span class="number">7</span>, <span class="number">27</span>),</span><br><span class="line">    <span class="string">&#x27;retries&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;retry_delay&#x27;</span>: dt.timedelta(minutes=<span class="number">1</span>),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> DAG(<span class="string">&#x27;MyCSVDAG&#x27;</span>,</span><br><span class="line">         default_args=default_args,</span><br><span class="line">         schedule_interval=timedelta(minutes=<span class="number">1</span>),      <span class="comment"># &#x27;0 * * * *&#x27;,</span></span><br><span class="line">         ) <span class="keyword">as</span> dag:</span><br><span class="line"></span><br><span class="line">    print_starting = BashOperator(task_id=<span class="string">&#x27;starting&#x27;</span>,</span><br><span class="line">                               bash_command=<span class="string">&#x27;echo &quot;I am reading the CSV now.....&quot;&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    csvJson = PythonOperator(task_id=<span class="string">&#x27;convertCSVtoJson&#x27;</span>,</span><br><span class="line">                                 python_callable=csvToJson)</span><br><span class="line"></span><br><span class="line">print_starting &gt;&gt; csvJson</span><br></pre></td></tr></table></figure>
+
+<h3 id="airflow-cfg-파일에서-해당-코드-찾아서-False로-고쳐주기"><a href="#airflow-cfg-파일에서-해당-코드-찾아서-False로-고쳐주기" class="headerlink" title="airflow.cfg 파일에서 해당 코드 찾아서 False로 고쳐주기"></a>airflow.cfg 파일에서 해당 코드 찾아서 False로 고쳐주기</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load_examples = False</span><br></pre></td></tr></table></figure>
+
+<h3 id="터미널-2개에서-하단-코드-실행"><a href="#터미널-2개에서-하단-코드-실행" class="headerlink" title="터미널 2개에서 하단 코드 실행"></a>터미널 2개에서 하단 코드 실행</h3><ul>
+<li>우리는 평소 1개의 터미널에서 명령어를 실행한다.</li>
+<li>평소처럼 터미널을 1개 실행한 후 +버튼으로 새 터미널을 열면 된다.</li>
+<li>그럼 터미널 2개 생김!!!</li>
+</ul>
+<p><img src="/source/images/Airflow_lecture/Untitled.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 경로 확인!!! airflow에서 실행, dags에서 실행하면 안됩니다.</span><br><span class="line"></span><br><span class="line">source venv/bin/activate</span><br><span class="line">airflow webserver -p 포트번호</span><br><span class="line"></span><br><span class="line">source venv/bin/activate</span><br><span class="line">airflow scheduler</span><br></pre></td></tr></table></figure>
+
+<h3 id="인터넷-창에-‘localhost-포트번호’를-입력하면-아래-창이-뜬다"><a href="#인터넷-창에-‘localhost-포트번호’를-입력하면-아래-창이-뜬다" class="headerlink" title="인터넷 창에 ‘localhost: 포트번호’를 입력하면 아래 창이 뜬다."></a>인터넷 창에 ‘localhost: 포트번호’를 입력하면 아래 창이 뜬다.</h3><p>localhost:1234</p>
+<h3 id="아래-버튼을-활성화-시킨다"><a href="#아래-버튼을-활성화-시킨다" class="headerlink" title="아래 버튼을 활성화 시킨다."></a>아래 버튼을 활성화 시킨다.</h3><p><img src="/source/images/Airflow_lecture/Untitled%201.png" alt="Untitled"></p>
+<p><img src="/source/images/Airflow_lecture/Untitled%202.png" alt="Untitled"></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-가상환경 설치하기"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -127,7 +208,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="반드시-타이핑하기"><a href="#반드시-타이핑하기" class="headerlink" title="(반드시 타이핑하기)"></a>(반드시 타이핑하기)</h2><h2 id="우분투-실행하기"><a href="#우분투-실행하기" class="headerlink" title="우분투 실행하기"></a>우분투 실행하기</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username: human</span><br><span class="line">password: 1234</span><br></pre></td></tr></table></figure>
+        <h1 id="리눅스-가상환경-설치하기"><a href="#리눅스-가상환경-설치하기" class="headerlink" title="리눅스 가상환경 설치하기"></a>리눅스 가상환경 설치하기</h1><h2 id="반드시-타이핑하기"><a href="#반드시-타이핑하기" class="headerlink" title="(반드시 타이핑하기)"></a>(반드시 타이핑하기)</h2><h2 id="우분투-실행하기"><a href="#우분투-실행하기" class="headerlink" title="우분투 실행하기"></a>우분투 실행하기</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username: human</span><br><span class="line">password: 1234</span><br></pre></td></tr></table></figure>
 
 <p>ls 를 치면 아무 것도 안나옴</p>
 <p>cd ..</p>
@@ -191,7 +272,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="강사님-링크"><a href="#강사님-링크" class="headerlink" title="강사님 링크"></a><a href="%5Bhttps://dschloe.github.io/settings/vscode_wsl2/%5D(https://dschloe.github.io/settings/vscode_wsl2/)">강사님 링크</a></h2><h2 id="환경-변수가-중요한-이유"><a href="#환경-변수가-중요한-이유" class="headerlink" title="[환경 변수가 중요한 이유]"></a>[환경 변수가 중요한 이유]</h2><p>빅데이터 플랫폼 구축</p>
+        <h1 id="VSCode-Remote-WLS-연동"><a href="#VSCode-Remote-WLS-연동" class="headerlink" title="VSCode Remote WLS 연동"></a>VSCode Remote WLS 연동</h1><h2 id="강사님-링크"><a href="#강사님-링크" class="headerlink" title="강사님 링크"></a><a href="%5Bhttps://dschloe.github.io/settings/vscode_wsl2/%5D(https://dschloe.github.io/settings/vscode_wsl2/)">강사님 링크</a></h2><h2 id="환경-변수가-중요한-이유"><a href="#환경-변수가-중요한-이유" class="headerlink" title="[환경 변수가 중요한 이유]"></a>[환경 변수가 중요한 이유]</h2><p>빅데이터 플랫폼 구축</p>
 <p>웹사이트 구축</p>
 <p>— Configuration &#x2F;&#x2F; 각 설치 프로그램끼리 환경변수로 유기적으로 연결시킴</p>
 <p>— 레고 블록</p>
@@ -247,7 +328,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="실무-예제로-배우는-데이터-공학"><a href="#실무-예제로-배우는-데이터-공학" class="headerlink" title="[실무 예제로 배우는 데이터 공학]"></a>[실무 예제로 배우는 데이터 공학]</h2><p>백엔드 개발자 - 243p 아파치 카프카</p>
+        <h1 id="WSL-Tool설치"><a href="#WSL-Tool설치" class="headerlink" title="WSL Tool설치"></a>WSL Tool설치</h1><h2 id="실무-예제로-배우는-데이터-공학"><a href="#실무-예제로-배우는-데이터-공학" class="headerlink" title="[실무 예제로 배우는 데이터 공학]"></a>[실무 예제로 배우는 데이터 공학]</h2><p>백엔드 개발자 - 243p 아파치 카프카</p>
 <p>머신러닝 - 271p 스파크 pyspark</p>
 <p>머신러닝 엔지니어 - 69p, 99p 챕터 4,5</p>
 <hr>
@@ -6314,758 +6395,6 @@ Name: class, dtype: int64
 <!-- Table of Contents -->
 
   
-    <article id="post-python_4"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2022/07/01/python_4/">혼공머 Chapter 04</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2022/07/01/python_4/" class="article-date">
-	  <time datetime="2022-06-30T16:00:00.000Z" itemprop="datePublished">July 1, 2022</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Chapter-04-1-로지스틱-회귀"><a href="#Chapter-04-1-로지스틱-회귀" class="headerlink" title="Chapter 04-1 로지스틱 회귀"></a>Chapter 04-1 로지스틱 회귀</h1><ul>
-<li><p>선형 회귀에서 출발</p>
-</li>
-<li><p>이진 분류 문제 해결</p>
-</li>
-<li><p>클래스 확률 예측</p>
-</li>
-<li><p>딥러닝에서도 사용됨</p>
-</li>
-<li><p>교재 177p</p>
-</li>
-<li><p>X가 사각형일 확률 30%</p>
-</li>
-<li><p>X가 삼각형일 확률 50%</p>
-</li>
-<li><p>X가 원일 확률 20%</p>
-</li>
-</ul>
-<h2 id="전체-과정-정리"><a href="#전체-과정-정리" class="headerlink" title="전체 과정 정리"></a>전체 과정 정리</h2><ul>
-<li><ol>
-<li>좋은 데이터</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>어떤 데이터인지 탐색하고</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>데이터 가공</li>
-</ol>
-<ul>
-<li>2차원 리스트로 만들기</li>
-<li>라벨링하기</li>
-</ul>
-</li>
-<li><ol start="4">
-<li>데이터 분리(훈련 세트, 테스트 세트)(train_test_split 함수)</li>
-</ol>
-<ul>
-<li>4.1. 무작위로 섞되(scikit-learn), 무작위 숫자 고정시켜야 되고(random_state), 전체 비율과 맞게 섞기(층화 샘플링)</li>
-</ul>
-</li>
-<li><ol start="5">
-<li>표준화 전처리</li>
-</ol>
-<ul>
-<li>5.1. 단위 맞춰추기 (Feature Engineering, 표준편차 활용, StandardScaler)</li>
-<li><a target="_blank" rel="noopener" href="https://velog.io/@chaliechu117/Feature-Engineering">https://velog.io/@chaliechu117/Feature-Engineering</a></li>
-<li>5.2. 훈련 세트 데이터의 표준화 구하는 학습을 시킨다. (ss.fit)<ul>
-<li>ex) 평균을 구함</li>
-</ul>
-</li>
-<li>5.3. 훈련 세트와 테스트 세트를 표준화 전처리 함. (ss.transform)<ul>
-<li>ex) 평균을 적용하여 전처리 함</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 패키지 설치</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
-
-<h2 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h2><ul>
-<li>종분류</li>
-<li>종속변수(&#x3D;Y): Species </li>
-<li>독립변수: Weight, Length, Diagonal, Heightm Width</li>
-<li>독립변수 여러개, 종속 변수 1개</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fish = pd.read_csv(<span class="string">&#x27;https://bit.ly/fish_csv_data&#x27;</span>)</span><br><span class="line">fish.head()</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-  <div id="df-e4f4e509-abb7-4725-8c24-8b8b6ab9fc15">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Species</th>
-      <th>Weight</th>
-      <th>Length</th>
-      <th>Diagonal</th>
-      <th>Height</th>
-      <th>Width</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Bream</td>
-      <td>242.0</td>
-      <td>25.4</td>
-      <td>30.0</td>
-      <td>11.5200</td>
-      <td>4.0200</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Bream</td>
-      <td>290.0</td>
-      <td>26.3</td>
-      <td>31.2</td>
-      <td>12.4800</td>
-      <td>4.3056</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Bream</td>
-      <td>340.0</td>
-      <td>26.5</td>
-      <td>31.1</td>
-      <td>12.3778</td>
-      <td>4.6961</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Bream</td>
-      <td>363.0</td>
-      <td>29.0</td>
-      <td>33.5</td>
-      <td>12.7300</td>
-      <td>4.4555</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Bream</td>
-      <td>430.0</td>
-      <td>29.0</td>
-      <td>34.0</td>
-      <td>12.4440</td>
-      <td>5.1340</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-e4f4e509-abb7-4725-8c24-8b8b6ab9fc15')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-<pre><code>  &lt;script&gt;
-    const buttonEl =
-      document.querySelector(&#39;#df-e4f4e509-abb7-4725-8c24-8b8b6ab9fc15 button.colab-df-convert&#39;);
-    buttonEl.style.display =
-      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
-
-    async function convertToInteractive(key) &#123;
-      const element = document.querySelector(&#39;#df-e4f4e509-abb7-4725-8c24-8b8b6ab9fc15&#39;);
-      const dataTable =
-        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
-                                                 [key], &#123;&#125;);
-      if (!dataTable) return;
-
-      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
-        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
-        + &#39; to learn more about interactive tables.&#39;;
-      element.innerHTML = &#39;&#39;;
-      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
-      await google.colab.output.renderOutput(dataTable, element);
-      const docLink = document.createElement(&#39;div&#39;);
-      docLink.innerHTML = docLinkHtml;
-      element.appendChild(docLink);
-    &#125;
-  &lt;/script&gt;
-&lt;/div&gt;
-</code></pre>
-  </div>
-
-
-
-
-<h2 id="데이터-탐색"><a href="#데이터-탐색" class="headerlink" title="데이터 탐색"></a>데이터 탐색</h2><ul>
-<li>종속 변수부터 확인해야 한다.</li>
-<li>범위기 때문에 여러 방법을 사용할 수 있다</li>
-<li>데이터에 대한 배경지식을 채울 수 있다.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 종속 변수</span></span><br><span class="line"><span class="built_in">print</span>(pd.unique(fish[<span class="string">&#x27;Species&#x27;</span>]))</span><br><span class="line"><span class="built_in">print</span>(fish[<span class="string">&#x27;Species&#x27;</span>].value_counts())</span><br><span class="line"><span class="comment"># 검색해보고 배경 지식 채우기</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Bream&#39; &#39;Roach&#39; &#39;Whitefish&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Smelt&#39;]
-Perch        56
-Bream        35
-Roach        20
-Pike         17
-Smelt        14
-Parkki       11
-Whitefish     6
-Name: Species, dtype: int64
-</code></pre>
-<h2 id="데이터-가공"><a href="#데이터-가공" class="headerlink" title="데이터 가공"></a>데이터 가공</h2><ul>
-<li><p>2차원 배열로 전환</p>
-</li>
-<li><p>라벨링 (타겟)</p>
-</li>
-<li><p>독립변수</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pandas 데이터 프레임에서 numpy 배열로 변환</span></span><br><span class="line">fish_input = fish[[<span class="string">&#x27;Weight&#x27;</span>, <span class="string">&#x27;Length&#x27;</span>, <span class="string">&#x27;Diagonal&#x27;</span>, <span class="string">&#x27;Height&#x27;</span>, <span class="string">&#x27;Width&#x27;</span>]].to_numpy()</span><br><span class="line">fish_input.shape</span><br><span class="line"><span class="comment"># 2차원 배열이고 159행, 2열</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>(159, 5)
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(fish_input[<span class="number">0</span>:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>[[242.      25.4     30.      11.52     4.02  ]
- [290.      26.3     31.2     12.48     4.3056]
- [340.      26.5     31.1     12.3778   4.6961]
- [363.      29.      33.5     12.73     4.4555]
- [430.      29.      34.      12.444    5.134 ]]
-</code></pre>
-<ul>
-<li>타겟 &#x3D;종속변수</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fish_target=fish[<span class="string">&#x27;Species&#x27;</span>].to_numpy()</span><br><span class="line"><span class="built_in">print</span>(fish_target.shape)</span><br><span class="line"><span class="built_in">print</span>(fish_target[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>(159,)
-[&#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39;]
-</code></pre>
-<h2 id="데이터-분리"><a href="#데이터-분리" class="headerlink" title="데이터 분리"></a>데이터 분리</h2><ul>
-<li>훈련 데이터, 테스트 데이터 분리</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 임의 샘플링</span></span><br><span class="line"><span class="comment"># 캐글에서</span></span><br><span class="line"><span class="comment"># X_train, X_test, y_train, y_test</span></span><br><span class="line"><span class="comment"># X_train, X_test</span></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    fish_input, fish_target, random_state=<span class="number">42</span> <span class="comment"># 층화샘플링도 추가해서 해보기-&gt;달라지는 결과 확인</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h2 id="표준화-전처리"><a href="#표준화-전처리" class="headerlink" title="표준화 전처리"></a>표준화 전처리</h2><ul>
-<li><p>여기에서도 훈련 세트의 통계 값으로 테스트 세트를 변환해야 한다는 점을 잊지 마세요!!!! 강조!!</p>
-</li>
-<li><ol>
-<li>훈련세트와 테스트 세트를 분리하는데</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>(데이터 가공을 위해) 결측치를 제거하기로 했다.</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>결측치는 평균값으로 대체한다고 정했다.</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>원본 데이터 평균값을 대치 (X), 훈련 데이터 평균값을 대치 (O)</li>
-</ol>
-<ul>
-<li>평균값을 대치하는 순간 답지를 들고 시험을 보는 것과 같음</li>
-<li>모델 훈련을 똑바로 못함, 실전에 대입하면 다 틀림.</li>
-</ul>
-</li>
-<li><p>데이터 누수(Data Leakage)</p>
-<ul>
-<li>훈련데이터 평균값 70을 대치 (O)</li>
-<li>테스트데이터 평균값 75을 대치 (X)</li>
-<li>모든 데이터 평균값 72.5를 대치 (X)</li>
-</ul>
-</li>
-<li><p>사이킷런에서 이를 설명한 것<br><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/common_pitfalls.html">https://scikit-learn.org/stable/common_pitfalls.html</a></p>
-<ul>
-<li>pipeline를 사용해라</li>
-</ul>
-</li>
-<li><p>기준을 맞춰라 –&gt; 데이터 표준화 (표준 점수)</p>
-</li>
-<li><p>97~98p 수동으로 mean,std로 표준 점수 계산함.</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># StandardScaler : 표준화 시켜줌</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss = StandardScaler()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 표준화 구하는 학습: ex)평균을 구함</span></span><br><span class="line"><span class="comment"># mean과 std는 여기서 구해진다.</span></span><br><span class="line">ss.fit(train_input)  </span><br><span class="line"><span class="comment"># ss.fit(test_input) 이러면 절대 안된다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트와 테스트 세트를 표준화 전처리 : ex)평균을 적용하여 전처리를 함</span></span><br><span class="line"><span class="comment"># train_scaled = (train_input - mean) / std 와 동일 과정, 얘는 수동</span></span><br><span class="line">train_scaled = ss.transform(train_input)</span><br><span class="line">test_scaled = ss.transform(test_input)</span><br></pre></td></tr></table></figure>
-
-<h2 id="모형-만들기"><a href="#모형-만들기" class="headerlink" title="모형 만들기"></a>모형 만들기</h2><ul>
-<li>K-최근접 이웃</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier </span><br><span class="line">kn = KNeighborsClassifier(n_neighbors = <span class="number">3</span>)</span><br><span class="line">kn.fit(train_scaled, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(kn.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(kn.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.8907563025210085
-0.85
-</code></pre>
-<ul>
-<li>타깃값 확인</li>
-<li>알파벳 순으로 정렬</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(kn.classes_)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Bream&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Smelt&#39; &#39;Whitefish&#39;]
-</code></pre>
-<ul>
-<li>다증분류</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(kn.predict(test_scaled[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Perch&#39; &#39;Smelt&#39; &#39;Pike&#39; &#39;Perch&#39; &#39;Perch&#39;]
-</code></pre>
-<ul>
-<li>5개 샘플에 대한 예측은 어떤 확률이냐?</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">proba = kn.predict_proba(test_scaled[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(kn.classes_)</span><br><span class="line"><span class="built_in">print</span>(np.<span class="built_in">round</span>(proba, decimals=<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Bream&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Smelt&#39; &#39;Whitefish&#39;]
-[[0.     0.     1.     0.     0.     0.     0.    ]
- [0.     0.     0.     0.     0.     1.     0.    ]
- [0.     0.     0.     1.     0.     0.     0.    ]
- [0.     0.     0.6667 0.     0.3333 0.     0.    ]
- [0.     0.     0.6667 0.     0.3333 0.     0.    ]]
-</code></pre>
-<ul>
-<li>첫번째 클래스 Perch<ul>
-<li>100% 확률로 Perch로 예측</li>
-</ul>
-</li>
-<li>네번째 클라스 Perch<ul>
-<li>66.7% 확률로 Perch 예측</li>
-<li>33.3% 확률로 Roach 예측</li>
-</ul>
-</li>
-</ul>
-<h2 id="로지스틱-회귀"><a href="#로지스틱-회귀" class="headerlink" title="로지스틱 회귀"></a>로지스틱 회귀</h2><ul>
-<li>회귀식 : y &#x3D; ax + b<ul>
-<li>아무리 계산을 해도 오차가 줄지 않을 수 있다.</li>
-</ul>
-</li>
-<li>시그모이드 함수, 로지스틱 함수(피팅한다. 적합시킨다.)<ul>
-<li>피팅을 하면 오차가 줄도록 결과와 회귀식을 변환시켜 식을 결과와 적합시킨다.<ul>
-<li>회귀식에서 양변에 로그를 취함 -&gt; 지수로 변환</li>
-</ul>
-</li>
-<li>로지스틱 변환을 하고 나면 y값도 바뀌다 (숫자-&gt;확률, 0~1)</li>
-</ul>
-</li>
-<li>$ z &#x3D; a x (Weight) + b x (Length) + c x (Diagonal) + d x (Height) + e x (Width) +f $</li>
-</ul>
-<h3 id="로지스틱-회귀로-이진-분류-수행"><a href="#로지스틱-회귀로-이진-분류-수행" class="headerlink" title="로지스틱 회귀로 이진 분류 수행"></a>로지스틱 회귀로 이진 분류 수행</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char_arr = np.array([<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>])  <span class="comment"># train_scaled</span></span><br><span class="line"><span class="comment"># bream_smelt_indexes, 이 중 참인 것 만 프린트 해냄</span></span><br><span class="line"><span class="built_in">print</span>(char_arr[[<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>]])</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;A&#39; &#39;C&#39;]
-</code></pre>
-<ul>
-<li>도미와 빙어의 행만 골라냄</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># True False 리스트 만들기</span></span><br><span class="line">bream_smelt_indexes = (train_target == <span class="string">&#x27;Bream&#x27;</span>) | (train_target == <span class="string">&#x27;Smelt&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(bream_smelt_indexes)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 참인 값만 들어오게 한다.</span></span><br><span class="line">train_bream_smelt = train_scaled[bream_smelt_indexes]</span><br><span class="line">target_bream_smelt = train_target[bream_smelt_indexes]</span><br><span class="line"></span><br><span class="line">train_scaled.shape, train_bream_smelt.shape</span><br></pre></td></tr></table></figure>
-
-<pre><code>[ True False  True False False False False  True False False False  True
- False False False  True  True False False  True False  True False False
- False  True False False  True False False False False  True False False
-  True  True False False False False False  True False False False False
- False  True False  True False False  True False False False  True False
- False False False False False  True False  True False False False False
- False False False False False  True False  True False False  True  True
- False False False  True False False False False False  True False False
- False  True False  True False False  True  True False False False False
- False False False False  True  True False False  True False False]
-
-
-
-
-
-((119, 5), (33, 5))
-</code></pre>
-<h2 id="모델-만들기"><a href="#모델-만들기" class="headerlink" title="모델 만들기"></a>모델 만들기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line">lr = LogisticRegression()</span><br><span class="line">lr.fit(train_bream_smelt, target_bream_smelt)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>LogisticRegression()
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 클래스를 예측</span></span><br><span class="line"><span class="built_in">print</span>(lr.predict(train_bream_smelt[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Bream&#39; &#39;Smelt&#39; &#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39;]
-</code></pre>
-<ul>
-<li>클래스 예측 보다 확률값이 더 궁금하다.</li>
-<li>확률값 구하기</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.predict_proba(train_bream_smelt[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[[0.99759855 0.00240145]
- [0.02735183 0.97264817]
- [0.99486072 0.00513928]
- [0.98584202 0.01415798]
- [0.99767269 0.00232731]]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 클래스 속성 확인, 왼쪽 Bream, 오른쪽 Smelt</span></span><br><span class="line"><span class="built_in">print</span>(lr.classes_)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Bream&#39; &#39;Smelt&#39;]
-</code></pre>
-<ul>
-<li><p>분류 기준 : threshold 임계값을 무엇을 설정할 것이냐? (왜 0.5를 기준으로 두나?)</p>
-</li>
-<li><p>도미 vs 빙어</p>
-<ul>
-<li>[0.51, 0.49]</li>
-<li>[0.70, 0.30]</li>
-<li>[0.90, 0.10]</li>
-<li>0.51 확률 도미와 0.90 확률 도미는 어감이 확실히 다르다</li>
-</ul>
-</li>
-<li><p>각각 독립 변수에 대한 계수와 절편</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5개 값은 5개 샘플의 로지스틱 화귀 모형의 값</span></span><br><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[[-0.4037798  -0.57620209 -0.66280298 -1.01290277 -0.73168947]] [-2.16155132]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># z 값 구하기 / 우리가 원한 것은 확률 값</span></span><br><span class="line">decisions = lr.decision_function(train_bream_smelt[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(decisions)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[-6.02927744  3.57123907 -5.26568906 -4.24321775 -6.0607117 ]
-</code></pre>
-<ul>
-<li>z값을 확률값으로 변환</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.special <span class="keyword">import</span> expit</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(expit(decisions))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[0.00240145 0.97264817 0.00513928 0.01415798 0.00232731]
-</code></pre>
-<h2 id="로지스틱-회귀로-다중-분류-수행하기"><a href="#로지스틱-회귀로-다중-분류-수행하기" class="headerlink" title="로지스틱 회귀로 다중 분류 수행하기"></a>로지스틱 회귀로 다중 분류 수행하기</h2><ul>
-<li>이전 분류의 확장판</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 하이퍼 파라미터 세팅</span></span><br><span class="line"><span class="comment"># 모형을 튜닝</span></span><br><span class="line"><span class="comment"># 잘 모르면 순정을 쓰세요</span></span><br><span class="line"><span class="comment"># 모형의 결과의 과대적합 또 과소적학을 방지하기 위한 것</span></span><br><span class="line"><span class="comment"># 사용해도 되나 반복문으로 여러 튜닝 결과를 비교해서 가장 좋은 값을 사용해야된다.</span></span><br><span class="line"></span><br><span class="line">lr = LogisticRegression(C=<span class="number">20</span>, max_iter=<span class="number">1000</span>)</span><br><span class="line">lr.fit(train_scaled, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lr.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(lr.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9327731092436975
-0.925
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.predict(test_scaled[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Perch&#39; &#39;Smelt&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Perch&#39;]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 확률값이 중요</span></span><br><span class="line">proba = lr.predict_proba(test_scaled[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(np.<span class="built_in">round</span>(proba, decimals=<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[[0.    0.014 0.841 0.    0.136 0.007 0.003]
- [0.    0.003 0.044 0.    0.007 0.946 0.   ]
- [0.    0.    0.034 0.935 0.015 0.016 0.   ]
- [0.011 0.034 0.306 0.007 0.567 0.    0.076]
- [0.    0.    0.904 0.002 0.089 0.002 0.001]]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 각각의 클라스가 궁금할 때</span></span><br><span class="line"><span class="built_in">print</span>(lr.classes_)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;Bream&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Smelt&#39; &#39;Whitefish&#39;]
-</code></pre>
-<ul>
-<li>다중 분류일 경우 선형 방정식은 어떤 모습일까?</li>
-<li>분류 7개, 컬럼 값 5개에 관한 선형~</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_.shape, lr.intercept_.shape)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(7, 5) (7,)
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">decision = lr.decision_function(test_scaled[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(np.<span class="built_in">round</span>(decision, decimals=<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[[ -6.5    1.03   5.16  -2.73   3.34   0.33  -0.63]
- [-10.86   1.93   4.77  -2.4    2.98   7.84  -4.26]
- [ -4.34  -6.23   3.17   6.49   2.36   2.42  -3.87]
- [ -0.68   0.45   2.65  -1.19   3.26  -5.75   1.26]
- [ -6.4   -1.99   5.82  -0.11   3.5   -0.11  -0.71]]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.special <span class="keyword">import</span> softmax</span><br><span class="line"></span><br><span class="line">proba = softmax(decision, axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.<span class="built_in">round</span>(proba, decimals=<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[[0.    0.014 0.841 0.    0.136 0.007 0.003]
- [0.    0.003 0.044 0.    0.007 0.946 0.   ]
- [0.    0.    0.034 0.935 0.015 0.016 0.   ]
- [0.011 0.034 0.306 0.007 0.567 0.    0.076]
- [0.    0.    0.904 0.002 0.089 0.002 0.001]]
-</code></pre>
-<p>로지스틱 회귀부터 다시 보기. 헷갈림.</p>
-<ul>
-<li>결론이해 위주</li>
-<li>모형을 만들었어</li>
-<li>모형이 쓸만한지 아닌지 판단하는 평가 지표.</li>
-</ul>
-<h2 id="평가지표-교재X"><a href="#평가지표-교재X" class="headerlink" title="평가지표 (교재X)"></a>평가지표 (교재X)</h2><ul>
-<li><p>회귀 평가지표</p>
-</li>
-<li><p>결정계수 (121p)</p>
-<ul>
-<li>(타깃-예측)^2의 합 &#x2F;(타깃-평균)^2합</li>
-</ul>
-</li>
-<li><p>이 외에도 여러가지 지표가 있다</p>
-</li>
-<li><p>그 중 MAE, MSE, RMSE</p>
-<ul>
-<li>(실제-예측) &#x3D; 오차</li>
-<li>MAE: 오차의 절댓갃의 평균</li>
-<li>MSE: 오차 제곱의 평균</li>
-<li>RMSE: 가장 대표적,MSE에 제곱근을 취한 값(루트 씌워줌)</li>
-</ul>
-</li>
-<li><p>여기서 말하는 좋은 모델이란</p>
-<ul>
-<li>결정계수 : 1에 수렴하면 좋은 모델</li>
-<li>MAE,MSE,RMSE: 0에 수렴하면 좋은 모델</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error, mean_squared_error, r2_score </span><br><span class="line"></span><br><span class="line">true = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>]) <span class="comment"># 실제값</span></span><br><span class="line">preds = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>]) <span class="comment"># 예측값</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 절대값 오차의 평균</span></span><br><span class="line">mae = mean_absolute_error(true,preds)</span><br><span class="line"><span class="built_in">print</span>(mae)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 제곱 오차의 평균</span></span><br><span class="line">mse = mean_squared_error(true,preds)</span><br><span class="line"><span class="built_in">print</span>(mse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 제곱 오차의 평균</span></span><br><span class="line">mse = mean_squared_error(true, preds)</span><br><span class="line"><span class="built_in">print</span>(mse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># mse 제곱근</span></span><br><span class="line">rmse = np.sqrt(mse)</span><br><span class="line"><span class="built_in">print</span>(rmse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 결정계수</span></span><br><span class="line">r2 = r2_score(true, preds)</span><br><span class="line"><span class="built_in">print</span>(r2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 대표적인 방법. 회귀 평가지표</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>0.5384615384615384
-0.6923076923076923
-0.6923076923076923
-0.8320502943378437
-0.8617021276595744
-</code></pre>
-<h2 id="분류-평가지표"><a href="#분류-평가지표" class="headerlink" title="분류 평가지표"></a>분류 평가지표</h2><ul>
-<li><p>오차 행렬</p>
-</li>
-<li><p>실제 값</p>
-<ul>
-<li>[빙어, 도미, 도미, 빙어, 도미]</li>
-</ul>
-</li>
-<li><p>예측 값</p>
-<ul>
-<li>[빙어, 빙어, 도미, 빙어, 빙어]</li>
-</ul>
-</li>
-<li><p>TP, TN, FP, FN</p>
-<ul>
-<li>TP &#x3D; 5, TN &#x3D; 5, FP &#x3D; 3, FN &#x3D; 7</li>
-<li>정확도 (스팸메일): (TP + TN) &#x2F; (TP + TN + FP + FN) </li>
-<li>정밀도(Precision) : 양성이라고 예측한 값 (TP + FP) 중 실제 양성인 값의 비율</li>
-<li>재현율 (의료, 그만큼 보수적): 실제 양성 값 중 양성으로 예측한 값(TP)의 비율</li>
-</ul>
-</li>
-<li><p>코로나 검사</p>
-<ul>
-<li>양성(1) : 음성(99)</li>
-<li>머신러닝 모형 : 98% &#x2F; 정밀도 99</li>
-<li>인간 음성진단 : 99% &#x2F; 정밀도 95</li>
-</ul>
-</li>
-<li><p>검사자가 실제는 양성, 진단은 음성으로 내림</p>
-<ul>
-<li>로그손실</li>
-<li>ROC Curve (&#x3D; AUC) (중요)</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"></span><br><span class="line">true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">preds = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">confusion_matrix(true, preds)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>array([[2, 1],
-       [2, 0]])
-</code></pre>
-<h1 id="Chapter-04-2-확률적-경사-하강법"><a href="#Chapter-04-2-확률적-경사-하강법" class="headerlink" title="Chapter 04-2 확률적 경사 하강법"></a>Chapter 04-2 확률적 경사 하강법</h1><ul>
-<li>점진적 학습 (step, 보폭)<ul>
-<li>보폭이 빠르면 내려오는 시간은 빠르나 주변을 제대로 보기 힘들어 정확성이 떨어진다</li>
-<li>그러나 보폭을 좁게 내려오면 정확성은 올라가나 시간이 오래 걸린다.</li>
-</ul>
-</li>
-<li>학습률</li>
-<li>XGBoost, LightGBM, 딥러닝(이미지 분류, 자연어 처리, 옵티마이저_)</li>
-</ul>
-<h3 id="샘플"><a href="#샘플" class="headerlink" title="샘플"></a>샘플</h3><ul>
-<li>배치: 몇개로 나눈다</li>
-<li>에포크: 한 바뀌 돌았다.<ul>
-<li>한 번 끝날 때 마다 평가지표가 나온다.</li>
-<li>초기 평가지표는 성능이 낮고 시간이 지날 수록 성능이 높아진다.</li>
-</ul>
-</li>
-<li>신경망 (이미지 데이터, 자연어 데이터)</li>
-<li>자율주행 하루 데이터 1TB -&gt; 학습</li>
-<li>한꺼번에 모든 데이터를 학습하기 어려움<ul>
-<li>샘플링, 배치, 에포크, 오차(&#x3D;손실&#x3D;loss)가 가장 작은 지점을 찾아야 함.</li>
-<li>결론적으로 확률적 경사 하강법이 필요하다.</li>
-</ul>
-</li>
-<li>손실함수: 시간을 효율적이게 쓰면서, 손실은 적은.</li>
-</ul>
-<h3 id="손실함수"><a href="#손실함수" class="headerlink" title="손실함수"></a>손실함수</h3><ul>
-<li>로지스틱 손실 함수</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">fish = pd.read_csv(<span class="string">&quot;http://bit.ly/fish_csv_data&quot;</span>)</span><br><span class="line">fish.info()</span><br></pre></td></tr></table></figure>
-
-<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 159 entries, 0 to 158
-Data columns (total 6 columns):
- #   Column    Non-Null Count  Dtype  
----  ------    --------------  -----  
- 0   Species   159 non-null    object 
- 1   Weight    159 non-null    float64
- 2   Length    159 non-null    float64
- 3   Diagonal  159 non-null    float64
- 4   Height    159 non-null    float64
- 5   Width     159 non-null    float64
-dtypes: float64(5), object(1)
-memory usage: 7.6+ KB
-</code></pre>
-<ul>
-<li>입력 데이터와 타깃 데이터 분리</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fish_input = fish[[<span class="string">&#x27;Weight&#x27;</span>, <span class="string">&#x27;Length&#x27;</span>, <span class="string">&#x27;Diagonal&#x27;</span>, <span class="string">&#x27;Height&#x27;</span>, <span class="string">&#x27;Width&#x27;</span>]].to_numpy()</span><br><span class="line">fish_target = fish[<span class="string">&#x27;Species&#x27;</span>].to_numpy()</span><br><span class="line"></span><br><span class="line">fish_input.shape, fish_target.shape</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>((159, 5), (159,))
-</code></pre>
-<ul>
-<li>훈련 세트와 테스트 세트 분리</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    fish_input, fish_target, random_state=<span class="number">42</span> </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>훈련 세트와 테스트 세트의 특성 표준화<ul>
-<li>무게, 길이, 대각선 길이, 높이, 너비</li>
-</ul>
-</li>
-<li>표준화 처리 진행</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss= StandardScaler()</span><br><span class="line">ss.fit(train_input)</span><br><span class="line">train_scaled = ss.transform(train_input)</span><br><span class="line">test_scaled = ss.transform(test_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># train_scaled[:5]</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>array([[ 0.91965782,  0.60943175,  0.81041221,  1.85194896,  1.00075672],
-       [ 0.30041219,  1.54653445,  1.45316551, -0.46981663,  0.27291745],
-       [-1.0858536 , -1.68646987, -1.70848587, -1.70159849, -2.0044758 ],
-       [-0.79734143, -0.60880176, -0.67486907, -0.82480589, -0.27631471],
-       [-0.71289885, -0.73062511, -0.70092664, -0.0802298 , -0.7033869 ]])
-</code></pre>
-<h2 id="모델링"><a href="#모델링" class="headerlink" title="모델링"></a>모델링</h2><ul>
-<li>확률적 경사 하강법</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시그모이드 로지스틱 손실 함수</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> SGDClassifier</span><br><span class="line">sc = SGDClassifier(loss = <span class="string">&#x27;log&#x27;</span>, max_iter = <span class="number">10</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">sc.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(sc.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(sc.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 결과 해석</span></span><br><span class="line"><span class="comment"># /usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_stochastic_gradient.py:700: ConvergenceWarning: Maximum number of iteration reached before convergence. Consider increasing max_iter to improve the fit.ConvergenceWarning,</span></span><br><span class="line"><span class="comment"># 더 개선 할 것이 있는데 에포크 숫자가 10만에 끊겨버림, 학습이 덜됐다.</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>0.773109243697479
-0.775
-
-
-/usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_stochastic_gradient.py:700: ConvergenceWarning: Maximum number of iteration reached before convergence. Consider increasing max_iter to improve the fit.
-  ConvergenceWarning,
-</code></pre>
-<p>partial_fit()메서드 사용하면 추가 학습.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sc.partial_fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(sc.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(sc.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.8487394957983193
-0.9
-</code></pre>
-<h2 id="에포그와-과대-x2F-과소-적합"><a href="#에포그와-과대-x2F-과소-적합" class="headerlink" title="에포그와 과대&#x2F;과소 적합"></a>에포그와 과대&#x2F;과소 적합</h2><ul>
-<li>에포크 숫자가 적으면 –&gt; 덜 학습</li>
-<li>에포크 숫자가 과도하게 높으면 –&gt; 산을 헤멤.</li>
-<li>끊는 시점을 정하는게 관건.</li>
-<li>eatly_stopping (최근 나온 알고리즘은 대부분 이런 기능이 있다.)<ul>
-<li>에포크 숫자를 1000 지정, 손실 10, 9, 8, ..3(이하로 안내려감)</li>
-<li>3에 도달한 시점이 150</li>
-<li>그럼 강제로 끊어줌.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sc = SGDClassifier(loss =<span class="string">&#x27;log&#x27;</span>, random_state = <span class="number">42</span>)</span><br><span class="line">train_score = []</span><br><span class="line">test_score = []</span><br><span class="line"></span><br><span class="line">classes = np.unique(train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 300번 에포크 훈련을 반복</span></span><br><span class="line"><span class="comment"># 훈련 할 때마다, train_score, test_score 추가를 한다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">300</span>):</span><br><span class="line">  sc.partial_fit(train_scaled, train_target, classes = classes)</span><br><span class="line">  train_score.append(sc.score(train_scaled, train_target))</span><br><span class="line">  test_score.append(sc.score(test_scaled, test_target)) </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>시각화</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line">plt.plot(train_score)</span><br><span class="line">plt.plot(test_score)</span><br><span class="line">plt.legend([<span class="string">&quot;train&quot;</span>, <span class="string">&quot;test&quot;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 결과 해석</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프보다 위에 있음 -&gt; 과소 적합</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프 간격이 가장 좁음 -&gt; 적당한 모델</span></span><br><span class="line"><span class="comment"># 노란색이 파란색 그래프 간격이 멀어짐 -&gt; 과대 적합 </span></span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/images/python_4/output_77_0.png" alt="png"></p>
-<h2 id="XGBoost-LightGBM-코드"><a href="#XGBoost-LightGBM-코드" class="headerlink" title="XGBoost, LightGBM 코드"></a>XGBoost, LightGBM 코드</h2><ul>
-<li>train-loss, train-accuary, test-loss, test-accu</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -7166,6 +6495,18 @@ memory usage: 7.6+ KB
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2022/07/28/Airflow%20%EA%B0%95%EC%9D%98/">Airflow 강의</a></h6>
+              <span>July 28, 2022</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2022/07/27/%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">리눅스 가상환경 설치하기</a></h6>
               <span>July 27, 2022</span>
             </div>
@@ -7220,18 +6561,6 @@ memory usage: 7.6+ KB
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2022/07/06/%EC%8B%9C%EA%B0%81%ED%99%94_%EB%B3%B5%EC%8A%B5_%EC%A0%95%EB%A6%AC/">시각화 복습 정리</a></h6>
-              <span>July 6, 2022</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -7250,7 +6579,7 @@ memory usage: 7.6+ KB
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">27</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">27</span></li></ul>
     </div>
   </div>
 
