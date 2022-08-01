@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Heroku 초기 설정 | 나의 첫번째 블로그</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Heroku 초기 설정https:&#x2F;&#x2F;www.heroku.com&#x2F;1. 회원가입하기  입력한 이메일에 들어가 메시지 확인, 링크 클릭 비밀번호 설정123sallyzmk@naver.com5953uhfexhmk!  허용 누르기로그인 완료  2. heroku 웹사이트에서 새 app 만들기   3. heroku 설치https:&#x2F;&#x2F;devcenter.heroku.com&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Heroku 초기 설정">
+<meta property="og:url" content="https://sallyzmk.github.io/2022/08/01/Heroku%20%EC%B4%88%EA%B8%B0%20%EC%84%A4%EC%A0%95/index.html">
+<meta property="og:site_name" content="나의 첫번째 블로그">
+<meta property="og:description" content="Heroku 초기 설정https:&#x2F;&#x2F;www.heroku.com&#x2F;1. 회원가입하기  입력한 이메일에 들어가 메시지 확인, 링크 클릭 비밀번호 설정123sallyzmk@naver.com5953uhfexhmk!  허용 누르기로그인 완료  2. heroku 웹사이트에서 새 app 만들기   3. heroku 설치https:&#x2F;&#x2F;devcenter.heroku.com&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%201.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%202.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%203.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%204.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%205.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%206.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%207.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%208.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%209.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2010.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2011.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2012.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2013.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2014.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2015.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2016.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2017.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2018.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2019.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2020.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2021.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2022.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2023.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2024.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2025.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2026.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2027.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2028.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2029.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2030.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2031.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2032.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2033.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2034.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2035.png">
+<meta property="og:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2036.png">
+<meta property="article:published_time" content="2022-07-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-01T02:16:56.775Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sallyzmk.github.io/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled.png">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="나의 첫번째 블로그" rel="home"> 나의 첫번째 블로그 </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Categories/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Categories/">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Python_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Python_home/">python</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/R_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/R_home/">r</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="https://sallyzmk.github.io/2022/06/16/Notion_home/"> <a class="" href="https://sallyzmk.github.io/2022/06/16/Notion_home/">notion</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Heroku 초기 설정" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Heroku 초기 설정
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2022/08/01/Heroku%20%EC%B4%88%EA%B8%B0%20%EC%84%A4%EC%A0%95/" class="article-date">
+	  <time datetime="2022-07-31T16:00:00.000Z" itemprop="datePublished">August 1, 2022</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Heroku-초기-설정"><a href="#Heroku-초기-설정" class="headerlink" title="Heroku 초기 설정"></a>Heroku 초기 설정</h1><h2 id="https-www-heroku-com"><a href="#https-www-heroku-com" class="headerlink" title="https://www.heroku.com/"></a><a target="_blank" rel="noopener" href="https://www.heroku.com/">https://www.heroku.com/</a></h2><h2 id="1-회원가입하기"><a href="#1-회원가입하기" class="headerlink" title="1. 회원가입하기"></a>1. 회원가입하기</h2><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%201.png" alt="Untitled"></p>
+<h3 id="입력한-이메일에-들어가-메시지-확인-링크-클릭"><a href="#입력한-이메일에-들어가-메시지-확인-링크-클릭" class="headerlink" title="입력한 이메일에 들어가 메시지 확인, 링크 클릭"></a>입력한 이메일에 들어가 메시지 확인, 링크 클릭</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%202.png" alt="Untitled"></p>
+<h3 id="비밀번호-설정"><a href="#비밀번호-설정" class="headerlink" title="비밀번호 설정"></a>비밀번호 설정</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sallyzmk@naver.com</span><br><span class="line"></span><br><span class="line">5953uhfexhmk!</span><br></pre></td></tr></table></figure>
+
+<h3 id="허용-누르기"><a href="#허용-누르기" class="headerlink" title="허용 누르기"></a>허용 누르기</h3><h3 id="로그인-완료"><a href="#로그인-완료" class="headerlink" title="로그인 완료"></a>로그인 완료</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%203.png" alt="Untitled"></p>
+<hr>
+<h2 id="2-heroku-웹사이트에서-새-app-만들기"><a href="#2-heroku-웹사이트에서-새-app-만들기" class="headerlink" title="2. heroku 웹사이트에서 새 app 만들기"></a>2. heroku 웹사이트에서 새 app 만들기</h2><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%204.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%205.png" alt="Untitled"></p>
+<hr>
+<h2 id="3-heroku-설치"><a href="#3-heroku-설치" class="headerlink" title="3. heroku 설치"></a>3. heroku 설치</h2><h3 id="https-devcenter-heroku-com-articles-heroku-cli"><a href="#https-devcenter-heroku-com-articles-heroku-cli" class="headerlink" title="https://devcenter.heroku.com/articles/heroku-cli"></a><a target="_blank" rel="noopener" href="https://devcenter.heroku.com/articles/heroku-cli">https://devcenter.heroku.com/articles/heroku-cli</a></h3><h3 id="윈도우64비트-설치"><a href="#윈도우64비트-설치" class="headerlink" title="윈도우64비트 설치"></a>윈도우64비트 설치</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%206.png" alt="Untitled"></p>
+<h3 id="관리자-권한으로-실행"><a href="#관리자-권한으로-실행" class="headerlink" title="관리자 권한으로 실행"></a>관리자 권한으로 실행</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%207.png" alt="Untitled"></p>
+<h3 id="환경변수-주의-설정-별도-조정-없이-그대로-설치"><a href="#환경변수-주의-설정-별도-조정-없이-그대로-설치" class="headerlink" title="환경변수 주의 (설정 별도 조정 없이 그대로 설치)"></a>환경변수 주의 (설정 별도 조정 없이 그대로 설치)</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%208.png" alt="Untitled"></p>
+<h3 id="설치완료"><a href="#설치완료" class="headerlink" title="설치완료"></a>설치완료</h3><hr>
+<h2 id="4-깃허브에서-Repository-만들기"><a href="#4-깃허브에서-Repository-만들기" class="headerlink" title="4. 깃허브에서 Repository 만들기"></a>4. 깃허브에서 <strong>Repository</strong> 만들기</h2><ul>
+<li>Repository name : heroku-human-본인이름</li>
+<li>Add a README file</li>
+<li>.gitignore template을 python으로 설정</li>
+</ul>
+<aside>
+💡
+
+<h3 id="주의"><a href="#주의" class="headerlink" title="주의"></a><strong>주의</strong></h3><ul>
+<li>‘_’ 쓰면 안됨 ‘-’는 괜찮음</li>
+<li>Repository name은 타인과 중복되면 안됨 (특이한 것 사용)</li>
+<li>Repository name : heroku-human-본인이름</li>
+</ul>
+<h3 id="이유"><a href="#이유" class="headerlink" title="[이유]"></a><strong>[이유]</strong></h3><p>git-repo —&gt; 다운로드(로컬) —&gt; Heroku에 배포</p>
+<ul>
+<li>이름이 동일하면 안 먹을 수 있음</li>
+</ul>
+<p>Heroku 앱 이름 생성 후 —&gt; 다운로드 —&gt; github에 올림</p>
+</aside>
+
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%209.png" alt="Untitled"></p>
+<h3 id="바탕화면에-깃파일-땡겨오기"><a href="#바탕화면에-깃파일-땡겨오기" class="headerlink" title="바탕화면에 깃파일 땡겨오기"></a>바탕화면에 깃파일 땡겨오기</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2010.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2011.png" alt="Untitled"></p>
+<hr>
+<h2 id="5-heroku-huma-sallyzmk99파일-vscode-실행"><a href="#5-heroku-huma-sallyzmk99파일-vscode-실행" class="headerlink" title="5. heroku-huma-sallyzmk99파일 vscode 실행"></a>5. heroku-huma-sallyzmk99파일 vscode 실행</h2><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2012.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2013.png" alt="Untitled"></p>
+<h3 id="가상환경-접속"><a href="#가상환경-접속" class="headerlink" title="가상환경 접속"></a>가상환경 접속</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2014.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">virtualenv venv</span><br><span class="line"></span><br><span class="line">source venv/Scripts/activate</span><br><span class="line"></span><br><span class="line">pip install Flask gunicorn</span><br></pre></td></tr></table></figure>
+
+<h3 id="파일-생성-requirements-txt"><a href="#파일-생성-requirements-txt" class="headerlink" title="파일 생성 (requirements.txt)"></a>파일 생성 (requirements.txt)</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2015.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2016.png" alt="Untitled"></p>
+<h3 id="파일-생성-app-py"><a href="#파일-생성-app-py" class="headerlink" title="파일 생성 (app.py)"></a>파일 생성 (app.py)</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2017.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2018.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/&quot;)</span><br><span class="line">def index():</span><br><span class="line">    return &quot;Hello World!&quot;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-임시-웹-생성-hexo-server와-비슷"><a href="#6-임시-웹-생성-hexo-server와-비슷" class="headerlink" title="6. 임시 웹 생성(hexo server와 비슷)"></a>6. 임시 웹 생성(hexo server와 비슷)</h2><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2019.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_ENV=development</span><br><span class="line"></span><br><span class="line">export FLASK_APP=app</span><br><span class="line"></span><br><span class="line">flask run</span><br><span class="line"></span><br><span class="line"># 이때 뜨는 링크로 이동하면 임시 웹사이트가 열린다.</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2020.png" alt="Untitled"></p>
+<hr>
+<h2 id="7-배포를-위한-셋팅"><a href="#7-배포를-위한-셋팅" class="headerlink" title="7. 배포를 위한 셋팅"></a>7. 배포를 위한 셋팅</h2><h3 id="app-py-파일에-아래-코드를-추가-작성한다"><a href="#app-py-파일에-아래-코드를-추가-작성한다" class="headerlink" title="app.py 파일에 아래 코드를 추가 작성한다."></a>app.py 파일에 아래 코드를 추가 작성한다.</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2021.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=5000)</span><br></pre></td></tr></table></figure>
+
+<h3 id="파일생성-Procfile"><a href="#파일생성-Procfile" class="headerlink" title="파일생성  (Procfile)"></a>파일생성  (Procfile)</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2022.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2023.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wed: gunicorn wsgi:app</span><br></pre></td></tr></table></figure>
+
+<h3 id="파일생성-wsgi-py"><a href="#파일생성-wsgi-py" class="headerlink" title="파일생성  (wsgi.py)"></a>파일생성  (wsgi.py)</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2024.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<h3 id="터미널에서-python-버전-확인-V는-반드시-대문자"><a href="#터미널에서-python-버전-확인-V는-반드시-대문자" class="headerlink" title="터미널에서 python 버전 확인 (V는 반드시 대문자)"></a>터미널에서 python 버전 확인 (V는 반드시 대문자)</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2025.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+
+<h3 id="파일생성-runtime-txt"><a href="#파일생성-runtime-txt" class="headerlink" title="파일생성  (runtime.txt)"></a>파일생성  (runtime.txt)</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2026.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2027.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 띄어쓰기 주의! 다 붙여 써야한다. 안그럼 오류남.</span><br><span class="line"># 본인의 python 버전을 써여한다. 작성자꺼 복붙하면 안됨.</span><br><span class="line">python-3.9.12</span><br></pre></td></tr></table></figure>
+
+<h3 id="아까-확인-한-python-버전을-적는다"><a href="#아까-확인-한-python-버전을-적는다" class="headerlink" title="아까 확인 한 python 버전을 적는다."></a>아까 확인 한 python 버전을 적는다.</h3><hr>
+<h2 id="8-깃허브-업로드"><a href="#8-깃허브-업로드" class="headerlink" title="8. 깃허브 업로드"></a>8. 깃허브 업로드</h2><h3 id="지금까지-작업한-내용을-깃허브에-업로드한다"><a href="#지금까지-작업한-내용을-깃허브에-업로드한다" class="headerlink" title="지금까지 작업한 내용을 깃허브에 업로드한다."></a>지금까지 작업한 내용을 깃허브에 업로드한다.</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2028.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add.</span><br><span class="line"></span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line"></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2029.png" alt="Untitled"></p>
+<h3 id="깃허브-repository에서-업로드-잘-되었는지-확인"><a href="#깃허브-repository에서-업로드-잘-되었는지-확인" class="headerlink" title="깃허브 repository에서 업로드 잘 되었는지 확인"></a>깃허브 repository에서 업로드 잘 되었는지 확인</h3><hr>
+<h2 id="9-heroku-로그인"><a href="#9-heroku-로그인" class="headerlink" title="9. heroku 로그인"></a>9. heroku 로그인</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">heroku login</span><br><span class="line"></span><br><span class="line"># 아무키 누르기</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2030.png" alt="Untitled"></p>
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2031.png" alt="Untitled"></p>
+<hr>
+<h2 id="10-heroku-앱-생성"><a href="#10-heroku-앱-생성" class="headerlink" title="10. heroku 앱 생성"></a>10. heroku 앱 생성</h2><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2032.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku create heroku-human-본인이름</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2033.png" alt="Untitled"></p>
+<h3 id="Creating-이-뜬다면-heroku-앱이-만들어진-것"><a href="#Creating-이-뜬다면-heroku-앱이-만들어진-것" class="headerlink" title="Creating~~이 뜬다면, heroku 앱이 만들어진 것."></a>Creating~~이 뜬다면, heroku 앱이 만들어진 것.</h3><h3 id="만약-경고문이-뜬다면-이름-중복으로-인해-생성이-안된-것"><a href="#만약-경고문이-뜬다면-이름-중복으로-인해-생성이-안된-것" class="headerlink" title="만약 경고문이 뜬다면 이름 중복으로 인해 생성이 안된 것."></a>만약 경고문이 뜬다면 이름 중복으로 인해 생성이 안된 것.</h3><h3 id="이름을-변경해야-한다"><a href="#이름을-변경해야-한다" class="headerlink" title="이름을 변경해야 한다."></a>이름을 변경해야 한다.</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2034.png" alt="Untitled"></p>
+<h3 id="이때-뜨는-링크로-이동하면-임시-웹사이트가-열린다"><a href="#이때-뜨는-링크로-이동하면-임시-웹사이트가-열린다" class="headerlink" title="이때 뜨는 링크로 이동하면 임시 웹사이트가 열린다."></a>이때 뜨는 링크로 이동하면 임시 웹사이트가 열린다.</h3><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2035.png" alt="Untitled"></p>
+<hr>
+<h2 id="11-heroku-main"><a href="#11-heroku-main" class="headerlink" title="11. heroku main"></a>11. heroku main</h2><p><img src="/Heroku%20d4a8141512af456f8f6729e66fca2467/Untitled%2036.png" alt="Untitled"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push heroku main</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/29/Airflow%20%EA%B0%95%EC%9D%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Airflow 강의</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Heroku-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95"><span class="nav-number">1.</span> <span class="nav-text">Heroku 초기 설정</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#https-www-heroku-com"><span class="nav-number">1.1.</span> <span class="nav-text">https:&#x2F;&#x2F;www.heroku.com&#x2F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%ED%95%98%EA%B8%B0"><span class="nav-number">1.2.</span> <span class="nav-text">1. 회원가입하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9E%85%EB%A0%A5%ED%95%9C-%EC%9D%B4%EB%A9%94%EC%9D%BC%EC%97%90-%EB%93%A4%EC%96%B4%EA%B0%80-%EB%A9%94%EC%8B%9C%EC%A7%80-%ED%99%95%EC%9D%B8-%EB%A7%81%ED%81%AC-%ED%81%B4%EB%A6%AD"><span class="nav-number">1.2.1.</span> <span class="nav-text">입력한 이메일에 들어가 메시지 확인, 링크 클릭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8-%EC%84%A4%EC%A0%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">비밀번호 설정</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%97%88%EC%9A%A9-%EB%88%84%EB%A5%B4%EA%B8%B0"><span class="nav-number">1.2.3.</span> <span class="nav-text">허용 누르기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%99%84%EB%A3%8C"><span class="nav-number">1.2.4.</span> <span class="nav-text">로그인 완료</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-heroku-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%97%90%EC%84%9C-%EC%83%88-app-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">1.3.</span> <span class="nav-text">2. heroku 웹사이트에서 새 app 만들기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-heroku-%EC%84%A4%EC%B9%98"><span class="nav-number">1.4.</span> <span class="nav-text">3. heroku 설치</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#https-devcenter-heroku-com-articles-heroku-cli"><span class="nav-number">1.4.1.</span> <span class="nav-text">https:&#x2F;&#x2F;devcenter.heroku.com&#x2F;articles&#x2F;heroku-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9C%88%EB%8F%84%EC%9A%B064%EB%B9%84%ED%8A%B8-%EC%84%A4%EC%B9%98"><span class="nav-number">1.4.2.</span> <span class="nav-text">윈도우64비트 설치</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90-%EA%B6%8C%ED%95%9C%EC%9C%BC%EB%A1%9C-%EC%8B%A4%ED%96%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">관리자 권한으로 실행</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98-%EC%A3%BC%EC%9D%98-%EC%84%A4%EC%A0%95-%EB%B3%84%EB%8F%84-%EC%A1%B0%EC%A0%95-%EC%97%86%EC%9D%B4-%EA%B7%B8%EB%8C%80%EB%A1%9C-%EC%84%A4%EC%B9%98"><span class="nav-number">1.4.4.</span> <span class="nav-text">환경변수 주의 (설정 별도 조정 없이 그대로 설치)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%84%A4%EC%B9%98%EC%99%84%EB%A3%8C"><span class="nav-number">1.4.5.</span> <span class="nav-text">설치완료</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%EA%B9%83%ED%97%88%EB%B8%8C%EC%97%90%EC%84%9C-Repository-%EB%A7%8C%EB%93%A4%EA%B8%B0"><span class="nav-number">1.5.</span> <span class="nav-text">4. 깃허브에서 Repository 만들기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%A3%BC%EC%9D%98"><span class="nav-number">1.5.1.</span> <span class="nav-text">주의</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9D%B4%EC%9C%A0"><span class="nav-number">1.5.2.</span> <span class="nav-text">[이유]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B0%94%ED%83%95%ED%99%94%EB%A9%B4%EC%97%90-%EA%B9%83%ED%8C%8C%EC%9D%BC-%EB%95%A1%EA%B2%A8%EC%98%A4%EA%B8%B0"><span class="nav-number">1.5.3.</span> <span class="nav-text">바탕화면에 깃파일 땡겨오기</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-heroku-huma-sallyzmk99%ED%8C%8C%EC%9D%BC-vscode-%EC%8B%A4%ED%96%89"><span class="nav-number">1.6.</span> <span class="nav-text">5. heroku-huma-sallyzmk99파일 vscode 실행</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EC%A0%91%EC%86%8D"><span class="nav-number">1.6.1.</span> <span class="nav-text">가상환경 접속</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1-requirements-txt"><span class="nav-number">1.6.2.</span> <span class="nav-text">파일 생성 (requirements.txt)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1-app-py"><span class="nav-number">1.6.3.</span> <span class="nav-text">파일 생성 (app.py)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%EC%9E%84%EC%8B%9C-%EC%9B%B9-%EC%83%9D%EC%84%B1-hexo-server%EC%99%80-%EB%B9%84%EC%8A%B7"><span class="nav-number">1.7.</span> <span class="nav-text">6. 임시 웹 생성(hexo server와 비슷)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%EB%B0%B0%ED%8F%AC%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%85%8B%ED%8C%85"><span class="nav-number">1.8.</span> <span class="nav-text">7. 배포를 위한 셋팅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#app-py-%ED%8C%8C%EC%9D%BC%EC%97%90-%EC%95%84%EB%9E%98-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%B6%94%EA%B0%80-%EC%9E%91%EC%84%B1%ED%95%9C%EB%8B%A4"><span class="nav-number">1.8.1.</span> <span class="nav-text">app.py 파일에 아래 코드를 추가 작성한다.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%8C%EC%9D%BC%EC%83%9D%EC%84%B1-Procfile"><span class="nav-number">1.8.2.</span> <span class="nav-text">파일생성  (Procfile)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%8C%EC%9D%BC%EC%83%9D%EC%84%B1-wsgi-py"><span class="nav-number">1.8.3.</span> <span class="nav-text">파일생성  (wsgi.py)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%84%B0%EB%AF%B8%EB%84%90%EC%97%90%EC%84%9C-python-%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8-V%EB%8A%94-%EB%B0%98%EB%93%9C%EC%8B%9C-%EB%8C%80%EB%AC%B8%EC%9E%90"><span class="nav-number">1.8.4.</span> <span class="nav-text">터미널에서 python 버전 확인 (V는 반드시 대문자)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%8C%EC%9D%BC%EC%83%9D%EC%84%B1-runtime-txt"><span class="nav-number">1.8.5.</span> <span class="nav-text">파일생성  (runtime.txt)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%95%84%EA%B9%8C-%ED%99%95%EC%9D%B8-%ED%95%9C-python-%EB%B2%84%EC%A0%84%EC%9D%84-%EC%A0%81%EB%8A%94%EB%8B%A4"><span class="nav-number">1.8.6.</span> <span class="nav-text">아까 확인 한 python 버전을 적는다.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%97%85%EB%A1%9C%EB%93%9C"><span class="nav-number">1.9.</span> <span class="nav-text">8. 깃허브 업로드</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80-%EC%9E%91%EC%97%85%ED%95%9C-%EB%82%B4%EC%9A%A9%EC%9D%84-%EA%B9%83%ED%97%88%EB%B8%8C%EC%97%90-%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%9C%EB%8B%A4"><span class="nav-number">1.9.1.</span> <span class="nav-text">지금까지 작업한 내용을 깃허브에 업로드한다.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B9%83%ED%97%88%EB%B8%8C-repository%EC%97%90%EC%84%9C-%EC%97%85%EB%A1%9C%EB%93%9C-%EC%9E%98-%EB%90%98%EC%97%88%EB%8A%94%EC%A7%80-%ED%99%95%EC%9D%B8"><span class="nav-number">1.9.2.</span> <span class="nav-text">깃허브 repository에서 업로드 잘 되었는지 확인</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-heroku-%EB%A1%9C%EA%B7%B8%EC%9D%B8"><span class="nav-number">1.10.</span> <span class="nav-text">9. heroku 로그인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-heroku-%EC%95%B1-%EC%83%9D%EC%84%B1"><span class="nav-number">1.11.</span> <span class="nav-text">10. heroku 앱 생성</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-%EC%9D%B4-%EB%9C%AC%EB%8B%A4%EB%A9%B4-heroku-%EC%95%B1%EC%9D%B4-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%84-%EA%B2%83"><span class="nav-number">1.11.1.</span> <span class="nav-text">Creating~~이 뜬다면, heroku 앱이 만들어진 것.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A7%8C%EC%95%BD-%EA%B2%BD%EA%B3%A0%EB%AC%B8%EC%9D%B4-%EB%9C%AC%EB%8B%A4%EB%A9%B4-%EC%9D%B4%EB%A6%84-%EC%A4%91%EB%B3%B5%EC%9C%BC%EB%A1%9C-%EC%9D%B8%ED%95%B4-%EC%83%9D%EC%84%B1%EC%9D%B4-%EC%95%88%EB%90%9C-%EA%B2%83"><span class="nav-number">1.11.2.</span> <span class="nav-text">만약 경고문이 뜬다면 이름 중복으로 인해 생성이 안된 것.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9D%B4%EB%A6%84%EC%9D%84-%EB%B3%80%EA%B2%BD%ED%95%B4%EC%95%BC-%ED%95%9C%EB%8B%A4"><span class="nav-number">1.11.3.</span> <span class="nav-text">이름을 변경해야 한다.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%9D%B4%EB%95%8C-%EB%9C%A8%EB%8A%94-%EB%A7%81%ED%81%AC%EB%A1%9C-%EC%9D%B4%EB%8F%99%ED%95%98%EB%A9%B4-%EC%9E%84%EC%8B%9C-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%97%B4%EB%A6%B0%EB%8B%A4"><span class="nav-number">1.11.4.</span> <span class="nav-text">이때 뜨는 링크로 이동하면 임시 웹사이트가 열린다.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-heroku-main"><span class="nav-number">1.12.</span> <span class="nav-text">11. heroku main</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Categories/" class="mobile-nav-link">Categories</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Python_home/" class="mobile-nav-link">Python</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/R_home/" class="mobile-nav-link">R</a>
+  
+    <a href="https://sallyzmk.github.io/2022/06/16/Notion_home/" class="mobile-nav-link">Notion</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 나의 첫번째 블로그 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
